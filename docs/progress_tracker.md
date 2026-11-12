@@ -45,7 +45,20 @@ The user authorized audit/fixes, push, GitHub Pages deployment, and public repos
 visibility with search-engine exclusion declarations. The runtime fixes, twelve Node
 tests, production-build browser checks, dependency audit and release design are recorded
 in [the audit](audit_20261112_code_quality/audit.md). This supersedes the initial local-only
-publication status. Actual online acceptance will be recorded after deployment.
+publication status. Pages published build `44a2e6245a64` from runtime commit `0b13fe4` on 2026-11-13.
+[Actions run 43254116093](https://github.com/fangjiaqifion/music-activity-studio/actions/runs/43254116093)
+succeeded. All 15 remote entry/runtime hashes match the verified local build. Both
+Chrome suites passed again against the actual Pages URL, including the 28 responsive
+screen cases and iPad-size touch/failure checks. Actual macOS Safari loaded the exact
+release without login and completed a correct rhythm-shop answer. Physical iPad and
+human audible acceptance remain open.
+
+Live URL: https://fangjiaqifion.github.io/music-activity-studio/
+
+The repository is public by explicit user approval. Runtime pages declare noindex,
+nofollow and noarchive. The unused Sites draft was not deployed and is not part of
+this application. Source and post-deployment evidence are pushed to GitHub; the parent
+records only a local submodule update. Documentation-only pushes do not redeploy.
 
 Updated runtime instructions, README, development procedure, this tracker, and the audit.
 Asset provenance is unchanged: copied artwork and licensed font are the same. Existing

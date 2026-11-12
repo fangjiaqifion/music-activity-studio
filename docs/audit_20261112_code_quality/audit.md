@@ -68,6 +68,24 @@ of github.com's repository page itself. See [GitHub's hosting documentation](htt
 
 ## Deployment evidence
 
-Pending initial push and Pages workflow. Record actual commit, build, run, online hash,
-and browser evidence here after successful publication. Do not infer deployment
-from the configured URL or a completed local build.
+Published on 2026-11-13 (Asia/Shanghai), from runtime commit
+`0b13fe4eeecc72a5a0c716cc79f9dc4b2475fac8`, build `44a2e6245a64`.
+[Actions run 43254116093](https://github.com/fangjiaqifion/music-activity-studio/actions/runs/43254116093)
+succeeded, including Node 24 tests, both Chrome suites against the production artifact,
+and Pages publication. GitHub reports a public, HTTPS-enforced workflow-based site.
+
+[Live game](https://fangjiaqifion.github.io/music-activity-studio/) redirects to
+`releases/44a2e6245a64/index.html`. The remote manifest and all 15 entry/runtime
+SHA-256 hashes match the verified local package. The full Chrome suite and dedicated
+810 × 1080 touch/failure regressions passed again against the actual GitHub Pages URL,
+without JavaScript errors. The noindex directives are part of the hash-verified HTML.
+
+Actual macOS Safari visibly loaded that exact release URL without login, showed all
+six menu entries, opened the rhythm shop, and accepted one half note for a two-beat
+order. The successful answer view showed correct quarter/half/dotted-half/whole glyphs
+and the vending-machine illustration. This is real Safari interaction, not a claim
+of physical-iPad testing or human audible acceptance. Those remain for the user.
+
+Evidence-only documentation commits follow the runtime commit and do not redeploy.
+The source and evidence are pushed to the game repository; the parent only receives
+a local submodule-pointer/coordination commit. No parent push or Note Trainer change.
