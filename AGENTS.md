@@ -1,0 +1,27 @@
+# Music Activity Studio: Internal Guide
+
+Last updated: 2026-11-12
+
+An independent repository. When nested, inherit parent and games guides. Write project
+documentation in English; product UI may remain Chinese. Repository and checkout names
+use kebab-case. Keep this guide usable when cloned alone.
+
+`src/core.mjs` owns pure seeded generation and validation; `src/app.mjs` owns the
+shared menu/session flow and six views; `src/audio.mjs` owns playback and cancellation.
+`style.css` owns responsive and print styles. Follow [development](docs/development.md)
+for operation and [the tracker](docs/progress_tracker.md) for current evidence.
+
+All six entries must remain playable. Keep quarter-note beat units explicit, accept
+multiple valid duration combinations, distinguish generic interval degrees from
+semitones, retain curated chord spellings and scientific pitch octaves, and label
+fixed-do tasks clearly. Preserve first attempts, including empty submissions. Each
+rhythm cell is exactly one quarter-note beat. Bingo calls must cover distinct board
+tokens; repeated taps cannot advance the call. Stop audio/speech on navigation and
+cancel pending resume callbacks. Keep runtime assets self-contained and maintain
+licenses. Do not resave Illustrator originals or change Note Trainer.
+
+No accounts, cloud, analytics, paid generation, or service worker without a product
+decision. Run relevant Node and browser checks; inspect changed screens and printing.
+Update docs and tracker before delivery. Ignore `.runtime/` and `node_modules/`.
+Commit complete units locally with Chinese verb-first subjects under 50 characters.
+Push/deployment needs authorization. Commit this game before updating its parent gitlink.
