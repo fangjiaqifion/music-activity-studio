@@ -639,7 +639,8 @@ footer {
   height: 95px;
   background: #3d453c;
   z-index: 1;
-  pointer-events: none;
+  pointer-events: auto;
+  cursor: default;
   border-radius: 0 0 4px 4px;
   border: 2px solid #fffcf6;
 }
@@ -1135,5 +1136,21 @@ footer {
   }
   button {
     display: none;
+  }
+}
+
+/* Keep small controls usable on touch screens. */
+.route,
+.toolbar button,
+.text-button,
+.back {
+  min-height: 44px;
+}
+.choice {
+  min-height: 44px;
+}
+@media print {
+  html {
+    background: white;
   }
 }

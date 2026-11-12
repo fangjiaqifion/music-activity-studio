@@ -99,3 +99,8 @@ test("empty scalar answers survive JSON serialization after correction", () => {
   assert.equal(JSON.parse(JSON.stringify(r)).firstAnswer, null);
   assert.equal(r.firstCorrect, false);
 });
+
+test("unsupported question kinds cannot validate an absent answer", () => {
+  for (const kind of ["dice", "bingo", "unknown"])
+    assert.equal(validAnswer({ kind }, undefined), false);
+});

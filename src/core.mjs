@@ -186,7 +186,9 @@ export function validAnswer(q, answer) {
       new Set(answer).size === answer.length &&
       q.keys.every((k) => answer.includes(k))
     );
-  return answer === q.answer;
+  if (["detective", "ocean"].includes(q.kind))
+    return typeof answer === "string" && answer === q.answer;
+  return false;
 }
 export function hasBingo(marked) {
   return [

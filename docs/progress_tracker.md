@@ -1,6 +1,6 @@
 # Progress Tracker
 
-Last updated: 2026-11-12
+Last updated: 2026-11-13
 
 ## Six-in-one local demo
 
@@ -38,3 +38,15 @@ standard multiline layout with pinned Prettier 3.6.2. The six Node tests passed 
 This changes formatting only; prior browser evidence remains applicable. AGENTS,
 README, development, and asset guidance were reviewed unchanged because behavior,
 commands, ownership, and verification limits are unchanged.
+
+## Code quality audit and GitHub publication, 2026-11-12
+
+The user authorized audit/fixes, push, GitHub Pages deployment, and public repository
+visibility with search-engine exclusion declarations. The runtime fixes, twelve Node
+tests, production-build browser checks, dependency audit and release design are recorded
+in [the audit](audit_20261112_code_quality/audit.md). This supersedes the initial local-only
+publication status. Actual online acceptance will be recorded after deployment.
+
+Updated runtime instructions, README, development procedure, this tracker, and the audit.
+Asset provenance is unchanged: copied artwork and licensed font are the same. Existing
+worksheets, Note Trainer, and unrelated parent research work remain unchanged.

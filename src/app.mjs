@@ -2,7 +2,6 @@ import {
   GAMES,
   NOTES,
   LETTERS,
-  SOLFEGE,
   PATTERNS,
   generate,
   validAnswer,
@@ -10,6 +9,7 @@ import {
   recordAttempt,
 } from "./core.mjs";
 import { createAudio } from "./audio.mjs";
+import { createHistoryStore } from "./storage.mjs";
 const app = document.querySelector("#app"),
   audio = createAudio();
 let game = null,
@@ -25,12 +25,8 @@ let game = null,
   call = 0,
   line = 0,
   showCall = false;
-const KEY = "music-activity-studio.demo.v1";
-let history = [];
-try {
-  history = JSON.parse(localStorage.getItem(KEY) || "[]");
-  if (!Array.isArray(history)) history = [];
-} catch {}
+const historyStore = createHistoryStore();
+let history = historyStore.read();
 const el = (selector) => document.querySelector(selector);
 const button = (text, action, cls = "", extra = "") =>
   `<button class="${cls}" data-action="${action}" ${extra}>${text}</button>`;
@@ -68,10 +64,24 @@ function glyph(n) {
   return `<span class="music" aria-hidden="true">${n.glyph}</span><span>${n.label}</span>`;
 }
 function render() {
+  const focused = document.activeElement?.closest("button[data-action]");
+  const focusAction = focused?.dataset.action;
+  const focusValue = focused?.dataset.value;
   const q = questions[index];
   shell(
     `<main class="play" style="--accent:${game.color};--tint:${game.bg}"><nav class="play-nav">${button("← 返回游乐工坊", "home", "back")}<span>${game.en} / ${level === "starter" ? "初次探索" : "多一点挑战"}</span>${button("↻ 重新出题", "restart", "text-button")}</nav><section class="play-title"><div><p class="eyebrow">${game.tag}</p><h1>${game.name}</h1></div><div class="round">${game.id === "dice" ? "创作模式" : game.id === "bingo" ? "课堂模式" : `第 ${index + 1} / 6 题`}<small>题组 ${seed}</small></div></section><div class="workspace"><aside class="mascot"><img src="assets/${game.image}.png" alt=""><p>${mascotText(q)}</p><span>灵感来自你的原创练习纸<br>${q.source.join(" / ")}</span></aside><section class="activity">${activity(q)}<p class="feedback ${solved ? "success" : ""}" role="status" aria-live="polite">${feedback || "慢慢来，想好了再试。"}</p>${!["dice", "bingo"].includes(game.id) ? `<div class="actions">${solved ? button(index === 5 ? "看看探索成果 →" : "下一题 →", "next", "primary") : button("检查一下 ✓", "check", "primary")}${button("清空选择", "clear", "secondary")}</div>` : ""}</section></div><div class="play-bottom"><span>规则生成 · 可重复探索</span>${button("打印这组练习", "print", "text-button")}<span>不采集姓名 · 记录仅在本机</span></div></main>`,
   );
+  if (focusAction) {
+    const selector =
+      `[data-action="${CSS.escape(focusAction)}"]` +
+      (focusValue === undefined
+        ? ""
+        : `[data-value="${CSS.escape(focusValue)}"]`);
+    const next =
+      app.querySelector(selector) ||
+      (solved ? app.querySelector('[data-action="next"]') : null);
+    if (next && !next.disabled) next.focus({ preventScroll: true });
+  }
 }
 function mascotText(q) {
   return {
@@ -105,21 +115,20 @@ function routeIndices() {
   return line === 8 ? [0, 5, 10, 15] : [3, 6, 9, 12];
 }
 function save() {
-  history.push({
-    game: game.id,
-    seed,
-    level,
-    date: new Date().toISOString(),
-    records,
-  });
-  history = history.slice(-100);
-  try {
-    localStorage.setItem(KEY, JSON.stringify(history));
-    return true;
-  } catch {
-    return false;
-  }
+  const saved = historyStore.append(
+    {
+      game: game.id,
+      seed,
+      level,
+      date: new Date().toISOString(),
+      records,
+    },
+    history,
+  );
+  history = saved.history;
+  return saved.stored;
 }
+
 function result() {
   audio.stop();
   const first = records.filter((r) => r?.firstCorrect).length;
@@ -147,22 +156,17 @@ function check() {
   render();
 }
 function speakCall(q) {
-  audio.stop();
-  if (!("speechSynthesis" in window)) {
-    feedback = "当前浏览器不支持语音，请查看文字提示。";
+  const called = call;
+  const c = q.calls[called];
+  audio.speak(`字母 ${c.letter}，数字${c.octave === 4 ? "四" : "五"}`, () => {
+    if (game?.id !== "bingo" || questions[index] !== q || call !== called)
+      return;
+    feedback = "语音暂时不可用，请看文字提示继续。";
     showCall = true;
     render();
-    return;
-  }
-  speechSynthesis.cancel();
-  const c = q.calls[call],
-    u = new SpeechSynthesisUtterance(
-      `${c.letter}，${c.octave === 4 ? "第四组" : "第五组"}`,
-    );
-  u.lang = "zh-CN";
-  u.rate = 0.8;
-  speechSynthesis.speak(u);
+  });
 }
+
 function printSheet() {
   audio.stop();
   if ("speechSynthesis" in window) speechSynthesis.cancel();
@@ -215,6 +219,7 @@ app.addEventListener("click", async (e) => {
   if (!b || b.disabled) return;
   const a = b.dataset.action,
     v = b.dataset.value;
+  const owner = questions[index];
   try {
     if (a === "home") {
       if ("speechSynthesis" in window) speechSynthesis.cancel();
@@ -298,8 +303,8 @@ app.addEventListener("click", async (e) => {
           events.push({ at: t, duration: d * 0.45, midi: 76 });
           t += d * 0.6;
         }
-      await audio.play(events);
-      if (!game || questions[index] !== q) return;
+      const played = await audio.play(events);
+      if (!played || !game || questions[index] !== q) return;
       feedback = "这条路线共四拍。可以跟着读，也可以拍拍手。";
     }
     if (a === "call") {
@@ -321,7 +326,7 @@ app.addEventListener("click", async (e) => {
           solved = true;
           feedback = "✓ Bingo！你找到了一条完整的线。";
           records = [{ completed: true, calls: call + 1 }];
-          save();
+          if (!save()) feedback += " 本机记录未能保存，这局仍已完成。";
         } else {
           call++;
           showCall = false;
@@ -332,8 +337,10 @@ app.addEventListener("click", async (e) => {
     }
     render();
   } catch (error) {
-    if (!game) return;
-    feedback = "声音暂时无法播放。你可以继续做题，稍后再试。";
+    if (!game || questions[index] !== owner) return;
+    feedback = ["chord", "rhythm", "call"].includes(a)
+      ? "声音暂时无法播放。你可以继续做题，稍后再试。"
+      : "这次操作未能完成，请重试。";
     render();
     console.warn("Activity operation failed", error);
   }
