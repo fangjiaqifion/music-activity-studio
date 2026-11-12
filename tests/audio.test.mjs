@@ -1,3 +1,63 @@
-import test from 'node:test';import assert from 'node:assert/strict';import {createAudio} from '../src/audio.mjs';
-test('navigation cancels pending playback and stops all scheduled oscillators',async()=>{let resume,starts=0,stops=0,cancelled=0;class Context{currentTime=0;destination={};resume(){return new Promise(r=>resume=r);}createOscillator(){return {frequency:{value:0},connect(){},disconnect(){},start(){starts++;},stop(){stops++;}};}createGain(){return {connect(){},disconnect(){},gain:{setValueAtTime(){},linearRampToValueAtTime(){},exponentialRampToValueAtTime(){}}};}}
- globalThis.window={AudioContext:Context,speechSynthesis:{cancel(){cancelled++;}}};const audio=createAudio();const pending=audio.play([{midi:60}]);audio.stop();resume();await pending;assert.equal(starts,0);const active=audio.play([{midi:60},{midi:64}]);resume();await active;assert.equal(starts,2);const scheduled=stops;audio.stop();assert.equal(stops,scheduled+2);assert.ok(cancelled>=4);delete globalThis.window;});
+import test from "node:test";
+import assert from "node:assert/strict";
+import { createAudio } from "../src/audio.mjs";
+test("navigation cancels pending playback and stops all scheduled oscillators", async () => {
+  let resume,
+    starts = 0,
+    stops = 0,
+    cancelled = 0;
+  class Context {
+    currentTime = 0;
+    destination = {};
+    resume() {
+      return new Promise((r) => (resume = r));
+    }
+    createOscillator() {
+      return {
+        frequency: { value: 0 },
+        connect() {},
+        disconnect() {},
+        start() {
+          starts++;
+        },
+        stop() {
+          stops++;
+        },
+      };
+    }
+    createGain() {
+      return {
+        connect() {},
+        disconnect() {},
+        gain: {
+          setValueAtTime() {},
+          linearRampToValueAtTime() {},
+          exponentialRampToValueAtTime() {},
+        },
+      };
+    }
+  }
+  globalThis.window = {
+    AudioContext: Context,
+    speechSynthesis: {
+      cancel() {
+        cancelled++;
+      },
+    },
+  };
+  const audio = createAudio();
+  const pending = audio.play([{ midi: 60 }]);
+  audio.stop();
+  resume();
+  await pending;
+  assert.equal(starts, 0);
+  const active = audio.play([{ midi: 60 }, { midi: 64 }]);
+  resume();
+  await active;
+  assert.equal(starts, 2);
+  const scheduled = stops;
+  audio.stop();
+  assert.equal(stops, scheduled + 2);
+  assert.ok(cancelled >= 4);
+  delete globalThis.window;
+});

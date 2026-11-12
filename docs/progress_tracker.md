@@ -32,3 +32,9 @@ Documentation updated: AGENTS, README, development, asset provenance, and this t
 parent coordination/design docs and game navigation are updated separately. Worksheet
 instructions and Note Trainer documentation remain accurate unchanged because neither
 source collection nor existing application changed.
+
+Source readability follow-up: formatted HTML, CSS, JavaScript, server, and tests into
+standard multiline layout with pinned Prettier 3.6.2. The six Node tests passed again.
+This changes formatting only; prior browser evidence remains applicable. AGENTS,
+README, development, and asset guidance were reviewed unchanged because behavior,
+commands, ownership, and verification limits are unchanged.
