@@ -102,3 +102,11 @@ approved creating this new digital activity around the recorded cow/clef concept
 Original artwork redistribution rights remain subject to the existing open review.
 The hub reuses these assets and the existing balloon/cake exports, with no new
 external runtime requests. Patrick Hand, ZCOOL KuaiLe, and Lucide retain their licenses.
+
+## O-007/O-008 worksheet trial artwork, 2026-11-13
+
+`assets/ladybird.png` and `assets/sun.png` are unchanged copies of workspace exports
+`assets/pic/七星虫/七星虫.png` and `assets/pic/太阳/太阳.png`. Their source masters
+and Illustrator files were not modified. Existing Patrick Hand, ZCOOL KuaiLe,
+Lucide eraser, and original five-character celebration are reused with their existing
+licenses/provenance. No new third-party asset or remote runtime request was added.

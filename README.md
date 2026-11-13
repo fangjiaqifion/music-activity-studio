@@ -79,3 +79,8 @@ asks children to identify each hand and fill all ten piano finger numbers. O-004
 colors nineteen treble/bass clef regions black/brown on the body, legs, and both
 horns. The face stays clear except for its eyes, nostrils, and smile; ears remain black.
 These additions are local trials; the published release has not been updated.
+
+The local worksheet selector also includes **O-007 Draw the Notes** (`ladybirds.html`)
+and **O-008 Lines, Spaces, and Pitch Direction** (`sunshine.html`). Place noteheads
+by tapping a staff position, or choose line/space numbers and pitch-direction arrows.
+Both follow the existing local classroom conventions and support one-page A4 printing.

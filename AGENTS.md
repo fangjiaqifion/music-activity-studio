@@ -75,7 +75,7 @@ clearance above the cake-slice outline, including the lowest notehead.
 
 ## Worksheet selection, O-002 and O-004
 
-`activities.html` is the four-worksheet selection hub, linked from the existing
+`activities.html` is the six-worksheet selection hub, linked from the existing
 six-game index. Every worksheet returns to this hub. `hands.html` and `cows.html`
 share `src/activities.mjs`, `src/activities_core.mjs`, and `activities.css`.
 O-002 preserves both hand identifications and all ten piano finger numbers, with
@@ -90,4 +90,15 @@ New outlines and masks use smooth cubic SVG paths; source AI/clean PNG stay unto
 center visible glyph ink inside each patch. Display full English names “Treble clef”
 and “Bass clef”.
 Apply the same local-profile, speech, aggregate-feedback, eraser, and celebration
-contracts as O-003/O-005. Keep all four entries in the runtime allowlist.
+contracts as O-003/O-005. Keep all six entries in the runtime allowlist.
+
+## O-007/O-008 local trials
+
+`ladybirds.html`, `sunshine.html`, `staff_worksheets.css`, and `src/staff_worksheets*.mjs`
+own the staff placement and line/space/pitch-direction trials. O-007 has twelve
+requested placements covering all nine internal staff positions. O-008 retains both
+source tasks: nine line/space numbers and twelve direction pairs, balanced across
+rising, falling, and repeated pitches. Count lines/spaces from the bottom. Use open
+noteheads with transparent centers, accessible SVG targets, and native artwork ratios.
+Preserve shared local profiles, speech cancellation, aggregate-only feedback, erasing,
+and the five-character celebration. The selector now has six worksheet entries.

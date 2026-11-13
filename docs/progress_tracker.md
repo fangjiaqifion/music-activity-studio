@@ -335,3 +335,23 @@ visible, ears black, both horns filled and labeled. Mobile checks pass, and prin
 remains one A4 page. Updated AGENTS, README, development, provenance, and tracker;
 parent coordination updated. Other owning guidance reviewed unchanged because
 source ownership and procedures remain accurate. Local-only, no push/deployment.
+
+## O-007/O-008 electronic worksheet trials, 2026-11-13
+
+Added O-007 twelve-position note placement and O-008 nine line/space numbering tasks
+plus twelve pitch-direction pairs. All nine staff positions are covered; rising,
+falling, and same-height pairs are balanced. Original PNG exports are copied unchanged.
+The six-entry selector links both trials. Shared local student/date, Chinese speech,
+large eraser, aggregate-only feedback, correction, and five-character celebration remain.
+Chinese uses ZCOOL KuaiLe and English uses Patrick Hand. Source DOCX/PDF/AI unchanged.
+
+Verification: 21 Node tests pass, including 1,000 generated pages per new worksheet.
+Focused Chrome complete-answer/blank/eraser/reset/profile/celebration/resource/mobile
+checks pass. Desktop/mobile captures and O-008 print render inspected; both print
+captures are one A4 page. Fixed header overlap and initially two-page O-008 printing.
+Production build succeeds. Physical iPad and human speech acceptance remain open.
+Local preview: http://127.0.0.1:8795/activities.html. No push or deployment.
+
+Updated AGENTS, README, development, asset provenance, and this tracker. Parent/games/
+worksheet guides and overviews reviewed unchanged because ownership, source masters,
+and publication boundaries remain accurate. Parent coordination/gitlink updated locally.
