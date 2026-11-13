@@ -51,3 +51,11 @@ celebration dismissible, respect reduced motion, and stop it on edits/new pages.
 Keep O-003 staff baseline, spacing, and note size consistent across shapes. Balloon
 speech is user-triggered, uses available browser Chinese voices, and must cancel
 on lifecycle transitions. Preserve written instructions and unavailable-voice feedback.
+
+## O-005 local prototype
+
+`cheesecake.html`, `cheesecake.css`, and `src/cheesecake*.mjs` adapt the original
+nine-cake S/L worksheet. Share the O-003 local profile and speech adapters and preserve
+aggregate-only feedback and the five-character celebration. Every page includes all
+nine internal staff positions once. Bundle Patrick Hand and ZCOOL KuaiLe with their
+OFL licenses. Keep the original worksheet and illustration sources unchanged.

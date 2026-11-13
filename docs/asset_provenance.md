@@ -53,3 +53,16 @@ glyphs, with round white faces, smiling expressions, gloves, and rounded shoes.
 They follow the requested early black-and-white cartoon direction; no external
 character artwork was copied or downloaded. The prior glyph-based body description
 is historical. BravuraText remains bundled for the existing six games.
+
+## O-005 cheesecake local trial, 2026-11-13
+
+- `assets/cheesecake.png` is an unmodified copy of the workspace's original
+  `assets/pic/芝士蛋糕/芝士蛋糕.png`. Original worksheet, PDF, and art sources are untouched.
+- The staff, open notehead, S/L controls, and example are code-rendered primitives.
+- English uses the already bundled Patrick Hand and its OFL license.
+- Chinese uses ZCOOL KuaiLe, copyright 2018 The ZCOOL KuaiLe Project Authors.
+  Downloaded 2026-11-13 from the Google Fonts repository:
+  https://github.com/google/fonts/tree/main/ofl/zcoolkuaile.
+  The unmodified `ZCOOLKuaiLe-Regular.ttf` and `zcool_kuaile_ofl.txt` are bundled.
+  SIL OFL 1.1 permits commercial use and embedding subject to its license conditions;
+  these fonts are copyrighted open-license software, not public-domain assets.

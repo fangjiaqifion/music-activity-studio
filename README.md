@@ -67,3 +67,8 @@ deferred until the worksheet content framework is established.
 The trial includes larger balloons with aligned staves, short strings, a checkmark
 completion button, and optional spoken Chinese instructions using the browser's voice.
 Its five smiling black-and-white cartoon notes celebrate a fully correct page.
+
+A second local trial, `cheesecake.html`, adapts O-005 芝士蛋糕: tap S for a space
+note or L for a line note on each of nine original cakes. It shares local student
+profiles, Chinese speech, aggregate feedback, and the five-note celebration.
+Patrick Hand and ZCOOL KuaiLe provide freely licensed handwriting-style lettering.

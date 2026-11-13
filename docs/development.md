@@ -92,3 +92,12 @@ and cancel on page hiding/navigation, completion, printing, and new questions.
 Keep the visible instructions usable when browser speech is unavailable.
 All balloon SVGs share the staff baseline/spacing; derive artwork placement around
 that baseline while preserving native aspect ratios.
+
+## Local O-005 prototype
+
+Open `/cheesecake.html` on a freshly started source preview server. The server loads
+its runtime allowlist at startup, so restart it after adding entry files.
+Run `BASE_URL=http://127.0.0.1:8791 node tests/cheesecake_browser.mjs` for nine-cake
+selection, correction, erasing, reset, celebration, mobile overflow, and print capture.
+The generator permutes all nine internal staff positions, using the same S/L rule as
+the original. UI selections are ephemeral; only the existing display profiles persist.

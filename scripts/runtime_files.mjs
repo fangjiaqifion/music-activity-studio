@@ -2,7 +2,7 @@ import { readdir, realpath } from "node:fs/promises";
 import path from "node:path";
 export async function runtimeFiles(root) {
   const files = ["index.html", "style.css"];
-  for (const name of ["balloons.html", "balloons.css"]) {
+  for (const name of ["balloons.html", "balloons.css", "cheesecake.html", "cheesecake.css"]) {
     try {
       await realpath(path.join(root, name));
       files.push(name);

@@ -146,3 +146,26 @@ Human speech acceptance, physical tablet, and print pagination remain open.
 Updated this tracker, asset provenance, README, AGENTS, development, and parent
 coordination. Existing six-game procedures and original masters remain unchanged.
 Local-only; no push or deployment.
+
+## O-005 cheesecake local trial, 2026-11-13
+
+Implemented a separate `cheesecake.html` prototype faithful to the original nine-cake
+S/L circle activity. Each new page permutes all nine internal staff positions. Original
+art proportions, local student name/date, optional Chinese speech, aggregate-only
+errors, erasing, checkmark completion, and five monochrome celebration characters are
+preserved. Chinese uses bundled ZCOOL KuaiLe; English uses Patrick Hand, both SIL OFL.
+
+English review: replace the original comma splice, unnecessary definite articles,
+capitalization, and trailing tilde with “Circle S for a space note and L for a line
+note.” The digital interaction also says “Tap S or L on each cake, then tap Done.”
+Original DOCX/PDF files are unchanged; this correction applies only to the trial.
+
+Verification: 18 Node tests pass, including 1,000 nine-position pages. Dedicated
+Chrome checks pass empty/error-only feedback, correction, celebration, erasing, reset,
+390 px overflow, and no page errors. Desktop/mobile screenshots inspected. Chrome print
+capture is one A4 page. Production build succeeds. Physical iPad, human speech, and
+printed-paper acceptance remain open. Local preview uses port 8791; no push/deployment.
+
+Updated AGENTS, README, development, asset provenance, and this tracker. Parent,
+worksheet, and games guides/overviews reviewed unchanged because ownership and original
+masters remain applicable. Parent tracker records coordination and the local gitlink.
