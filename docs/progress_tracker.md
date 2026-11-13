@@ -259,3 +259,17 @@ printed-paper acceptance remain open. Local-only, no push or deployment.
 Documentation updated: AGENTS, README, development, provenance, this tracker, and
 parent coordination tracker. Parent/games/worksheet guidance and overviews reviewed
 unchanged: original-source ownership and the historical O-004 gap remain accurate.
+
+## O-004 black/brown palette, 2026-11-13
+
+The user replaced the initial red/blue mapping: treble clefs now use black and bass
+clefs use brown. Updated both instruction languages, paint labels/swatches, full
+and color-selection speech, answer validation, and the hub description. Filled
+clefs turn white so they remain visible on dark patches. This supersedes the
+initial palette above; O-003 retains its original red/blue controls.
+
+Twenty Node tests, the build, and the focused hub/hands/cow Chrome suite pass.
+The filled desktop cow screenshot was visually inspected for both colors and
+readable clefs. Updated README, provenance, and this tracker. AGENTS and development
+reviewed unchanged because ownership, commands, and interaction contracts are stable.
+Local-only; no push/deployment. Parent coordination records the local gitlink.

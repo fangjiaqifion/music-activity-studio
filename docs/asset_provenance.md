@@ -89,7 +89,7 @@ O-002 preserves their native proportions. No AI source was modified.
 
 Read the PDF-compatible preview in `assets/pic/可爱小牛高低音谱号/cow new.ai`
 with Poppler, cropped only surrounding whitespace, and exported `assets/cow.png`.
-Six transparent flood-filled masks limit red/blue fills to enclosed original spots.
+Six transparent flood-filled masks limit black/brown fills to enclosed original spots.
 `scripts/cow_assets.py` reproduces the export. Clefs use the already bundled licensed
 Bravura font (SMuFL E050/E062). Original worksheet O-004 is absent; the user explicitly
 approved creating this new digital activity around the recorded cow/clef concept.
