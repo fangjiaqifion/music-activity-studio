@@ -54,3 +54,12 @@ cloud synchronization, offline installation, or account login requirement.
 
 See [asset provenance](docs/asset_provenance.md). Original illustrations are not offered
 under an open-source license. BravuraText retains its supplied SIL OFL license.
+
+## Worksheet-first local trial
+
+The separate `balloons.html` trial adapts O-003 气球 B using its original hand-drawn
+balloons and changing line/space notes. Children color, check, and reconsider answers
+with aggregate hints; completing a page earns a monochrome musical celebration.
+A browser-local student selector automatically supplies name and date. These profiles
+are not cloud accounts. Cloud synchronization and data collection are future work,
+deferred until the worksheet content framework is established.

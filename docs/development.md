@@ -72,3 +72,16 @@ The shared storage module rereads before append, caps history at 100, and report
 failed saves without replacing corrupt saved bytes. Speech failure or an unavailable
 voice reveals the current written Bingo call. Navigation cancels pending playback,
 speech and speech fallback timers. Keep these lifecycle properties in future game views.
+
+## Local O-003 prototype
+
+Open `/balloons.html` on the source preview server. A remembered browser-local
+student selection supplies the worksheet name; the date updates in Asia/Shanghai.
+This is a display profile, not authentication. No exercise data is collected.
+The user deferred real accounts/synchronization until the content framework stabilizes.
+
+Run `node tests/balloons_browser.mjs` against port 8790, or set `BASE_URL` to the
+source/production preview origin. Screenshots go to ignored `.runtime/`.
+Run `scripts/balloon_masks.py` with a Pillow-capable Python only when regenerating
+derived masks. Never overwrite source artwork. The heart body is transparent;
+do not infer its tintable area from alpha alone.

@@ -35,3 +35,13 @@ Patrick Hand by Patrick Wagesreiter is bundled as `PatrickHand-1.woff2`, with
 https://fonts.gstatic.com/s/patrickhand/v25/LDI1apSQOAYtSuYWp8ZhfYe8XsLLubg58w.woff2
 License: https://github.com/google/fonts/blob/main/ofl/patrickhand/OFL.txt
 No external runtime font request is required.
+
+### Balloon body masks, 2026-11-13
+
+The original heart PNG has a transparent body and opaque white highlights. Tinting
+all opaque pixels incorrectly colored the highlights. Derived `balloon_*_mask.png`
+assets isolate the enclosed main body using `scripts/balloon_masks.py` (Pillow),
+leaving highlight bubbles unchanged. Runtime draws the original PNG at its native
+aspect ratio and fills only the body mask. Original exports are preserved byte-for-byte.
+Celebration characters use the existing licensed BravuraText note glyph with custom
+black-and-white SVG facial features, arms, legs, and CSS animation.

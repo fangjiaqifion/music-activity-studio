@@ -86,3 +86,33 @@ remain open. The in-app browser attempt timed out; independent Chrome supplied Q
 Documentation updated: this tracker and asset provenance. AGENTS, development,
 and README were reviewed unchanged: the separate local prototype does not replace
 the released menu or change existing game procedures. Parent tracker records coordination.
+
+## O-003 local classroom refinements, 2026-11-13
+
+The user chose local testing and browser-local student profiles for now. Real accounts,
+cloud synchronization, and data collection are deferred until the content framework
+is complete; a later design should study Note Trainer's backend approach. This is a
+future direction, not an implemented service or publishing authorization.
+
+Implemented local profile creation/selection, remembered active student, and automatic
+worksheet header name/date in the Asia/Shanghai calendar (YYYYMMDD). Profiles are
+browser-local display identities, not authenticated accounts. No exercise records,
+analytics, or cloud requests were added; browser storage failure is reported.
+
+Derived enclosed-body masks fix the transparent heart's highlight tint bug; original
+heart/star and other balloons render with preserved aspect ratios. Incorrect answers
+show only an aggregate error count, with uncolored balloons counted separately.
+No per-balloon correctness marker or answer location is exposed. A fully correct
+page triggers five monochrome note characters clapping and dancing across the screen
+with a “你真棒！ / Well done!” banner. It supports dismissal, reduced motion,
+automatic exit, and cancellation on edits/new pages.
+
+Verification: 15 Node tests pass, including profile persistence/failure and Shanghai
+date rollover; dedicated Chrome checks cover profile reload, blank/error-only feedback,
+five celebration characters, reset, 390 px mobile overflow, and no JS errors.
+Desktop, celebration, and mobile screenshots were inspected. Print and physical-device
+acceptance remain open. Original worksheet/Illustrator files and Note Trainer unchanged.
+
+Documentation updated: AGENTS, README, development, asset provenance, this tracker,
+and parent coordination. Existing six-game release behavior remains unchanged.
+No push or deployment.

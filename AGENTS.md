@@ -34,3 +34,16 @@ public by that explicit exception to the private-by-default workspace rule. Depl
 the runtime build from `npm run build`, not the source tree. Preserve noindex crawler
 directives. Follow the canonical release procedure in `docs/development.md`, including
 online hashes, actual browser checks, and post-deployment documentation before handoff.
+
+## O-003 local prototype
+
+The user selected browser-local student profiles on 2026-11-13. Real authentication,
+cloud synchronization, and data collection are deferred until the content framework
+is stable; later backend design should consult Note Trainer. Do not present local
+profiles as authenticated accounts or send learner data to a service.
+
+`balloons.html`, `balloons.css`, and `src/balloons*.mjs` own the separate trial;
+`src/balloon_profiles.mjs` owns local display profiles. Preserve native artwork
+proportions and highlight bubbles with enclosed-body masks. Error feedback reports
+counts only, with no per-item answer hints. Keep the five-character monochrome
+celebration dismissible, respect reduced motion, and stop it on edits/new pages.
