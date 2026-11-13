@@ -82,5 +82,9 @@ O-002 preserves both hand identifications and all ten piano finger numbers, with
 artwork-relative finger anchors. O-004 is a user-authorized new digital adaptation
 of the planned cow clef activity, not a recovered worksheet. Use bundled Bravura
 clefs and enclosed spot masks; never redraw clefs or modify original AI files.
+The twenty cow regions include all fifteen original patches and five new outlines
+on a separate derived image. `src/cow_regions.mjs` records patch area centroids
+and exact Bravura glyph paths/bounds; center visible glyph ink and keep it within
+each patch. Display full English names “Treble clef” and “Bass clef”.
 Apply the same local-profile, speech, aggregate-feedback, eraser, and celebration
 contracts as O-003/O-005. Keep all four entries in the runtime allowlist.

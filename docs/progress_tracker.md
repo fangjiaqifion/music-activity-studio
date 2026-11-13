@@ -273,3 +273,29 @@ The filled desktop cow screenshot was visually inspected for both colors and
 readable clefs. Updated README, provenance, and this tracker. AGENTS and development
 reviewed unchanged because ownership, commands, and interaction contracts are stable.
 Local-only; no push/deployment. Parent coordination records the local gitlink.
+
+## O-004 complete patches and centered clefs, 2026-11-13
+
+Expanded from six to twenty randomized answers, balanced ten treble/ten bass.
+All fifteen original enclosed white patches now carry symbols, including the
+back and four legs. Five new outlines on a separate derived activity image add
+forehead, muzzle, body, and flank tasks. The clean PNG and original AI stay intact.
+Patch masks, area centroids, and contained ink slots are generated together.
+Replaced baseline-positioned font text with exact bundled Bravura glyph SVG paths:
+both glyph types center on patch area centroids using their actual ink bounds.
+Black/brown fill and readable white symbols remain; no item-specific error hints.
+
+Verified full English terms with the Open University's music-theory exercise:
+https://www.open.edu/openlearn/history-the-arts/music/an-introduction-music-theory/content-section-2.7.4
+It labels the symbols “Treble clef” and “Bass clef”. Expanded the previous short
+example labels accordingly. The existing instruction uses the correct plural
+forms “treble clefs” and “bass clefs”; its wording remains valid.
+
+Twenty Node tests and build pass. Focused Chrome checks pass all twenty selections,
+aggregate feedback, correction, erasing, reset, celebration, profiles, complete
+English labels, and actual SVG ink centering within one CSS pixel. Desktop/mobile
+screenshots inspected; no overflow/resources/JS errors, one-page A4 print capture.
+Physical iPad, human audio, and paper acceptance remain open. Local-only, no push.
+Updated AGENTS, README, development, provenance, and tracker; parent coordination
+updated. Parent/games/worksheet guidance reviewed unchanged: original masters and
+source ownership, including the missing O-004 master, remain accurate.

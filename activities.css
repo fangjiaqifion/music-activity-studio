@@ -3,3 +3,7 @@
 .cow-clef{font-size:clamp(18px,3.2vw,38px)}@media(max-width:600px){.cow-clef{font-size:20px}}
 
 .swatch.black{background:#24201e}.swatch.brown{background:#986744}.cow-clef.painted{color:#fff}
+
+/* SVG viewBoxes use actual glyph ink bounds, so both clefs share true visual centers. */
+.cow-clef{min-width:0;min-height:0;border-radius:0;overflow:visible}.cow-clef svg{display:block;width:100%;height:100%;fill:currentColor;pointer-events:none}.cow-clef:before{content:"";position:absolute;inset:-5px}.cow-clef:focus-visible{outline-offset:4px}
+@media(max-width:600px){.clef-examples{flex-wrap:wrap;gap:0 20px}.clef-examples>span{white-space:nowrap}}

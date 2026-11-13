@@ -89,9 +89,12 @@ O-002 preserves their native proportions. No AI source was modified.
 
 Read the PDF-compatible preview in `assets/pic/可爱小牛高低音谱号/cow new.ai`
 with Poppler, cropped only surrounding whitespace, and exported `assets/cow.png`.
-Six transparent flood-filled masks limit black/brown fills to enclosed original spots.
-`scripts/cow_assets.py` reproduces the export. Clefs use the already bundled licensed
-Bravura font (SMuFL E050/E062). Original worksheet O-004 is absent; the user explicitly
+Twenty transparent flood-filled masks limit black/brown fills to enclosed activity
+spots: fifteen original patches plus five new outlines on a separate derived
+`cow_activity.png`. The clean cow export and original AI remain unchanged.
+`scripts/cow_assets.py` reproduces the export. Clefs use exact SVG paths extracted from the already bundled licensed
+Bravura font (SMuFL E050/E062), retaining its license. `src/cow_regions.mjs` records
+actual glyph bounds and patch centroids for centered, contained symbols. Original worksheet O-004 is absent; the user explicitly
 approved creating this new digital activity around the recorded cow/clef concept.
 Original artwork redistribution rights remain subject to the existing open review.
 The hub reuses these assets and the existing balloon/cake exports, with no new

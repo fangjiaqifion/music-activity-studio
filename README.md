@@ -76,5 +76,6 @@ Patrick Hand and ZCOOL KuaiLe provide freely licensed handwriting-style letterin
 The local [worksheet selection page](activities.html) groups O-002 musical hands,
 O-003 balloons, O-004 clef cow, and O-005 cheesecake into illustrated cards. O-002
 asks children to identify each hand and fill all ten piano finger numbers. O-004
-colors treble-clef spots black and bass-clef spots brown using original cow artwork.
+colors twenty treble/bass clef patches black/brown, covering the body, face, and
+legs with original cow artwork and added activity outlines.
 These additions are local trials; the published release has not been updated.

@@ -112,8 +112,8 @@ every 0.44 seconds. Keep animation delay in frame calculations for staggered cha
 
 Open `/activities.html` on the source server; the original index links to it, and
 all four worksheets link back. `/hands.html` identifies both hands and fills ten
-piano finger numbers. `/cows.html` permutes three treble and three bass clefs among
-six enclosed patches. Both use the shared profile/speech adapters and preserve
+piano finger numbers. `/cows.html` permutes ten treble and ten bass clefs among
+twenty enclosed patches. Both use the shared profile/speech adapters and preserve
 aggregate-only feedback, erasing, correction, and the five-character celebration.
 Selections stay in memory. New hands pages alternate their layout; cow pages change
 the clef layout. This is local content, with no new publishing authorization.
@@ -125,6 +125,8 @@ The in-app preview connection timed out in this session; independent Chrome chec
 provided actual browser verification.
 
 Regenerate the derived cow asset/masks with a Pillow-capable Python environment:
-`python scripts/cow_assets.py '<path to original cow new.ai>'`. Poppler must be on
-PATH. The source is read as PDF-compatible artwork and never saved or modified.
+`python scripts/cow_assets.py '<path to original cow new.ai>'`. Pillow, NumPy, and fontTools are required. Poppler must be on
+PATH when exporting from the AI source. Omit the source argument to reuse the clean
+bundled cow PNG. The generator also creates outlined activity patches and SVG glyph
+paths from bundled Bravura, with each glyph centered on its patch area centroid. The source is read as PDF-compatible artwork and never saved or modified.
 The source file and missing original O-004 worksheet are not runtime dependencies.
