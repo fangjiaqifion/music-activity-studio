@@ -72,3 +72,9 @@ A second local trial, `cheesecake.html`, adapts O-005 芝士蛋糕: tap S for a 
 note or L for a line note on each of nine original cakes. It shares local student
 profiles, Chinese speech, aggregate feedback, and the five-note celebration.
 Patrick Hand and ZCOOL KuaiLe provide freely licensed handwriting-style lettering.
+
+The local [worksheet selection page](activities.html) groups O-002 musical hands,
+O-003 balloons, O-004 clef cow, and O-005 cheesecake into illustrated cards. O-002
+asks children to identify each hand and fill all ten piano finger numbers. O-004
+colors treble-clef spots red and bass-clef spots blue using original cow artwork.
+These additions are local trials; the published release has not been updated.

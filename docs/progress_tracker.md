@@ -228,3 +228,34 @@ Physical-device and human-motion/speech acceptance remain open. Local-only, no p
 deployment. Updated AGENTS, development, provenance, tracker, and parent coordination.
 README and parent/worksheet/games guides reviewed unchanged because capabilities,
 ownership, and original masters remain accurate.
+
+## O-002/O-004 and worksheet selector, 2026-11-13
+
+Implemented `activities.html`, a responsive illustrated hub for O-002, O-003,
+O-004, and O-005, linked from the existing six-game index. All four worksheets
+return to the hub. O-002 reuses original hand PNGs, identifies both hands, and
+fills all ten piano finger numbers with anchored circular controls. New pages
+alternate hand placement. O-004 uses the original cow preview and six enclosed
+spot masks with balanced randomized treble/bass clefs, red/blue paint, and erasing.
+The user explicitly confirmed this new digital adaptation because the original
+O-004 worksheet is missing. Do not mark the missing master as recovered.
+
+Both trials retain browser-local student name/date, Chinese instruction speech,
+visible fallback text, aggregate-only blank/error counts, correction, printing,
+and the shared five-character dismissible celebration. No exercise records,
+accounts, cloud calls, or analytics were added. Reviewed the English instructions:
+“Identify each hand, then number the fingers from 1 to 5.” and “Color treble clefs
+red and bass clefs blue.” Original masters and Illustrator sources are unchanged.
+
+Verification: 20 Node tests pass, including balanced changing clef pages and piano
+finger scoring. Focused Chrome checks pass four hub links, loaded images/fonts,
+both complete correction/erase/reset/celebration flows, shared profiles, desktop
+and 390 px mobile without overflow, and no failed resources or JavaScript errors.
+Desktop/mobile screenshots were inspected, finger anchors and clef sizes refined,
+and both Chrome print captures are one A4 page. Build passes. In-app preview timed
+out; Chrome supplied browser evidence. Physical iPad, human audible speech, and
+printed-paper acceptance remain open. Local-only, no push or deployment.
+
+Documentation updated: AGENTS, README, development, provenance, this tracker, and
+parent coordination tracker. Parent/games/worksheet guidance and overviews reviewed
+unchanged: original-source ownership and the historical O-004 gap remain accurate.

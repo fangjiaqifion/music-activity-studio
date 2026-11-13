@@ -80,3 +80,19 @@ The original code-drawn monochrome characters now use right-facing running bodie
 front-facing smiles, two banner poles/waving hands, and three clapping pairs with
 finger details and contact sparks. No external character art was used. This supersedes
 the earlier arm/leg animation description; shared artwork remains inline SVG.
+
+## O-002/O-004 local trials, 2026-11-13
+
+Copied the original `assets/pic/儿童手/左手.png` and `右手.png` from the parent
+workspace into `assets/hand_left.png` and `hand_right.png` without editing the files.
+O-002 preserves their native proportions. No AI source was modified.
+
+Read the PDF-compatible preview in `assets/pic/可爱小牛高低音谱号/cow new.ai`
+with Poppler, cropped only surrounding whitespace, and exported `assets/cow.png`.
+Six transparent flood-filled masks limit red/blue fills to enclosed original spots.
+`scripts/cow_assets.py` reproduces the export. Clefs use the already bundled licensed
+Bravura font (SMuFL E050/E062). Original worksheet O-004 is absent; the user explicitly
+approved creating this new digital activity around the recorded cow/clef concept.
+Original artwork redistribution rights remain subject to the existing open review.
+The hub reuses these assets and the existing balloon/cake exports, with no new
+external runtime requests. Patrick Hand, ZCOOL KuaiLe, and Lucide retain their licenses.

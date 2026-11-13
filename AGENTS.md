@@ -72,3 +72,15 @@ The shared five-character celebration runs toward the right with front-facing sm
 two banner bearers and three clappers. Palms must visibly meet during each clap;
 retain reduced-motion support and dismissal. O-005 enlarged staves must leave visible
 clearance above the cake-slice outline, including the lowest notehead.
+
+## Worksheet selection, O-002 and O-004
+
+`activities.html` is the four-worksheet selection hub, linked from the existing
+six-game index. Every worksheet returns to this hub. `hands.html` and `cows.html`
+share `src/activities.mjs`, `src/activities_core.mjs`, and `activities.css`.
+O-002 preserves both hand identifications and all ten piano finger numbers, with
+artwork-relative finger anchors. O-004 is a user-authorized new digital adaptation
+of the planned cow clef activity, not a recovered worksheet. Use bundled Bravura
+clefs and enclosed spot masks; never redraw clefs or modify original AI files.
+Apply the same local-profile, speech, aggregate-feedback, eraser, and celebration
+contracts as O-003/O-005. Keep all four entries in the runtime allowlist.

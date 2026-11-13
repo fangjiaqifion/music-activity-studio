@@ -107,3 +107,24 @@ or `BASE_URL`) to verify both worksheet celebrations, banner bearers, clapper co
 actual palm contact at a paused clap frame, and reduced-motion behavior. Captures go
 into ignored `.runtime/`. The parade crosses in seven seconds; individual claps repeat
 every 0.44 seconds. Keep animation delay in frame calculations for staggered characters.
+
+## Four-worksheet hub and hands/cow trials
+
+Open `/activities.html` on the source server; the original index links to it, and
+all four worksheets link back. `/hands.html` identifies both hands and fills ten
+piano finger numbers. `/cows.html` permutes three treble and three bass clefs among
+six enclosed patches. Both use the shared profile/speech adapters and preserve
+aggregate-only feedback, erasing, correction, and the five-character celebration.
+Selections stay in memory. New hands pages alternate their layout; cow pages change
+the clef layout. This is local content, with no new publishing authorization.
+
+Run `BASE_URL=http://127.0.0.1:8794 node tests/activities_browser.mjs` for the hub,
+both complete exercise flows, failed resources, profiles, desktop/mobile captures,
+and one-page A4 print captures. Pure generation/scoring checks run in `npm test`.
+The in-app preview connection timed out in this session; independent Chrome checks
+provided actual browser verification.
+
+Regenerate the derived cow asset/masks with a Pillow-capable Python environment:
+`python scripts/cow_assets.py '<path to original cow new.ai>'`. Poppler must be on
+PATH. The source is read as PDF-compatible artwork and never saved or modified.
+The source file and missing original O-004 worksheet are not runtime dependencies.
