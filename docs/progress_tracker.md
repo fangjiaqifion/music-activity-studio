@@ -299,3 +299,23 @@ Physical iPad, human audio, and paper acceptance remain open. Local-only, no pus
 Updated AGENTS, README, development, provenance, and tracker; parent coordination
 updated. Parent/games/worksheet guidance reviewed unchanged: original masters and
 source ownership, including the missing O-004 master, remain accurate.
+
+## O-004 smooth outlines, smile, and fillable ear, 2026-11-13
+
+The user found the new raster-drawn patch edges unclear. Replaced the five added
+outlines with smooth cubic SVG paths and vector luminance masks. Runtime now uses
+`cow_activity.svg`, embedding the untouched clean PNG; derived raster references
+remain reproducible. A supersampled raster supplies geometry calculations, while
+all original patch masks are calculated from the original clean raster directly.
+Removed the below-nostril patch, added a curved smiling mouth, and substituted the
+whole near ear as one fillable region. Twenty balanced questions remain. Symbols
+still center on each region's area centroid with readable white ink after filling.
+
+Verification: twenty Node tests, build, and the focused Chrome suite pass, covering
+all twenty answers, ear selection, correction, erasing, reset, exact ink centering,
+profiles, and celebration. Filled desktop and blank mobile captures were reviewed;
+new edges, smile clearance, and ear placement were inspected. Print remains one A4
+page. Physical-device, audible speech, and paper acceptance remain open.
+Updated AGENTS, README, development, provenance, and this tracker. Parent/games/
+worksheet instructions reviewed unchanged because source ownership and workflow
+remain applicable. Local-only, no push/deployment; parent records the gitlink.

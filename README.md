@@ -77,5 +77,5 @@ The local [worksheet selection page](activities.html) groups O-002 musical hands
 O-003 balloons, O-004 clef cow, and O-005 cheesecake into illustrated cards. O-002
 asks children to identify each hand and fill all ten piano finger numbers. O-004
 colors twenty treble/bass clef patches black/brown, covering the body, face, and
-legs with original cow artwork and added activity outlines.
+legs and an ear with original cow artwork, smooth added outlines, and a smile.
 These additions are local trials; the published release has not been updated.

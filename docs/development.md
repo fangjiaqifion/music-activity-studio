@@ -127,6 +127,7 @@ provided actual browser verification.
 Regenerate the derived cow asset/masks with a Pillow-capable Python environment:
 `python scripts/cow_assets.py '<path to original cow new.ai>'`. Pillow, NumPy, and fontTools are required. Poppler must be on
 PATH when exporting from the AI source. Omit the source argument to reuse the clean
-bundled cow PNG. The generator also creates outlined activity patches and SVG glyph
+bundled cow PNG. The generator also creates smooth vector activity patches, a smile, a whole-ear
+region replacing the old patch below the nostrils, and SVG glyph
 paths from bundled Bravura, with each glyph centered on its patch area centroid. The source is read as PDF-compatible artwork and never saved or modified.
 The source file and missing original O-004 worksheet are not runtime dependencies.

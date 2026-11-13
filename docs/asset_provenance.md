@@ -91,7 +91,10 @@ Read the PDF-compatible preview in `assets/pic/可爱小牛高低音谱号/cow n
 with Poppler, cropped only surrounding whitespace, and exported `assets/cow.png`.
 Twenty transparent flood-filled masks limit black/brown fills to enclosed activity
 spots: fifteen original patches plus five new outlines on a separate derived
-`cow_activity.png`. The clean cow export and original AI remain unchanged.
+`cow_activity.svg` with an embedded copy of the clean PNG. New outlines and matching
+masks use smooth cubic SVG paths; `cow_activity.png` remains a derived raster
+reference. The old below-nostril patch is replaced by a whole near-ear region,
+and an original curved smile is added without editing the source art. The clean cow export and original AI remain unchanged.
 `scripts/cow_assets.py` reproduces the export. Clefs use exact SVG paths extracted from the already bundled licensed
 Bravura font (SMuFL E050/E062), retaining its license. `src/cow_regions.mjs` records
 actual glyph bounds and patch centroids for centered, contained symbols. Original worksheet O-004 is absent; the user explicitly
