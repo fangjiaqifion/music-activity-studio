@@ -67,3 +67,8 @@ Keep accessible text labels alongside clear, prominent icons. Both worksheet era
 use the bundled Lucide eraser SVG; the instruction-speech label is “听题干”. Anchor
 O-005 S/L controls to artwork coordinates across screen sizes. Open noteheads must
 leave staff lines visible through their centers for line notes.
+
+The shared five-character celebration runs toward the right with front-facing smiles:
+two banner bearers and three clappers. Palms must visibly meet during each clap;
+retain reduced-motion support and dismissal. O-005 enlarged staves must leave visible
+clearance above the cake-slice outline, including the lowest notehead.

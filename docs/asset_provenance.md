@@ -73,3 +73,10 @@ is historical. BravuraText remains bundled for the existing six games.
 https://github.com/lucide-icons/lucide/blob/main/icons/eraser.svg on 2026-11-13.
 The supplied ISC/MIT notices are retained in `assets/lucide_license.txt`.
 Both O-003 and O-005 use this clear outline icon with accessible text labels.
+
+## Running celebration revision, 2026-11-13
+
+The original code-drawn monochrome characters now use right-facing running bodies,
+front-facing smiles, two banner poles/waving hands, and three clapping pairs with
+finger details and contact sparks. No external character art was used. This supersedes
+the earlier arm/leg animation description; shared artwork remains inline SVG.

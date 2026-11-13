@@ -101,3 +101,9 @@ Run `BASE_URL=http://127.0.0.1:8791 node tests/cheesecake_browser.mjs` for nine-
 selection, correction, erasing, reset, celebration, mobile overflow, and print capture.
 The generator permutes all nine internal staff positions, using the same S/L rule as
 the original. UI selections are ephemeral; only the existing display profiles persist.
+
+Run `node tests/celebration_browser.mjs` against the local preview (default port 8793,
+or `BASE_URL`) to verify both worksheet celebrations, banner bearers, clapper counts,
+actual palm contact at a paused clap frame, and reduced-motion behavior. Captures go
+into ignored `.runtime/`. The parade crosses in seven seconds; individual claps repeat
+every 0.44 seconds. Keep animation delay in frame calculations for staggered characters.

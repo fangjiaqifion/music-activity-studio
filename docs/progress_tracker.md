@@ -206,3 +206,25 @@ No push or deployment. Physical-device and human speech acceptance remain open.
 Updated this tracker. AGENTS, README, development, provenance, and parent/worksheet/
 games guidance reviewed unchanged because the established interaction and asset rules
 remain accurate; no new asset or procedure is introduced. Parent coordination updated.
+
+## Running celebration and larger O-005 staves, 2026-11-13
+
+Redrew both worksheets' five monochrome characters with right-facing running bodies,
+front-facing smiles, two banner bearers waving, and three clappers with finger detail.
+Palms meet during the closed phase, with short contact sparks. Parade duration is
+seven seconds (previously twelve); running legs alternate and claps repeat every
+0.44 seconds. Dismissal, reset, aggregate feedback, and reduced motion are preserved.
+
+O-005 staff width increases from 82 to 96 artwork units, spacing from 12 to 13, and
+notehead size proportionally increases. The staff shifts upward so its bottom is at
+80 rather than 86, leaving space above the cake outline and for the lowest notehead.
+S/L positions remain unchanged.
+
+Verification: both worksheet Chrome suites pass. New celebration browser checks pause
+each staggered animation at its contact phase and confirm all three palm pairs touch
+on both pages; five runners/two bearers and reduced motion pass. Screenshots visually
+reviewed for gestures, staff clearance, and layout. Eighteen Node tests and build pass.
+Physical-device and human-motion/speech acceptance remain open. Local-only, no push or
+deployment. Updated AGENTS, development, provenance, tracker, and parent coordination.
+README and parent/worksheet/games guides reviewed unchanged because capabilities,
+ownership, and original masters remain accurate.

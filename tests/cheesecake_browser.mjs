@@ -20,7 +20,7 @@ for(const size of [{width:1100,height:1000},{width:390,height:844}]){
 }
 await page.setViewportSize({width:1100,height:1000});
 await page.locator('#check').click();assert.match(await page.locator('#feedback').innerText(),/9 块蛋糕/);
-async function choose(wrong=false){for(let i=0;i<9;i++){const cake=page.locator('.cake').nth(i);const y=await cake.locator('svg>ellipse').getAttribute('cy');const answer=Math.round((86-Number(y))/6)%2?'S':'L';await cake.locator(`[data-answer="${wrong&&i===0?(answer==='S'?'L':'S'):answer}"]`).click();}}
+async function choose(wrong=false){for(let i=0;i<9;i++){const cake=page.locator('.cake').nth(i);const y=await cake.locator('svg>ellipse').getAttribute('cy');const answer=Math.round((80-Number(y))/6.5)%2?'S':'L';await cake.locator(`[data-answer="${wrong&&i===0?(answer==='S'?'L':'S'):answer}"]`).click();}}
 await choose(true);await page.locator('#check').click();assert.equal(await page.locator('#feedback').innerText(),'有 1 个需要再想一想。');assert.equal(await page.locator('[data-error],.mark').count(),0);
 await page.screenshot({path:'.runtime/cheesecake_desktop.png',fullPage:true});
 await choose();await page.locator('#check').click();assert.equal(await page.locator('#celebration').isVisible(),true);assert.equal(await page.locator('.note-person').count(),5);
