@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<title>气球 B · Balloon Notes</title>
+<link rel="stylesheet" href="balloons.css">
+</head>
+<body>
+<header><a href="index.html">← 音乐游乐工坊</a><span>O-003 · 电子练习试作</span><button id="print">打印这一张</button></header>
+<main>
+<div class="heading"><span class="eyebrow">LET’S COLOR THE MUSIC</span><h1>给气球穿上颜色</h1><p class="subtitle">Balloon Notes</p></div>
+<section class="instructions" aria-label="练习说明"><p>把间音涂成红色，把线音涂成蓝色。</p><p lang="en">Color the space notes red and the line notes blue.</p></section>
+<div class="toolbar"><div class="paints" role="group" aria-label="选择画笔"><button data-color="red" aria-pressed="true"><i class="red"></i>红色 · 间音<span>Space notes</span></button><button data-color="blue" aria-pressed="false"><i class="blue"></i>蓝色 · 线音<span>Line notes</span></button><button data-color="erase" aria-pressed="false">橡皮擦<span>Eraser</span></button></div><p>先选颜色，再点气球<br><span>Pick a color, then tap a balloon.</span></p></div>
+<section class="paper" aria-label="气球练习纸"><div class="cloud cloud-one">姓名 Name: <input aria-label="姓名 Name" maxlength="24"></div><div class="cloud cloud-two">已涂 <strong id="count">0</strong> / 12</div><div id="balloons"></div></section>
+<footer><p id="feedback" role="status" aria-live="polite">慢慢观察：音符在线上，还是在两条线之间？</p><div><button id="check" class="primary">检查颜色 · Check</button><button id="next">换一张 · New page ↻</button></div><small>保留原作手绘气球 · 每张练习重新生成音符位置</small></footer>
+</main><script type="module" src="src/balloons.mjs"></script>
+</body></html>

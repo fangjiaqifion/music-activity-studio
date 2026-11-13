@@ -63,3 +63,26 @@ records only a local submodule update. Documentation-only pushes do not redeploy
 Updated runtime instructions, README, development procedure, this tracker, and the audit.
 Asset provenance is unchanged: copied artwork and licensed font are the same. Existing
 worksheets, Note Trainer, and unrelated parent research work remain unchanged.
+
+## O-003 worksheet-first prototype, 2026-11-13
+
+The user rejected the rhythm-shop visual direction and requested a faithful electronic
+trial of O-003 气球 B. A separate `balloons.html` page reuses the original round,
+heart, star, and bunny illustrations, with randomized staff positions, twelve balloons,
+balanced line/space tasks, color selection, erasing, checking, correction, new pages,
+and a print action. No source worksheet was edited. This is a local prototype, not
+a published replacement for the existing six-game release.
+
+The English instruction is corrected to “Color the space notes red and the line notes
+blue.” The source misspells “distinguish” and uses nonstandard note terminology.
+Patrick Hand is bundled under OFL, with no external runtime requests.
+
+Chrome desktop (1100 px) and mobile (390 px) screenshots were inspected; mobile has
+no horizontal overflow. Click/color/check behavior works. The generation test checks
+1,000 pages, balanced answers, and coverage of all nine internal staff positions.
+The existing twelve tests also pass. Physical tablet and print pagination acceptance
+remain open. The in-app browser attempt timed out; independent Chrome supplied QA.
+
+Documentation updated: this tracker and asset provenance. AGENTS, development,
+and README were reviewed unchanged: the separate local prototype does not replace
+the released menu or change existing game procedures. Parent tracker records coordination.
