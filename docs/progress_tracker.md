@@ -116,3 +116,33 @@ acceptance remain open. Original worksheet/Illustrator files and Note Trainer un
 Documentation updated: AGENTS, README, development, asset provenance, this tracker,
 and parent coordination. Existing six-game release behavior remains unchanged.
 No push or deployment.
+
+## O-003 readability, speech, and friendly celebration, 2026-11-13
+
+All balloon staves now share one SVG baseline, line spacing, width, and note size.
+Artwork keeps its original aspect ratio and body-only tint masks. Shorter strings
+and larger balloon bodies prioritize musical content. Desktop uses four columns;
+mobile uses two. The completion action is now “✓ 完成 · Done”.
+
+A user-triggered “听一听” button speaks the full Chinese instructions; selecting
+red/blue speaks “请用红色涂间音气球” / “请用蓝色涂线音气球”.
+The full prompt also tells children to use the checkmark when done. Speech uses the
+browser's available Chinese voice, with readable fallback text if unavailable.
+New playback replaces previous speech; navigation, hidden pages, completion,
+printing, and new questions cancel playback. No audio file or cloud speech service
+was added. Actual voice quality and audible device acceptance remain unverified.
+
+Replaced the previous narrow note-glyph dancers with original round monochrome
+cartoon characters: large white smiling faces, gloves, flexible limbs, and rounded
+shoes. Five characters retain clapping/dancing, left-to-right travel, and the banner.
+This supersedes the prior provenance description of font-glyph celebration bodies.
+
+Verification: 17 Node tests pass, including speech replacement, Chinese voice choice,
+and unavailable-speech fallback. Dedicated Chrome checks pass common staff positions,
+completion label, profiles, aggregate-only feedback, five dancers/reset, mobile overflow,
+and JS errors. Inspected desktop/mobile and celebration screenshots. Build succeeds.
+Human speech acceptance, physical tablet, and print pagination remain open.
+
+Updated this tracker, asset provenance, README, AGENTS, development, and parent
+coordination. Existing six-game procedures and original masters remain unchanged.
+Local-only; no push or deployment.

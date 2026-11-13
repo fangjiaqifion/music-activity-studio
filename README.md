@@ -63,3 +63,7 @@ with aggregate hints; completing a page earns a monochrome musical celebration.
 A browser-local student selector automatically supplies name and date. These profiles
 are not cloud accounts. Cloud synchronization and data collection are future work,
 deferred until the worksheet content framework is established.
+
+The trial includes larger balloons with aligned staves, short strings, a checkmark
+completion button, and optional spoken Chinese instructions using the browser's voice.
+Its five smiling black-and-white cartoon notes celebrate a fully correct page.

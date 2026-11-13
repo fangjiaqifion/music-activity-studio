@@ -45,3 +45,11 @@ leaving highlight bubbles unchanged. Runtime draws the original PNG at its nativ
 aspect ratio and fills only the body mask. Original exports are preserved byte-for-byte.
 Celebration characters use the existing licensed BravuraText note glyph with custom
 black-and-white SVG facial features, arms, legs, and CSS animation.
+
+### Friendly celebration revision, 2026-11-13
+
+Celebration bodies are now original vector cartoon note characters rather than text
+glyphs, with round white faces, smiling expressions, gloves, and rounded shoes.
+They follow the requested early black-and-white cartoon direction; no external
+character artwork was copied or downloaded. The prior glyph-based body description
+is historical. BravuraText remains bundled for the existing six games.

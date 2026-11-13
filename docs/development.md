@@ -85,3 +85,10 @@ source/production preview origin. Screenshots go to ignored `.runtime/`.
 Run `scripts/balloon_masks.py` with a Pillow-capable Python only when regenerating
 derived masks. Never overwrite source artwork. The heart body is transparent;
 do not infer its tintable area from alpha alone.
+
+The balloon prototype's speech adapter lives in `src/balloon_speech.mjs`. Trigger it
+from explicit user actions, select an available Chinese voice, replace prior speech,
+and cancel on page hiding/navigation, completion, printing, and new questions.
+Keep the visible instructions usable when browser speech is unavailable.
+All balloon SVGs share the staff baseline/spacing; derive artwork placement around
+that baseline while preserving native aspect ratios.

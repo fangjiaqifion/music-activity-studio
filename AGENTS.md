@@ -47,3 +47,7 @@ profiles as authenticated accounts or send learner data to a service.
 proportions and highlight bubbles with enclosed-body masks. Error feedback reports
 counts only, with no per-item answer hints. Keep the five-character monochrome
 celebration dismissible, respect reduced motion, and stop it on edits/new pages.
+
+Keep O-003 staff baseline, spacing, and note size consistent across shapes. Balloon
+speech is user-triggered, uses available browser Chinese voices, and must cancel
+on lifecycle transitions. Preserve written instructions and unavailable-voice feedback.
