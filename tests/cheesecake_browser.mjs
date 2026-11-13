@@ -7,6 +7,16 @@ try {
 const page=await browser.newPage({viewport:{width:1100,height:1000}});const errors=[];page.on('pageerror',e=>errors.push(e.message));
 await page.goto((process.env.BASE_URL||'http://127.0.0.1:8790')+'/cheesecake.html');await page.locator(".cake").first().waitFor();await page.evaluate(()=>document.fonts.ready);
 assert.equal(await page.locator('.cake').count(),9);
+assert.match(await page.locator('#speak').innerText(),/听题干/);
+assert.equal(await page.locator('.eraser-icon').evaluate(el=>el.complete && el.naturalWidth>0),true);
+assert.equal(await page.locator('.cake svg>ellipse').first().getAttribute('fill'),'none');
+for(const size of [{width:1100,height:1000},{width:390,height:844}]){
+ await page.setViewportSize(size);
+ const anchors=await page.locator('.cake').first().evaluate(el=>{const box=el.getBoundingClientRect();return [...el.querySelectorAll('.letter')].map(b=>{const r=b.getBoundingClientRect();return [(r.x+r.width/2-box.x)/box.width,(r.y+r.height/2-box.y)/box.height];});});
+ assert.ok(Math.abs(anchors[0][0]-.2445)<.005 && Math.abs(anchors[0][1]-.4885)<.005);
+ assert.ok(Math.abs(anchors[1][0]-.389)<.005 && Math.abs(anchors[1][1]-.7)<.005);
+}
+await page.setViewportSize({width:1100,height:1000});
 await page.locator('#check').click();assert.match(await page.locator('#feedback').innerText(),/9 块蛋糕/);
 async function choose(wrong=false){for(let i=0;i<9;i++){const cake=page.locator('.cake').nth(i);const y=await cake.locator('svg>ellipse').getAttribute('cy');const answer=Math.round((86-Number(y))/6)%2?'S':'L';await cake.locator(`[data-answer="${wrong&&i===0?(answer==='S'?'L':'S'):answer}"]`).click();}}
 await choose(true);await page.locator('#check').click();assert.equal(await page.locator('#feedback').innerText(),'有 1 个需要再想一想。');assert.equal(await page.locator('[data-error],.mark').count(),0);

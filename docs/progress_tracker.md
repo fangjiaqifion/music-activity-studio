@@ -169,3 +169,22 @@ printed-paper acceptance remain open. Local preview uses port 8791; no push/depl
 Updated AGENTS, README, development, asset provenance, and this tracker. Parent,
 worksheet, and games guides/overviews reviewed unchanged because ownership and original
 masters remain applicable. Parent tracker records coordination and the local gitlink.
+
+## Beginning-reader worksheet refinements, 2026-11-13
+
+Both O-003 and O-005 now label instruction playback “听题干” and show a prominent
+licensed Lucide eraser icon alongside text. O-005 S/L centers are anchored to the
+original cake slices at all viewport sizes; removed mobile offsets and minimum-size
+shifts. Transparent open noteheads preserve staff lines through line-note centers.
+
+Both focused Chrome suites pass, including desktop/mobile S/L anchor checks,
+transparent noteheads, successfully loaded eraser icons, labels, correction, erasing,
+reset, aggregate-only feedback, and five-character celebration. Desktop/mobile
+screenshots were visually reviewed. Eighteen Node tests and the build pass.
+Physical iPad, human speech, and printed-paper acceptance remain open. Local preview
+for both entries is port 8793. No push or deployment.
+
+Updated AGENTS with the user's beginning-reader pictorial-control preference, asset
+provenance, and this tracker. README/development and parent/worksheet/games guides and
+overviews reviewed unchanged because capabilities and source ownership are unchanged.
+Parent tracker records coordination. Original masters and unrelated work are preserved.

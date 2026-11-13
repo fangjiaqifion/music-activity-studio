@@ -66,3 +66,10 @@ is historical. BravuraText remains bundled for the existing six games.
   The unmodified `ZCOOLKuaiLe-Regular.ttf` and `zcool_kuaile_ofl.txt` are bundled.
   SIL OFL 1.1 permits commercial use and embedding subject to its license conditions;
   these fonts are copyrighted open-license software, not public-domain assets.
+
+## Worksheet eraser icon, 2026-11-13
+
+`assets/eraser.svg` is the unmodified Lucide eraser icon, downloaded from
+https://github.com/lucide-icons/lucide/blob/main/icons/eraser.svg on 2026-11-13.
+The supplied ISC/MIT notices are retained in `assets/lucide_license.txt`.
+Both O-003 and O-005 use this clear outline icon with accessible text labels.

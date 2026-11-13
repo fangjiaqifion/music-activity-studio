@@ -49,7 +49,7 @@ function celebrate() {
 function render() {
   board.innerHTML = items.map((item, i) => {
     const y = 86 - item.position * 6;
-    return `<div class="cake"><span class="cake-number">${i+1}</span><svg viewBox="0 0 360 260" aria-hidden="true"><image href="assets/cheesecake.png" x="10" y="8" width="340" height="234"/><g stroke="#343a36" stroke-width="1.4">${[0,12,24,36,48].map(d=>'<path d="M158 '+(38+d)+'h82"/>').join('')}</g><ellipse cx="199" cy="${y}" rx="8.5" ry="4.5" fill="white" stroke="#242a25" stroke-width="2.3"/></svg><button class="letter line-choice" data-index="${i}" data-answer="L" aria-pressed="${colors[i]==='L'}" aria-label="第 ${i+1} 块蛋糕，选择 L">L</button><button class="letter space-choice" data-index="${i}" data-answer="S" aria-pressed="${colors[i]==='S'}" aria-label="第 ${i+1} 块蛋糕，选择 S">S</button></div>`;
+    return `<div class="cake"><span class="cake-number">${i+1}</span><svg viewBox="0 0 360 260" aria-hidden="true"><image href="assets/cheesecake.png" x="10" y="8" width="340" height="234"/><g stroke="#343a36" stroke-width="1.4">${[0,12,24,36,48].map(d=>'<path d="M158 '+(38+d)+'h82"/>').join('')}</g><ellipse cx="199" cy="${y}" rx="8.5" ry="4.5" fill="none" stroke="#242a25" stroke-width="2.3"/></svg><button class="letter line-choice" data-index="${i}" data-answer="L" aria-pressed="${colors[i]==='L'}" aria-label="第 ${i+1} 块蛋糕，选择 L">L</button><button class="letter space-choice" data-index="${i}" data-answer="S" aria-pressed="${colors[i]==='S'}" aria-label="第 ${i+1} 块蛋糕，选择 S">S</button></div>`;
   }).join("");
   document.querySelector("#count").textContent = colors.filter(Boolean).length;
 }

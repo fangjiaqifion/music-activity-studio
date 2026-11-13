@@ -12,6 +12,8 @@ await p.locator("#student-name").fill("方方");await p.locator("#profile-form b
 assert.match(await p.locator("#student-label").innerText(),/方方 \d{8}/);
 await p.reload();assert.equal(await p.locator("#student").inputValue(),"方方");
 assert.equal(await p.locator("#speak").count(),1);
+assert.match(await p.locator('#speak').innerText(),/听题干/);
+assert.equal(await p.locator('.eraser-icon').evaluate(el=>el.complete && el.naturalWidth>0),true);
 assert.match(await p.locator("#check").innerText(),/✓ 完成/);
 const staffTops=await p.locator(".balloon svg g path:first-child").evaluateAll(els=>els.map(el=>el.getAttribute("d")));
 assert.equal(new Set(staffTops).size,1);

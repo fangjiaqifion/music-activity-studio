@@ -59,3 +59,11 @@ nine-cake S/L worksheet. Share the O-003 local profile and speech adapters and p
 aggregate-only feedback and the five-character celebration. Every page includes all
 nine internal staff positions once. Bundle Patrick Hand and ZCOOL KuaiLe with their
 OFL licenses. Keep the original worksheet and illustration sources unchanged.
+
+## Beginning-reader controls
+
+Prioritize recognizable pictorial controls for young beginners who may not read yet.
+Keep accessible text labels alongside clear, prominent icons. Both worksheet erasers
+use the bundled Lucide eraser SVG; the instruction-speech label is “听题干”. Anchor
+O-005 S/L controls to artwork coordinates across screen sizes. Open noteheads must
+leave staff lines visible through their centers for line notes.
