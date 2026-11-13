@@ -188,3 +188,21 @@ Updated AGENTS with the user's beginning-reader pictorial-control preference, as
 provenance, and this tracker. README/development and parent/worksheet/games guides and
 overviews reviewed unchanged because capabilities and source ownership are unchanged.
 Parent tracker records coordination. Original masters and unrelated work are preserved.
+
+## O-005 slice centers and paired examples, 2026-11-13
+
+The user found the earlier S/L placement still too low. Moved both letters upward
+into the centers of the two triangular slice top faces, retaining proportional
+anchors across desktop and mobile. This supersedes the previous placement acceptance.
+Replaced the single example with paired illustrated cards: “L = line / 线音” and
+“S = space / 间音”. Chinese instruction speech now explains both abbreviations.
+English labels are correct; uppercase answer letters match the worksheet controls.
+
+Focused Chrome checks pass paired examples, revised anchors at 1100/390 px, notehead
+transparency, icons, and the full answer/erase/celebration flow. Desktop/mobile
+screenshots inspected; print remains one A4 page. All 18 Node tests and build pass.
+No push or deployment. Physical-device and human speech acceptance remain open.
+
+Updated this tracker. AGENTS, README, development, provenance, and parent/worksheet/
+games guidance reviewed unchanged because the established interaction and asset rules
+remain accurate; no new asset or procedure is introduced. Parent coordination updated.

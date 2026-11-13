@@ -8,7 +8,7 @@ const celebration = document.querySelector("#celebration");
 const speech = createSpeech(window.speechSynthesis, window.SpeechSynthesisUtterance, () => { document.querySelector("#speech-status").textContent = "当前语音不可用，请看上方文字提示。"; });
 window.addEventListener("pagehide", speech.stop);
 document.addEventListener("visibilitychange", () => {if(document.hidden) speech.stop();});
-document.querySelector("#speak").addEventListener("click", () => speech.speak("观察蛋糕上的音符。间音请圈 S，线音请圈 L。点选蛋糕上的字母，完成后请点打勾按钮。"));
+document.querySelector("#speak").addEventListener("click", () => speech.speak("观察蛋糕上的音符。L 是 line，表示线音。S 是 space，表示间音。间音请圈 S，线音请圈 L。点选蛋糕上的字母，完成后请点打勾按钮。"));
 let profileStorage;
 try { profileStorage = window.localStorage; } catch { profileStorage = null; }
 let profiles = readProfiles(profileStorage);

@@ -7,14 +7,16 @@ try {
 const page=await browser.newPage({viewport:{width:1100,height:1000}});const errors=[];page.on('pageerror',e=>errors.push(e.message));
 await page.goto((process.env.BASE_URL||'http://127.0.0.1:8790')+'/cheesecake.html');await page.locator(".cake").first().waitFor();await page.evaluate(()=>document.fonts.ready);
 assert.equal(await page.locator('.cake').count(),9);
+assert.equal(await page.locator('.example-card').count(),2);
+assert.match(await page.locator('.example-list').innerText(),/L = line[\s\S]*线音[\s\S]*S = space[\s\S]*间音/);
 assert.match(await page.locator('#speak').innerText(),/听题干/);
 assert.equal(await page.locator('.eraser-icon').evaluate(el=>el.complete && el.naturalWidth>0),true);
 assert.equal(await page.locator('.cake svg>ellipse').first().getAttribute('fill'),'none');
 for(const size of [{width:1100,height:1000},{width:390,height:844}]){
  await page.setViewportSize(size);
  const anchors=await page.locator('.cake').first().evaluate(el=>{const box=el.getBoundingClientRect();return [...el.querySelectorAll('.letter')].map(b=>{const r=b.getBoundingClientRect();return [(r.x+r.width/2-box.x)/box.width,(r.y+r.height/2-box.y)/box.height];});});
- assert.ok(Math.abs(anchors[0][0]-.2445)<.005 && Math.abs(anchors[0][1]-.4885)<.005);
- assert.ok(Math.abs(anchors[1][0]-.389)<.005 && Math.abs(anchors[1][1]-.7)<.005);
+ assert.ok(Math.abs(anchors[0][0]-.2445)<.005 && Math.abs(anchors[0][1]-.4154)<.005);
+ assert.ok(Math.abs(anchors[1][0]-.389)<.005 && Math.abs(anchors[1][1]-.6346)<.005);
 }
 await page.setViewportSize({width:1100,height:1000});
 await page.locator('#check').click();assert.match(await page.locator('#feedback').innerText(),/9 块蛋糕/);
