@@ -319,3 +319,19 @@ page. Physical-device, audible speech, and paper acceptance remain open.
 Updated AGENTS, README, development, provenance, and this tracker. Parent/games/
 worksheet instructions reviewed unchanged because source ownership and workflow
 remain applicable. Local-only, no push/deployment; parent records the gitlink.
+
+## O-004 clear face and fillable horns, 2026-11-13
+
+The user revised the artwork requirements: removed all forehead/muzzle patches,
+restored the original black ear, and made both original horns fillable clef tasks.
+The smile remains. There are now nineteen questions (fifteen body/leg patches,
+two horns, two extra smooth body patches), with ten treble and nine bass clefs.
+This supersedes the earlier face/ear region choices and twenty-question count.
+Black/brown mapping, centered licensed glyphs, and aggregate-only feedback remain.
+
+Twenty Node tests, build, and full focused Chrome answer/correction/erase/reset/
+centering checks pass. Filled desktop screenshot inspected: face clear, smile
+visible, ears black, both horns filled and labeled. Mobile checks pass, and print
+remains one A4 page. Updated AGENTS, README, development, provenance, and tracker;
+parent coordination updated. Other owning guidance reviewed unchanged because
+source ownership and procedures remain accurate. Local-only, no push/deployment.

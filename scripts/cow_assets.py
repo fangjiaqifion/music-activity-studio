@@ -27,7 +27,7 @@ artwork = Image.open(ROOT / 'assets/cow.png').convert('RGB')
 # All fifteen original enclosed white patches, including the back and four legs.
 seeds = [(430,220),(597,220),(740,170),(510,363),(670,350),(640,460),
          (400,100),(610,50),(850,90),(785,335),(900,395),
-         (355,480),(500,480),(710,540),(820,525)]
+         (355,480),(500,480),(710,540),(820,525),(130,110),(188,85)]
 # Smooth vector contours replace low-resolution polygon outlines.
 original=artwork.copy()
 scale=4
@@ -45,13 +45,10 @@ def smooth_patch(cx,cy,rx,ry,phase):
         p0=points[(i-1)%12];p2=points[(i+1)%12];p3=points[(i+2)%12]
         curves.append((p1,(p1[0]+(p2[0]-p0[0])/6,p1[1]+(p2[1]-p0[1])/6),(p2[0]-(p3[0]-p1[0])/6,p2[1]-(p3[1]-p1[1])/6),p2))
     return curves
-for index,spec in enumerate([(195,155,30,28),(151,329,36,30),None,(602,126,36,25),(862,226,31,33)]):
-    if spec:
-        curves=smooth_patch(*spec,index);seeds.append(spec[:2])
-    else:
-        # The near ear replaces the removed patch below the nostrils.
-        curves=[((15,160),(45,167),(88,151),(119,143)),((119,143),(109,173),(99,195),(75,204)),((75,204),(48,215),(29,194),(15,160))]
-        seeds.append((70,180))
+# Facial patches and the ear overlay are deliberately absent. Both original horns
+# are enclosed regions; only the two extra body patches need new vector outlines.
+for index,spec in enumerate([(602,126,36,25),(862,226,31,33)]):
+    curves=smooth_patch(*spec,index+3);seeds.append(spec[:2])
     first=curves[0][0]
     d='M'+str(first[0])+','+str(first[1])
     samples=[]
@@ -62,7 +59,7 @@ for index,spec in enumerate([(195,155,30,28),(151,329,36,30),None,(602,126,36,25
             samples.append(((u**3*p0[0]+3*u*u*t*p1[0]+3*u*t*t*p2[0]+t**3*p3[0])*scale,(u**3*p0[1]+3*u*u*t*p1[1]+3*u*t*t*p2[1]+t**3*p3[1])*scale))
     d+=' Z';paths.append(d)
     draw.polygon(samples,fill='white');draw.line(samples+[samples[0]],fill=(36,32,30),width=3*scale,joint='curve')
-    (ROOT/f'assets/cow_spot_{15+index}.svg').write_text('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 620"><path d="'+d+'" fill="white" stroke="black" stroke-width="3"/></svg>')
+    (ROOT/f'assets/cow_spot_{17+index}.svg').write_text('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 620"><path d="'+d+'" fill="white" stroke="black" stroke-width="3"/></svg>')
 encoded=base64.b64encode((ROOT/'assets/cow.png').read_bytes()).decode()
 smile='M174 420 Q238 454 300 405'
 svg='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 620"><image width="1060" height="620" href="data:image/png;base64,'+encoded+'"/>'
@@ -79,7 +76,7 @@ for index, seed in enumerate(seeds):
         point=queue.popleft()
         if point in seen: continue
         seen.add(point); x,y=point
-        if not (0<=x<artwork.width and 0<=y<artwork.height) or min((original if index<15 else artwork).getpixel(point))<190: continue
+        if not (0<=x<artwork.width and 0<=y<artwork.height) or min((original if index<17 else artwork).getpixel(point))<190: continue
         filled.append(point); mask.putpixel(point,(255,255,255,255))
         queue.extend([(x-1,y),(x+1,y),(x,y-1),(x,y+1)])
     if not 300<len(filled)<20000: raise ValueError(f'Region {index} is not enclosed: {len(filled)}')
@@ -99,7 +96,7 @@ for index, seed in enumerate(seeds):
                 break
     if best is None: raise ValueError(f'No safe glyph slot in {index}')
     _,x,y,width,height=best
-    regions.append(dict(x=x,y=y,width=round(width,2),height=round(height,2),mask=f'cow_spot_{index}.'+('svg' if index>=15 else 'png')))
+    regions.append(dict(x=x,y=y,width=round(width,2),height=round(height,2),mask=f'cow_spot_{index}.'+('svg' if index>=17 else 'png')))
 font=TTFont(ROOT/'assets/BravuraText.woff2'); glyphs=font.getGlyphSet(); clefs={}
 for clef,code in [('treble',0xE050),('bass',0xE062)]:
     glyph=glyphs[font.getBestCmap()[code]]; path=SVGPathPen(glyphs); glyph.draw(path)
