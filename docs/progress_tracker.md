@@ -393,3 +393,24 @@ hands/cow and staff worksheet interaction checks pass. The legacy six-game matri
 now passes 49 screen cases including phone and iPad in both orientations. Desktop,
 phone, tablet portrait, tablet landscape, and enlarged-cow captures were inspected.
 The deployment workflow now enforces the 42-case responsive suite as well.
+
+## Published responsive activities, 2026-11-15
+
+Pushed runtime commit `85345e1` and the preceding thirteen local worksheet commits.
+[Pages run 43623400526](https://github.com/fangjiaqifion/music-activity-studio/actions/runs/43623400526)
+completed successfully, including the new all-worksheet responsive CI gate. Published
+build `0120c6cb7c95`; all 85 deployed runtime/entry hashes match the verified local
+build. Chrome loaded the actual remote release and passed all 42 worksheet/selector
+phone, tablet, and desktop cases, including enlarged-cow answer synchronization.
+
+Live selector: https://fangjiaqifion.github.io/music-activity-studio/releases/0120c6cb7c95/activities.html
+Live O-008: https://fangjiaqifion.github.io/music-activity-studio/releases/0120c6cb7c95/sunshine.html
+
+Updated README to reflect published activities rather than stale local-only status,
+and corrected the operational status in development. The responsive contract remains
+mandatory for existing and future content. Physical iPad/Safari and human speech
+acceptance remain open; browser emulation is not physical-device evidence. Parent
+coordination records this deployment and its local gitlink separately.
+
+The remote Chrome O-007/O-008 suite also passed complete answers, keyboard focus,
+blank checking, erasing, reset, profiles, celebration, mobile layout, and resources.

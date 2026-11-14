@@ -116,7 +116,7 @@ piano finger numbers. `/cows.html` permutes ten treble and nine bass clefs among
 nineteen enclosed regions. Both use the shared profile/speech adapters and preserve
 aggregate-only feedback, erasing, correction, and the five-character celebration.
 Selections stay in memory. New hands pages alternate their layout; cow pages change
-the clef layout. This is local content, with no new publishing authorization.
+the clef layout. These activities were published with explicit user authorization on 2026-11-15.
 
 Run `BASE_URL=http://127.0.0.1:8794 node tests/activities_browser.mjs` for the hub,
 both complete exercise flows, failed resources, profiles, desktop/mobile captures,

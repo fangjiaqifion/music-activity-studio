@@ -2,7 +2,7 @@
 
 Last updated: 2026-11-15
 
-A six-in-one music activity demo inspired by FANG, Jiaqi's illustrated worksheets.
+A music activity studio with six games and six interactive worksheet adaptations, inspired by FANG, Jiaqi's illustrated worksheets.
 The Chinese interface is intended for young piano beginners, with adult support where
 needed. Usability and educational effects have not been established.
 
@@ -20,7 +20,7 @@ Rhythm lab is unscored; Bingo ends on a winning line. Difficulty changes shop to
 and generic interval options; other demo vocabulary stays the same. Completed question
 sessions and Bingo wins stay in this browser only, up to 100 entries, without names.
 
-Every game supports browser printing with a separate answer or teacher guide page.
+The original six games also offer optional browser printing with a separate answer or teacher guide page.
 Rhythm lab and Bingo print the current board; other games print all six questions.
 These are newly generated exercises, not replacements for original worksheet masters.
 
@@ -55,32 +55,33 @@ cloud synchronization, offline installation, or account login requirement.
 See [asset provenance](docs/asset_provenance.md). Original illustrations are not offered
 under an open-source license. BravuraText retains its supplied SIL OFL license.
 
-## Worksheet-first local trial
+## Illustrated interactive activities
 
-The separate `balloons.html` trial adapts O-003 气球 B using its original hand-drawn
+The `balloons.html` activity adapts O-003 气球 B using its original hand-drawn
 balloons and changing line/space notes. Children color, check, and reconsider answers
 with aggregate hints; completing a page earns a monochrome musical celebration.
 A browser-local student selector automatically supplies name and date. These profiles
 are not cloud accounts. Cloud synchronization and data collection are future work,
 deferred until the worksheet content framework is established.
 
-The trial includes larger balloons with aligned staves, short strings, a checkmark
+The activity includes larger balloons with aligned staves, short strings, a checkmark
 completion button, and optional spoken Chinese instructions using the browser's voice.
 Its five smiling black-and-white cartoon notes celebrate a fully correct page.
 
-A second local trial, `cheesecake.html`, adapts O-005 芝士蛋糕: tap S for a space
+The `cheesecake.html` activity adapts O-005 芝士蛋糕: tap S for a space
 note or L for a line note on each of nine original cakes. It shares local student
 profiles, Chinese speech, aggregate feedback, and the five-note celebration.
 Patrick Hand and ZCOOL KuaiLe provide freely licensed handwriting-style lettering.
 
-The local [worksheet selection page](activities.html) groups O-002 musical hands,
+The [worksheet selection page](activities.html) groups O-002 musical hands,
 O-003 balloons, O-004 clef cow, and O-005 cheesecake into illustrated cards. O-002
 asks children to identify each hand and fill all ten piano finger numbers. O-004
 colors nineteen treble/bass clef regions black/brown on the body, legs, and both
 horns. The face stays clear except for its eyes, nostrils, and smile; ears remain black.
-These additions are local trials; the published release has not been updated.
+All six illustrated activities are included in the published release. The cow also
+offers enlarged scene tiles for easier viewing and answering on small screens.
 
-The local worksheet selector also includes **O-007 Draw the Notes** (`ladybirds.html`)
+The selector also includes **O-007 Draw the Notes** (`ladybirds.html`)
 and **O-008 Lines, Spaces, and Pitch Direction** (`sunshine.html`). Place noteheads
 by tapping a staff position, or choose line/space numbers and pitch-direction arrows.
 Both follow the existing local classroom conventions. All activities reflow for
