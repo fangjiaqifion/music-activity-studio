@@ -6,3 +6,6 @@
 #erase{display:inline-flex;align-items:center;gap:10px}#erase .eraser-icon{width:42px;height:42px;flex-shrink:0}
 
 .example{flex-wrap:wrap;gap:12px 22px}.example-list{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}.example-card{display:flex;align-items:center;gap:10px;background:#fffdf8;border:1px solid #e7d7c1;border-radius:15px;padding:8px 14px}.example-card svg{width:102px;height:68px}.example-card strong{display:block;font-size:23px;font-weight:400}.example-card small{display:block;font-size:17px}.example>p{flex-basis:100%;text-align:center;margin:0}.example .example-list text{font-size:26px}@media(max-width:760px){.example-list{width:100%;gap:8px}.example-card{padding:7px 9px;gap:5px}.example-card svg{width:75px;height:60px}.example-card strong{font-size:21px}.example-card small{font-size:16px}}@media print{.example{gap:5px}.example-card{padding:3px 10px}.example-card svg{height:48px}.example-card strong{font-size:18px}.example-card small{font-size:14px}.example>p{font-size:14px}.example>p span{font-size:16px}}
+/* Keep artwork-relative answers legible and separated on narrow screens. */
+@media screen and (max-width:600px){#cakes{grid-template-columns:1fr}.cake{max-width:440px;width:100%;margin:auto}}
+@media screen and (min-width:601px) and (max-width:1000px){#cakes{grid-template-columns:repeat(2,minmax(0,1fr))}}

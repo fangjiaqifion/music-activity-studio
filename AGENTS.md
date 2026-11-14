@@ -1,6 +1,6 @@
 # Music Activity Studio: Internal Guide
 
-Last updated: 2026-11-13
+Last updated: 2026-11-15
 
 An independent repository. When nested, inherit parent and games guides. Write project
 documentation in English; product UI may remain Chinese. Repository and checkout names
@@ -102,3 +102,12 @@ rising, falling, and repeated pitches. Count lines/spaces from the bottom. Use o
 noteheads with transparent centers, accessible SVG targets, and native artwork ratios.
 Preserve shared local profiles, speech cancellation, aggregate-only feedback, erasing,
 and the five-character celebration. The selector now has six worksheet entries.
+
+## Responsive web games, confirmed 2026-11-15
+
+All existing and future interactive content must adapt to phone, iPad/tablet, and
+desktop screens. Reuse source learning goals and artwork, never copy a paper/A4
+composition into the game. Screen acceptance requires all three device classes,
+including portrait/landscape and usable controls; print pagination is not evidence.
+After completing new content, recheck all completed activities. The canonical design
+and verification procedure is [responsive design](docs/responsive_design.md).

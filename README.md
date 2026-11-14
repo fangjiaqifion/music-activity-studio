@@ -1,6 +1,6 @@
 # Music Activity Studio
 
-Last updated: 2026-11-13
+Last updated: 2026-11-15
 
 A six-in-one music activity demo inspired by FANG, Jiaqi's illustrated worksheets.
 The Chinese interface is intended for young piano beginners, with adult support where
@@ -83,4 +83,6 @@ These additions are local trials; the published release has not been updated.
 The local worksheet selector also includes **O-007 Draw the Notes** (`ladybirds.html`)
 and **O-008 Lines, Spaces, and Pitch Direction** (`sunshine.html`). Place noteheads
 by tapping a staff position, or choose line/space numbers and pitch-direction arrows.
-Both follow the existing local classroom conventions and support one-page A4 printing.
+Both follow the existing local classroom conventions. All activities reflow for
+phones, iPads/tablets, and computers; the original worksheet artwork does not impose
+a paper layout on the screen.

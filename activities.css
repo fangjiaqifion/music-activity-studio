@@ -9,3 +9,5 @@
 @media(max-width:600px){.clef-examples{flex-wrap:wrap;gap:0 20px}.clef-examples>span{white-space:nowrap}}
 
 .spot-fill{mask-mode:luminance}
+/* Dense cow artwork also offers enlarged local scenes with identical answers. */
+body[data-activity=cows] #activity-board{flex-direction:column}.cow-details{width:100%;margin-top:20px}.cow-details h2{text-align:center;font-size:22px}.cow-detail-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px}.cow-detail{padding:8px;min-height:130px;position:relative}.cow-detail span{display:block;text-align:left;font-size:16px}.cow-detail svg{width:100%;height:110px;display:block;pointer-events:none}.cow-detail[aria-pressed=true]{outline:3px solid #648474;outline-offset:1px}@media print{.cow-details{display:none}}

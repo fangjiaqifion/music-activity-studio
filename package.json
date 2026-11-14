@@ -7,7 +7,8 @@
     "serve": "node scripts/serve.mjs",
     "test:browser": "node tests/browser.mjs",
     "build": "node scripts/build.mjs",
-    "test:regressions": "node tests/regressions.mjs"
+    "test:regressions": "node tests/regressions.mjs",
+    "test:responsive": "node tests/responsive_worksheets.mjs"
   },
   "devDependencies": {
     "playwright-core": "^1.64.0"

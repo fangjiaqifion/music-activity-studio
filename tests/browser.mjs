@@ -43,6 +43,9 @@ try {
     { width: 768, height: 1024 },
     { width: 390, height: 844 },
     { width: 667, height: 375 },
+    { width: 844, height: 390 },
+    { width: 820, height: 1180 },
+    { width: 1180, height: 820 },
   ]) {
     await page.setViewportSize(size);
     await click("home");
@@ -156,7 +159,7 @@ try {
   assert.match(await page.locator(".feedback.success").textContent(), /Bingo/);
   assert.deepEqual(errors, []);
   console.log(
-    "PASS: six entries, 28 responsive screens, four complete sessions, replay, first errors, editable rhythm, audio start, Bingo and print; no page errors.",
+    "PASS: six entries, 49 responsive screens, four complete sessions, replay, first errors, editable rhythm, audio start, Bingo and print; no page errors.",
   );
 } finally {
   await browser.close();

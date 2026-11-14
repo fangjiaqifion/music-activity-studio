@@ -1,6 +1,6 @@
 # Progress Tracker
 
-Last updated: 2026-11-13
+Last updated: 2026-11-15
 
 ## Six-in-one local demo
 
@@ -355,3 +355,41 @@ Local preview: http://127.0.0.1:8795/activities.html. No push or deployment.
 Updated AGENTS, README, development, asset provenance, and this tracker. Parent/games/
 worksheet guides and overviews reviewed unchanged because ownership, source masters,
 and publication boundaries remain accurate. Parent coordination/gitlink updated locally.
+
+## Responsive web-game acceptance and O-008 refinement, 2026-11-15
+
+The user explicitly requires all completed and future interactive content to adapt
+for phone, iPad/tablet, and desktop. Paper composition and A4 pagination are not
+screen acceptance. This supersedes any earlier emphasis on one-page print output.
+Consolidated Note Trainer's viewport, bounds, and real-question geometry principles
+in `docs/responsive_design.md`; linked it from parent/games/game guides and development.
+README now describes responsive games. Original masters and Note Trainer are unchanged.
+
+O-008 adds illustrated line/space examples, clearer English, larger choices, keyboard
+focus retention, phone single-column and tablet two-column layouts. Removed its print
+button. O-007 also reflows to one/two/three columns. Cake answers retain artwork anchors
+while cards stack on phones and use two columns on tablets. Shared controls, profile
+badges, and footers wrap. Cow artwork retains the overview and adds enlarged local
+scene answer tiles sharing the same answers, avoiding tiny-phone-symbol reliance.
+Optional legacy print utilities do not govern screen layout.
+
+Added `test:responsive`: all six worksheets plus selector across 390×844, 844×390,
+768×1024, 820×1180, 1180×820, 1440×900, with control/page bounds, loaded artwork,
+blank checks, reset, and captures. Existing full game browser/regression and all four
+worksheet interaction suites pass before the final cow enlargement follow-up.
+Twenty-one Node tests pass and dependency audit reports zero vulnerabilities.
+Physical devices and human speech acceptance remain unverified. Final production,
+push/deployment, and online evidence will follow below.
+
+Documentation updated: parent/games/game AGENTS, responsive guide, development,
+README, and tracker. Provenance reviewed unchanged: original assets and bundled
+licensed glyphs are reused, with no new source asset or license. Existing dated
+print evidence is retained as historical only. Fixed Pages triggers to include all
+root HTML/CSS changes. Code formatting and focus behavior reviewed before push.
+
+Final local production verification: build `0120c6cb7c95` passes all 42 worksheet/selector
+viewport cases, including enlarged cow selection synchronized to the overview; full
+hands/cow and staff worksheet interaction checks pass. The legacy six-game matrix
+now passes 49 screen cases including phone and iPad in both orientations. Desktop,
+phone, tablet portrait, tablet landscape, and enlarged-cow captures were inspected.
+The deployment workflow now enforces the 42-case responsive suite as well.

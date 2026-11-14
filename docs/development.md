@@ -1,6 +1,6 @@
 # Development
 
-Last updated: 2026-11-13
+Last updated: 2026-11-15
 
 ## Operation and verification
 
@@ -141,3 +141,10 @@ profiles, five celebration characters, failed resources, mobile overflow, and pr
 capture. `npm test` checks 1,000 pages per type, nine-position coverage, direction
 semantics, and aggregate scoring. SVG placement targets support Enter and Space.
 Original worksheet masters remain unchanged; corrected English applies to digital UI.
+
+## Required responsive acceptance
+
+Follow [responsive design](responsive_design.md) for every existing and future
+activity. Phone, iPad/tablet, and desktop are mandatory. After finishing new content,
+run the full existing-content layout matrix and inspect captures. A4 print output
+is optional and never substitutes for web-game verification.
