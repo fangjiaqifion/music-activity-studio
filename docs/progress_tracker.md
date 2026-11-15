@@ -446,3 +446,11 @@ tracker. Parent/games/worksheet guides and public overviews reviewed unchanged:
 ownership, original-master preservation, and publishing boundaries remain accurate.
 Parent coordination/gitlink will be recorded after game commits. Unrelated research
 edits and runtime state are excluded.
+
+Final production evidence: build `0a633dae2a65` passes all 60 responsive worksheet/
+hub cases, the full staff interaction suite, and both original six-game suites.
+Runtime commit: `2ce66c2`. Local preview: http://127.0.0.1:8802/activities.html.
+Automatic approval review rejected the push/publication command because the current
+request did not explicitly authorize this deployment and destination trust was
+unverified. No push or deployment occurred. User approval is required before
+publishing this prepared version; the online build remains unchanged.
