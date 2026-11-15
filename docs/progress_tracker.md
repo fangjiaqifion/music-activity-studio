@@ -454,3 +454,26 @@ Automatic approval review rejected the push/publication command because the curr
 request did not explicitly authorize this deployment and destination trust was
 unverified. No push or deployment occurred. User approval is required before
 publishing this prepared version; the online build remains unchanged.
+
+## Worksheet code-quality review and release preparation, 2026-11-15
+
+The user explicitly authorized code review, push, and publication, resolving the
+previous approval boundary. Reviewed the O-007 through O-011 generator/scorer,
+DOM rendering, focus, speech/profile lifecycle, entry allowlist, and Pages workflow.
+Fixed canceled pointer gestures suppressing subsequent keyboard focus restoration
+by deriving input mode from the activating event rather than mutable pointer state.
+Added a regression for pointerdown followed by keyboard activation. Removed the
+unreachable numbering renderer and obsolete clef offsets. The three fixed-source
+relative exercises now say “Try again” instead of implying a different new page.
+
+The full five-page staff interaction suite now runs in Pages CI, in addition to
+responsive layout and legacy-game gates; its Chrome path supports Linux CI.
+Twenty-two Node tests pass and full npm audit reports zero vulnerabilities.
+Final runtime build: `3a673c526017`. Production browser and deployment results
+follow below. Original worksheet/AI masters and learner-storage scope are unchanged.
+
+Updated this tracker and the canonical development procedure. AGENTS, provenance,
+responsive contract, and public overview reviewed: their ownership, assets, layout,
+and instructional descriptions remain accurate. README publication status will be
+updated after remote verification. No claims of physical-device or human-audio
+acceptance are added.

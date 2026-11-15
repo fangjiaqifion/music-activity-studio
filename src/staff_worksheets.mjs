@@ -3,7 +3,7 @@ import { readProfiles, saveProfiles, dateLabel } from "./balloon_profiles.mjs";
 import { makeStaffPage, scoreStaffPage } from "./staff_worksheets_core.mjs";
 const kind = document.body.dataset.activity;
 const relative = ['treble','bass','alto'].includes(kind);
-const clefInfo = {treble:['高音谱号','Treble clef','G',2,'\uE050',86],bass:['低音谱号','Bass clef','F',6,'\uE062',46],alto:['中音谱号','Alto clef','C',4,'\uE05C',66]};
+const clefInfo = {treble:['高音谱号','Treble clef','G',2,'\uE050'],bass:['低音谱号','Bass clef','F',6,'\uE062'],alto:['中音谱号','Alto clef','C',4,'\uE05C']};
 const board = document.querySelector("#activity-board");
 const feedback = document.querySelector("#feedback");
 const celebration = document.querySelector("#celebration");
@@ -85,6 +85,7 @@ document.querySelector("#profile-form").addEventListener("submit", (event) => {
   persistProfile();
 });
 showProfile();
+if (relative) document.querySelector("#next").textContent = "重新练习 · Try again ↻";
 setInterval(showProfile, 60000);
 
 const names = ["一", "二", "三", "四", "五"];
@@ -111,9 +112,7 @@ function render() {
               ? `<p>${positionLabel(q.position)}</p>${staff(answers[i] == null ? [] : [[Number(answers[i]), 120]], true, i)}`
               : q.type === "relative"
                 ? `<p class="reference-label">已知 · Given <strong>${q.letter}</strong></p>${staff([[q.reference,100],[q.position,180]],false,0,q.clef)}<p>黑色音符是什么音？<br>Name the black note.</p><div class="choices note-choices">${[...'ABCDEFG'].map(value=>`<button data-index="${i}" data-value="${value}" aria-label="音名 ${value}" aria-pressed="${answers[i]===value}">${value}</button>`).join('')}</div>`
-              : q.type === "number"
-                ? `${staff([[q.position, 120]])}<p>${q.position % 2 ? "第几间？ Space number?" : "第几线？ Line number?"}</p><div class="choices">${Array.from({ length: q.position % 2 ? 4 : 5 }, (_, n) => `<button data-index="${i}" data-value="${n + 1}" aria-pressed="${answers[i] === String(n + 1)}">${n + 1}</button>`).join("")}</div>`
-                : `${staff([
+              : `${staff([
                     [q.a, 80],
                     [q.b, 160],
                   ])}<div class="choices">${[
@@ -140,12 +139,9 @@ function next() {
   feedback.textContent = kind === "ladybirds" ? "在指定的线或间画音符。" : relative ? "根据红色已知音，选择黑色音符的音名。" : "比较两个音，选好了就点打勾吧。";
   render();
 }
-let pointerAnswer = false;
-board.onpointerdown = () => { pointerAnswer = true; };
-function choose(b) {
+function choose(b, keyboard = false) {
   if (!b) return;
-  const restoreFocus = !pointerAnswer && b.matches(":focus-visible");
-  pointerAnswer = false;
+  const restoreFocus = keyboard && document.activeElement === b;
   const { index, value } = b.dataset;
   answers[Number(b.dataset.index)] =
     selected === "erase" ? null : b.dataset.value;
@@ -157,14 +153,14 @@ function choose(b) {
       .querySelector(`[data-index="${index}"][data-value="${value}"]`)
       ?.focus({ preventScroll: true });
 }
-board.onclick = (e) => choose(e.target.closest("[data-index]"));
+board.onclick = (e) => choose(e.target.closest("[data-index]"), e.detail === 0);
 board.onkeydown = (e) => {
   if (
     (e.key === "Enter" || e.key === " ") &&
     e.target.matches(".staff-target")
   ) {
     e.preventDefault();
-    choose(e.target);
+    choose(e.target, true);
   }
 };
 document.querySelectorAll("[data-tool]").forEach(

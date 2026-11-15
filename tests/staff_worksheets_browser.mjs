@@ -2,7 +2,7 @@ import { chromium } from "playwright-core";
 import assert from "node:assert/strict";
 const browser = await chromium.launch({
   executablePath:
-    "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+    process.env.CHROME_PATH || "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
   headless: true,
 });
 const base = process.env.BASE_URL || "http://127.0.0.1:8795";
@@ -30,6 +30,11 @@ try {
       "0",
     );
     if (kind === 'ladybirds') {
+      // A canceled pointer gesture must not suppress the next keyboard answer.
+      await page.locator('[data-index="0"]').first().dispatchEvent('pointerdown');
+      await page.locator('[data-index="0"]').first().focus();
+      await page.keyboard.press(' ');
+      assert.equal(await page.evaluate(() => document.activeElement?.dataset.index), '0');
       await page.locator('[data-index="0"]').first().click();
       assert.equal(await page.locator('.staff-target:focus-visible').count(),0);
       assert.equal(await page.locator('.staff-target').first().evaluate(el=>getComputedStyle(el).outlineStyle),'none');
