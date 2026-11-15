@@ -78,7 +78,7 @@ O-003 balloons, O-004 clef cow, and O-005 cheesecake into illustrated cards. O-0
 asks children to identify each hand and fill all ten piano finger numbers. O-004
 colors nineteen treble/bass clef regions black/brown on the body, legs, and both
 horns. The face stays clear except for its eyes, nostrils, and smile; ears remain black.
-The earlier six illustrated activities are included in the published release; the corrections and three additions below are verified locally. The cow also
+All nine illustrated activities, including the O-007/O-008 corrections and O-009 through O-011 additions, are included in the published release. The cow also
 offers enlarged scene tiles for easier viewing and answering on small screens.
 
 The selector also includes **O-007 Draw the Notes** (`ladybirds.html`)

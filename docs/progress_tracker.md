@@ -485,3 +485,25 @@ staff suite did not normalize the trailing slash supplied by CI's release-direct
 URL, so it opened a double-slash path and saw zero selector cards. Normalized its
 base URL and reproduced the exact trailing-slash production URL locally before
 retrying. Runtime content and build `3a673c526017` are unchanged by this test fix.
+
+## Published worksheet corrections and additions, 2026-11-15
+
+[Pages run 43669737093](https://github.com/fangjiaqifion/music-activity-studio/actions/runs/43669737093)
+completed successfully for commit `31b2f76`, including Node tests, both legacy-game
+browser suites, the five-page staff interaction suite, and all 60 responsive cases.
+Published runtime build `3a673c526017`; all 88 deployed hashes match the reviewed
+local build. Chrome opened the actual remote release and passed the complete staff
+suite, including keyboard/pointer focus, blank/complete answers, erase/reset,
+profiles, celebration, and resource loading. Remote responsive results follow below.
+
+Live selector: https://fangjiaqifion.github.io/music-activity-studio/releases/3a673c526017/activities.html
+
+This release supersedes the previous pending-publication status. README now reflects
+all nine published worksheets. Guidance/provenance/responsive docs reviewed unchanged
+because the final fixes did not alter ownership, assets, or screen acceptance rules.
+Physical iPad/Safari and human speech acceptance remain open. Parent coordination
+and gitlink are recorded locally after this game's evidence commit.
+
+Actual remote Chrome also passed all 60 worksheet/hub phone, tablet portrait/
+landscape, and desktop cases with working controls, loaded artwork, blank checking,
+and reset. No page errors. Final publication verification is complete.
