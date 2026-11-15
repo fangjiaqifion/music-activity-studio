@@ -319,3 +319,15 @@ body[data-activity="sunshine"] .staff-card {
     min-height: 44px;
   }
 }
+
+/* Pointer answers must not retain the browser's SVG focus outline. */
+.staff-target { outline: none; }
+.staff-target:focus rect { fill: transparent; }
+.staff-target:focus-visible rect { fill: #f3d894; fill-opacity: .5; stroke: #816039; stroke-width: 1; }
+.staff-target:hover rect { fill: #f3d894; fill-opacity: .25; }
+@font-face { font-family: Bravura; src: url('assets/BravuraText.woff2') format('woff2'); }
+.clef { font-family: Bravura; fill: #26221e; }
+.note-choices { flex-wrap: wrap; gap: 6px; }
+.reference-label strong { color: #bf443c; font-size: 28px; }
+.sunshine-guide > svg { max-width: 300px; display: block; margin: auto; }
+@media screen and (max-width: 600px) { .example-grid { grid-template-columns: 1fr; } }

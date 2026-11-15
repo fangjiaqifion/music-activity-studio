@@ -2,6 +2,8 @@ import { createSpeech } from "./balloon_speech.mjs";
 import { readProfiles, saveProfiles, dateLabel } from "./balloon_profiles.mjs";
 import { makeStaffPage, scoreStaffPage } from "./staff_worksheets_core.mjs";
 const kind = document.body.dataset.activity;
+const relative = ['treble','bass','alto'].includes(kind);
+const clefInfo = {treble:['高音谱号','Treble clef','G',2,'\uE050',86],bass:['低音谱号','Bass clef','F',6,'\uE062',46],alto:['中音谱号','Alto clef','C',4,'\uE05C',66]};
 const board = document.querySelector("#activity-board");
 const feedback = document.querySelector("#feedback");
 const celebration = document.querySelector("#celebration");
@@ -32,7 +34,7 @@ document.querySelector("#speak").onclick = () =>
   speech.speak(
     kind === "ladybirds"
       ? "请从下往上数线和间，在题目指定的位置点一下画出音符。可以用橡皮擦修改。完成后点打勾按钮。"
-      : "请从下往上数线和间，选择对应的数字。再从左往右看每对音符，选择向上、向下或相同高度的箭头。完成后点打勾按钮。",
+      : relative ? '先看每组红色已知音和它的音名。每升高一个线或间，音名就往后一个字母；降低就往前。根据已知音，选择黑色音符的音名。字母从A到G循环。' : '从左往右看两个音符，选择第二个音比第一个音高、相同还是低。不需要数第几线或第几间。',
   );
 let profileStorage;
 try {
@@ -88,27 +90,27 @@ setInterval(showProfile, 60000);
 const names = ["一", "二", "三", "四", "五"];
 const positionLabel = (p) =>
   `${names[Math.floor(p / 2)]}${p % 2 ? "间" : "线"} · ${p % 2 ? "Space" : "Line"} ${Math.floor(p / 2) + 1}`;
-function staff(notes = [], interactive = false, index = 0) {
-  return `<svg viewBox="0 0 240 130" aria-label="五线谱，从下往上数"><g stroke="#35312b" stroke-width="2">${[0, 2, 4, 6, 8].map((p) => `<path d="M20 ${106 - p * 10}H220"/>`).join("")}</g>${notes.map(([p, x]) => `<ellipse cx="${x}" cy="${106 - p * 10}" rx="12" ry="8" fill="white" fill-opacity="0" stroke="#26221e" stroke-width="3" transform="rotate(-15 ${x} ${106 - p * 10})"/>`).join("")}${interactive ? Array.from({ length: 9 }, (_, p) => `<g class="staff-target" tabindex="0" role="button" data-index="${index}" data-value="${p}" aria-label="第 ${index + 1} 题，${positionLabel(p)}"><rect x="18" y="${101 - p * 10}" width="204" height="10" fill="transparent"/><title>${positionLabel(p)}</title></g>`).join("") : ""}</svg>`;
+function staff(notes = [], interactive = false, index = 0, clef = null) {
+  return `<svg viewBox="${clef ? "0 -10 240 155" : "0 0 240 130"}" aria-label="五线谱，从下往上数"><g stroke="#35312b" stroke-width="2">${[0, 2, 4, 6, 8].map((p) => `<path d="M20 ${106 - p * 10}H220"/>`).join("")}</g>${clef ? `<text class="clef" x="22" y="106" font-size="100">${clefInfo[clef][4]}</text>` : ""}${notes.map(([p, x], n) => `<ellipse cx="${x}" cy="${106 - p * 10}" rx="12" ry="8" fill="white" fill-opacity="0" stroke="${clef && n === 0 ? "#bf443c" : "#26221e"}" stroke-width="3" transform="rotate(-15 ${x} ${106 - p * 10})"/>`).join("")}${interactive ? Array.from({ length: 9 }, (_, p) => `<g class="staff-target" tabindex="0" role="button" data-index="${index}" data-value="${p}" aria-label="第 ${index + 1} 题，${positionLabel(p)}"><rect x="18" y="${101 - p * 10}" width="204" height="10" fill="transparent"/><title>${positionLabel(p)}</title></g>`).join("") : ""}</svg>`;
 }
 function sunshineGuide() {
-  return (
-    '<section class="sunshine-guide"><h2>先看一看 · Examples</h2><div class="example-grid"><div>' +
-    staff([[0, 120]]) +
-    "<p>第一线 · Line 1</p></div><div>" +
-    staff([[1, 120]]) +
-    '<p>第一间 · Space 1</p></div><div class="direction-example"><span>↗ 升高 · Up</span><span>→ 相同 · Same</span><span>↘ 降低 · Down</span></div></div><p>↑ 从下往上数 · Count from the bottom</p></section><h2 class="part-title">① 线与间 · Lines and spaces</h2>'
-  );
+ return '<section class="sunshine-guide"><h2>两个音，比高低 · Compare two notes</h2><div class="example-grid">'+[['up',1,6,'↗ 更高 · Higher'],['same',4,4,'→ 一样高 · Same'],['down',7,2,'↘ 更低 · Lower']].map(([_,a,b,label])=>'<div>'+staff([[a,80],[b,160]])+'<p>'+label+'</p></div>').join('')+'</div><p>从左往右看，比较第二个音和第一个音。<br>Compare the second note with the first.</p></section>';
+}
+function relativeGuide() {
+ const [zh,en,letter,p] = clefInfo[kind];
+ return '<section class="sunshine-guide"><h2>'+zh+' · '+en+'</h2>'+staff([[p,140]],false,0,kind)+'<p>'+letter+' 谱号 · '+letter+' clef</p><p>红色音符是已知音。按相邻线、间一步一步推算音名。<br>Use the red reference note. Move one letter for each step.</p><p>A → B → C → D → E → F → G → A</p><p>已知音是每组的起点，请按给定字母推算。<br>Each group supplies its own starting letter.</p></section>';
 }
 function render() {
   board.innerHTML =
-    (kind === "sunshine" ? sunshineGuide() : "") +
+    (kind === "sunshine" ? sunshineGuide() : relative ? relativeGuide() : "") +
     items
       .map(
         (q, i) =>
-          `${i === 9 && kind === "sunshine" ? '<h2 class="part-title">↗ → ↘ 音高走向 · Pitch direction</h2>' : ""}<article class="staff-card"><span class="question-id">${i + 1}</span>${i === 0 ? `<img class="theme-art" src="assets/${kind === "ladybirds" ? "ladybird" : "sun"}.png" alt="">` : ""}${
+          `${relative && i % 6 === 0 ? `<h2 class="part-title">第 ${q.group+1} 组 · Group ${q.group+1} · 已知 ${q.letter}</h2>` : ""}<article class="staff-card"><span class="question-id">${i + 1}</span>${i === 0 ? `<img class="theme-art" src="assets/${kind === "ladybirds" ? "ladybird" : "sun"}.png" alt="">` : ""}${
             q.type === "place"
               ? `<p>${positionLabel(q.position)}</p>${staff(answers[i] == null ? [] : [[Number(answers[i]), 120]], true, i)}`
+              : q.type === "relative"
+                ? `<p class="reference-label">已知 · Given <strong>${q.letter}</strong></p>${staff([[q.reference,100],[q.position,180]],false,0,q.clef)}<p>黑色音符是什么音？<br>Name the black note.</p><div class="choices note-choices">${[...'ABCDEFG'].map(value=>`<button data-index="${i}" data-value="${value}" aria-label="音名 ${value}" aria-pressed="${answers[i]===value}">${value}</button>`).join('')}</div>`
               : q.type === "number"
                 ? `${staff([[q.position, 120]])}<p>${q.position % 2 ? "第几间？ Space number?" : "第几线？ Line number?"}</p><div class="choices">${Array.from({ length: q.position % 2 ? 4 : 5 }, (_, n) => `<button data-index="${i}" data-value="${n + 1}" aria-pressed="${answers[i] === String(n + 1)}">${n + 1}</button>`).join("")}</div>`
                 : `${staff([
@@ -135,12 +137,15 @@ function next() {
   stop();
   items = makeStaffPage(kind);
   answers = items.map(() => null);
-  feedback.textContent = "从下往上数线和间，选好了就点打勾吧。";
+  feedback.textContent = kind === "ladybirds" ? "在指定的线或间画音符。" : relative ? "根据红色已知音，选择黑色音符的音名。" : "比较两个音，选好了就点打勾吧。";
   render();
 }
+let pointerAnswer = false;
+board.onpointerdown = () => { pointerAnswer = true; };
 function choose(b) {
   if (!b) return;
-  const restoreFocus = document.activeElement === b;
+  const restoreFocus = !pointerAnswer && b.matches(":focus-visible");
+  pointerAnswer = false;
   const { index, value } = b.dataset;
   answers[Number(b.dataset.index)] =
     selected === "erase" ? null : b.dataset.value;

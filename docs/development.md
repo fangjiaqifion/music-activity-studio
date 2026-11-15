@@ -108,10 +108,10 @@ actual palm contact at a paused clap frame, and reduced-motion behavior. Capture
 into ignored `.runtime/`. The parade crosses in seven seconds; individual claps repeat
 every 0.44 seconds. Keep animation delay in frame calculations for staggered characters.
 
-## Six-worksheet hub and hands/cow trials
+## Worksheet hub and hands/cow trials
 
 Open `/activities.html` on the source server; the original index links to it, and
-all six worksheets link back. `/hands.html` identifies both hands and fills ten
+all nine worksheets link back. `/hands.html` identifies both hands and fills ten
 piano finger numbers. `/cows.html` permutes ten treble and nine bass clefs among
 nineteen enclosed regions. Both use the shared profile/speech adapters and preserve
 aggregate-only feedback, erasing, correction, and the five-character celebration.
@@ -134,13 +134,13 @@ The source file and missing original O-004 worksheet are not runtime dependencie
 
 ## O-007/O-008 staff worksheets
 
-Open `/ladybirds.html` or `/sunshine.html` from the six-worksheet selector.
+Open `/ladybirds.html` or `/sunshine.html` from the nine-worksheet selector.
 Run `node tests/staff_worksheets_browser.mjs` against port 8795, or set `BASE_URL`.
 The suite checks blank submissions, complete answers, erasing, regeneration, local
 profiles, five celebration characters, failed resources, mobile overflow, and print
-capture. `npm test` checks 1,000 pages per type, nine-position coverage, direction
-semantics, and aggregate scoring. SVG placement targets support Enter and Space.
-Original worksheet masters remain unchanged; corrected English applies to digital UI.
+capture. `npm test` checks 1,000 pages per type, nine-position placement coverage, pair-only direction
+semantics and reference-relative note names, and aggregate scoring. SVG placement targets support Enter and Space.
+O-008 has only twelve pair comparisons. O-009/O-010/O-011 are `treble.html`, `bass.html`, and `alto.html`, each with 24 unknowns in four reference groups. The same suite covers their complete-answer, correction, erasing, and keyboard flows. Pointer placement must not preserve SVG focus outlines. Original worksheet masters remain unchanged; corrected English applies to digital UI.
 
 ## Required responsive acceptance
 

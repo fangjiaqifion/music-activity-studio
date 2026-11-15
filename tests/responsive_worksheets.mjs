@@ -27,6 +27,9 @@ const pages = [
   "cheesecake",
   "ladybirds",
   "sunshine",
+  "treble",
+  "bass",
+  "alto",
 ];
 const results = [];
 await mkdir(".runtime/responsive", { recursive: true });

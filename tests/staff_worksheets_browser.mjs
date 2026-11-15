@@ -16,8 +16,8 @@ try {
     if (r.status() >= 400) errors.push(r.url());
   });
   await page.goto(base + "/activities.html");
-  assert.equal(await page.locator(".activity-card").count(), 6);
-  for (const kind of ["ladybirds", "sunshine"]) {
+  assert.equal(await page.locator(".activity-card").count(), 9);
+  for (const kind of ["ladybirds", "sunshine", "treble", "bass", "alto"]) {
     await page.setViewportSize({ width: 1100, height: 1000 });
     await page.goto(base + "/" + kind + ".html");
     await page.evaluate(() => document.fonts.ready);
@@ -29,9 +29,14 @@ try {
       await page.evaluate(() => document.activeElement?.dataset.index),
       "0",
     );
+    if (kind === 'ladybirds') {
+      await page.locator('[data-index="0"]').first().click();
+      assert.equal(await page.locator('.staff-target:focus-visible').count(),0);
+      assert.equal(await page.locator('.staff-target').first().evaluate(el=>getComputedStyle(el).outlineStyle),'none');
+    }
     await page.locator("#next").click();
     if (kind === "sunshine") {
-      assert.equal(await page.locator(".sunshine-guide ellipse").count(), 2);
+      assert.equal(await page.locator(".sunshine-guide ellipse").count(), 6);
       await page.setViewportSize({ width: 390, height: 844 });
       assert.equal(
         await page
@@ -50,7 +55,7 @@ try {
     await page.locator("#check").click();
     assert.match(
       await page.locator("#feedback").innerText(),
-      new RegExp(kind === "ladybirds" ? "12" : "21"),
+      new RegExp(["ladybirds","sunshine"].includes(kind) ? "12" : "24"),
     );
     await page.locator(".profiles summary").click();
     await page.locator("#student-name").fill("QA");
@@ -64,6 +69,11 @@ try {
           const text = card.querySelector("p").textContent;
           const number = Number(text.match(/(\d)$/)[1]);
           value = String((number - 1) * 2 + (text.includes("Space") ? 1 : 0));
+        } else if (['treble','bass','alto'].includes(document.body.dataset.activity)) {
+          const notes=[...card.querySelectorAll('ellipse')];
+          const steps=Math.round((Number(notes[0].getAttribute('cy'))-Number(notes[1].getAttribute('cy')))/10);
+          const letter=card.querySelector('.reference-label strong').textContent;
+          value='ABCDEFG'[(('ABCDEFG'.indexOf(letter)+steps)%7+7)%7];
         } else {
           const notes = [...card.querySelectorAll("ellipse")];
           if (notes.length === 1) {

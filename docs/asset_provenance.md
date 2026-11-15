@@ -110,3 +110,7 @@ external runtime requests. Patrick Hand, ZCOOL KuaiLe, and Lucide retain their l
 and Illustrator files were not modified. Existing Patrick Hand, ZCOOL KuaiLe,
 Lucide eraser, and original five-character celebration are reused with their existing
 licenses/provenance. No new third-party asset or remote runtime request was added.
+
+## O-009/O-010/O-011 relative-note adaptations, 2026-11-15
+
+Reused the unchanged bundled sun artwork and OFL-licensed BravuraText font. Treble, bass, and alto clefs use exact SMuFL glyphs E050, E062, and E05C from that font. Read the original bilingual PDFs to transcribe the four given-note groups and staff contours; no source PDF, DOCX, or AI was modified. The user removed the numbering portion from the digital O-008 on this date.

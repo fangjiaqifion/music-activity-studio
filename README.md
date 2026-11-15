@@ -2,7 +2,7 @@
 
 Last updated: 2026-11-15
 
-A music activity studio with six games and six interactive worksheet adaptations, inspired by FANG, Jiaqi's illustrated worksheets.
+A music activity studio with six games and nine interactive worksheet adaptations, inspired by FANG, Jiaqi's illustrated worksheets.
 The Chinese interface is intended for young piano beginners, with adult support where
 needed. Usability and educational effects have not been established.
 
@@ -78,12 +78,12 @@ O-003 balloons, O-004 clef cow, and O-005 cheesecake into illustrated cards. O-0
 asks children to identify each hand and fill all ten piano finger numbers. O-004
 colors nineteen treble/bass clef regions black/brown on the body, legs, and both
 horns. The face stays clear except for its eyes, nostrils, and smile; ears remain black.
-All six illustrated activities are included in the published release. The cow also
+The earlier six illustrated activities are included in the published release; the corrections and three additions below are verified locally. The cow also
 offers enlarged scene tiles for easier viewing and answering on small screens.
 
 The selector also includes **O-007 Draw the Notes** (`ladybirds.html`)
-and **O-008 Lines, Spaces, and Pitch Direction** (`sunshine.html`). Place noteheads
-by tapping a staff position, or choose line/space numbers and pitch-direction arrows.
-Both follow the existing local classroom conventions. All activities reflow for
+and **O-008 Compare Two Notes** (`sunshine.html`). Place noteheads
+by tapping a staff position, or compare the second note with the first using higher/same/lower arrows. O-008 does not ask for line or space numbers.
+**O-009 Treble**, **O-010 Bass**, and **O-011 Alto** (`treble.html`, `bass.html`, `alto.html`) ask for note names relative to a red given note, preserving four source groups per worksheet. All follow the existing local classroom conventions. All activities reflow for
 phones, iPads/tablets, and computers; the original worksheet artwork does not impose
 a paper layout on the screen.

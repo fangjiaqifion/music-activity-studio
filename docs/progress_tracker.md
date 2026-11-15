@@ -414,3 +414,35 @@ coordination records this deployment and its local gitlink separately.
 
 The remote Chrome O-007/O-008 suite also passed complete answers, keyboard focus,
 blank checking, erasing, reset, profiles, celebration, mobile layout, and resources.
+
+## O-007/O-008 corrections and O-009 through O-011, 2026-11-15
+
+The user's correction supersedes earlier O-008 descriptions: twelve two-note
+higher/same/lower comparisons only, without line/space numbering. Examples, speech,
+written instructions, count, and selector agree. O-007 no longer restores SVG target
+focus after pointer answers, removing the browser's blue outline across a staff
+line; keyboard focus remains visible and survives answer rerendering.
+
+Added O-009 treble, O-010 bass, and O-011 alto relative-note activities. Each preserves
+four original reference groups and their staff contours, with six unknowns per
+group. Every responsive card repeats the red supplied note and letter beside one
+black target; answers wrap diatonically through A to G relative to that supplied
+letter. This preserves the source's relative-note exercise rather than replacing
+its arbitrary references with absolute note identification. Reused original sun
+art and licensed BravuraText SMuFL glyphs; checked clef baselines and full glyph
+bounds. Original DOCX/PDF/AI masters are unchanged. The selector now has nine entries.
+
+Verification: 22 Node tests, full staff complete-answer/blank/erase/reset/profile/
+celebration/keyboard/pointer checks, all 60 worksheet/hub viewport cases, original
+six-game 49-screen suite and regressions, hands/cow, balloon and cake flows pass.
+Dependency audit reports zero vulnerabilities. Production build `0a633dae2a65`
+passes the six-game suites and staff interaction checks; final responsive acceptance
+and deployment evidence follow below. Close-up clef and pointer-selection captures,
+phone, tablet portrait/landscape, and desktop layouts inspected. Physical devices,
+Safari, and human speech acceptance remain open.
+
+Updated AGENTS, README, development, responsive coverage, asset provenance, and this
+tracker. Parent/games/worksheet guides and public overviews reviewed unchanged:
+ownership, original-master preservation, and publishing boundaries remain accurate.
+Parent coordination/gitlink will be recorded after game commits. Unrelated research
+edits and runtime state are excluded.
