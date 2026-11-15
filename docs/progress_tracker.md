@@ -477,3 +477,11 @@ responsive contract, and public overview reviewed: their ownership, assets, layo
 and instructional descriptions remain accurate. README publication status will be
 updated after remote verification. No claims of physical-device or human-audio
 acceptance are added.
+
+Local production acceptance passed all 60 worksheet/hub cases, the five-page staff
+interaction suite, and both legacy-game suites. Pushed review commit `0bf6c4d`.
+The first Pages run `43669637639` correctly blocked publication: the newly added
+staff suite did not normalize the trailing slash supplied by CI's release-directory
+URL, so it opened a double-slash path and saw zero selector cards. Normalized its
+base URL and reproduced the exact trailing-slash production URL locally before
+retrying. Runtime content and build `3a673c526017` are unchanged by this test fix.

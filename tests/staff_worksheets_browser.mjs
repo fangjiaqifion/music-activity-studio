@@ -5,7 +5,7 @@ const browser = await chromium.launch({
     process.env.CHROME_PATH || "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
   headless: true,
 });
-const base = process.env.BASE_URL || "http://127.0.0.1:8795";
+const base = (process.env.BASE_URL || "http://127.0.0.1:8795").replace(/\/$/, "");
 try {
   const page = await browser.newPage({
     viewport: { width: 1100, height: 1000 },
