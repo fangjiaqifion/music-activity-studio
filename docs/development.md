@@ -140,7 +140,7 @@ The suite checks blank submissions, complete answers, erasing, regeneration, loc
 profiles, five celebration characters, failed resources, mobile overflow, and print
 capture. `npm test` checks 1,000 pages per type, nine-position placement coverage, pair-only direction
 semantics and reference-relative note names, and aggregate scoring. SVG placement targets support Enter and Space.
-O-008 has only twelve pair comparisons. O-009/O-010/O-011 are `treble.html`, `bass.html`, and `alto.html`, each with 24 unknowns in four reference groups. The same suite covers their complete-answer, correction, erasing, and keyboard flows. Pointer placement must not preserve SVG focus outlines. Original worksheet masters remain unchanged; corrected English applies to digital UI.
+O-008 has only twelve pair comparisons. O-009/O-010/O-011 are `treble.html`, `bass.html`, and `alto.html`, each with 24 unknowns. O-009 has one introductory second-line G example and single-note questions scored from that fixed G position. O-010/O-011 retain their previous four reference groups. The same suite covers their complete-answer, correction, erasing, and keyboard flows. Pointer placement must not preserve SVG focus outlines. Original worksheet masters remain unchanged; corrected English applies to digital UI.
 
 ## Required responsive acceptance
 

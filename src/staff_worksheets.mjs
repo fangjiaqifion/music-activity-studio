@@ -34,7 +34,7 @@ document.querySelector("#speak").onclick = () =>
   speech.speak(
     kind === "ladybirds"
       ? "请从下往上数线和间，在题目指定的位置点一下画出音符。可以用橡皮擦修改。完成后点打勾按钮。"
-      : relative ? '先看每组红色已知音和它的音名。每升高一个线或间，音名就往后一个字母；降低就往前。根据已知音，选择黑色音符的音名。字母从A到G循环。' : '从左往右看两个音符，选择第二个音比第一个音高、相同还是低。不需要数第几线或第几间。',
+      : kind === 'treble' ? '高音谱号也叫G谱号，它勾住的第二线是G音。先看第一个示例，再根据音符与G音的相对位置，选择每个音符的音名。向上一个线或间，音名往后一个字母，向下则往前，A到G循环。' : relative ? '先看每组红色已知音和它的音名。每升高一个线或间，音名就往后一个字母；降低就往前。根据已知音，选择黑色音符的音名。字母从A到G循环。' : '从左往右看两个音符，选择第二个音比第一个音高、相同还是低。不需要数第几线或第几间。',
   );
 let profileStorage;
 try {
@@ -91,13 +91,15 @@ setInterval(showProfile, 60000);
 const names = ["一", "二", "三", "四", "五"];
 const positionLabel = (p) =>
   `${names[Math.floor(p / 2)]}${p % 2 ? "间" : "线"} · ${p % 2 ? "Space" : "Line"} ${Math.floor(p / 2) + 1}`;
-function staff(notes = [], interactive = false, index = 0, clef = null) {
-  return `<svg viewBox="${clef ? "0 -10 240 155" : "0 0 240 130"}" aria-label="五线谱，从下往上数"><g stroke="#35312b" stroke-width="2">${[0, 2, 4, 6, 8].map((p) => `<path d="M20 ${106 - p * 10}H220"/>`).join("")}</g>${clef ? `<text class="clef" x="22" y="106" font-size="100">${clefInfo[clef][4]}</text>` : ""}${notes.map(([p, x], n) => `<ellipse cx="${x}" cy="${106 - p * 10}" rx="12" ry="8" fill="white" fill-opacity="0" stroke="${clef && n === 0 ? "#bf443c" : "#26221e"}" stroke-width="3" transform="rotate(-15 ${x} ${106 - p * 10})"/>`).join("")}${interactive ? Array.from({ length: 9 }, (_, p) => `<g class="staff-target" tabindex="0" role="button" data-index="${index}" data-value="${p}" aria-label="第 ${index + 1} 题，${positionLabel(p)}"><rect x="18" y="${101 - p * 10}" width="204" height="10" fill="transparent"/><title>${positionLabel(p)}</title></g>`).join("") : ""}</svg>`;
+function staff(notes = [], interactive = false, index = 0, clef = null, referenceColor = true) {
+  return `<svg viewBox="${clef ? "0 -10 240 155" : "0 0 240 130"}" aria-label="五线谱，从下往上数"><g stroke="#35312b" stroke-width="2">${[0, 2, 4, 6, 8].map((p) => `<path d="M20 ${106 - p * 10}H220"/>`).join("")}</g>${clef ? `<text class="clef" x="22" y="106" font-size="100">${clefInfo[clef][4]}</text>` : ""}${notes.map(([p, x], n) => `<ellipse cx="${x}" cy="${106 - p * 10}" rx="12" ry="8" fill="white" fill-opacity="0" stroke="${clef && referenceColor && n === 0 ? "#bf443c" : "#26221e"}" stroke-width="3" transform="rotate(-15 ${x} ${106 - p * 10})"/>`).join("")}${interactive ? Array.from({ length: 9 }, (_, p) => `<g class="staff-target" tabindex="0" role="button" data-index="${index}" data-value="${p}" aria-label="第 ${index + 1} 题，${positionLabel(p)}"><rect x="18" y="${101 - p * 10}" width="204" height="10" fill="transparent"/><title>${positionLabel(p)}</title></g>`).join("") : ""}</svg>`;
 }
 function sunshineGuide() {
  return '<section class="sunshine-guide"><h2>两个音，比高低 · Compare two notes</h2><div class="example-grid">'+[['up',1,6,'↗ 更高 · Higher'],['same',4,4,'→ 一样高 · Same'],['down',7,2,'↘ 更低 · Lower']].map(([_,a,b,label])=>'<div>'+staff([[a,80],[b,160]])+'<p>'+label+'</p></div>').join('')+'</div><p>从左往右看，比较第二个音和第一个音。<br>Compare the second note with the first.</p></section>';
 }
 function relativeGuide() {
+ if (kind === 'treble') return '<section class="sunshine-guide"><h2>先看示例 · Start with G</h2>'+staff([[2,140]],false,0,'treble')+'<p class="reference-label">G</p><p>高音谱号也叫 G 谱号，勾住的第二线是 G 音。<br>The treble clef curls around the second line: G.</p><p>从 G 的位置出发，推算每个音符的音名。<br>Use this G position to work out each note name.</p><p>↑ A → B → C → D → E → F → G → A<br>↓ G → F → E → D → C → B → A → G</p></section>';
+
  const [zh,en,letter,p] = clefInfo[kind];
  return '<section class="sunshine-guide"><h2>'+zh+' · '+en+'</h2>'+staff([[p,140]],false,0,kind)+'<p>'+letter+' 谱号 · '+letter+' clef</p><p>红色音符是已知音。按相邻线、间一步一步推算音名。<br>Use the red reference note. Move one letter for each step.</p><p>A → B → C → D → E → F → G → A</p><p>已知音是每组的起点，请按给定字母推算。<br>Each group supplies its own starting letter.</p></section>';
 }
@@ -107,9 +109,11 @@ function render() {
     items
       .map(
         (q, i) =>
-          `${relative && i % 6 === 0 ? `<h2 class="part-title">第 ${q.group+1} 组 · Group ${q.group+1} · 已知 ${q.letter}</h2>` : ""}<article class="staff-card"><span class="question-id">${i + 1}</span>${i === 0 ? `<img class="theme-art" src="assets/${kind === "ladybirds" ? "ladybird" : "sun"}.png" alt="">` : ""}${
+          `${relative && kind !== "treble" && i % 6 === 0 ? `<h2 class="part-title">第 ${q.group+1} 组 · Group ${q.group+1} · 已知 ${q.letter}</h2>` : ""}<article class="staff-card"><span class="question-id">${i + 1}</span>${i === 0 ? `<img class="theme-art" src="assets/${kind === "ladybirds" ? "ladybird" : "sun"}.png" alt="">` : ""}${
             q.type === "place"
               ? `<p>${positionLabel(q.position)}</p>${staff(answers[i] == null ? [] : [[Number(answers[i]), 120]], true, i)}`
+              : q.type === "treble-name"
+                ? `${staff([[q.position,150]],false,0,'treble',false)}<p>这个音是什么音？<br>Name this note.</p><div class="choices note-choices">${[...'ABCDEFG'].map(value=>`<button data-index="${i}" data-value="${value}" aria-label="音名 ${value}" aria-pressed="${answers[i]===value}">${value}</button>`).join('')}</div>`
               : q.type === "relative"
                 ? `<p class="reference-label">已知 · Given <strong>${q.letter}</strong></p>${staff([[q.reference,100],[q.position,180]],false,0,q.clef)}<p>黑色音符是什么音？<br>Name the black note.</p><div class="choices note-choices">${[...'ABCDEFG'].map(value=>`<button data-index="${i}" data-value="${value}" aria-label="音名 ${value}" aria-pressed="${answers[i]===value}">${value}</button>`).join('')}</div>`
               : `${staff([
@@ -136,7 +140,7 @@ function next() {
   stop();
   items = makeStaffPage(kind);
   answers = items.map(() => null);
-  feedback.textContent = kind === "ladybirds" ? "在指定的线或间画音符。" : relative ? "根据红色已知音，选择黑色音符的音名。" : "比较两个音，选好了就点打勾吧。";
+  feedback.textContent = kind === "ladybirds" ? "在指定的线或间画音符。" : kind === "treble" ? "以高音谱号勾住的 G 音为基准，推算音名。" : relative ? "根据红色已知音，选择黑色音符的音名。" : "比较两个音，选好了就点打勾吧。";
   render();
 }
 function choose(b, keyboard = false) {

@@ -84,6 +84,6 @@ offers enlarged scene tiles for easier viewing and answering on small screens.
 The selector also includes **O-007 Draw the Notes** (`ladybirds.html`)
 and **O-008 Compare Two Notes** (`sunshine.html`). Place noteheads
 by tapping a staff position, or compare the second note with the first using higher/same/lower arrows. O-008 does not ask for line or space numbers.
-**O-009 Treble**, **O-010 Bass**, and **O-011 Alto** (`treble.html`, `bass.html`, `alto.html`) ask for note names relative to a red given note, preserving four source groups per worksheet. All follow the existing local classroom conventions. All activities reflow for
+**O-009 Treble**, **O-010 Bass**, and **O-011 Alto** (`treble.html`, `bass.html`, `alto.html`) offer relative note-name exercises. The revised local O-009 introduces G on the treble clef’s second line once, then asks children to identify single notes from that position. O-010/O-011 retain their earlier reference-group behavior pending review. All follow the existing local classroom conventions. All activities reflow for
 phones, iPads/tablets, and computers; the original worksheet artwork does not impose
 a paper layout on the screen.

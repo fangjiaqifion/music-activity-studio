@@ -57,6 +57,12 @@ try {
       );
       await page.setViewportSize({ width: 1100, height: 1000 });
     }
+    if (kind === 'treble') {
+      assert.equal(await page.locator('.sunshine-guide ellipse').count(), 1);
+      assert.equal(await page.locator('.staff-card .reference-label').count(), 0);
+      assert.equal(await page.locator('.staff-card ellipse').count(), 24);
+      assert.equal(await page.locator('.staff-card ellipse[stroke="#bf443c"]').count(), 0);
+    }
     await page.locator("#check").click();
     assert.match(
       await page.locator("#feedback").innerText(),
@@ -74,7 +80,11 @@ try {
           const text = card.querySelector("p").textContent;
           const number = Number(text.match(/(\d)$/)[1]);
           value = String((number - 1) * 2 + (text.includes("Space") ? 1 : 0));
-        } else if (['treble','bass','alto'].includes(document.body.dataset.activity)) {
+        } else if (document.body.dataset.activity === 'treble') {
+          const note=card.querySelector('ellipse');
+          const position=(106-Number(note.getAttribute('cy')))/10;
+          value='DEFGABCDEF'[position+1];
+        } else if (['bass','alto'].includes(document.body.dataset.activity)) {
           const notes=[...card.querySelectorAll('ellipse')];
           const steps=Math.round((Number(notes[0].getAttribute('cy'))-Number(notes[1].getAttribute('cy')))/10);
           const letter=card.querySelector('.reference-label strong').textContent;

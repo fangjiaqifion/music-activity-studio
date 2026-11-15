@@ -507,3 +507,29 @@ and gitlink are recorded locally after this game's evidence commit.
 Actual remote Chrome also passed all 60 worksheet/hub phone, tablet portrait/
 landscape, and desktop cases with working controls, loaded artwork, blank checking,
 and reset. No page errors. Final publication verification is complete.
+
+## O-009 G-clef instructional correction, 2026-11-15
+
+The user corrected the relative-pitch interpretation and requested O-009 first.
+The earlier arbitrary row-anchor implementation was instructionally incorrect for
+this activity. O-009 now introduces the treble clef's second-line G once, then
+shows one black target note per question. No repeated E/A reference or supplied
+answer appears on question cards. All 24 answers derive from the fixed G position,
+with cyclic diatonic letters. Instructions, speech, worked reference, and scoring
+agree. O-010/O-011 behavior is unchanged pending separate review.
+
+Added an independent staff-position/name table test and browser assertions requiring
+one guide note, 24 single target notes, and no per-card given-note labels. Twenty-three
+Node tests pass. Production build `baea09b16f51`; browser results follow below.
+This correction is local for user review; the published version is unchanged.
+
+Updated AGENTS, README, development, and tracker. Provenance and responsive guidance
+reviewed unchanged: no new artwork, fonts, source master edits, or layout contract.
+Parent/games/worksheet guides and public overviews reviewed unchanged because
+ownership, preservation, and publication boundaries remain accurate.
+
+Final verification: production staff interaction checks, all 60 worksheet/hub
+viewport cases, the legacy games' 49-screen suite, and regression suite pass.
+Inspected the G-example and single-target card captures at tablet width. No repeated
+red reference appears on target cards; scoring uses the treble G anchor. Local review:
+http://127.0.0.1:8810/releases/baea09b16f51/treble.html. No push or deployment.
