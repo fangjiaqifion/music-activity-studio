@@ -559,3 +559,8 @@ Complete staff browser flows and all 60 worksheet/hub responsive checks pass. In
 ## O-009 reasoning example revision, 2026-11-16
 
 User superseded the sky-decoration choice: removed all cartoon elements from O-009. The labeled G/A example now includes a red curved G-to-A arrow and “向上一格 · Up one step.” No source assets changed. Inspected the rendered guide; staff browser flows pass. Operational guides and overview reviewed unchanged because generation, nine-question scope, and ownership are unchanged. Local review only, no publication.
+
+
+## Single-row note-name options, 2026-11-16
+
+Reduced A–G option text from 23px to 20px and use seven equal columns with 4px gaps across O-009/O-010/O-011. Retained 44px button height. Verified every option row stays on one line at 320, 390, 768, 820, and 1440px; all 60 worksheet/hub responsive cases pass. Inspected a rendered card. Guides and public overview reviewed unchanged because content, scoring, and operating procedures are unchanged. Local only, no publication.

@@ -327,7 +327,8 @@ body[data-activity="sunshine"] .staff-card {
 .staff-target:hover rect { fill: #f3d894; fill-opacity: .25; }
 @font-face { font-family: Bravura; src: url('assets/BravuraText.woff2') format('woff2'); }
 .clef { font-family: Bravura; fill: #26221e; }
-.note-choices { flex-wrap: wrap; gap: 6px; }
+.note-choices { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 4px; width: 100%; max-width: 320px; margin-inline: auto; }
+.note-choices button { min-width: 0; min-height: 44px; padding: 4px 0; font-size: 20px; }
 .reference-label strong { color: #bf443c; font-size: 28px; }
 .sunshine-guide > svg { max-width: 300px; display: block; margin: auto; }
 @media screen and (max-width: 600px) { .example-grid { grid-template-columns: 1fr; } }
