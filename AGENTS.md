@@ -115,6 +115,6 @@ and verification procedure is [responsive design](docs/responsive_design.md).
 
 Each activity uses nine questions selected from 36 distinct clef-anchor/target pairs (G for O-009, F for O-010, C for O-011) (anchor lines 1–4 and nine internal staff positions). Shanghai dates select disjoint sets across four consecutive days; the four-day cycle repeats. Refresh keeps the daily set; New set advances it. Students click A–G directly and click another letter to correct an answer; there is no selection/eraser toolbar on these three activities. Each example labels its anchor and the next higher note (G/A, F/G, C/D) with a curved arrow and one-step explanation, without cartoon decoration. Clef glyphs have expanded SVG bounds. All relative-note A–G controls use one row. No original masters are modified.
 
-## O-013 keyboard trial
+## O-013 keyboard practice
 
 `keyboard.html`, `keyboard.css`, and `src/keyboard*.mjs` own three black-key coloring keyboards (one each of C–E, F–B, and C–B) and two circle/count keyboards. A complete group is C–B (seven white keys and five black keys); cropped edge groups do not count. Do not presegment or label answer groups. Preserve correct keyboard geometry and proportional scaling of key width and height, first/last-key circle creation, circle removal, whole-keyboard overview, circle-then-count staging, direct count replacement, horizontal scrolling when enlarged, enlargement, keyboard access, and aggregate-only feedback. Original worksheet masters remain unchanged.

@@ -78,7 +78,7 @@ O-003 balloons, O-004 clef cow, and O-005 cheesecake into illustrated cards. O-0
 asks children to identify each hand and fill all ten piano finger numbers. O-004
 colors nineteen treble/bass clef regions black/brown on the body, legs, and both
 horns. The face stays clear except for its eyes, nostrils, and smile; ears remain black.
-All nine illustrated activities, including the O-007/O-008 corrections and O-009 through O-011 additions, are included in the published release. The cow also
+All ten illustrated activities, including O-013 keyboard practice, are included in the published release. The cow also
 offers enlarged scene tiles for easier viewing and answering on small screens.
 
 The selector also includes **O-007 Draw the Notes** (`ladybirds.html`)
@@ -93,6 +93,6 @@ a paper layout on the screen.
 
 Each activity uses nine questions selected from 36 distinct clef-anchor/target pairs (G for O-009, F for O-010, C for O-011) (anchor lines 1–4 and nine internal staff positions). Shanghai dates select disjoint sets across four consecutive days; the four-day cycle repeats. Refresh keeps the daily set; New set advances it. Students click A–G directly and click another letter to correct an answer; there is no selection/eraser toolbar on these three activities. Each example labels its anchor and the next higher note (G/A, F/G, C/D) with a curved arrow and one-step explanation, without cartoon decoration. Clef glyphs have expanded SVG bounds. All relative-note A–G controls use one row. No original masters are modified.
 
-## O-013 keyboard trial
+## O-013 keyboard practice
 
-The local `keyboard.html` trial has two exercises: color the black keys on three separate keyboards, with one example each of two-black-key (C–E), three-black-key (F–B), and complete C–B groups, then circle and count complete C–B groups on two different 4–6-octave spans with partial edge groups. Tap the first and last white keys to circle a group; tap its ring to remove it. The lower keyboards initially fit the available width, scaling key width and height together to preserve proportions. A red-circle cue precedes marking; number choices appear after students select “圈好了，开始数.” Enlargement enables larger keys with horizontal scrolling. Answers remain in memory; shared local display profiles, speech, aggregate feedback, and celebration apply. This addition is not published.
+The `keyboard.html` activity has two exercises: color the black keys on three separate keyboards, with one example each of two-black-key (C–E), three-black-key (F–B), and complete C–B groups, then circle and count complete C–B groups on two different 4–6-octave spans with partial edge groups. Tap the first and last white keys to circle a group; tap its ring to remove it. The lower keyboards initially fit the available width, scaling key width and height together to preserve proportions. A red-circle cue precedes marking; number choices appear after students select “圈好了，开始数.” Enlargement enables larger keys with horizontal scrolling. Answers remain in memory; shared local display profiles, speech, aggregate feedback, and celebration apply. This activity is included in the published release.

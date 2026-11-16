@@ -154,6 +154,6 @@ is optional and never substitutes for web-game verification.
 
 Each activity uses nine questions selected from 36 distinct clef-anchor/target pairs (G for O-009, F for O-010, C for O-011) (anchor lines 1–4 and nine internal staff positions). Shanghai dates select disjoint sets across four consecutive days; the four-day cycle repeats. Refresh keeps the daily set; New set advances it. Students click A–G directly and click another letter to correct an answer; there is no selection/eraser toolbar on these three activities. Each example labels its anchor and the next higher note (G/A, F/G, C/D) with a curved arrow and one-step explanation, without cartoon decoration. Clef glyphs have expanded SVG bounds. All relative-note A–G controls use one row. No original masters are modified.
 
-## O-013 keyboard trial
+## O-013 keyboard practice
 
 Open `/keyboard.html` from the selector. Run `BASE_URL=http://127.0.0.1:8797 node tests/keyboard_browser.mjs` for three-keyboard coloring, complete circle/count answers, enlargement, celebration, reset, and screenshots. Lower keyboards fit the viewport initially; enlarged keyboards scroll. Students mark full-height red circles before revealing count options with “圈好了，开始数.” `npm test` covers partial edge exclusion, distinct keyboard lengths, and scoring. The full responsive matrix includes this entry; clipped keys inside intentionally scrollable keyboards are excluded from viewport-bound control checks.
