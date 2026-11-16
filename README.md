@@ -2,7 +2,7 @@
 
 Last updated: 2026-11-16
 
-A music activity studio with six games and ten interactive worksheet adaptations, inspired by FANG, Jiaqi's illustrated worksheets.
+A music activity studio with six games, ten interactive worksheet adaptations, and a local Note Neighborhood prototype, inspired by FANG, Jiaqi's illustrated worksheets.
 The Chinese interface is intended for young piano beginners, with adult support where
 needed. Usability and educational effects have not been established.
 
@@ -25,6 +25,8 @@ Rhythm lab and Bingo print the current board; other games print all six question
 These are newly generated exercises, not replacements for original worksheet masters.
 
 ## Play and run locally
+
+The local `note-houses.html` prototype offers two levels: place seven whole-note characters in G3–F4 houses, then identify neighbors one to three staff steps above or below a resident. Dragging, tap-then-place, and keyboard answers are supported. The complete grand staff remains visible, with houses precisely centered on lines/spaces. Its selector link is separate from the ten worksheets. This new prototype has not been published.
 
 The GitHub Pages version is hosted at
 [Music Activity Studio](https://fangjiaqifion.github.io/music-activity-studio/),

@@ -13,6 +13,10 @@ Screenshots and a print-layout PDF are generated into ignored `.runtime/`.
 
 ## Architecture and Note Trainer lessons
 
+### Note Neighborhood local preview
+
+Open `/note-houses.html` on the source preview server. Run `BASE_URL=http://127.0.0.1:<port> node tests/note_houses_browser.mjs` for complete drag, tap, keyboard, wrong-answer/correction, six-neighbor-round, completion/reset, full-staff containment, and viewport checks. Pure pitch/clearance tests run with `npm test`; the responsive worksheet suite also includes this page. No profile or saved student data is required. The scene uses `ResizeObserver` and uniform house/clef scaling, not a large scrollable canvas. Individual character crops use nested clipped SVG viewports; a single viewBox with mismatched aspect ratio can expose adjacent characters and must not replace the clipping viewport. Keep the source art unchanged.
+
 The design adopts Note Trainer's shared session entry, centralized answer handling,
 first-attempt retention, disposal of playback, and real-browser verification. No
 application source, account data, cloud configuration, or credentials were copied.

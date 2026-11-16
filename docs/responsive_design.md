@@ -1,6 +1,6 @@
 # Responsive Web Game Design
 
-Last updated: 2026-11-15
+Last updated: 2026-11-16
 
 ## Product contract
 
@@ -49,6 +49,6 @@ emulation is evidence of browser layout, not physical iPad or Safari acceptance.
    Do not substitute successful A4 output for this gate.
 
 The legacy six-game suite visits every game at its viewport matrix; the worksheet
-suite covers the illustrated selector and all ten completed electronic worksheets.
+suite covers the illustrated selector, all ten completed electronic worksheets, and the Note Neighborhood prototype (72 viewport cases). The new prototype additionally checks 320px width, real touch selection, and complete staff/house containment. It recomputes scene geometry to keep both staves and all houses visible without scrolling. Very short landscape displays necessarily reduce visible house size; interaction hit regions stay at least 44px. Physical-device legibility remains a user acceptance check.
 Keep both matrices maintained as content grows. Printing may be checked separately
 only when printing is within scope.

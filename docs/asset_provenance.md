@@ -130,3 +130,7 @@ User superseded the sky-decoration choice: removed all cartoon elements from O-0
 ## O-013 keyboard preview, 2026-11-16
 
 `assets/keyboard_preview.svg` is an original code-native thumbnail using the same seven-white/five-black C–B geometry as the activity. No external artwork, font glyph, or source-master export is used. Original O-013 DOCX/PDF files remain unchanged.
+
+## Note Neighborhood prototype, 2026-11-16
+
+`assets/note_house_characters.png` is an unchanged copy of the user's selected image-one design sheet (`codex-clipboard-52ca3294-57b3-49f2-b6ee-6bc7d36ba27a.png`), originally created with the built-in image generation tool during this chat. Its seven accessory-free C–B characters use a vintage monochrome rubber-hose cartoon treatment. Runtime SVG viewports clip each character independently, excluding neighbors and the sheet's inaccurate staff scene. No named existing cartoon character or logo is used. The selected middle house from image two supplies the thick, softly peaked roof direction; the runtime house is original code-native geometry with explicit line/space clearance. The game reuses existing OFL Bravura clef outlines from `cow_regions.mjs` and the bundled Patrick Hand font. No original worksheet or Illustrator master was modified. No external runtime requests were added.

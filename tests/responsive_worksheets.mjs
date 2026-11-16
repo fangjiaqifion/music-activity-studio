@@ -20,6 +20,7 @@ const sizes = [
   [1440, 900],
 ];
 const pages = [
+  "note-houses",
   "activities",
   "hands",
   "balloons",
@@ -84,7 +85,13 @@ try {
         assert.equal(await page.locator("#count").innerText(),"1");
         await page.locator("#next").click();
       }
-      if (name !== "activities") {
+      if (name === "note-houses") {
+        await page.locator('#level2').click();
+        assert.equal(await page.locator('#progress').innerText(), '1 / 6');
+        await page.locator('#reset').click();
+        await page.locator('#level1').click();
+        assert.equal(await page.locator('#progress').innerText(), '0 / 7');
+      } else if (name !== "activities") {
         await page.locator("#check").click();
         assert.match(await page.locator("#feedback").innerText(), /还有/);
         await page.locator("#next").click();
