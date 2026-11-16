@@ -75,7 +75,7 @@ clearance above the cake-slice outline, including the lowest notehead.
 
 ## Worksheet selection, O-002 and O-004
 
-`activities.html` is the nine-worksheet selection hub, linked from the existing
+`activities.html` is the ten-worksheet selection hub, linked from the existing
 six-game index. Every worksheet returns to this hub. `hands.html` and `cows.html`
 share `src/activities.mjs`, `src/activities_core.mjs`, and `activities.css`.
 O-002 preserves both hand identifications and all ten piano finger numbers, with
@@ -90,7 +90,7 @@ New outlines and masks use smooth cubic SVG paths; source AI/clean PNG stay unto
 center visible glyph ink inside each patch. Display full English names “Treble clef”
 and “Bass clef”.
 Apply the same local-profile, speech, aggregate-feedback, eraser, and celebration
-contracts as O-003/O-005. Keep all nine worksheet entries in the runtime allowlist.
+contracts as O-003/O-005. Keep all ten worksheet entries in the runtime allowlist.
 
 ## O-007/O-008 local trials
 
@@ -99,7 +99,7 @@ own the staff placement, two-note comparison, and relative-note trials. O-007 ha
 requested placements covering all nine internal staff positions. O-008 uses twelve two-note comparisons, balanced across rising, falling, and repeated pitches. The user explicitly removed line/space numbering on 2026-11-15; do not restore it. Count lines/spaces from the bottom. Use open
 noteheads with transparent centers, accessible SVG targets, and native artwork ratios.
 Preserve shared local profiles, speech cancellation, aggregate-only feedback, erasing,
-and the five-character celebration. O-009 uses nine daily single-note questions with movable G-clef anchors. Name every target relative to its displayed clef position; never treat source row letters as arbitrary reference pitches or repeat given notes in its cards. O-010/O-011 use the same nine-question daily practice with movable F/C anchors and single target notes. BravuraText uses a 100-unit font size and a shared bottom-line baseline at SVG y=106 for 20-unit staff spacing. Pointer placement must not restore SVG target focus; retain visible keyboard focus. The selector has nine worksheet entries.
+and the five-character celebration. O-009 uses nine daily single-note questions with movable G-clef anchors. Name every target relative to its displayed clef position; never treat source row letters as arbitrary reference pitches or repeat given notes in its cards. O-010/O-011 use the same nine-question daily practice with movable F/C anchors and single target notes. BravuraText uses a 100-unit font size and a shared bottom-line baseline at SVG y=106 for 20-unit staff spacing. Pointer placement must not restore SVG target focus; retain visible keyboard focus. The selector has ten worksheet entries.
 
 ## Responsive web games, confirmed 2026-11-15
 
@@ -114,3 +114,7 @@ and verification procedure is [responsive design](docs/responsive_design.md).
 ## O-009 through O-011 daily movable-clef practice
 
 Each activity uses nine questions selected from 36 distinct clef-anchor/target pairs (G for O-009, F for O-010, C for O-011) (anchor lines 1–4 and nine internal staff positions). Shanghai dates select disjoint sets across four consecutive days; the four-day cycle repeats. Refresh keeps the daily set; New set advances it. Students click A–G directly and click another letter to correct an answer; there is no selection/eraser toolbar on these three activities. Each example labels its anchor and the next higher note (G/A, F/G, C/D) with a curved arrow and one-step explanation, without cartoon decoration. Clef glyphs have expanded SVG bounds. All relative-note A–G controls use one row. No original masters are modified.
+
+## O-013 keyboard trial
+
+`keyboard.html`, `keyboard.css`, and `src/keyboard*.mjs` own black-key coloring and two circle/count keyboards. A complete group is C–B (seven white keys and five black keys); cropped edge groups do not count. Do not presegment or label answer groups. Preserve correct keyboard geometry, first/last-key circle creation, circle removal, direct count replacement, horizontal scrolling, enlargement, keyboard access, and aggregate-only feedback. Original worksheet masters remain unchanged.

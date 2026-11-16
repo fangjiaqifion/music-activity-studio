@@ -111,7 +111,7 @@ every 0.44 seconds. Keep animation delay in frame calculations for staggered cha
 ## Worksheet hub and hands/cow trials
 
 Open `/activities.html` on the source server; the original index links to it, and
-all nine worksheets link back. `/hands.html` identifies both hands and fills ten
+all ten worksheets link back. `/hands.html` identifies both hands and fills ten
 piano finger numbers. `/cows.html` permutes ten treble and nine bass clefs among
 nineteen enclosed regions. Both use the shared profile/speech adapters and preserve
 aggregate-only feedback, erasing, correction, and the five-character celebration.
@@ -134,7 +134,7 @@ The source file and missing original O-004 worksheet are not runtime dependencie
 
 ## O-007/O-008 staff worksheets
 
-Open `/ladybirds.html` or `/sunshine.html` from the nine-worksheet selector.
+Open `/ladybirds.html` or `/sunshine.html` from the ten-worksheet selector.
 Run `node tests/staff_worksheets_browser.mjs` against port 8795, or set `BASE_URL`.
 The suite checks blank submissions, complete answers, erasing, regeneration, local
 profiles, five celebration characters, failed resources, mobile overflow, and print
@@ -153,3 +153,7 @@ is optional and never substitutes for web-game verification.
 ## O-009 through O-011 daily movable-clef practice
 
 Each activity uses nine questions selected from 36 distinct clef-anchor/target pairs (G for O-009, F for O-010, C for O-011) (anchor lines 1–4 and nine internal staff positions). Shanghai dates select disjoint sets across four consecutive days; the four-day cycle repeats. Refresh keeps the daily set; New set advances it. Students click A–G directly and click another letter to correct an answer; there is no selection/eraser toolbar on these three activities. Each example labels its anchor and the next higher note (G/A, F/G, C/D) with a curved arrow and one-step explanation, without cartoon decoration. Clef glyphs have expanded SVG bounds. All relative-note A–G controls use one row. No original masters are modified.
+
+## O-013 keyboard trial
+
+Open `/keyboard.html` from the selector. Run `BASE_URL=http://127.0.0.1:8797 node tests/keyboard_browser.mjs` for coloring, complete circle/count answers, enlargement, celebration, reset, and screenshots. `npm test` covers partial edge exclusion, distinct keyboard lengths, and scoring. The full responsive matrix includes this entry; clipped keys inside intentionally scrollable keyboards are excluded from viewport-bound control checks.

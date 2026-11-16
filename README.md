@@ -2,7 +2,7 @@
 
 Last updated: 2026-11-16
 
-A music activity studio with six games and nine interactive worksheet adaptations, inspired by FANG, Jiaqi's illustrated worksheets.
+A music activity studio with six games and ten interactive worksheet adaptations, inspired by FANG, Jiaqi's illustrated worksheets.
 The Chinese interface is intended for young piano beginners, with adult support where
 needed. Usability and educational effects have not been established.
 
@@ -92,3 +92,7 @@ a paper layout on the screen.
 ## O-009 through O-011 daily movable-clef practice
 
 Each activity uses nine questions selected from 36 distinct clef-anchor/target pairs (G for O-009, F for O-010, C for O-011) (anchor lines 1–4 and nine internal staff positions). Shanghai dates select disjoint sets across four consecutive days; the four-day cycle repeats. Refresh keeps the daily set; New set advances it. Students click A–G directly and click another letter to correct an answer; there is no selection/eraser toolbar on these three activities. Each example labels its anchor and the next higher note (G/A, F/G, C/D) with a curved arrow and one-step explanation, without cartoon decoration. Clef glyphs have expanded SVG bounds. All relative-note A–G controls use one row. No original masters are modified.
+
+## O-013 keyboard trial
+
+The local `keyboard.html` trial has two exercises: color the black keys on a two-octave keyboard, then circle and count complete C–B groups on two different 4–6-octave spans with partial edge groups. Tap the first and last white keys to circle a group; tap its ring to remove it. Keyboards scroll horizontally and have an enlargement control. Answers remain in memory; shared local display profiles, speech, aggregate feedback, and celebration apply. This addition is not published.

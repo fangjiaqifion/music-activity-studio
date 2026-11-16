@@ -49,6 +49,6 @@ emulation is evidence of browser layout, not physical iPad or Safari acceptance.
    Do not substitute successful A4 output for this gate.
 
 The legacy six-game suite visits every game at its viewport matrix; the worksheet
-suite covers the illustrated selector and all nine completed electronic worksheets.
+suite covers the illustrated selector and all ten completed electronic worksheets.
 Keep both matrices maintained as content grows. Printing may be checked separately
 only when printing is within scope.

@@ -30,6 +30,7 @@ const pages = [
   "treble",
   "bass",
   "alto",
+  "keyboard",
 ];
 const results = [];
 await mkdir(".runtime/responsive", { recursive: true });
@@ -56,6 +57,7 @@ try {
       const bad = await page.locator("button,input,select").evaluateAll((els) =>
         els
           .filter((e) => {
+            if(e.closest(".keyboard-scroll")) return false;
             const r = e.getBoundingClientRect();
             return (
               e.getClientRects().length &&
