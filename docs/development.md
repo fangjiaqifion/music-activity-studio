@@ -56,7 +56,7 @@ status is historical. There is no ChatGPT hosting or login in the selected deplo
    `npm run test:regressions`. Inspect affected screenshots and printing.
 4. Commit explicit paths, then push to this game's origin/main only when authorized.
    `.github/workflows/pages.yml` uses pinned official Actions, Node 24, Node tests,
-   the build, both legacy Chrome suites, the complete staff worksheet interaction suite, and all worksheet responsive cases against the artifact before deploying Pages.
+   the build, both legacy Chrome suites, the complete keyboard and staff worksheet interaction suites, and all worksheet responsive cases against the artifact before deploying Pages.
    Documentation-only pushes do not redeploy. Runtime pushes do.
 5. Watch the exact Actions run to a terminal success state. Then run
    `node scripts/verify_deployed.mjs https://fangjiaqifion.github.io/music-activity-studio/`.

@@ -126,3 +126,7 @@ Complete staff browser flows and all 60 worksheet/hub responsive checks pass. In
 ## O-009 reasoning example revision, 2026-11-16
 
 User superseded the sky-decoration choice: removed all cartoon elements from O-009. The labeled G/A example now includes a red curved G-to-A arrow and “向上一格 · Up one step.” No source assets changed. Inspected the rendered guide; staff browser flows pass. Operational guides and overview reviewed unchanged because generation, nine-question scope, and ownership are unchanged. Local review only, no publication.
+
+## O-013 keyboard preview, 2026-11-16
+
+`assets/keyboard_preview.svg` is an original code-native thumbnail using the same seven-white/five-black C–B geometry as the activity. No external artwork, font glyph, or source-master export is used. Original O-013 DOCX/PDF files remain unchanged.
