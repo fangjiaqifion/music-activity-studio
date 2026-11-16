@@ -156,4 +156,4 @@ Each activity uses nine questions selected from 36 distinct clef-anchor/target p
 
 ## O-013 keyboard trial
 
-Open `/keyboard.html` from the selector. Run `BASE_URL=http://127.0.0.1:8797 node tests/keyboard_browser.mjs` for coloring, complete circle/count answers, enlargement, celebration, reset, and screenshots. `npm test` covers partial edge exclusion, distinct keyboard lengths, and scoring. The full responsive matrix includes this entry; clipped keys inside intentionally scrollable keyboards are excluded from viewport-bound control checks.
+Open `/keyboard.html` from the selector. Run `BASE_URL=http://127.0.0.1:8797 node tests/keyboard_browser.mjs` for six-fragment coloring, complete circle/count answers, enlargement, celebration, reset, and screenshots. Lower keyboards fit the viewport initially; enlarged keyboards scroll. Students mark full-height red circles before revealing count options with “圈好了，开始数.” `npm test` covers partial edge exclusion, distinct keyboard lengths, and scoring. The full responsive matrix includes this entry; clipped keys inside intentionally scrollable keyboards are excluded from viewport-bound control checks.

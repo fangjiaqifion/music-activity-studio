@@ -117,4 +117,4 @@ Each activity uses nine questions selected from 36 distinct clef-anchor/target p
 
 ## O-013 keyboard trial
 
-`keyboard.html`, `keyboard.css`, and `src/keyboard*.mjs` own black-key coloring and two circle/count keyboards. A complete group is C–B (seven white keys and five black keys); cropped edge groups do not count. Do not presegment or label answer groups. Preserve correct keyboard geometry, first/last-key circle creation, circle removal, direct count replacement, horizontal scrolling, enlargement, keyboard access, and aggregate-only feedback. Original worksheet masters remain unchanged.
+`keyboard.html`, `keyboard.css`, and `src/keyboard*.mjs` own six black-key coloring fragments and two circle/count keyboards. A complete group is C–B (seven white keys and five black keys); cropped edge groups do not count. Do not presegment or label answer groups. Preserve correct keyboard geometry, first/last-key circle creation, circle removal, whole-keyboard overview, circle-then-count staging, direct count replacement, horizontal scrolling when enlarged, enlargement, keyboard access, and aggregate-only feedback. Original worksheet masters remain unchanged.

@@ -594,3 +594,9 @@ Verification: 25 Node tests pass, including 500 generated keyboard pages; comple
 ## O-013 separated coloring fragments, 2026-11-16
 
 Replaced the upper continuous keyboard with separate C–E (two black keys) and F–B (three black keys) fragments, matching the user's requested grouping. Each fragment retains enlargement, coloring, and erasing; scoring now expects five black keys with distinct IDs across fragments. Lower circle/count tasks unchanged. All 25 Node tests and the complete keyboard browser flow pass; inspected the tablet rendering and generated phone/landscape/desktop captures. README updated; AGENTS, development, responsive procedure, and provenance reviewed unchanged because ownership, commands, and asset sources remain accurate. Local only, no publication.
+
+## O-013 expanded practice and circle-before-count flow, 2026-11-16
+
+Expanded coloring to six isolated fragments, alternating C–E and F–B three times (15 black keys). Lower keyboards now show their entire span at the available width; enlargement restores large scrollable keys. Added a visible red-circle cue and full-height red ovals enclosing all keys in a selected group. Students mark groups first, then select “圈好了，开始数” to reveal number choices. Editing circles resets the count stage. Original masters and lower generation rules remain unchanged.
+
+Verification: 25 unit tests, full keyboard coloring/circle/count/celebration/reset flow, and all 66 worksheet/hub layouts pass. Reviewed the rendered tablet layout; captures cover phone, tablet orientations, desktop, and completed circles. Updated AGENTS, README, development, and this tracker. Responsive procedure and provenance reviewed unchanged because the existing enlargement and asset requirements still apply. Physical-device and print acceptance remain unverified. Local only, no push or deployment.
