@@ -36,6 +36,8 @@ try{
   await page.screenshot({path:'.runtime/note-houses/completed-desktop.png',fullPage:true});
   await page.locator('#level2').click();
   for(let q=0;q<6;q++){
+    assert.equal(await page.locator('.speaker-arrow').count(),1);
+    const cue=await page.evaluate(()=>{const arrow=document.querySelector('.speaker-arrow').getBoundingClientRect(),home=document.querySelector('.house.speaker .house-body').getBoundingClientRect();return Math.abs((arrow.left+arrow.width/2)-(home.left+home.width/2))<2&&arrow.bottom<home.top;});assert.equal(cue,true,'arrow points only to the current speaker');
     const text=await page.locator('#prompt').innerText(),m=text.match(/我是 ([A-G]) 音，住在我(上|下)(一|两|三)层的音是谁/);assert.ok(m);
     const spoken=await page.evaluate(()=>window.spokenQuestions.at(-1));assert.equal(spoken.text,text);assert.equal(spoken.voice,'zh-CN');
     assert.equal(await page.evaluate(()=>window.spokenQuestions.length),q+1);
@@ -53,7 +55,7 @@ try{
     assert.ok(sizes.every(s=>s.w>=44&&s.h>=44));
     const visible=await page.locator('#staff').evaluate(svg=>{
       const r=svg.getBoundingClientRect();
-      return [...svg.querySelectorAll('.staff-lines path,.house-art')].every(e=>{const b=e.getBoundingClientRect();return b.top>=r.top-1&&b.bottom<=r.bottom+1&&b.left>=r.left-1&&b.right<=r.right+1;});
+      return [...svg.querySelectorAll('.staff-lines path,.house-art,.speaker-arrow')].every(e=>{const b=e.getBoundingClientRect();return b.top>=r.top-1&&b.bottom<=r.bottom+1&&b.left>=r.left-1&&b.right<=r.right+1;});
     });
     assert.equal(visible,true,`complete staff/houses visible at ${width}x${height}`);
     const brace=await page.locator('#staff').evaluate(svg=>{
@@ -64,6 +66,10 @@ try{
     await page.locator('[data-letter="C"]').click();await page.locator('[data-house="3"]').click();assert.equal(await page.locator('.house.filled').count(),1);
     await page.locator('#reset').click();assert.equal(await page.locator('.house.filled').count(),0);
     await page.screenshot({path:`.runtime/note-houses/town-${width}x${height}.png`,fullPage:true});
+    await page.locator('#level2').click();
+    assert.equal(await page.locator('.speaker-arrow').count(),1);
+    const contained=await page.locator('.speaker-arrow').evaluate(arrow=>{const a=arrow.getBoundingClientRect(),s=document.querySelector('#staff').getBoundingClientRect();return a.top>=s.top&&a.bottom<=s.bottom&&a.left>=s.left&&a.right<=s.right;});assert.equal(contained,true,'speaker cue remains fully visible');
+    await page.screenshot({path:`.runtime/note-houses/speaker-${width}x${height}.png`,fullPage:true});
   }
   // Touch taps use the pointer path, not synthetic keyboard click behavior.
   const touch=await browser.newContext({viewport:{width:390,height:844},hasTouch:true,isMobile:true});const phone=await touch.newPage();await phone.goto(base+'/note-houses.html');await phone.locator('[data-letter="C"]').tap();await phone.locator('[data-house="3"]').tap();assert.equal(await phone.locator('.house.filled').count(),1);await touch.close();

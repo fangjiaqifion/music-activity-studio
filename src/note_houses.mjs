@@ -22,6 +22,11 @@ function renderStaff(){
   const [bx,by,bx2,by2]=braceGlyph.bounds,scaleX=14/(bx2-bx),scaleY=10*S/(by2-by);
   $('#staff').setAttribute('viewBox',`0 0 ${width} ${height}`);
   $('#staff').innerHTML=`<path class="grand-brace" d="${braceGlyph.path}" transform="translate(${8-bx*scaleX} ${top+by2*scaleY}) scale(${scaleX} ${-scaleY})"/><g class="staff-lines" stroke="#262820" stroke-width="1.3">${[0,1,2,3,4,6,7,8,9,10].map(n=>`<path d="M30 ${top+n*S}H${width-12}"/>`).join('')}<path d="M30 ${top}V${top+10*S}"/></g><g transform="translate(${clefX} ${top+4*S}) scale(${clefScale} ${-clefScale})"><path d="${clefGlyphs.treble.path}"/></g><g transform="translate(${clefX} ${top+10*S}) scale(${clefScale} ${-clefScale})"><path d="${clefGlyphs.bass.path}"/></g><path d="M${center(3).x-.55*S} ${top+5*S}H${center(3).x+.55*S}" stroke="black" stroke-width="1.3"/>${pitches.map((_,i)=>house(i)).join('')}`;
+  if(level===2){
+    const {x,y}=center(questions[round].home),tip=y-.3*S-5;
+    // A persistent visual cue identifies the speaker without marking the answer house.
+    $('#staff').insertAdjacentHTML('beforeend',`<g class="speaker-arrow" aria-label="正在说话的音符在这里" pointer-events="none"><path d="M${x} ${tip-30}V${tip}m-8 -9 8 9 8 -9" fill="none" stroke="#fffdf7" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/><path d="M${x} ${tip-30}V${tip}m-8 -9 8 9 8 -9" fill="none" stroke="#b64b2d" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/></g>`);
+  }
 }
 function renderTray(){
   $('#characters').innerHTML=letters.map(letter=>`<button class="character" data-letter="${letter}" aria-label="音符 ${letter}" aria-pressed="${selected===letter}" ${level===1&&residents.includes(letter)?'disabled':''}>${portrait(letter)}<span class="letter">${letter}</span></button>`).join('');
