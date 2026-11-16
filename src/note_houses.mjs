@@ -1,6 +1,7 @@
 import {clefGlyphs} from './cow_regions.mjs';
 import {braceGlyph} from './note_house_glyphs.mjs';
 import {createSpeech} from './balloon_speech.mjs';
+import {createPiano} from './note_house_piano.mjs';
 import {pitches,letters,houseCenter,layoutGeometry,makeQuestions,neighborPrompt} from './note_houses_core.mjs';
 const $=s=>document.querySelector(s), art='assets/note_house_characters.png';
 const crops={C:[16,74,222,340],D:[240,74,225,340],E:[476,74,205,340],F:[685,74,206,340],G:[900,74,215,340],A:[1121,74,218,340],B:[1340,74,225,340]};
@@ -60,8 +61,9 @@ function positionMismatch(){
   const r=home.getBoundingClientRect();cue.style.left=Math.max(105,Math.min(innerWidth-105,r.x+r.width/2))+'px';cue.style.top=Math.max(110,r.y-20)+'px';
 }
 const speech=createSpeech(window.speechSynthesis,window.SpeechSynthesisUtterance,()=>feedback('暂时无法自动朗读，请点“听题干”重听，或看上方题目。'));
+const piano=createPiano({onUnavailable:()=>{if(mismatchIndex===null)feedback('钢琴声暂时无法播放，请再点一次音符。');}});
 function cancelSpeech(){speech.stop();}
-function readQuestion(){speech.speak(level===2?prompt():prompt()+'。'+$('#instruction').textContent);}
+function readQuestion(){if(level===2)void piano.play(pitches[questions[round].home][0]);speech.speak(level===2?prompt():prompt()+'。'+$('#instruction').textContent);}
 let confettiTimer;
 function stopConfetti(){clearTimeout(confettiTimer);$('.confetti-layer')?.remove();}
 function celebrateAnswer(){
@@ -77,9 +79,9 @@ function celebrateAnswer(){
   }
   document.body.append(layer);confettiTimer=setTimeout(stopConfetti,1900);
 }
-function start(nextLevel=level){cancelSpeech();stopConfetti();clearMismatch();clearDrag();$('#celebration').close();level=nextLevel;selected=null;residents=Array(7).fill(null);questions=makeQuestions();round=0;solved=false;feedback('');render();focusScene(level===1?3:questions[0].home);if(level===2)readQuestion();}
+function start(nextLevel=level){cancelSpeech();piano.stop();stopConfetti();clearMismatch();clearDrag();$('#celebration').close();level=nextLevel;selected=null;residents=Array(7).fill(null);questions=makeQuestions();round=0;solved=false;feedback('');render();focusScene(level===1?3:questions[0].home);if(level===2)readQuestion();}
 function focusScene(){/* The complete grand staff remains visible; navigation never pans it. */}
-function finish(){cancelSpeech();$('#finish-copy').textContent=level===1?'七位朋友都找到了自己的家！接下来，听听他们想找哪位邻居。':'六次邻居挑战完成！你已经会沿着线和间，上下找朋友了。';$('#continue').hidden=level===2;$('#celebration').showModal();}
+function finish(){cancelSpeech();piano.stop();$('#finish-copy').textContent=level===1?'七位朋友都找到了自己的家！接下来，听听他们想找哪位邻居。':'六次邻居挑战完成！你已经会沿着线和间，上下找朋友了。';$('#continue').hidden=level===2;$('#celebration').showModal();}
 function place(index){
   if(level!==1||!selected)return;
   if(mismatchIndex!==null)return;
@@ -89,8 +91,9 @@ function place(index){
 }
 function choose(letter){
   if(mismatchIndex!==null)return;
-  if(level===1){selected=letter;renderTray();feedback(`选好了 ${letter}，点它的小屋吧。`);$(`[data-letter="${letter}"]`).focus({preventScroll:true});return;}
+  if(level===1){void piano.play(letter);selected=letter;renderTray();feedback(`选好了 ${letter}，点它的小屋吧。`);$(`[data-letter="${letter}"]`).focus({preventScroll:true});return;}
   if(solved)return;
+  void piano.play(letter);
   selected=letter;
   if(letter===questions[round].answer){solved=true;cancelSpeech();feedback('答对啦，找到邻居了！');renderTray();celebrateAnswer();$('#next').hidden=false;$('#next').focus({preventScroll:true});}
   else{cancelSpeech();renderTray();showMismatch(questions[round].home,'找错了，再找找');$(`[data-letter="${letter}"]`).focus({preventScroll:true});}
@@ -98,17 +101,18 @@ function choose(letter){
 $('#characters').addEventListener('click',e=>{if(e.detail!==0)return;const b=e.target.closest('[data-letter]');if(b&&!b.disabled)choose(b.dataset.letter);});
 // Pointer capture supports touch drags and tap-to-select without native HTML drag behavior.
 $('#characters').addEventListener('pointerdown',e=>{const b=e.target.closest('[data-letter]');if(drag||mismatchIndex!==null||!b||b.disabled||e.button!==0)return;drag={id:e.pointerId,letter:b.dataset.letter,x:e.clientX,y:e.clientY,moved:false,button:b};b.setPointerCapture(e.pointerId);});
-document.addEventListener('pointermove',e=>{if(!drag||drag.id!==e.pointerId)return;if(level===2)return;if(Math.hypot(e.clientX-drag.x,e.clientY-drag.y)>8&&!drag.moved){drag.moved=true;const ghost=document.createElement('div');ghost.className='drag-ghost';ghost.innerHTML=portrait(drag.letter);document.body.append(ghost);drag.ghost=ghost;drag.button.classList.add('dragging');document.body.classList.add('drag-active');}if(drag.ghost){drag.ghost.style.left=e.clientX+'px';drag.ghost.style.top=e.clientY+'px';}});
+document.addEventListener('pointermove',e=>{if(!drag||drag.id!==e.pointerId)return;if(level===2)return;if(Math.hypot(e.clientX-drag.x,e.clientY-drag.y)>8&&!drag.moved){drag.moved=true;void piano.play(drag.letter);const ghost=document.createElement('div');ghost.className='drag-ghost';ghost.innerHTML=portrait(drag.letter);document.body.append(ghost);drag.ghost=ghost;drag.button.classList.add('dragging');document.body.classList.add('drag-active');}if(drag.ghost){drag.ghost.style.left=e.clientX+'px';drag.ghost.style.top=e.clientY+'px';}});
 function clearDrag(){if(!drag)return;drag.ghost?.remove();drag.button.classList.remove('dragging');document.body.classList.remove('drag-active');drag=null;}
 document.addEventListener('pointerup',e=>{if(!drag||drag.id!==e.pointerId)return;const {moved,letter}=drag;const target=document.elementFromPoint(e.clientX,e.clientY)?.closest('[data-house]');clearDrag();if(moved){selected=letter;renderTray();if(target)place(Number(target.dataset.house));else feedback('点选一座小屋，或再拖一次。');}else choose(letter);});
 document.addEventListener('pointercancel',clearDrag);
 $('#characters').addEventListener('lostpointercapture',e=>{if(drag?.id===e.pointerId)clearDrag();});
-$('#staff').addEventListener('click',e=>{const g=e.target.closest('[data-house]');if(g)place(Number(g.dataset.house));});
-$('#staff').addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){const g=e.target.closest('[data-house]');if(g){e.preventDefault();place(Number(g.dataset.house));$(`[data-house="${g.dataset.house}"]`)?.focus({preventScroll:true});}}});
+function activateHouse(index){if(mismatchIndex!==null)return;const resident=level===1?residents[index]:(index===questions[round].home?pitches[index][0]:null);if(resident&&(level===2||!selected)){void piano.play(resident);return;}place(index);}
+$('#staff').addEventListener('click',e=>{const g=e.target.closest('[data-house]');if(g)activateHouse(Number(g.dataset.house));});
+$('#staff').addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){const g=e.target.closest('[data-house]');if(g){e.preventDefault();activateHouse(Number(g.dataset.house));$(`[data-house="${g.dataset.house}"]`)?.focus({preventScroll:true});}}});
 $('#level1').onclick=()=>start(1);$('#level2').onclick=()=>start(2);$('#reset').onclick=()=>start();
-$('#next').onclick=()=>{if(!solved)return;stopConfetti();if(round===5){finish();return;}cancelSpeech();round++;solved=false;selected=null;feedback('');render();focusScene(questions[round].home);readQuestion();};
+$('#next').onclick=()=>{if(!solved)return;piano.stop();stopConfetti();if(round===5){finish();return;}cancelSpeech();round++;solved=false;selected=null;feedback('');render();focusScene(questions[round].home);readQuestion();};
 $('#again').onclick=()=>start();$('#continue').onclick=()=>start(2);$('#close-finish').onclick=()=>$('#celebration').close();
 $('#sound').onclick=readQuestion;
-window.addEventListener('pagehide',()=>{cancelSpeech();stopConfetti();clearMismatch();clearDrag();});document.addEventListener('visibilitychange',()=>{if(document.hidden){cancelSpeech();stopConfetti();clearMismatch();clearDrag();}});
+window.addEventListener('pagehide',()=>{cancelSpeech();piano.stop();stopConfetti();clearMismatch();clearDrag();});document.addEventListener('visibilitychange',()=>{if(document.hidden){cancelSpeech();piano.stop();stopConfetti();clearMismatch();clearDrag();}});
 start(1);
 new ResizeObserver(()=>{renderStaff();positionMismatch();}).observe($('.staff-scroll'));

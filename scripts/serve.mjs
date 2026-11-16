@@ -19,6 +19,7 @@ const allowed = new Set(
     : await runtimeFiles(root),
 );
 const types = {
+  ".mp3": "audio/mpeg",
   ".html": "text/html; charset=utf-8",
   ".css": "text/css",
   ".mjs": "text/javascript",
