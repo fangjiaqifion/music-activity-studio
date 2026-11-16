@@ -38,7 +38,8 @@ try {
   for (const name of ["A3", "C4", "Ds4", "Fs4"]) {
     const r = await page.request.get(base + `/assets/piano_${name}.mp3`);
     assert.equal(r.status(), 200);
-    assert.match(r.headers()["content-type"], /audio\/mpeg/);
+    // GitHub Pages serves MP3 as audio/mp3; the local server uses audio/mpeg.
+    assert.match(r.headers()["content-type"], /^audio\/(mpeg|mp3)(?:;|$)/);
   }
   for (const letter of "CDEFGAB") {
     const count = await page.evaluate(() => window.pianoEvents.length);

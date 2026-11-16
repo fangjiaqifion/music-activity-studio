@@ -2,7 +2,7 @@
 
 Last updated: 2026-11-16
 
-A music activity studio with six games, ten interactive worksheet adaptations, and a local Note Neighborhood prototype, inspired by FANG, Jiaqi's illustrated worksheets.
+A music activity studio with six games, ten interactive worksheet adaptations, and Note Neighborhood, inspired by FANG, Jiaqi's illustrated worksheets.
 The Chinese interface is intended for young piano beginners, with adult support where
 needed. Usability and educational effects have not been established.
 
@@ -26,7 +26,7 @@ These are newly generated exercises, not replacements for original worksheet mas
 
 ## Play and run locally
 
-The local `note-houses.html` prototype offers two levels: place seven whole-note characters in G3–F4 houses, then identify neighbors one to three staff steps above or below a resident. Dragging, tap-then-place, and keyboard answers are supported. Selecting a character plays its piano pitch in G3–F4; neighbor prompts play the resident note, and occupied houses can be tapped to hear it again. The complete grand staff remains visible, with houses precisely centered on lines/spaces. Neighbor prompts are automatically read aloud, with a replay button; correct answers trigger a brief celebration. A grand-staff brace connects the two staves. Its selector link is separate from the ten worksheets. This new prototype has not been published.
+`note-houses.html` offers two levels: place seven whole-note characters in G3–F4 houses, then identify neighbors one to three staff steps above or below a resident. Dragging, tap-then-place, and keyboard answers are supported. Selecting a character plays its piano pitch in G3–F4; neighbor prompts play the resident note, and occupied houses can be tapped to hear it again. The complete grand staff remains visible, with houses precisely centered on lines/spaces. Neighbor prompts are automatically read aloud, with a replay button; correct answers trigger a brief celebration. A grand-staff brace connects the two staves. Its selector link is separate from the ten worksheets. [Play Note Neighborhood](https://fangjiaqifion.github.io/music-activity-studio/releases/b6df23116434/note-houses.html). The reviewed game is now published; release evidence is recorded in the tracker.
 
 The GitHub Pages version is hosted at
 [Music Activity Studio](https://fangjiaqifion.github.io/music-activity-studio/),

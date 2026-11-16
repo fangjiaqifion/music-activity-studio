@@ -119,7 +119,7 @@ Each activity uses nine questions selected from 36 distinct clef-anchor/target p
 
 `keyboard.html`, `keyboard.css`, and `src/keyboard*.mjs` own three black-key coloring keyboards (one each of C–E, F–B, and C–B) and two circle/count keyboards. A complete group is C–B (seven white keys and five black keys); cropped edge groups do not count. Do not presegment or label answer groups. Preserve correct keyboard geometry and proportional scaling of key width and height, first/last-key circle creation, circle removal, whole-keyboard overview, circle-then-count staging, direct count replacement, horizontal scrolling when enlarged, enlargement, keyboard access, and aggregate-only feedback. Original worksheet masters remain unchanged.
 
-## Note neighborhood local prototype
+## Note Neighborhood
 
 `note-houses.html`, `note-houses.css`, and `src/note_houses*.mjs` own a separate two-level game. Use the user-selected accessory-free seven-character artwork, individually clipped from the original sheet. Houses use the selected softly peaked thick roof and have no pitch labels. The complete grand staff, both clefs, and all seven houses must remain visible together without scene scrolling. Recompute notation geometry from the available scene dimensions; never stretch houses or clefs nonuniformly. House centers are G3–F4, half a staff spacing apart, with a short middle-C ledger. House ink height is 60% of staff spacing: space houses keep approximately 20% clearance on either side; line houses straddle the line. Preserve a separate minimum 44px interaction region without enlarging the visible artwork.
 
