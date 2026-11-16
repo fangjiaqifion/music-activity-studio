@@ -606,3 +606,7 @@ Verification: 25 unit tests, full keyboard coloring/circle/count/celebration/res
 The six coloring keyboards now include two C–E fragments, two F–B fragments, and two complete C–B groups (20 black keys total). Updated unique answer offsets and scoring coverage. Keyboard height now scales with white-key width at 184:44, and black-key length remains 108:184 of white-key length. Whole-keyboard overviews, enlarged views, and full-height circles use the same proportions. The circle-before-count flow is unchanged.
 
 Verification: all 25 unit tests pass; complete browser flow passes with 20 coloring targets; white-key width/height ratios are checked at phone, tablet portrait/landscape, and desktop widths. Inspected the tablet rendering. Updated AGENTS, README, and this tracker; development, responsive procedure, and provenance reviewed unchanged because commands, interaction stages, and asset ownership remain accurate. Local only; physical-device and print acceptance remain unverified.
+
+## O-013 reduced coloring set, 2026-11-16
+
+Reduced the upper exercise to exactly three keyboards: one C–E two-black-key fragment, one F–B three-black-key fragment, and one complete C–B group (10 black keys). Updated speech, scoring, browser assertions, AGENTS, README, and development wording. All 25 unit tests and the complete keyboard browser flow pass, including viewport proportion checks. Lower circle/count practice and scaling are unchanged. Responsive procedure and provenance reviewed unchanged because no layout rules or assets changed. Local only, no publication.
