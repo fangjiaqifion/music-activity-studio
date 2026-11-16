@@ -1,6 +1,6 @@
 import { createSpeech } from "./balloon_speech.mjs";
 import { readProfiles, saveProfiles, dateLabel } from "./balloon_profiles.mjs";
-import { makeStaffPage, scoreStaffPage } from "./staff_worksheets_core.mjs";
+import { makeStaffPage, makeTreblePage, scoreStaffPage } from "./staff_worksheets_core.mjs";
 const kind = document.body.dataset.activity;
 const relative = ['treble','bass','alto'].includes(kind);
 const clefInfo = {treble:['高音谱号','Treble clef','G',2,'\uE050'],bass:['低音谱号','Bass clef','F',6,'\uE062'],alto:['中音谱号','Alto clef','C',4,'\uE05C']};
@@ -86,13 +86,15 @@ document.querySelector("#profile-form").addEventListener("submit", (event) => {
 });
 showProfile();
 if (relative) document.querySelector("#next").textContent = "重新练习 · Try again ↻";
+if (kind === 'treble') document.querySelector('#next').textContent = '换一组 9 题 · New set ↻';
+let trebleRound = 0;
 setInterval(showProfile, 60000);
 
 const names = ["一", "二", "三", "四", "五"];
 const positionLabel = (p) =>
   `${names[Math.floor(p / 2)]}${p % 2 ? "间" : "线"} · ${p % 2 ? "Space" : "Line"} ${Math.floor(p / 2) + 1}`;
 function staff(notes = [], interactive = false, index = 0, clef = null, referenceColor = true, clefPosition = 2) {
-  return `<svg viewBox="${clef ? "0 -10 240 155" : "0 0 240 130"}" aria-label="五线谱，从下往上数"><g stroke="#35312b" stroke-width="2">${[0, 2, 4, 6, 8].map((p) => `<path d="M20 ${106 - p * 10}H220"/>`).join("")}</g>${clef ? `<text class="clef" x="22" y="${106 - (clef === 'treble' ? (clefPosition-2)*10 : 0)}" font-size="100">${clefInfo[clef][4]}</text>` : ""}${notes.map(([p, x], n) => `<ellipse cx="${x}" cy="${106 - p * 10}" rx="12" ry="8" fill="white" fill-opacity="0" stroke="${clef && referenceColor && n === 0 ? "#bf443c" : "#26221e"}" stroke-width="3" transform="rotate(-15 ${x} ${106 - p * 10})"/>`).join("")}${interactive ? Array.from({ length: 9 }, (_, p) => `<g class="staff-target" tabindex="0" role="button" data-index="${index}" data-value="${p}" aria-label="第 ${index + 1} 题，${positionLabel(p)}"><rect x="18" y="${101 - p * 10}" width="204" height="10" fill="transparent"/><title>${positionLabel(p)}</title></g>`).join("") : ""}</svg>`;
+  return `<svg viewBox="${clef === "treble" ? "0 -65 240 235" : clef ? "0 -10 240 155" : "0 0 240 130"}" aria-label="五线谱，从下往上数"><g stroke="#35312b" stroke-width="2">${[0, 2, 4, 6, 8].map((p) => `<path d="M20 ${106 - p * 10}H220"/>`).join("")}</g>${clef ? `<text class="clef" x="22" y="${106 - (clef === 'treble' ? (clefPosition-2)*10 : 0)}" font-size="100">${clefInfo[clef][4]}</text>` : ""}${notes.map(([p, x], n) => `<ellipse cx="${x}" cy="${106 - p * 10}" rx="12" ry="8" fill="white" fill-opacity="0" stroke="${clef && referenceColor && n === 0 ? "#bf443c" : "#26221e"}" stroke-width="3" transform="rotate(-15 ${x} ${106 - p * 10})"/>`).join("")}${interactive ? Array.from({ length: 9 }, (_, p) => `<g class="staff-target" tabindex="0" role="button" data-index="${index}" data-value="${p}" aria-label="第 ${index + 1} 题，${positionLabel(p)}"><rect x="18" y="${101 - p * 10}" width="204" height="10" fill="transparent"/><title>${positionLabel(p)}</title></g>`).join("") : ""}</svg>`;
 }
 function sunshineGuide() {
  return '<section class="sunshine-guide"><h2>两个音，比高低 · Compare two notes</h2><div class="example-grid">'+[['up',1,6,'↗ 更高 · Higher'],['same',4,4,'→ 一样高 · Same'],['down',7,2,'↘ 更低 · Lower']].map(([_,a,b,label])=>'<div>'+staff([[a,80],[b,160]])+'<p>'+label+'</p></div>').join('')+'</div><p>从左往右看，比较第二个音和第一个音。<br>Compare the second note with the first.</p></section>';
@@ -138,7 +140,8 @@ function render() {
 }
 function next() {
   stop();
-  items = makeStaffPage(kind);
+  items = kind === 'treble' ? makeTreblePage(undefined, trebleRound++) : makeStaffPage(kind);
+  if (kind === 'treble') document.querySelector('#total').textContent = items.length;
   answers = items.map(() => null);
   feedback.textContent = kind === "ladybirds" ? "在指定的线或间画音符。" : kind === "treble" ? "以高音谱号勾住的 G 音为基准，推算音名。" : relative ? "根据红色已知音，选择黑色音符的音名。" : "比较两个音，选好了就点打勾吧。";
   render();

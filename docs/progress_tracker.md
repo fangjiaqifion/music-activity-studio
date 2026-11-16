@@ -540,3 +540,10 @@ http://127.0.0.1:8810/releases/baea09b16f51/treble.html. No push or deployment.
 Replaced the mistaken fixed-G interpretation with four moving G-clef anchors. Updated scoring, the introductory example, and independent browser answer derivation from rendered clef coordinates. All 23 Node tests pass. Local review: http://127.0.0.1:8812/treble.html. No push or publication. Documentation reviewed and updated in AGENTS, README, and development; source preservation and responsive contracts remain applicable.
 
 Verification: complete staff browser flows pass; all 60 worksheet/hub responsive cases pass across phone, iPad, and desktop. Inspected the rendered introduction and corrected stale HTML instructions.
+
+
+### O-009 short daily practice, 2026-11-16
+
+Supersedes the 24-question description: O-009 now shows nine questions. A deterministic 36-pair pool combines G anchors on lines 1–4 with all nine internal target positions. Shanghai calendar dates select disjoint nine-pair sets across four consecutive days; the cycle repeats every four days. Refreshing retains the daily set; New set advances to the next disjoint set. No student data or practice history is stored. Expanded treble SVG bounds prevent moved clefs from being clipped. O-010/O-011 are unchanged.
+
+Verification: 23 Node tests, complete staff browser flows, and all 60 worksheet/hub responsive cases pass. Actual font glyph bounds fit their SVG viewports; the desktop introduction was visually inspected. Source artwork/provenance and responsive requirements reviewed unchanged. Local review only; no push or deployment.

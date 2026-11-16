@@ -60,13 +60,13 @@ try {
     if (kind === 'treble') {
       assert.equal(await page.locator('.sunshine-guide ellipse').count(), 2);
       assert.equal(await page.locator('.staff-card .reference-label').count(), 0);
-      assert.equal(await page.locator('.staff-card ellipse').count(), 24);
+      assert.equal(await page.locator('.staff-card ellipse').count(), 9);
       assert.equal(await page.locator('.staff-card ellipse[stroke="#bf443c"]').count(), 0);
     }
     await page.locator("#check").click();
     assert.match(
       await page.locator("#feedback").innerText(),
-      new RegExp(["ladybirds","sunshine"].includes(kind) ? "12" : "24"),
+      new RegExp(["ladybirds","sunshine"].includes(kind) ? "12" : kind === "treble" ? "9" : "24"),
     );
     await page.locator(".profiles summary").click();
     await page.locator("#student-name").fill("QA");
