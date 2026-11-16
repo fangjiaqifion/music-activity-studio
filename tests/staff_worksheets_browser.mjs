@@ -57,7 +57,7 @@ try {
       );
       await page.setViewportSize({ width: 1100, height: 1000 });
     }
-    if (kind === 'treble') {
+    if (['treble','bass','alto'].includes(kind)) {
       assert.equal(await page.locator('.sunshine-guide ellipse').count(), 2);
       assert.equal(await page.locator('.staff-card .reference-label').count(), 0);
       assert.equal(await page.locator('.staff-card ellipse').count(), 9);
@@ -66,7 +66,7 @@ try {
     await page.locator("#check").click();
     assert.match(
       await page.locator("#feedback").innerText(),
-      new RegExp(["ladybirds","sunshine"].includes(kind) ? "12" : kind === "treble" ? "9" : "24"),
+      new RegExp(["ladybirds","sunshine"].includes(kind) ? "12" : "9"),
     );
     await page.locator(".profiles summary").click();
     await page.locator("#student-name").fill("QA");
@@ -80,16 +80,12 @@ try {
           const text = card.querySelector("p").textContent;
           const number = Number(text.match(/(\d)$/)[1]);
           value = String((number - 1) * 2 + (text.includes("Space") ? 1 : 0));
-        } else if (document.body.dataset.activity === 'treble') {
+        } else if (['treble','bass','alto'].includes(document.body.dataset.activity)) {
+          const kind=document.body.dataset.activity;
           const note=card.querySelector('ellipse');
           const position=(106-Number(note.getAttribute('cy')))/10;
-          const anchor=2+(106-Number(card.querySelector('.clef').getAttribute('y')))/10;
-          value='ABCDEFG'[((6+position-anchor)%7+7)%7];
-        } else if (['bass','alto'].includes(document.body.dataset.activity)) {
-          const notes=[...card.querySelectorAll('ellipse')];
-          const steps=Math.round((Number(notes[0].getAttribute('cy'))-Number(notes[1].getAttribute('cy')))/10);
-          const letter=card.querySelector('.reference-label strong').textContent;
-          value='ABCDEFG'[(('ABCDEFG'.indexOf(letter)+steps)%7+7)%7];
+          const anchor={treble:2,bass:6,alto:4}[kind]+(106-Number(card.querySelector('.clef').getAttribute('y')))/10;
+          value='ABCDEFG'[(({treble:6,bass:5,alto:2}[kind]+position-anchor)%7+7)%7];
         } else {
           const notes = [...card.querySelectorAll("ellipse")];
           if (notes.length === 1) {
@@ -127,7 +123,7 @@ try {
       format: "A4",
       printBackground: true,
     });
-    if (kind === 'treble') {
+    if (['treble','bass','alto'].includes(kind)) {
       assert.equal(await page.locator('.answer-tools').count(),0);
       const selected = page.locator('[data-index="0"][aria-pressed="true"]');
       const previous = await selected.getAttribute('data-value');

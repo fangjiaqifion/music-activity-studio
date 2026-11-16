@@ -140,7 +140,7 @@ The suite checks blank submissions, complete answers, erasing, regeneration, loc
 profiles, five celebration characters, failed resources, mobile overflow, and print
 capture. `npm test` checks 1,000 pages per type, nine-position placement coverage, pair-only direction
 semantics and reference-relative note names, and aggregate scoring. SVG placement targets support Enter and Space.
-O-008 has only twelve pair comparisons. O-009/O-010/O-011 are `treble.html`, `bass.html`, and `alto.html`. O-009 has nine daily movable-clef questions; O-010/O-011 each retain 24 unknowns. O-010/O-011 retain their previous four reference groups. The same suite covers their complete-answer, correction, erasing, and keyboard flows. Pointer placement must not preserve SVG focus outlines. Original worksheet masters remain unchanged; corrected English applies to digital UI.
+O-008 has only twelve pair comparisons. O-009/O-010/O-011 are `treble.html`, `bass.html`, and `alto.html`. All three have nine daily movable-clef questions. The same suite covers complete answers, direct answer replacement, and keyboard flows. Pointer placement must not preserve SVG focus outlines. Original worksheet masters remain unchanged; corrected English applies to digital UI.
 
 ## Required responsive acceptance
 
@@ -150,6 +150,6 @@ run the full existing-content layout matrix and inspect captures. A4 print outpu
 is optional and never substitutes for web-game verification.
 
 
-## O-009 daily movable-clef practice
+## O-009 through O-011 daily movable-clef practice
 
-O-009 uses nine questions selected from 36 distinct G-anchor/target pairs (anchor lines 1–4 and nine internal staff positions). Shanghai dates select disjoint sets across four consecutive days; the four-day cycle repeats. Refresh keeps the daily set; New set advances it. Students click A–G directly and click another letter to correct an answer; there is no selection/eraser toolbar on O-009. Its example labels G and A with a curved arrow and one-step explanation, without cartoon decoration. Clef glyphs have expanded SVG bounds. All relative-note A–G controls use one row. No original masters are modified.
+Each activity uses nine questions selected from 36 distinct clef-anchor/target pairs (G for O-009, F for O-010, C for O-011) (anchor lines 1–4 and nine internal staff positions). Shanghai dates select disjoint sets across four consecutive days; the four-day cycle repeats. Refresh keeps the daily set; New set advances it. Students click A–G directly and click another letter to correct an answer; there is no selection/eraser toolbar on these three activities. Each example labels its anchor and the next higher note (G/A, F/G, C/D) with a curved arrow and one-step explanation, without cartoon decoration. Clef glyphs have expanded SVG bounds. All relative-note A–G controls use one row. No original masters are modified.

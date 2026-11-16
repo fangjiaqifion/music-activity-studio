@@ -84,11 +84,11 @@ offers enlarged scene tiles for easier viewing and answering on small screens.
 The selector also includes **O-007 Draw the Notes** (`ladybirds.html`)
 and **O-008 Compare Two Notes** (`sunshine.html`). Place noteheads
 by tapping a staff position, or compare the second note with the first using higher/same/lower arrows. O-008 does not ask for line or space numbers.
-**O-009 Treble**, **O-010 Bass**, and **O-011 Alto** (`treble.html`, `bass.html`, `alto.html`) offer relative note-name exercises. O-009 introduces third-line G and A with a curved reasoning arrow, then provides nine daily movable-clef questions. O-010/O-011 retain their earlier reference-group behavior pending review. All follow the existing local classroom conventions. All activities reflow for
+**O-009 Treble**, **O-010 Bass**, and **O-011 Alto** (`treble.html`, `bass.html`, `alto.html`) offer relative note-name exercises. O-009 introduces third-line G and A with a curved reasoning arrow, then provides nine daily movable-clef questions. O-010/O-011 now apply the same approach to F/C clefs, with F–G and C–D reasoning examples. All follow the existing local classroom conventions. All activities reflow for
 phones, iPads/tablets, and computers; the original worksheet artwork does not impose
 a paper layout on the screen.
 
 
-## O-009 daily movable-clef practice
+## O-009 through O-011 daily movable-clef practice
 
-O-009 uses nine questions selected from 36 distinct G-anchor/target pairs (anchor lines 1–4 and nine internal staff positions). Shanghai dates select disjoint sets across four consecutive days; the four-day cycle repeats. Refresh keeps the daily set; New set advances it. Students click A–G directly and click another letter to correct an answer; there is no selection/eraser toolbar on O-009. Its example labels G and A with a curved arrow and one-step explanation, without cartoon decoration. Clef glyphs have expanded SVG bounds. All relative-note A–G controls use one row. No original masters are modified.
+Each activity uses nine questions selected from 36 distinct clef-anchor/target pairs (G for O-009, F for O-010, C for O-011) (anchor lines 1–4 and nine internal staff positions). Shanghai dates select disjoint sets across four consecutive days; the four-day cycle repeats. Refresh keeps the daily set; New set advances it. Students click A–G directly and click another letter to correct an answer; there is no selection/eraser toolbar on these three activities. Each example labels its anchor and the next higher note (G/A, F/G, C/D) with a curved arrow and one-step explanation, without cartoon decoration. Clef glyphs have expanded SVG bounds. All relative-note A–G controls use one row. No original masters are modified.
