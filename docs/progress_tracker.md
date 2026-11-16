@@ -538,3 +538,5 @@ http://127.0.0.1:8810/releases/baea09b16f51/treble.html. No push or deployment.
 ## O-009 movable-clef review, 2026-11-16
 
 Replaced the mistaken fixed-G interpretation with four moving G-clef anchors. Updated scoring, the introductory example, and independent browser answer derivation from rendered clef coordinates. All 23 Node tests pass. Local review: http://127.0.0.1:8812/treble.html. No push or publication. Documentation reviewed and updated in AGENTS, README, and development; source preservation and responsive contracts remain applicable.
+
+Verification: complete staff browser flows pass; all 60 worksheet/hub responsive cases pass across phone, iPad, and desktop. Inspected the rendered introduction and corrected stale HTML instructions.
