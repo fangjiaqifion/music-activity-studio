@@ -44,6 +44,21 @@ function render(){
   renderStaff();renderTray();
 }
 function feedback(text){$('#feedback').textContent=text;}
+let mismatchTimer,mismatchIndex=null;
+function clearMismatch(){clearTimeout(mismatchTimer);mismatchIndex=null;$('.mismatch-cue')?.remove();$('#feedback').classList.remove('mismatch-feedback');}
+function showMismatch(index){
+  clearMismatch();mismatchIndex=index;
+  const cue=document.createElement('div');cue.className='mismatch-cue';cue.setAttribute('aria-hidden','true');
+  cue.innerHTML='<span class="mismatch-cross">×</span><strong>还没到家，再试一次</strong>';
+  document.body.append(cue);positionMismatch();
+  feedback('✕ 还没到家，再试一次');$('#feedback').classList.add('mismatch-feedback');
+  mismatchTimer=setTimeout(()=>{clearMismatch();feedback(selected?`选好了 ${selected}，点它的小屋吧。`:'');},2000);
+}
+function positionMismatch(){
+  const cue=$('.mismatch-cue'),home=$(`[data-house="${mismatchIndex}"] .house-body`);
+  if(!cue||!home)return;
+  const r=home.getBoundingClientRect();cue.style.left=Math.max(105,Math.min(innerWidth-105,r.x+r.width/2))+'px';cue.style.top=Math.max(110,r.y-20)+'px';
+}
 const speech=createSpeech(window.speechSynthesis,window.SpeechSynthesisUtterance,()=>feedback('暂时无法自动朗读，请点“听题干”重听，或看上方题目。'));
 function cancelSpeech(){speech.stop();}
 function readQuestion(){speech.speak(level===2?prompt():prompt()+'。'+$('#instruction').textContent);}
@@ -62,16 +77,18 @@ function celebrateAnswer(){
   }
   document.body.append(layer);confettiTimer=setTimeout(stopConfetti,1900);
 }
-function start(nextLevel=level){cancelSpeech();stopConfetti();clearDrag();$('#celebration').close();level=nextLevel;selected=null;residents=Array(7).fill(null);questions=makeQuestions();round=0;solved=false;feedback('');render();focusScene(level===1?3:questions[0].home);if(level===2)readQuestion();}
+function start(nextLevel=level){cancelSpeech();stopConfetti();clearMismatch();clearDrag();$('#celebration').close();level=nextLevel;selected=null;residents=Array(7).fill(null);questions=makeQuestions();round=0;solved=false;feedback('');render();focusScene(level===1?3:questions[0].home);if(level===2)readQuestion();}
 function focusScene(){/* The complete grand staff remains visible; navigation never pans it. */}
 function finish(){cancelSpeech();$('#finish-copy').textContent=level===1?'七位朋友都找到了自己的家！接下来，听听他们想找哪位邻居。':'六次邻居挑战完成！你已经会沿着线和间，上下找朋友了。';$('#continue').hidden=level===2;$('#celebration').showModal();}
 function place(index){
   if(level!==1||!selected)return;
-  if(pitches[index][0]!==selected){feedback('再看看高低位置，试一试。');return;}
+  if(mismatchIndex!==null)return;
+  if(pitches[index][0]!==selected){showMismatch(index);return;}
   residents[index]=selected;selected=null;feedback('找到家啦！');render();celebrateAnswer();
   if(residents.every(Boolean))finish();
 }
 function choose(letter){
+  if(level===1&&mismatchIndex!==null)return;
   if(level===1){selected=letter;renderTray();feedback(`选好了 ${letter}，点它的小屋吧。`);$(`[data-letter="${letter}"]`).focus({preventScroll:true});return;}
   if(solved)return;
   selected=letter;
@@ -80,7 +97,7 @@ function choose(letter){
 }
 $('#characters').addEventListener('click',e=>{if(e.detail!==0)return;const b=e.target.closest('[data-letter]');if(b&&!b.disabled)choose(b.dataset.letter);});
 // Pointer capture supports touch drags and tap-to-select without native HTML drag behavior.
-$('#characters').addEventListener('pointerdown',e=>{const b=e.target.closest('[data-letter]');if(drag||!b||b.disabled||e.button!==0)return;drag={id:e.pointerId,letter:b.dataset.letter,x:e.clientX,y:e.clientY,moved:false,button:b};b.setPointerCapture(e.pointerId);});
+$('#characters').addEventListener('pointerdown',e=>{const b=e.target.closest('[data-letter]');if(drag||mismatchIndex!==null||!b||b.disabled||e.button!==0)return;drag={id:e.pointerId,letter:b.dataset.letter,x:e.clientX,y:e.clientY,moved:false,button:b};b.setPointerCapture(e.pointerId);});
 document.addEventListener('pointermove',e=>{if(!drag||drag.id!==e.pointerId)return;if(level===2)return;if(Math.hypot(e.clientX-drag.x,e.clientY-drag.y)>8&&!drag.moved){drag.moved=true;const ghost=document.createElement('div');ghost.className='drag-ghost';ghost.innerHTML=portrait(drag.letter);document.body.append(ghost);drag.ghost=ghost;drag.button.classList.add('dragging');document.body.classList.add('drag-active');}if(drag.ghost){drag.ghost.style.left=e.clientX+'px';drag.ghost.style.top=e.clientY+'px';}});
 function clearDrag(){if(!drag)return;drag.ghost?.remove();drag.button.classList.remove('dragging');document.body.classList.remove('drag-active');drag=null;}
 document.addEventListener('pointerup',e=>{if(!drag||drag.id!==e.pointerId)return;const {moved,letter}=drag;const target=document.elementFromPoint(e.clientX,e.clientY)?.closest('[data-house]');clearDrag();if(moved){selected=letter;renderTray();if(target)place(Number(target.dataset.house));else feedback('点选一座小屋，或再拖一次。');}else choose(letter);});
@@ -92,6 +109,6 @@ $('#level1').onclick=()=>start(1);$('#level2').onclick=()=>start(2);$('#reset').
 $('#next').onclick=()=>{if(!solved)return;stopConfetti();if(round===5){finish();return;}cancelSpeech();round++;solved=false;selected=null;feedback('');render();focusScene(questions[round].home);readQuestion();};
 $('#again').onclick=()=>start();$('#continue').onclick=()=>start(2);$('#close-finish').onclick=()=>$('#celebration').close();
 $('#sound').onclick=readQuestion;
-window.addEventListener('pagehide',()=>{cancelSpeech();stopConfetti();clearDrag();});document.addEventListener('visibilitychange',()=>{if(document.hidden){cancelSpeech();stopConfetti();clearDrag();}});
+window.addEventListener('pagehide',()=>{cancelSpeech();stopConfetti();clearMismatch();clearDrag();});document.addEventListener('visibilitychange',()=>{if(document.hidden){cancelSpeech();stopConfetti();clearMismatch();clearDrag();}});
 start(1);
-new ResizeObserver(()=>renderStaff()).observe($('.staff-scroll'));
+new ResizeObserver(()=>{renderStaff();positionMismatch();}).observe($('.staff-scroll'));

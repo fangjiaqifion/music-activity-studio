@@ -18,8 +18,18 @@ try{
   await page.locator('.house').first().waitFor();
   // Keyboard selection, incorrect destination, and precise line/space bounds.
   await page.locator('[data-letter="C"]').press('Enter');
+  await page.clock.install();await page.clock.pauseAt(new Date(Date.now()+1000));
   await page.locator('[data-house="2"]').press('Enter');
   assert.equal(await page.locator('.house.filled').count(),0);
+  await page.locator('.mismatch-cue').waitFor();
+  await page.screenshot({path:'.runtime/note-houses/mismatch-desktop.png',fullPage:true});
+  await page.locator('[data-house="3"]').press('Enter');
+  assert.equal(await page.locator('.house.filled').count(),0,'feedback remains readable before accepting another placement');
+  await page.clock.runFor(1900);
+  assert.equal(await page.locator('.mismatch-cue').count(),1,'incorrect feedback persists for two seconds');
+  await page.clock.runFor(101);
+  assert.equal(await page.locator('.mismatch-cue').count(),0);
+  await page.clock.resume();
   await page.locator('[data-house="3"]').press('Enter');
   assert.equal(await page.locator('.house.filled').count(),1);
   const bounds=await page.locator('.house').evaluateAll(h=>h.map(g=>({index:Number(g.dataset.house),box:g.querySelector('.house-body').getBBox(),roof:g.querySelector('path:nth-of-type(2)').getBBox()})));
@@ -72,7 +82,7 @@ try{
     await page.screenshot({path:`.runtime/note-houses/speaker-${width}x${height}.png`,fullPage:true});
   }
   // Touch taps use the pointer path, not synthetic keyboard click behavior.
-  const touch=await browser.newContext({viewport:{width:390,height:844},hasTouch:true,isMobile:true});const phone=await touch.newPage();await phone.goto(base+'/note-houses.html');await phone.locator('[data-letter="C"]').tap();await phone.locator('[data-house="3"]').tap();assert.equal(await phone.locator('.house.filled').count(),1);await touch.close();
+  const touch=await browser.newContext({viewport:{width:390,height:844},hasTouch:true,isMobile:true});const phone=await touch.newPage();await phone.goto(base+'/note-houses.html');await phone.locator('[data-letter="C"]').tap();await phone.locator('[data-house="3"]').tap();assert.equal(await phone.locator('.house.filled').count(),1);await phone.locator('#reset').tap();await phone.locator('[data-letter="C"]').tap();await phone.locator('[data-house="0"]').tap();await phone.locator('.mismatch-cue').waitFor();await phone.screenshot({path:'.runtime/note-houses/mismatch-phone.png',fullPage:true});await phone.locator('#reset').tap();assert.equal(await phone.locator('.mismatch-cue').count(),0);await touch.close();
   const quiet=await browser.newContext({viewport:{width:820,height:1180},reducedMotion:'reduce'});const reduced=await quiet.newPage();await reduced.goto(base+'/note-houses.html');await reduced.locator('[data-letter="C"]').click();await reduced.locator('[data-house="3"]').click();assert.equal(await reduced.locator('.quiet-spark').count(),1);assert.equal(await reduced.locator('.confetti-layer i').count(),0);await reduced.locator('#reset').click();assert.equal(await reduced.locator('.confetti-layer').count(),0);await quiet.close();
   assert.deepEqual(errors,[]);console.log('PASS note houses: drag, tap, keyboard, wrong/correct answers, six neighbor rounds, finish/reset, seven layouts and touch.');
 }finally{await browser.close();}
