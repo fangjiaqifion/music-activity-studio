@@ -564,3 +564,8 @@ User superseded the sky-decoration choice: removed all cartoon elements from O-0
 ## Single-row note-name options, 2026-11-16
 
 Reduced A–G option text from 23px to 20px and use seven equal columns with 4px gaps across O-009/O-010/O-011. Retained 44px button height. Verified every option row stays on one line at 320, 390, 768, 820, and 1440px; all 60 worksheet/hub responsive cases pass. Inspected a rendered card. Guides and public overview reviewed unchanged because content, scoring, and operating procedures are unchanged. Local only, no publication.
+
+
+## O-009 release quality review, 2026-11-16
+
+Removed the redundant O-009 tool selector and eraser; letters are directly selectable and replace prior answers. Reviewed scoring, moving glyph coordinates, daily uniqueness, keyboard focus, speech, and release confinement. Removed unused legacy treble source rows. Updated browser coverage for direct answer replacement. Node tests: 23 pass; dependency audit: zero vulnerabilities. Build: `0a41dc48ef29`. Production checks pass: 49 legacy responsive screens and session flows, touch/audio/storage regressions, complete staff flows, and 60 worksheet/hub layouts. AGENTS, README, and development reconciled to current behavior; provenance reviewed unchanged. User explicitly authorized push and publication after checks.

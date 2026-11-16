@@ -1,6 +1,6 @@
 # Development
 
-Last updated: 2026-11-15
+Last updated: 2026-11-16
 
 ## Operation and verification
 
@@ -140,7 +140,7 @@ The suite checks blank submissions, complete answers, erasing, regeneration, loc
 profiles, five celebration characters, failed resources, mobile overflow, and print
 capture. `npm test` checks 1,000 pages per type, nine-position placement coverage, pair-only direction
 semantics and reference-relative note names, and aggregate scoring. SVG placement targets support Enter and Space.
-O-008 has only twelve pair comparisons. O-009/O-010/O-011 are `treble.html`, `bass.html`, and `alto.html`, each with 24 unknowns. O-009 has one introductory second-line G example and single-note questions scored from that fixed G position. O-010/O-011 retain their previous four reference groups. The same suite covers their complete-answer, correction, erasing, and keyboard flows. Pointer placement must not preserve SVG focus outlines. Original worksheet masters remain unchanged; corrected English applies to digital UI.
+O-008 has only twelve pair comparisons. O-009/O-010/O-011 are `treble.html`, `bass.html`, and `alto.html`. O-009 has nine daily movable-clef questions; O-010/O-011 each retain 24 unknowns. O-010/O-011 retain their previous four reference groups. The same suite covers their complete-answer, correction, erasing, and keyboard flows. Pointer placement must not preserve SVG focus outlines. Original worksheet masters remain unchanged; corrected English applies to digital UI.
 
 ## Required responsive acceptance
 
@@ -150,13 +150,6 @@ run the full existing-content layout matrix and inspect captures. A4 print outpu
 is optional and never substitutes for web-game verification.
 
 
-## O-009 movable G clef, 2026-11-16
+## O-009 daily movable-clef practice
 
-The user clarified that the clef itself moves. This supersedes the fixed-second-line G instructions above. O-009 uses G anchors on lines 3, 4, 1, and 2 across four six-question groups. Each card has one target note; its answer follows the displayed clef anchor. The introduction demonstrates third-line G and adjacent A/F. O-008, O-010, and O-011 remain unchanged. Original masters are preserved.
-
-
-### O-009 short daily practice, 2026-11-16
-
-Supersedes the 24-question description: O-009 now shows nine questions. A deterministic 36-pair pool combines G anchors on lines 1–4 with all nine internal target positions. Shanghai calendar dates select disjoint nine-pair sets across four consecutive days; the cycle repeats every four days. Refreshing retains the daily set; New set advances to the next disjoint set. No student data or practice history is stored. Expanded treble SVG bounds prevent moved clefs from being clipped. O-010/O-011 are unchanged.
-
-Verification: 23 Node tests, complete staff browser flows, and all 60 worksheet/hub responsive cases pass. Actual font glyph bounds fit their SVG viewports; the desktop introduction was visually inspected. Source artwork/provenance and responsive requirements reviewed unchanged. Local review only; no push or deployment.
+O-009 uses nine questions selected from 36 distinct G-anchor/target pairs (anchor lines 1–4 and nine internal staff positions). Shanghai dates select disjoint sets across four consecutive days; the four-day cycle repeats. Refresh keeps the daily set; New set advances it. Students click A–G directly and click another letter to correct an answer; there is no selection/eraser toolbar on O-009. Its example labels G and A with a curved arrow and one-step explanation, without cartoon decoration. Clef glyphs have expanded SVG bounds. All relative-note A–G controls use one row. No original masters are modified.

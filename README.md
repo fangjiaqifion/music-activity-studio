@@ -1,6 +1,6 @@
 # Music Activity Studio
 
-Last updated: 2026-11-15
+Last updated: 2026-11-16
 
 A music activity studio with six games and nine interactive worksheet adaptations, inspired by FANG, Jiaqi's illustrated worksheets.
 The Chinese interface is intended for young piano beginners, with adult support where
@@ -84,18 +84,11 @@ offers enlarged scene tiles for easier viewing and answering on small screens.
 The selector also includes **O-007 Draw the Notes** (`ladybirds.html`)
 and **O-008 Compare Two Notes** (`sunshine.html`). Place noteheads
 by tapping a staff position, or compare the second note with the first using higher/same/lower arrows. O-008 does not ask for line or space numbers.
-**O-009 Treble**, **O-010 Bass**, and **O-011 Alto** (`treble.html`, `bass.html`, `alto.html`) offer relative note-name exercises. The revised local O-009 introduces G on the treble clef’s second line once, then asks children to identify single notes from that position. O-010/O-011 retain their earlier reference-group behavior pending review. All follow the existing local classroom conventions. All activities reflow for
+**O-009 Treble**, **O-010 Bass**, and **O-011 Alto** (`treble.html`, `bass.html`, `alto.html`) offer relative note-name exercises. O-009 introduces third-line G and A with a curved reasoning arrow, then provides nine daily movable-clef questions. O-010/O-011 retain their earlier reference-group behavior pending review. All follow the existing local classroom conventions. All activities reflow for
 phones, iPads/tablets, and computers; the original worksheet artwork does not impose
 a paper layout on the screen.
 
 
-## O-009 movable G clef, 2026-11-16
+## O-009 daily movable-clef practice
 
-The user clarified that the clef itself moves. This supersedes the fixed-second-line G instructions above. O-009 uses G anchors on lines 3, 4, 1, and 2 across four six-question groups. Each card has one target note; its answer follows the displayed clef anchor. The introduction demonstrates third-line G and adjacent A/F. O-008, O-010, and O-011 remain unchanged. Original masters are preserved.
-
-
-### O-009 short daily practice, 2026-11-16
-
-Supersedes the 24-question description: O-009 now shows nine questions. A deterministic 36-pair pool combines G anchors on lines 1–4 with all nine internal target positions. Shanghai calendar dates select disjoint nine-pair sets across four consecutive days; the cycle repeats every four days. Refreshing retains the daily set; New set advances to the next disjoint set. No student data or practice history is stored. Expanded treble SVG bounds prevent moved clefs from being clipped. O-010/O-011 are unchanged.
-
-Verification: 23 Node tests, complete staff browser flows, and all 60 worksheet/hub responsive cases pass. Actual font glyph bounds fit their SVG viewports; the desktop introduction was visually inspected. Source artwork/provenance and responsive requirements reviewed unchanged. Local review only; no push or deployment.
+O-009 uses nine questions selected from 36 distinct G-anchor/target pairs (anchor lines 1–4 and nine internal staff positions). Shanghai dates select disjoint sets across four consecutive days; the four-day cycle repeats. Refresh keeps the daily set; New set advances it. Students click A–G directly and click another letter to correct an answer; there is no selection/eraser toolbar on O-009. Its example labels G and A with a curved arrow and one-step explanation, without cartoon decoration. Clef glyphs have expanded SVG bounds. All relative-note A–G controls use one row. No original masters are modified.

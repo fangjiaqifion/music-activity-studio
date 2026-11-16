@@ -11,7 +11,6 @@ export function scoreStaffPage(items,answers){return {blank:items.filter((_,i)=>
 
 // Source rows preserve the supplied anchor, contour, and seven-note sequence.
 export const RELATIVE_SOURCES = {
- treble: [{letter:'E',positions:[2,5,7,4,-1,2,8]},{letter:'C',positions:[2,5,7,4,-1,2,8]},{letter:'B',positions:[2,5,7,4,-1,2,8]},{letter:'G',positions:[2,5,7,4,-1,2,8]}],
  bass: [{letter:'A',positions:[8,5,1,4,-1,6,9]},{letter:'G',positions:[2,4,7,3,-1,6,8]},{letter:'C',positions:[4,5,2,8,-1,6,9]},{letter:'B',positions:[0,9,3,6,2,1,8]}],
  alto: [{letter:'A',positions:[2,5,7,4,-1,2,8]},{letter:'E',positions:[8,5,3,4,6,1,-1]},{letter:'F',positions:[7,2,8,0,9,5,3]},{letter:'D',positions:[0,8,4,9,1,3,6]}],
 };

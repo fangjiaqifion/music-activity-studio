@@ -1,6 +1,6 @@
 # Music Activity Studio: Internal Guide
 
-Last updated: 2026-11-15
+Last updated: 2026-11-16
 
 An independent repository. When nested, inherit parent and games guides. Write project
 documentation in English; product UI may remain Chinese. Repository and checkout names
@@ -99,7 +99,7 @@ own the staff placement, two-note comparison, and relative-note trials. O-007 ha
 requested placements covering all nine internal staff positions. O-008 uses twelve two-note comparisons, balanced across rising, falling, and repeated pitches. The user explicitly removed line/space numbering on 2026-11-15; do not restore it. Count lines/spaces from the bottom. Use open
 noteheads with transparent centers, accessible SVG targets, and native artwork ratios.
 Preserve shared local profiles, speech cancellation, aggregate-only feedback, erasing,
-and the five-character celebration. O-009 uses one introductory G example on the second line, followed by 24 single-note questions. Name every target relative to the fixed treble-clef G position; never treat source row letters as arbitrary reference pitches or repeat given notes in its cards. O-010/O-011 retain the previous bass/alto four-group reference behavior pending separate user review. Each has 24 unknowns. Their existing red-reference cards remain unchanged in the O-009-only correction. BravuraText uses a 100-unit font size and a shared bottom-line baseline at SVG y=106 for 20-unit staff spacing. Pointer placement must not restore SVG target focus; retain visible keyboard focus. The selector has nine worksheet entries.
+and the five-character celebration. O-009 uses nine daily single-note questions with movable G-clef anchors. Name every target relative to its displayed clef position; never treat source row letters as arbitrary reference pitches or repeat given notes in its cards. O-010/O-011 retain the previous bass/alto four-group reference behavior pending separate user review. Each has 24 unknowns. Their existing red-reference cards remain unchanged in the O-009-only correction. BravuraText uses a 100-unit font size and a shared bottom-line baseline at SVG y=106 for 20-unit staff spacing. Pointer placement must not restore SVG target focus; retain visible keyboard focus. The selector has nine worksheet entries.
 
 ## Responsive web games, confirmed 2026-11-15
 
@@ -111,13 +111,6 @@ After completing new content, recheck all completed activities. The canonical de
 and verification procedure is [responsive design](docs/responsive_design.md).
 
 
-## O-009 movable G clef, 2026-11-16
+## O-009 daily movable-clef practice
 
-The user clarified that the clef itself moves. This supersedes the fixed-second-line G instructions above. O-009 uses G anchors on lines 3, 4, 1, and 2 across four six-question groups. Each card has one target note; its answer follows the displayed clef anchor. The introduction demonstrates third-line G and adjacent A/F. O-008, O-010, and O-011 remain unchanged. Original masters are preserved.
-
-
-### O-009 short daily practice, 2026-11-16
-
-Supersedes the 24-question description: O-009 now shows nine questions. A deterministic 36-pair pool combines G anchors on lines 1–4 with all nine internal target positions. Shanghai calendar dates select disjoint nine-pair sets across four consecutive days; the cycle repeats every four days. Refreshing retains the daily set; New set advances to the next disjoint set. No student data or practice history is stored. Expanded treble SVG bounds prevent moved clefs from being clipped. O-010/O-011 are unchanged.
-
-Verification: 23 Node tests, complete staff browser flows, and all 60 worksheet/hub responsive cases pass. Actual font glyph bounds fit their SVG viewports; the desktop introduction was visually inspected. Source artwork/provenance and responsive requirements reviewed unchanged. Local review only; no push or deployment.
+O-009 uses nine questions selected from 36 distinct G-anchor/target pairs (anchor lines 1–4 and nine internal staff positions). Shanghai dates select disjoint sets across four consecutive days; the four-day cycle repeats. Refresh keeps the daily set; New set advances it. Students click A–G directly and click another letter to correct an answer; there is no selection/eraser toolbar on O-009. Its example labels G and A with a curved arrow and one-step explanation, without cartoon decoration. Clef glyphs have expanded SVG bounds. All relative-note A–G controls use one row. No original masters are modified.

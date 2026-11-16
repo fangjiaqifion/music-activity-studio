@@ -127,10 +127,20 @@ try {
       format: "A4",
       printBackground: true,
     });
-    await page.locator('[data-tool="erase"]').click();
-    await page.locator('[data-index="0"]').first().dispatchEvent("click");
-    await page.locator("#check").click();
-    assert.match(await page.locator("#feedback").innerText(), /还有 1 处/);
+    if (kind === 'treble') {
+      assert.equal(await page.locator('.answer-tools').count(),0);
+      const selected = page.locator('[data-index="0"][aria-pressed="true"]');
+      const previous = await selected.getAttribute('data-value');
+      await page.locator(`[data-index="0"][data-value="${previous === 'A' ? 'B' : 'A'}"]`).click();
+      assert.equal(await page.locator('#count').innerText(),'9');
+      await page.locator('#check').click();
+      assert.match(await page.locator('#feedback').innerText(),/1 个/);
+    } else {
+      await page.locator('[data-tool="erase"]').click();
+      await page.locator('[data-index="0"]').first().dispatchEvent('click');
+      await page.locator('#check').click();
+      assert.match(await page.locator('#feedback').innerText(), /还有 1 处/);
+    }
     await page.locator("#next").click();
     assert.equal(await page.locator("#count").innerText(), "0");
     await page.setViewportSize({ width: 390, height: 844 });
