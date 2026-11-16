@@ -46,16 +46,16 @@ function render(){
 function feedback(text){$('#feedback').textContent=text;}
 let mismatchTimer,mismatchIndex=null;
 function clearMismatch(){clearTimeout(mismatchTimer);mismatchIndex=null;$('.mismatch-cue')?.remove();$('#feedback').classList.remove('mismatch-feedback');}
-function showMismatch(index){
+function showMismatch(index,message='还没到家，再试一次'){
   clearMismatch();mismatchIndex=index;
   const cue=document.createElement('div');cue.className='mismatch-cue';cue.setAttribute('aria-hidden','true');
-  cue.innerHTML='<span class="mismatch-cross">×</span><strong>还没到家，再试一次</strong>';
+  cue.innerHTML=`<span class="mismatch-cross">×</span><strong>${message}</strong>`;
   document.body.append(cue);positionMismatch();
-  feedback('✕ 还没到家，再试一次');$('#feedback').classList.add('mismatch-feedback');
-  mismatchTimer=setTimeout(()=>{clearMismatch();feedback(selected?`选好了 ${selected}，点它的小屋吧。`:'');},2000);
+  feedback('✕ '+message);$('#feedback').classList.add('mismatch-feedback');
+  mismatchTimer=setTimeout(()=>{clearMismatch();feedback(level===1&&selected?`选好了 ${selected}，点它的小屋吧。`:'再沿着线和间找一找。');},2000);
 }
 function positionMismatch(){
-  const cue=$('.mismatch-cue'),home=$(`[data-house="${mismatchIndex}"] .house-body`);
+  const cue=$('.mismatch-cue'),home=level===2?$(`[data-letter="${selected}"]`):$(`[data-house="${mismatchIndex}"] .house-body`);
   if(!cue||!home)return;
   const r=home.getBoundingClientRect();cue.style.left=Math.max(105,Math.min(innerWidth-105,r.x+r.width/2))+'px';cue.style.top=Math.max(110,r.y-20)+'px';
 }
@@ -88,12 +88,12 @@ function place(index){
   if(residents.every(Boolean))finish();
 }
 function choose(letter){
-  if(level===1&&mismatchIndex!==null)return;
+  if(mismatchIndex!==null)return;
   if(level===1){selected=letter;renderTray();feedback(`选好了 ${letter}，点它的小屋吧。`);$(`[data-letter="${letter}"]`).focus({preventScroll:true});return;}
   if(solved)return;
   selected=letter;
   if(letter===questions[round].answer){solved=true;cancelSpeech();feedback('答对啦，找到邻居了！');renderTray();celebrateAnswer();$('#next').hidden=false;$('#next').focus({preventScroll:true});}
-  else{feedback('沿着线和间，再数一数。');renderTray();$(`[data-letter="${letter}"]`).focus({preventScroll:true});}
+  else{cancelSpeech();renderTray();showMismatch(questions[round].home,'找错了，再找找');$(`[data-letter="${letter}"]`).focus({preventScroll:true});}
 }
 $('#characters').addEventListener('click',e=>{if(e.detail!==0)return;const b=e.target.closest('[data-letter]');if(b&&!b.disabled)choose(b.dataset.letter);});
 // Pointer capture supports touch drags and tap-to-select without native HTML drag behavior.

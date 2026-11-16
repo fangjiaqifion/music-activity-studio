@@ -52,7 +52,13 @@ try{
     const spoken=await page.evaluate(()=>window.spokenQuestions.at(-1));assert.equal(spoken.text,text);assert.equal(spoken.voice,'zh-CN');
     assert.equal(await page.evaluate(()=>window.spokenQuestions.length),q+1);
     const home=pitches.findIndex(p=>p[0]===m[1]);const answer=pitches[home+(m[2]==='上'?1:-1)*({一:1,两:2,三:3}[m[3]])][0];
+    await page.clock.pauseAt(await page.evaluate(()=>Date.now()+1000));
     const wrong='CDEFGAB'.split('').find(l=>l!==answer);await page.locator(`[data-letter="${wrong}"]`).click();assert.equal(await page.locator('#next').isVisible(),false);
+    assert.match(await page.locator('.mismatch-cue').innerText(),/找错了，再找找/);
+    await page.locator(`[data-letter="${answer}"]`).press('Enter');assert.equal(await page.locator('#next').isVisible(),false);
+    if(q===0)await page.screenshot({path:'.runtime/note-houses/neighbor-error-desktop.png',fullPage:true});
+    await page.clock.runFor(1900);assert.equal(await page.locator('.mismatch-cue').count(),1);
+    await page.clock.runFor(101);assert.equal(await page.locator('.mismatch-cue').count(),0);await page.clock.resume();
     await page.locator(`[data-letter="${answer}"]`).press('Enter');assert.equal(await page.locator('#next').isVisible(),true);assert.equal(await page.locator('.confetti-layer i').count(),84);
     if(q===0){await page.waitForTimeout(250);await page.screenshot({path:'.runtime/note-houses/neighbors-desktop.png',fullPage:true});}
     await page.locator('#next').click();
