@@ -547,3 +547,10 @@ Verification: complete staff browser flows pass; all 60 worksheet/hub responsive
 Supersedes the 24-question description: O-009 now shows nine questions. A deterministic 36-pair pool combines G anchors on lines 1–4 with all nine internal target positions. Shanghai calendar dates select disjoint nine-pair sets across four consecutive days; the cycle repeats every four days. Refreshing retains the daily set; New set advances to the next disjoint set. No student data or practice history is stored. Expanded treble SVG bounds prevent moved clefs from being clipped. O-010/O-011 are unchanged.
 
 Verification: 23 Node tests, complete staff browser flows, and all 60 worksheet/hub responsive cases pass. Actual font glyph bounds fit their SVG viewports; the desktop introduction was visually inspected. Source artwork/provenance and responsive requirements reviewed unchanged. Local review only; no push or deployment.
+
+
+## O-009 worked answers and sky illustration, 2026-11-16
+
+The introductory G/A notes now have explicit red answer labels aligned below their noteheads. Moved the unchanged original sun PNG from the first question into the yellow guide. Added original inline vector cloud, kite, and distant-bird line drawings matching its monochrome outline style; decorative graphics are hidden from assistive technology. No external artwork or source-master changes.
+
+Complete staff browser flows and all 60 worksheet/hub responsive checks pass. Inspected the rendered tablet-width guide. AGENTS, README, development, and responsive procedure reviewed unchanged: daily generation, scoring, nine-question length, and ownership remain accurate. Local review only, no publication.

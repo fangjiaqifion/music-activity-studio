@@ -331,3 +331,10 @@ body[data-activity="sunshine"] .staff-card {
 .reference-label strong { color: #bf443c; font-size: 28px; }
 .sunshine-guide > svg { max-width: 300px; display: block; margin: auto; }
 @media screen and (max-width: 600px) { .example-grid { grid-template-columns: 1fr; } }
+
+/* O-009's original sun and light line drawings belong to the worked example. */
+.treble-guide .guide-sky { display:flex; align-items:center; justify-content:space-between; gap:16px; max-width:560px; margin:0 auto 8px; color:#35312b; }
+.treble-guide .guide-sky img { width:100px; height:auto; }
+.treble-guide .sky-drawing { width: min(65%,300px); height:auto; }
+.example-note-answer { font-family:"Patrick Hand", cursive; font-size:22px; font-weight:bold; fill:#bf443c; }
+@media(max-width:600px) { .treble-guide .guide-sky img { width:76px; } }

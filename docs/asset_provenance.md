@@ -114,3 +114,10 @@ licenses/provenance. No new third-party asset or remote runtime request was adde
 ## O-009/O-010/O-011 relative-note adaptations, 2026-11-15
 
 Reused the unchanged bundled sun artwork and OFL-licensed BravuraText font. Treble, bass, and alto clefs use exact SMuFL glyphs E050, E062, and E05C from that font. Read the original bilingual PDFs to transcribe the four given-note groups and staff contours; no source PDF, DOCX, or AI was modified. The user removed the numbering portion from the digital O-008 on this date.
+
+
+## O-009 worked answers and sky illustration, 2026-11-16
+
+The introductory G/A notes now have explicit red answer labels aligned below their noteheads. Moved the unchanged original sun PNG from the first question into the yellow guide. Added original inline vector cloud, kite, and distant-bird line drawings matching its monochrome outline style; decorative graphics are hidden from assistive technology. No external artwork or source-master changes.
+
+Complete staff browser flows and all 60 worksheet/hub responsive checks pass. Inspected the rendered tablet-width guide. AGENTS, README, development, and responsive procedure reviewed unchanged: daily generation, scoring, nine-question length, and ownership remain accurate. Local review only, no publication.
