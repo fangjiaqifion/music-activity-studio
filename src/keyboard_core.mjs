@@ -6,7 +6,7 @@ export function completeGroups({start,length}) {
 }
 export function makePage(serial=0,random=Math.random){
  const variants=[4,5,6],first=(Math.floor(random()*3)+serial)%3;
- return {paint:{start:0,length:14},rows:[0,1].map((_,i)=>({start:1+Math.floor(random()*6),length:variants[(first+i)%3]*7}))};
+ return {paint:{start:0,length:7},rows:[0,1].map((_,i)=>({start:1+Math.floor(random()*6),length:variants[(first+i)%3]*7}))};
 }
 export function scorePage(page,paint,ranges,counts){
  let blank=0,errors=0;

@@ -95,4 +95,4 @@ Each activity uses nine questions selected from 36 distinct clef-anchor/target p
 
 ## O-013 keyboard trial
 
-The local `keyboard.html` trial has two exercises: color the black keys on a two-octave keyboard, then circle and count complete C–B groups on two different 4–6-octave spans with partial edge groups. Tap the first and last white keys to circle a group; tap its ring to remove it. Keyboards scroll horizontally and have an enlargement control. Answers remain in memory; shared local display profiles, speech, aggregate feedback, and celebration apply. This addition is not published.
+The local `keyboard.html` trial has two exercises: color the black keys on separate two-black-key (C–E) and three-black-key (F–B) fragments, then circle and count complete C–B groups on two different 4–6-octave spans with partial edge groups. Tap the first and last white keys to circle a group; tap its ring to remove it. Keyboards scroll horizontally and have an enlargement control. Answers remain in memory; shared local display profiles, speech, aggregate feedback, and celebration apply. This addition is not published.
