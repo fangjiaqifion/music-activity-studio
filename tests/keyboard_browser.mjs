@@ -10,10 +10,13 @@ const browser = await chromium.launch({
 const page = await browser.newPage();
 const errors = [];
 page.on("pageerror", (e) => errors.push(e.message));
-const base = process.env.BASE_URL || "http://127.0.0.1:8797";
+page.on("response", r => {if(r.status() >= 400) errors.push(r.url()+": "+r.status());});
+const base = (process.env.BASE_URL || "http://127.0.0.1:8797").replace(/\/$/, "");
 await mkdir(".runtime/keyboard", { recursive: true });
 try {
-  await page.goto(base + "/keyboard.html");
+  const response = await page.goto(base + "/keyboard.html");
+  assert.equal(response.status(),200);
+  await page.locator(".paint-groups .piano").first().waitFor();
   assert.equal(await page.locator(".paint-groups .piano").count(), 3);
   assert.equal(
     await page.locator('[data-task="paint"][data-black]').count(),
