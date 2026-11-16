@@ -554,3 +554,8 @@ Verification: 23 Node tests, complete staff browser flows, and all 60 worksheet/
 The introductory G/A notes now have explicit red answer labels aligned below their noteheads. Moved the unchanged original sun PNG from the first question into the yellow guide. Added original inline vector cloud, kite, and distant-bird line drawings matching its monochrome outline style; decorative graphics are hidden from assistive technology. No external artwork or source-master changes.
 
 Complete staff browser flows and all 60 worksheet/hub responsive checks pass. Inspected the rendered tablet-width guide. AGENTS, README, development, and responsive procedure reviewed unchanged: daily generation, scoring, nine-question length, and ownership remain accurate. Local review only, no publication.
+
+
+## O-009 reasoning example revision, 2026-11-16
+
+User superseded the sky-decoration choice: removed all cartoon elements from O-009. The labeled G/A example now includes a red curved G-to-A arrow and “向上一格 · Up one step.” No source assets changed. Inspected the rendered guide; staff browser flows pass. Operational guides and overview reviewed unchanged because generation, nine-question scope, and ownership are unchanged. Local review only, no publication.
