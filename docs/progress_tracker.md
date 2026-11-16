@@ -569,3 +569,8 @@ Reduced A–G option text from 23px to 20px and use seven equal columns with 4px
 ## O-009 release quality review, 2026-11-16
 
 Removed the redundant O-009 tool selector and eraser; letters are directly selectable and replace prior answers. Reviewed scoring, moving glyph coordinates, daily uniqueness, keyboard focus, speech, and release confinement. Removed unused legacy treble source rows. Updated browser coverage for direct answer replacement. Node tests: 23 pass; dependency audit: zero vulnerabilities. Build: `0a41dc48ef29`. Production checks pass: 49 legacy responsive screens and session flows, touch/audio/storage regressions, complete staff flows, and 60 worksheet/hub layouts. AGENTS, README, and development reconciled to current behavior; provenance reviewed unchanged. User explicitly authorized push and publication after checks.
+
+
+## O-009 published release evidence, 2026-11-16
+
+User-authorized runtime commit `ec927d6` published build `0a41dc48ef29`. Pages run [43860250905](https://github.com/fangjiaqifion/music-activity-studio/actions/runs/43860250905) succeeded, including CI Node, legacy browser/regression, staff flow, and 60 responsive checks. All 88 remote file hashes match the local production build. Actual remote Chrome staff flows pass, including nine O-009 answers, correction by selecting another letter, and absence of the toolbar. Live O-009: https://fangjiaqifion.github.io/music-activity-studio/releases/0a41dc48ef29/treble.html. Physical-device and human speech acceptance remain outside automated evidence. This supersedes earlier local-only release status. Documentation completion: current guides/overview reconciled; parent coordination and gitlink updated locally after game evidence push.
