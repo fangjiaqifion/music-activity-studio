@@ -148,3 +148,8 @@ Follow [responsive design](responsive_design.md) for every existing and future
 activity. Phone, iPad/tablet, and desktop are mandatory. After finishing new content,
 run the full existing-content layout matrix and inspect captures. A4 print output
 is optional and never substitutes for web-game verification.
+
+
+## O-009 movable G clef, 2026-11-16
+
+The user clarified that the clef itself moves. This supersedes the fixed-second-line G instructions above. O-009 uses G anchors on lines 3, 4, 1, and 2 across four six-question groups. Each card has one target note; its answer follows the displayed clef anchor. The introduction demonstrates third-line G and adjacent A/F. O-008, O-010, and O-011 remain unchanged. Original masters are preserved.

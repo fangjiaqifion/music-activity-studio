@@ -109,3 +109,8 @@ composition into the game. Screen acceptance requires all three device classes,
 including portrait/landscape and usable controls; print pagination is not evidence.
 After completing new content, recheck all completed activities. The canonical design
 and verification procedure is [responsive design](docs/responsive_design.md).
+
+
+## O-009 movable G clef, 2026-11-16
+
+The user clarified that the clef itself moves. This supersedes the fixed-second-line G instructions above. O-009 uses G anchors on lines 3, 4, 1, and 2 across four six-question groups. Each card has one target note; its answer follows the displayed clef anchor. The introduction demonstrates third-line G and adjacent A/F. O-008, O-010, and O-011 remain unchanged. Original masters are preserved.

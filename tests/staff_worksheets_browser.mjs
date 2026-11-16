@@ -58,7 +58,7 @@ try {
       await page.setViewportSize({ width: 1100, height: 1000 });
     }
     if (kind === 'treble') {
-      assert.equal(await page.locator('.sunshine-guide ellipse').count(), 1);
+      assert.equal(await page.locator('.sunshine-guide ellipse').count(), 2);
       assert.equal(await page.locator('.staff-card .reference-label').count(), 0);
       assert.equal(await page.locator('.staff-card ellipse').count(), 24);
       assert.equal(await page.locator('.staff-card ellipse[stroke="#bf443c"]').count(), 0);
@@ -83,7 +83,8 @@ try {
         } else if (document.body.dataset.activity === 'treble') {
           const note=card.querySelector('ellipse');
           const position=(106-Number(note.getAttribute('cy')))/10;
-          value='DEFGABCDEF'[position+1];
+          const anchor=2+(106-Number(card.querySelector('.clef').getAttribute('y')))/10;
+          value='ABCDEFG'[((6+position-anchor)%7+7)%7];
         } else if (['bass','alto'].includes(document.body.dataset.activity)) {
           const notes=[...card.querySelectorAll('ellipse')];
           const steps=Math.round((Number(notes[0].getAttribute('cy'))-Number(notes[1].getAttribute('cy')))/10);

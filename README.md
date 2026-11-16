@@ -87,3 +87,8 @@ by tapping a staff position, or compare the second note with the first using hig
 **O-009 Treble**, **O-010 Bass**, and **O-011 Alto** (`treble.html`, `bass.html`, `alto.html`) offer relative note-name exercises. The revised local O-009 introduces G on the treble clef’s second line once, then asks children to identify single notes from that position. O-010/O-011 retain their earlier reference-group behavior pending review. All follow the existing local classroom conventions. All activities reflow for
 phones, iPads/tablets, and computers; the original worksheet artwork does not impose
 a paper layout on the screen.
+
+
+## O-009 movable G clef, 2026-11-16
+
+The user clarified that the clef itself moves. This supersedes the fixed-second-line G instructions above. O-009 uses G anchors on lines 3, 4, 1, and 2 across four six-question groups. Each card has one target note; its answer follows the displayed clef anchor. The introduction demonstrates third-line G and adjacent A/F. O-008, O-010, and O-011 remain unchanged. Original masters are preserved.
