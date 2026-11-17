@@ -24,12 +24,13 @@ export function makePage(serial = 0, random = Math.random) {
     }
     return items;
   }
-  // Exactly three of each type. Non-repeats include both directions.
+  // Two of each type, plus a rotating ninth item. Non-repeats include both directions.
   const page = pools.flatMap((pool, type) => {
     shuffle(pool);
-    if (TYPES[type].id === 'repeat') return pool.slice(0,3);
+    const count = type === serial % TYPES.length ? 3 : 2;
+    if (TYPES[type].id === 'repeat') return pool.slice(0,count);
     const up = pool.filter(q=>q.b>q.a), down = pool.filter(q=>q.b<q.a);
-    return (serial % 2 ? [down[0],up[0],down[1]] : [up[0],down[0],up[1]]);
+    return (serial % 2 ? [down[0],up[0],down[1]] : [up[0],down[0],up[1]]).slice(0,count);
   });
   return shuffle(page);
 }

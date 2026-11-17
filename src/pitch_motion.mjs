@@ -1,6 +1,6 @@
 import { createSpeech } from './balloon_speech.mjs';
 import { readProfiles, saveProfiles, dateLabel } from './balloon_profiles.mjs';
-import { TYPES, makePage, scorePage } from './pitch_motion_core.mjs';
+import { TYPES, classify, makePage, scorePage } from './pitch_motion_core.mjs';
 const board=document.querySelector('#activity-board'), feedback=document.querySelector('#feedback'), celebration=document.querySelector('#celebration');
 const speech=createSpeech(window.speechSynthesis,window.SpeechSynthesisUtterance,()=>document.querySelector('#speech-status').textContent='当前语音不可用，请看文字提示。');
 function stopCelebration(){celebration.hidden=true;}
@@ -61,7 +61,7 @@ showProfile();
 setInterval(showProfile, 60000);
 
 
-let page, answers=[], serial=0;
+let page, answers=[], failures=[], serial=0;
 function staff(a,b){
  return '<svg class="pair-staff" viewBox="0 0 240 120" role="img" aria-label="从左往右的两个音"><g stroke="currentColor" stroke-width="1.5">'+[0,1,2,3,4].map(i=>'<path d="M24 '+(100-i*20)+'H216"/>').join('')+'</g>'+[a,b].map((p,i)=>'<ellipse data-position="'+p+'" cx="'+(88+i*64)+'" cy="'+(100-p*10)+'" rx="12" ry="8.5" fill="none" stroke="currentColor" stroke-width="3"/>').join('')+'</svg>';
 }
@@ -71,12 +71,29 @@ function render(){
 board.addEventListener('click',e=>{
  const b=e.target.closest('[data-answer]'); if(!b)return;
  stop(); const i=Number(b.dataset.index); answers[i]=b.dataset.answer;
+ b.closest('.motion-card').querySelector('.retry-cue')?.remove();
  b.closest('.motion-options').querySelectorAll('button').forEach(v=>v.setAttribute('aria-pressed',String(v===b)));
  document.querySelector('#count').textContent=answers.filter(Boolean).length;
  feedback.textContent='选好了就点打勾吧。';
 });
-function next(){stop();page=makePage(serial++);answers=Array(page.length).fill(null);document.querySelector('#count').textContent='0';feedback.textContent='慢慢观察，选好了就点打勾吧。';render();}
-document.querySelector('#check').onclick=()=>{stop();const {blank,errors}=scorePage(page,answers);feedback.textContent=blank?'还有 '+blank+' 题没有完成。'+(errors?'另有 '+errors+' 个需要再想一想。':''):errors?'有 '+errors+' 个需要再想一想。':'全部答对啦！你真棒！';if(!blank&&!errors)celebration.hidden=false;};
+function next(){stop();page=makePage(serial++);answers=Array(page.length).fill(null);failures=Array(page.length).fill(0);document.querySelector('#count').textContent='0';feedback.textContent='慢慢观察，选好了就点打勾吧。';render();}
+document.querySelector('#check').onclick=()=>{stop();
+ board.querySelectorAll('.motion-card').forEach((card,i)=>{
+   card.querySelector('.retry-cue')?.remove();
+   if(!answers[i] || answers[i]===classify(page[i].a,page[i].b)) return;
+   failures[i]++;
+   if(failures[i]<3) return;
+   const {a,b}=page[i];
+   const ellipse=document.createElementNS('http://www.w3.org/2000/svg','ellipse');
+   ellipse.setAttribute('class','retry-cue');
+   ellipse.setAttribute('cx','120');
+   ellipse.setAttribute('cy',String(100-(a+b)*5));
+   ellipse.setAttribute('rx','68');
+   ellipse.setAttribute('ry',String(Math.abs(a-b)*5+18));
+   ellipse.setAttribute('aria-label','再观察这两个音之间的距离');
+   card.querySelector('.pair-staff').append(ellipse);
+ });
+ const {blank,errors}=scorePage(page,answers);feedback.textContent=blank?'还有 '+blank+' 题没有完成。'+(errors?'另有 '+errors+' 个需要再想一想。':''):errors?'有 '+errors+' 个需要再想一想。':'全部答对啦！你真棒！';if(!blank&&!errors)celebration.hidden=false;};
 document.querySelector('#next').onclick=next;
 document.querySelector('#print').onclick=()=>{stop();window.print();};
 document.querySelector('#close-celebration').onclick=stopCelebration;

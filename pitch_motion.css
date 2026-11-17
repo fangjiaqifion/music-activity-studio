@@ -22,3 +22,5 @@ header { flex-wrap: wrap; gap: 10px; }
  h1 { letter-spacing:1px; font-size:26px; } .subtitle { font-size:25px; }
 }
 @media print { .motion-guide { grid-template-columns: repeat(4,minmax(0,1fr)); } .motion-grid { grid-template-columns:repeat(3,minmax(0,1fr)); } .motion-card { break-inside:avoid; } .motion-options button { min-height:30px; font-size:14px; } }
+
+.retry-cue { fill: none; stroke: #c42d35; stroke-width: 2.5; stroke-dasharray: 6 4; pointer-events: none; }

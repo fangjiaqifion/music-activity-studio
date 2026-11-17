@@ -11,9 +11,9 @@ page.on('pageerror',e=>errors.push(e.message));page.on('response',r=>{if(r.statu
 try{
  await page.goto(base+'/activities.html');await page.locator('a[href="pitch-motion.html"]').click();
  await page.locator('.motion-card').first().waitFor();
- assert.equal(await page.locator('.motion-card').count(),12);
+ assert.equal(await page.locator('.motion-card').count(),9);
  assert.equal(await page.locator('.motion-guide article').count(),4);
- await page.locator('#check').click();assert.match(await page.locator('#feedback').innerText(),/还有 12/);
+ await page.locator('#check').click();assert.match(await page.locator('#feedback').innerText(),/还有 9/);
  await page.locator('#speak').click();assert.match(await page.evaluate(()=>window.spoken.at(-1)),/中间隔一个音/);
  const original=await page.locator('.motion-grid').innerHTML();
  for(const card of await page.locator('.motion-card').all()){
@@ -21,14 +21,22 @@ try{
   const d=Math.abs(a-b),answer=d===0?'repeat':d===1?'step':d===2?'skip':'leap';
   await card.locator('[data-answer="'+answer+'"]').click();
  }
- assert.equal(await page.locator('#count').innerText(),'12');
+ assert.equal(await page.locator('#count').innerText(),'9');
  const first=page.locator('.motion-card').first();
  const correct=await first.locator('[aria-pressed=true]').getAttribute('data-answer');
  await first.locator('button:not([aria-pressed=true])').first().click();await page.locator('#check').click();
  assert.equal(await page.locator('#feedback').innerText(),'有 1 个需要再想一想。');
+ assert.equal(await page.locator('.retry-cue').count(),0);
+ await page.locator('#check').click();assert.equal(await page.locator('.retry-cue').count(),0);
+ await page.locator('#check').click();assert.equal(await page.locator('.retry-cue').count(),1);
+ assert.equal(await first.locator('.retry-cue').count(),1);
+ await page.setViewportSize({width:390,height:844});
+ await first.scrollIntoViewIfNeeded();await page.screenshot({path:'.runtime/pitch_motion/third-error-phone.png'});
+ await page.setViewportSize({width:1440,height:1000});
  await first.locator('[data-answer="'+correct+'"]').focus();await page.keyboard.press('Enter');
  assert.equal(await first.locator('[data-answer="'+correct+'"]').evaluate(e=>e===document.activeElement),true);
- await page.locator('#check').click();assert.equal(await page.locator('#celebration').isVisible(),true);assert.equal(await page.locator('.note-person').count(),5);
+ assert.equal(await page.locator('.retry-cue').count(),0);
+ await page.locator('#check').click();assert.equal(await page.locator('.retry-cue').count(),0);assert.equal(await page.locator('#celebration').isVisible(),true);assert.equal(await page.locator('.note-person').count(),5);
  await page.keyboard.press('Escape');assert.equal(await page.locator('#celebration').isVisible(),false);
  await page.locator('#next').click();assert.equal(await page.locator('#count').innerText(),'0');assert.notEqual(await page.locator('.motion-grid').innerHTML(),original);
  for(const [width,height] of [[320,740],[390,844],[844,390],[768,1024],[1180,820],[1440,900]]){
