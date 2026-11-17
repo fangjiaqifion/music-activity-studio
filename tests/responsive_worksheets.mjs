@@ -20,6 +20,7 @@ const sizes = [
   [1440, 900],
 ];
 const pages = [
+  "pitch-motion",
   "note-houses",
   "activities",
   "hands",

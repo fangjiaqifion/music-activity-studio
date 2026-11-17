@@ -1,6 +1,6 @@
 # Development
 
-Last updated: 2026-11-16
+Last updated: 2026-11-17
 
 ## Operation and verification
 
@@ -115,7 +115,7 @@ every 0.44 seconds. Keep animation delay in frame calculations for staggered cha
 ## Worksheet hub and hands/cow trials
 
 Open `/activities.html` on the source server; the original index links to it, and
-all ten worksheets link back. `/hands.html` identifies both hands and fills ten
+all eleven worksheets link back. `/hands.html` identifies both hands and fills ten
 piano finger numbers. `/cows.html` permutes ten treble and nine bass clefs among
 nineteen enclosed regions. Both use the shared profile/speech adapters and preserve
 aggregate-only feedback, erasing, correction, and the five-character celebration.
@@ -138,7 +138,7 @@ The source file and missing original O-004 worksheet are not runtime dependencie
 
 ## O-007/O-008 staff worksheets
 
-Open `/ladybirds.html` or `/sunshine.html` from the ten-worksheet selector.
+Open `/ladybirds.html` or `/sunshine.html` from the eleven-worksheet selector.
 Run `node tests/staff_worksheets_browser.mjs` against port 8795, or set `BASE_URL`.
 The suite checks blank submissions, complete answers, erasing, regeneration, local
 profiles, five celebration characters, failed resources, mobile overflow, and print
@@ -161,3 +161,7 @@ Each activity uses nine questions selected from 36 distinct clef-anchor/target p
 ## O-013 keyboard practice
 
 Open `/keyboard.html` from the selector. Run `BASE_URL=http://127.0.0.1:8797 node tests/keyboard_browser.mjs` for three-keyboard coloring, complete circle/count answers, enlargement, celebration, reset, and screenshots. Lower keyboards fit the viewport initially; enlarged keyboards scroll. Students mark full-height red circles before revealing count options with “圈好了，开始数.” `npm test` covers partial edge exclusion, distinct keyboard lengths, and scoring. The full responsive matrix includes this entry; clipped keys inside intentionally scrollable keyboards are excluded from viewport-bound control checks.
+
+## P-031 pitch motion
+
+Open `/pitch-motion.html` from the eleven-card selector. Run `BASE_URL=<runtime-directory-url> node tests/pitch_motion_browser.mjs` for full blank/error/correction/completion/reset, speech calls, keyboard/touch, and six-size checks. `npm test` checks all 81 staff pairs plus 1,000 balanced generated pages. Generation uses three unique pairs of each type, includes both directions for non-repeats, and does not require a clef because only relative staff distance is assessed. Answers are session-only. Original DOCX/PDF/PIC sources remain unchanged.

@@ -3,6 +3,8 @@ import path from "node:path";
 export async function runtimeFiles(root) {
   const files = ["index.html", "style.css"];
   for (const name of [
+    "pitch-motion.html",
+    "pitch_motion.css",
     "note-houses.html",
     "note-houses.css",
     "keyboard.html",

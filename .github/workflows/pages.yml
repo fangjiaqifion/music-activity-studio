@@ -48,6 +48,7 @@ jobs:
           npm run test:browser
           npm run test:regressions
           release_dir="$(node -p 'JSON.parse(require("fs").readFileSync("dist/release.json", "utf8")).entry.replace(/index\.html$/, "")')"
+          BASE_URL="http://127.0.0.1:8787/${release_dir}" node tests/pitch_motion_browser.mjs
           BASE_URL="http://127.0.0.1:8787/${release_dir}" node tests/keyboard_browser.mjs
           BASE_URL="http://127.0.0.1:8787/${release_dir}" node tests/staff_worksheets_browser.mjs
           BASE_URL="http://127.0.0.1:8787/${release_dir}" node tests/note_houses_browser.mjs

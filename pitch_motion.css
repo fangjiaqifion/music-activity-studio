@@ -1,0 +1,24 @@
+.paper { padding: 20px; min-width: 0; }
+.paper .cloud { position: static; display: inline-block; margin: 6px; }
+.motion-guide { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 12px; background: #f6edce; border-radius: 20px; padding: 16px; margin: 18px 0; }
+.motion-guide article { text-align: center; min-width: 0; }
+.motion-guide h2 { margin: 0; font-size: 23px; }
+.motion-guide h2 small { display: block; font-weight: normal; font-size: 20px; }
+.motion-guide p { margin: 0; font-size: 16px; }
+.pair-staff { display: block; width: 100%; height: auto; color: #303937; }
+.practice-label { text-align: center; font-size: 19px; }
+.motion-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 18px; }
+.motion-card { min-width: 0; border: 1px solid #d7dcd3; border-radius: 20px; padding: 14px; background: #fff; }
+.motion-card h2 { font-size: 16px; color: #738276; margin: 0; font-weight: normal; }
+.motion-options { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 8px; }
+.motion-options button { min-height: 60px; padding: 8px 4px; font-size: 19px; min-width: 0; touch-action: manipulation; }
+.motion-options small { display: block; font-size: 17px; }
+.motion-options button[aria-pressed=true] { color: #fff; background: #486858; border-color: #486858; }
+header { flex-wrap: wrap; gap: 10px; }
+@media(max-width:1000px) { .motion-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+@media(max-width:600px) {
+ .paper { padding:12px; } .motion-guide { grid-template-columns:repeat(2,minmax(0,1fr)); padding:12px; }
+ .motion-grid { grid-template-columns:1fr; } .motion-card .pair-staff { max-width:320px; margin:auto; }
+ h1 { letter-spacing:1px; font-size:26px; } .subtitle { font-size:25px; }
+}
+@media print { .motion-guide { grid-template-columns: repeat(4,minmax(0,1fr)); } .motion-grid { grid-template-columns:repeat(3,minmax(0,1fr)); } .motion-card { break-inside:avoid; } .motion-options button { min-height:30px; font-size:14px; } }

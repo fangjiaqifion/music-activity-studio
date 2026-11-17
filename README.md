@@ -1,6 +1,6 @@
 # Music Activity Studio
 
-Last updated: 2026-11-16
+Last updated: 2026-11-17
 
 A music activity studio with six games, ten interactive worksheet adaptations, and Note Neighborhood, inspired by FANG, Jiaqi's illustrated worksheets.
 The Chinese interface is intended for young piano beginners, with adult support where
@@ -98,3 +98,7 @@ Each activity uses nine questions selected from 36 distinct clef-anchor/target p
 ## O-013 keyboard practice
 
 The `keyboard.html` activity has two exercises: color the black keys on three separate keyboards, with one example each of two-black-key (C–E), three-black-key (F–B), and complete C–B groups, then circle and count complete C–B groups on two different 4–6-octave spans with partial edge groups. Tap the first and last white keys to circle a group; tap its ring to remove it. The lower keyboards initially fit the available width, scaling key width and height together to preserve proportions. A red-circle cue precedes marking; number choices appear after students select “圈好了，开始数.” Enlargement enables larger keys with horizontal scrolling. Answers remain in memory; shared local display profiles, speech, aggregate feedback, and celebration apply. This activity is included in the published release.
+
+## P-031 pitch motion, local preview
+
+The eleventh worksheet card opens `pitch-motion.html`. Four examples introduce step (级进), skip (跳进), leap (远跳), and repeat (重复). Twelve generated pairs include three of each category, with ascending and descending motion. Children tap a bilingual choice, change it directly, and check the whole set. Shared local profiles, Chinese instruction speech, and the five-note celebration apply. The activity reflows to one, two, or three question columns. It is available locally and has not been published.

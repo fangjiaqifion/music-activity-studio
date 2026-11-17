@@ -140,3 +140,7 @@ Note Neighborhood brace follow-up (2026-11-16): `src/note_house_glyphs.mjs` is t
 ## Note Neighborhood sampled piano, 2026-11-16
 
 `assets/piano_A3.mp3`, `piano_C4.mp3`, `piano_Ds4.mp3`, and `piano_Fs4.mp3` are unchanged local copies from [Tone.js's Salamander distribution](https://github.com/Tonejs/audio/tree/master/salamander), recorded by Alexander Holm on a Yamaha C5. The distribution's [README](https://github.com/Tonejs/audio/blob/master/salamander/README) identifies the author and CC BY 3.0 license. `assets/piano_attribution.txt` records source, author, license link, download date, and playback changes; the game links to that attribution. Total bundled MP3 size is 294,982 bytes. Runtime playback-rate changes supply G3/A3/B3/C4/D4/E4/F4 from the nearest samples (maximum two semitones), with gain/release envelopes. Disk recordings are unmodified; no sample is fetched from a third party at runtime. The earlier triangle-wave synthesizer in other games is unchanged.
+
+## P-031 pitch motion, 2026-11-17
+
+Read the original `P-031级进跳进B.docx` text and visually inspected `P-031级进跳进PIC.jpg`. The source supplies the four-category relative-motion learning goal. Corrected the source's swapped Step/Skip English mapping in the digital UI. Staff lines and open notehead ellipses are original code-native geometry, without clefs or external graphics. `assets/pitch_motion_preview.svg` is an original staff/pair/arrow thumbnail. Reused the existing licensed Patrick Hand font and shared five-character celebration. All original DOCX/PDF/PIC/AI files remain unchanged.
