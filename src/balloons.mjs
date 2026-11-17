@@ -1,3 +1,5 @@
+import { createRetryHints } from "./retry_hints.mjs";
+const retryHints = createRetryHints();
 import {createSpeech,instructions} from "./balloon_speech.mjs";
 import { makePage, answer } from "./balloons_core.mjs";
 import { readProfiles, saveProfiles, dateLabel } from "./balloon_profiles.mjs";
@@ -54,6 +56,7 @@ function celebrate() {
   celebration.classList.add("playing");
 }
 function render() {
+  retryHints.clear();
   board.innerHTML = items.map((item, i) => {
     const g = geometry[item.shape];
     const scale = Math.min(160/g.w,180/g.h);
@@ -68,6 +71,7 @@ function render() {
   document.querySelector("#count").textContent = colors.filter(Boolean).length;
 }
 function next() {
+  retryHints.reset();
   speech.stop();
   stopCelebration();
   items = makePage(Math.random, signature);
@@ -93,6 +97,7 @@ board.addEventListener("click", event => {
 });
 document.querySelector("#check").addEventListener("click", () => {
   speech.stop();
+  items.forEach((q,i) => retryHints.check(i, colors[i] ? colors[i] !== answer(q.position) : null, board.children[i].querySelector('svg > ellipse'), {red:'红色（间音）',blue:'蓝色（线音）',L:'L（线音）',S:'S（间音）'}[answer(q.position)]));
   const blank = colors.filter(c=>!c).length;
   const errors = colors.filter((c,i)=>c && c !== answer(items[i].position)).length;
   if (blank) {

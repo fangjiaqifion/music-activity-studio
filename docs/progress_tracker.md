@@ -1,6 +1,6 @@
 # Progress Tracker
 
-Last updated: 2026-11-15
+Last updated: 2026-11-17
 
 ## Six-in-one local demo
 
@@ -716,3 +716,33 @@ The user explicitly approved publication. Runtime commits `e15bb31` and `c3c4d05
 All 110 remote file hashes match the accepted production artifact. The first hash check hit a transient DNS lookup failure; retry passed without code changes. Actual remote Chrome passes the complete P-031 nine-question workflow, third-error cue threshold, correction cleanup, celebration/reset, keyboard/touch, and six viewports. All 78 actual remote worksheet/hub responsive cases also pass. Live activity: https://fangjiaqifion.github.io/music-activity-studio/releases/09853155b344/pitch-motion.html.
 
 Updated current AGENTS/README publication status, development CI coverage, and this tracker. Asset provenance and responsive procedure reviewed accurate unchanged. Parent/games/worksheet guides and public overviews reviewed unchanged because ownership, preservation, and scope are unchanged. Evidence is committed/pushed before the parent coordination and gitlink are recorded locally. Original masters and unrelated research/runtime changes remain untouched; no parent push. Physical-device/Safari, human speech, and optional print acceptance remain unverified.
+
+## Shared graduated answer assistance, 2026-11-17
+
+Changed answer assistance only across all scored entries: eleven worksheet activities,
+five scored menu games, and both Note Neighborhood levels. Each question/task counts
+incorrect answered submissions independently. The third error draws a red ellipse
+around the error location; the sixth error adds the correct answer. Fourth/fifth
+errors retain only localization. Blank checks do not consume attempts; edits clear
+visible assistance while retaining counts, correct checks reset the item, and new
+questions/sets clear counters. Rhythm lab remains unscored. The shared helper uses
+noninteractive overlays, so hints never replace selections, advance rounds, or alter
+first-attempt results. No artwork, question generation, audio, product CSS, source
+worksheet, or unrelated game behavior changed.
+
+Verification: all 33 Node tests pass. A new real-Chrome suite verifies blank checks,
+third/sixth thresholds and reset for every scored entry and both neighborhood levels,
+on source and packaged build `0a84d0a383c0` (111 runtime files). Existing P-031,
+hands/cow, staff, keyboard, Note Neighborhood gameplay, 49 legacy screen/session,
+and touch/audio/storage regression suites pass. All 78 worksheet/hub responsive
+cases pass. Phone/tablet sixth-error rendering was inspected and answer captions placed
+beside the existing feedback to avoid covering notation or answer controls; representative phone portrait/landscape,
+tablet portrait/landscape, and desktop hint screenshots were captured. Shared state
+unit coverage includes independent counters, blanks, success and reset. Future Pages
+CI runs the new full assistance suite. No push or deployment occurred.
+
+Documentation updated: AGENTS (canonical assistance contract), README, development,
+and this tracker. Responsive procedure and provenance reviewed unchanged because
+layout requirements, assets and licenses are unchanged. Parent/games ownership guides
+and public overviews remain accurate; the parent records only coordination/gitlink.
+Physical-device/Safari and human speech/audio acceptance remain unverified.

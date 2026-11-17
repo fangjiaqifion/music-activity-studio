@@ -61,7 +61,7 @@ under an open-source license. BravuraText retains its supplied SIL OFL license.
 
 The `balloons.html` activity adapts O-003 气球 B using its original hand-drawn
 balloons and changing line/space notes. Children color, check, and reconsider answers
-with aggregate hints; completing a page earns a monochrome musical celebration.
+with graduated hints; completing a page earns a monochrome musical celebration.
 A browser-local student selector automatically supplies name and date. These profiles
 are not cloud accounts. Cloud synchronization and data collection are future work,
 deferred until the worksheet content framework is established.
@@ -72,7 +72,7 @@ Its five smiling black-and-white cartoon notes celebrate a fully correct page.
 
 The `cheesecake.html` activity adapts O-005 芝士蛋糕: tap S for a space
 note or L for a line note on each of nine original cakes. It shares local student
-profiles, Chinese speech, aggregate feedback, and the five-note celebration.
+profiles, Chinese speech, graduated feedback, and the five-note celebration.
 Patrick Hand and ZCOOL KuaiLe provide freely licensed handwriting-style lettering.
 
 The [worksheet selection page](activities.html) groups O-002 musical hands,
@@ -97,8 +97,16 @@ Each activity uses nine questions selected from 36 distinct clef-anchor/target p
 
 ## O-013 keyboard practice
 
-The `keyboard.html` activity has two exercises: color the black keys on three separate keyboards, with one example each of two-black-key (C–E), three-black-key (F–B), and complete C–B groups, then circle and count complete C–B groups on two different 4–6-octave spans with partial edge groups. Tap the first and last white keys to circle a group; tap its ring to remove it. The lower keyboards initially fit the available width, scaling key width and height together to preserve proportions. A red-circle cue precedes marking; number choices appear after students select “圈好了，开始数.” Enlargement enables larger keys with horizontal scrolling. Answers remain in memory; shared local display profiles, speech, aggregate feedback, and celebration apply. This activity is included in the published release.
+The `keyboard.html` activity has two exercises: color the black keys on three separate keyboards, with one example each of two-black-key (C–E), three-black-key (F–B), and complete C–B groups, then circle and count complete C–B groups on two different 4–6-octave spans with partial edge groups. Tap the first and last white keys to circle a group; tap its ring to remove it. The lower keyboards initially fit the available width, scaling key width and height together to preserve proportions. A red-circle cue precedes marking; number choices appear after students select “圈好了，开始数.” Enlargement enables larger keys with horizontal scrolling. Answers remain in memory; shared local display profiles, speech, graduated feedback, and celebration apply. This activity is included in the published release.
 
 ## P-031 pitch motion
 
-The eleventh worksheet card opens `pitch-motion.html`. Four examples introduce step (级进), skip (跳进), leap (远跳), and repeat (重复). Nine generated pairs include at least two of each category, with ascending and descending motion. Children tap a bilingual choice, change it directly, and check the whole set. After three incorrect submissions on the same question, a red dashed ellipse marks its note pair for another look. Editing the answer clears the cue, and a new set resets attempt counts. Shared local profiles, Chinese instruction speech, and the five-note celebration apply. The activity reflows to one, two, or three question columns. It is included in the published release: [play P-031](https://fangjiaqifion.github.io/music-activity-studio/releases/09853155b344/pitch-motion.html).
+The eleventh worksheet card opens `pitch-motion.html`. Four examples introduce step (级进), skip (跳进), leap (远跳), and repeat (重复). Nine generated pairs include at least two of each category, with ascending and descending motion. Children tap a bilingual choice, change it directly, and check the whole set. After three incorrect submissions on the same question, a red ellipse marks its note pair for another look; the local update below also reveals the answer on the sixth error. Editing the answer clears the cue, and a new set resets attempt counts. Shared local profiles, Chinese instruction speech, and the five-note celebration apply. The activity reflows to one, two, or three question columns. It is included in the published release: [play P-031](https://fangjiaqifion.github.io/music-activity-studio/releases/09853155b344/pitch-motion.html).
+
+## Graduated answer hints (local update)
+
+Across scored activities, a third wrong answer circles the error location in red.
+A sixth wrong answer displays the correct answer. Empty submissions do not count;
+new questions clear the counters. Students still select and correct their own answers.
+The unscored rhythm lab retains its existing creative mode. This hint update has
+been verified locally and is not yet published.

@@ -118,7 +118,7 @@ Open `/activities.html` on the source server; the original index links to it, an
 all eleven worksheets link back. `/hands.html` identifies both hands and fills ten
 piano finger numbers. `/cows.html` permutes ten treble and nine bass clefs among
 nineteen enclosed regions. Both use the shared profile/speech adapters and preserve
-aggregate-only feedback, erasing, correction, and the five-character celebration.
+graduated answer assistance, erasing, correction, and the five-character celebration.
 Selections stay in memory. New hands pages alternate their layout; cow pages change
 the clef layout. These activities were published with explicit user authorization on 2026-11-15.
 
@@ -164,4 +164,13 @@ Open `/keyboard.html` from the selector. Run `BASE_URL=http://127.0.0.1:8797 nod
 
 ## P-031 pitch motion
 
-Open `/pitch-motion.html` from the eleven-card selector. Run `BASE_URL=<runtime-directory-url> node tests/pitch_motion_browser.mjs` for full blank/error/correction/completion/reset, speech calls, keyboard/touch, and six-size checks. `npm test` checks all 81 staff pairs plus 1,000 balanced generated pages. Generation uses two unique pairs of each type plus a rotating ninth type, includes both directions for non-repeats, and does not require a clef because only relative staff distance is assessed. Answers and per-question incorrect-submission counters are session-only. On the third wrong submission of an answered question, a red dashed SVG ellipse encloses its two noteheads. Empty submissions do not count. Editing clears that question’s cue; a new set clears counters and cues. Original DOCX/PDF/PIC sources remain unchanged.
+Open `/pitch-motion.html` from the eleven-card selector. Run `BASE_URL=<runtime-directory-url> node tests/pitch_motion_browser.mjs` for full blank/error/correction/completion/reset, speech calls, keyboard/touch, and six-size checks. `npm test` checks all 81 staff pairs plus 1,000 balanced generated pages. Generation uses two unique pairs of each type plus a rotating ninth type, includes both directions for non-repeats, and does not require a clef because only relative staff distance is assessed. Answers and per-question incorrect-submission counters are session-only. Follow the [shared assistance contract](../AGENTS.md#graduated-answer-assistance-2026-11-17) for third-error localization, sixth-error answers, blank checks, edits, and resets. Original DOCX/PDF/PIC sources remain unchanged.
+
+## Answer-assistance verification
+
+Use the canonical [shared assistance contract](../AGENTS.md#graduated-answer-assistance-2026-11-17).
+Run `BASE_URL=<preview-origin-or-release-directory> node tests/retry_hints_browser.mjs`
+for every scored worksheet, the five scored menu games, and both neighborhood levels.
+The suite verifies no early answer disclosure, third-error ellipses, sixth-error
+answers, new-set cleanup, blank checks, and representative responsive hint captures.
+Counters are not learner records and are never persisted.

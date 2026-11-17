@@ -1,7 +1,9 @@
+import { createRetryHints } from "./retry_hints.mjs";
+const retryHints = createRetryHints();
 import { cowRegions, clefGlyphs } from "./cow_regions.mjs";
 import { createSpeech } from "./balloon_speech.mjs";
 import { readProfiles, saveProfiles, dateLabel } from "./balloon_profiles.mjs";
-import { makeHands, makeClefs, countAnswers } from "./activities_core.mjs";
+import { makeHands, makeClefs, countAnswers, expectedAnswers } from "./activities_core.mjs";
 const kind = document.body.dataset.activity;
 const board = document.querySelector("#activity-board");
 const feedback = document.querySelector("#feedback");
@@ -95,6 +97,7 @@ const points = [
   [26, 23],
 ];
 function render() {
+  retryHints.clear();
   if (kind === "hands") {
     board.innerHTML = items
       .map((hand, h) => {
@@ -239,6 +242,7 @@ function render() {
   document.querySelector("#count").textContent = answers.filter(Boolean).length;
 }
 function next() {
+  retryHints.reset();
   stop();
   const make = kind === "hands" ? makeHands : makeClefs;
   items = make(Math.random, last);
@@ -282,6 +286,13 @@ board.onclick = (event) => {
 };
 document.querySelector("#check").onclick = () => {
   stop();
+  expectedAnswers(kind, items).forEach((value,i) => {
+    const target = kind === 'hands' && i % 6 === 0
+      ? board.querySelectorAll('.hand-labels')[i / 6]
+      : board.querySelector(`[data-index="${i}"]`);
+    retryHints.check(i, answers[i] ? answers[i] !== value : null, target,
+      ({left:'左手',right:'右手',black:'黑色（高音谱号）',brown:'棕色（低音谱号）'})[value] || value);
+  });
   const { blank, errors } = countAnswers(kind, items, answers);
   feedback.textContent = blank
     ? "还有 " +

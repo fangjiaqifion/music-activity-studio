@@ -1,6 +1,8 @@
+import { createRetryHints } from "./retry_hints.mjs";
+const retryHints = createRetryHints();
 import { createSpeech } from "./balloon_speech.mjs";
 import { readProfiles, saveProfiles, dateLabel } from "./balloon_profiles.mjs";
-import { makePage, scorePage } from "./keyboard_core.mjs";
+import { makePage, scorePage, completeGroups } from "./keyboard_core.mjs";
 const board = document.querySelector("#activity-board"),
   feedback = document.querySelector("#feedback"),
   celebration = document.querySelector("#celebration");
@@ -239,6 +241,7 @@ function update() {
     paint.size + ranges.flat().length + counts.filter((v) => v !== null).length;
 }
 function changed() {
+  retryHints.clear();
   stop();
   feedback.textContent = "选好了就点打勾吧。";
   update();
@@ -282,6 +285,7 @@ board.addEventListener("click", (e) => {
   changed();
 });
 function next() {
+  retryHints.reset();
   stop();
   page = makePage(serial++);
   paint = new Set();
@@ -294,6 +298,19 @@ function next() {
 }
 document.querySelector("#check").onclick = () => {
   stop();
+  board.querySelectorAll('[data-task="paint"]').forEach(b => {
+    const id = b.hasAttribute('data-black') ? 'b'+b.dataset.black : 'w'+b.dataset.key;
+    retryHints.check(id, paint.has(id) ? id.startsWith('w') : null, b, '白键保持白色，点击擦除');
+  });
+  page.rows.forEach((m,r) => {
+    const expected = completeGroups(m);
+    const wrongRanges = ranges[r].some(v=>!expected.some(e=>e[0]===v[0]&&e[1]===v[1]));
+    retryHints.check('ranges'+r, ranges[r].length ? wrongRanges : null,
+      board.querySelectorAll('.count-card')[r].querySelector('.keyboard-scroll'),
+      expected.map(([a,b])=>`第 ${a+1}–${b+1} 个白键`).join('；'));
+    retryHints.check('count'+r, counts[r] === null ? null : counts[r] !== expected.length,
+      board.querySelector(`[data-choices="${r}"]`), `${expected.length} 组`);
+  });
   const { blank, errors } = scorePage(page, paint, ranges, counts);
   feedback.textContent = blank
     ? "还有 " +

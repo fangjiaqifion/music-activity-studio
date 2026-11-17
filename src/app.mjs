@@ -1,3 +1,5 @@
+import { createRetryHints } from "./retry_hints.mjs";
+const retryHints = createRetryHints();
 import {
   GAMES,
   NOTES,
@@ -34,6 +36,7 @@ function shell(content) {
   app.innerHTML = `<header class="topbar"><button class="brand" data-action="home"><span class="brandmark">m<span>·</span></span><span>音乐游乐工坊<small>MUSIC ACTIVITY STUDIO</small></span></button><span class="prototype">试玩版 <span>01</span></span></header>${content}<footer><span>从纸上的小练习，到可以玩的音乐世界。</span><span>WORKSHEET COLLECTION / FANG, JIAQI</span></footer>`;
 }
 function home() {
+  retryHints.reset();
   audio.stop();
   game = null;
   shell(
@@ -51,6 +54,7 @@ function start(id, newSeed = true) {
   render();
 }
 function reset() {
+  retryHints.reset();
   audio.stop();
   answer = [];
   feedback = "";
@@ -64,6 +68,7 @@ function glyph(n) {
   return `<span class="music" aria-hidden="true">${n.glyph}</span><span>${n.label}</span>`;
 }
 function render() {
+  retryHints.clear();
   const focused = document.activeElement?.closest("button[data-action]");
   const focusAction = focused?.dataset.action;
   const focusValue = focused?.dataset.value;
@@ -154,6 +159,10 @@ function check() {
         ? "看看篮子里的拍数，再调整一下。"
         : "再想一想，你也可以调整选择。";
   render();
+  const solution = game.id === 'shop' ? `${q.target} 个四分音符（共 ${q.target} 拍）`
+    : game.id === 'builder' ? q.keys.map(k=>LETTERS[k%7]+(k===7?'5':'4')).join('、') : q.answer;
+  retryHints.check(index, answer.length ? !correct : null,
+    el(game.id === 'shop' ? '.basket' : game.id === 'builder' ? '.piano' : '.choices'), solution);
 }
 function speakCall(q) {
   const called = call;
@@ -328,6 +337,7 @@ app.addEventListener("click", async (e) => {
           records = [{ completed: true, calls: call + 1 }];
           if (!save()) feedback += " 本机记录未能保存，这局仍已完成。";
         } else {
+          retryHints.reset();
           call++;
           showCall = false;
           feedback = "✓ 找到了！播放下一轮音名吧。";
@@ -336,6 +346,11 @@ app.addEventListener("click", async (e) => {
       } else feedback = "再听一次音名，也留意一下是第几组。";
     }
     render();
+    if (a === 'mark' && !solved) {
+      const n = Number(v), c = q.calls[call];
+      if (!marks.includes(n)) retryHints.check('bingo'+call, true,
+        el(`[data-action="mark"][data-value="${n}"]`), `${c.letter}${c.octave}`);
+    }
   } catch (error) {
     if (!game || questions[index] !== owner) return;
     feedback = ["chord", "rhythm", "call"].includes(a)

@@ -26,17 +26,17 @@ try{
  const correct=await first.locator('[aria-pressed=true]').getAttribute('data-answer');
  await first.locator('button:not([aria-pressed=true])').first().click();await page.locator('#check').click();
  assert.equal(await page.locator('#feedback').innerText(),'有 1 个需要再想一想。');
- assert.equal(await page.locator('.retry-cue').count(),0);
- await page.locator('#check').click();assert.equal(await page.locator('.retry-cue').count(),0);
- await page.locator('#check').click();assert.equal(await page.locator('.retry-cue').count(),1);
- assert.equal(await first.locator('.retry-cue').count(),1);
+ assert.equal(await page.locator('.retry-hint').count(),0);
+ await page.locator('#check').click();assert.equal(await page.locator('.retry-hint').count(),0);
+ await page.locator('#check').click();assert.equal(await page.locator('.retry-hint').count(),1);
+ assert.equal(await page.locator('.retry-hint[data-retry-key="0"]').count(),1);
  await page.setViewportSize({width:390,height:844});
  await first.scrollIntoViewIfNeeded();await page.screenshot({path:'.runtime/pitch_motion/third-error-phone.png'});
  await page.setViewportSize({width:1440,height:1000});
  await first.locator('[data-answer="'+correct+'"]').focus();await page.keyboard.press('Enter');
  assert.equal(await first.locator('[data-answer="'+correct+'"]').evaluate(e=>e===document.activeElement),true);
- assert.equal(await page.locator('.retry-cue').count(),0);
- await page.locator('#check').click();assert.equal(await page.locator('.retry-cue').count(),0);assert.equal(await page.locator('#celebration').isVisible(),true);assert.equal(await page.locator('.note-person').count(),5);
+ assert.equal(await page.locator('.retry-hint').count(),0);
+ await page.locator('#check').click();assert.equal(await page.locator('.retry-hint').count(),0);assert.equal(await page.locator('#celebration').isVisible(),true);assert.equal(await page.locator('.note-person').count(),5);
  await page.keyboard.press('Escape');assert.equal(await page.locator('#celebration').isVisible(),false);
  await page.locator('#next').click();assert.equal(await page.locator('#count').innerText(),'0');assert.notEqual(await page.locator('.motion-grid').innerHTML(),original);
  for(const [width,height] of [[320,740],[390,844],[844,390],[768,1024],[1180,820],[1440,900]]){

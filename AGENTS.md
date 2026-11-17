@@ -44,8 +44,7 @@ profiles as authenticated accounts or send learner data to a service.
 
 `balloons.html`, `balloons.css`, and `src/balloons*.mjs` own the separate trial;
 `src/balloon_profiles.mjs` owns local display profiles. Preserve native artwork
-proportions and highlight bubbles with enclosed-body masks. Error feedback reports
-counts only, with no per-item answer hints. Keep the five-character monochrome
+proportions and highlight bubbles with enclosed-body masks. Error feedback follows the shared graduated assistance contract below. Keep the five-character monochrome
 celebration dismissible, respect reduced motion, and stop it on edits/new pages.
 
 Keep O-003 staff baseline, spacing, and note size consistent across shapes. Balloon
@@ -56,7 +55,7 @@ on lifecycle transitions. Preserve written instructions and unavailable-voice fe
 
 `cheesecake.html`, `cheesecake.css`, and `src/cheesecake*.mjs` adapt the original
 nine-cake S/L worksheet. Share the O-003 local profile and speech adapters and preserve
-aggregate-only feedback and the five-character celebration. Every page includes all
+graduated answer assistance and the five-character celebration. Every page includes all
 nine internal staff positions once. Bundle Patrick Hand and ZCOOL KuaiLe with their
 OFL licenses. Keep the original worksheet and illustration sources unchanged.
 
@@ -89,7 +88,7 @@ New outlines and masks use smooth cubic SVG paths; source AI/clean PNG stay unto
 `src/cow_regions.mjs` records patch area centroids and exact Bravura glyph paths/bounds;
 center visible glyph ink inside each patch. Display full English names “Treble clef”
 and “Bass clef”.
-Apply the same local-profile, speech, aggregate-feedback, eraser, and celebration
+Apply the same local-profile, speech, graduated-feedback, eraser, and celebration
 contracts as O-003/O-005. Keep all eleven worksheet entries in the runtime allowlist.
 
 ## O-007/O-008 local trials
@@ -98,7 +97,7 @@ contracts as O-003/O-005. Keep all eleven worksheet entries in the runtime allow
 own the staff placement, two-note comparison, and relative-note trials. O-007 has twelve
 requested placements covering all nine internal staff positions. O-008 uses twelve two-note comparisons, balanced across rising, falling, and repeated pitches. The user explicitly removed line/space numbering on 2026-11-15; do not restore it. Count lines/spaces from the bottom. Use open
 noteheads with transparent centers, accessible SVG targets, and native artwork ratios.
-Preserve shared local profiles, speech cancellation, aggregate-only feedback, erasing,
+Preserve shared local profiles, speech cancellation, graduated answer assistance, erasing,
 and the five-character celebration. O-009 uses nine daily single-note questions with movable G-clef anchors. Name every target relative to its displayed clef position; never treat source row letters as arbitrary reference pitches or repeat given notes in its cards. O-010/O-011 use the same nine-question daily practice with movable F/C anchors and single target notes. BravuraText uses a 100-unit font size and a shared bottom-line baseline at SVG y=106 for 20-unit staff spacing. Pointer placement must not restore SVG target focus; retain visible keyboard focus. The selector has eleven worksheet entries.
 
 ## Responsive web games, confirmed 2026-11-15
@@ -117,7 +116,7 @@ Each activity uses nine questions selected from 36 distinct clef-anchor/target p
 
 ## O-013 keyboard practice
 
-`keyboard.html`, `keyboard.css`, and `src/keyboard*.mjs` own three black-key coloring keyboards (one each of C–E, F–B, and C–B) and two circle/count keyboards. A complete group is C–B (seven white keys and five black keys); cropped edge groups do not count. Do not presegment or label answer groups. Preserve correct keyboard geometry and proportional scaling of key width and height, first/last-key circle creation, circle removal, whole-keyboard overview, circle-then-count staging, direct count replacement, horizontal scrolling when enlarged, enlargement, keyboard access, and aggregate-only feedback. Original worksheet masters remain unchanged.
+`keyboard.html`, `keyboard.css`, and `src/keyboard*.mjs` own three black-key coloring keyboards (one each of C–E, F–B, and C–B) and two circle/count keyboards. A complete group is C–B (seven white keys and five black keys); cropped edge groups do not count. Do not presegment or label answer groups. Preserve correct keyboard geometry and proportional scaling of key width and height, first/last-key circle creation, circle removal, whole-keyboard overview, circle-then-count staging, direct count replacement, horizontal scrolling when enlarged, enlargement, keyboard access, and graduated answer assistance. Original worksheet masters remain unchanged.
 
 ## Note Neighborhood
 
@@ -127,4 +126,27 @@ Level 1 supports pointer dragging, tap-then-place, and keyboard controls. Incorr
 
 ## P-031 pitch motion
 
-`pitch-motion.html`, `pitch_motion.css`, and `src/pitch_motion*.mjs` own a nine-pair practice with two each of step, skip, leap, and repeat plus one extra category that rotates across new sets. Count consecutive staff line/space positions: absolute distance 0 = repeat, 1 = step, 2 = skip, and 3 or more = leap. Non-repeat categories include both ascending and descending pairs; all pairs are distinct and stay within the nine internal staff positions. Show four worked examples, direct replaceable answer buttons, shared local profiles, speech cancellation, aggregate feedback, and the five-character celebration. After a particular answered question is submitted incorrectly three times, circle its two notes with a red dashed ellipse. Blank answers do not increment the counter. Editing that answer clears its cue until the next check; changing sets clears all counters. Never reveal the correct choice. This user-requested P-031 exception supersedes aggregate-only error localization for this activity. Use correct English Step/Skip labels rather than the swapped labels in the source. Preserve original P-031 masters. Published with explicit user authorization on 2026-11-17; subsequent pushes require authorization.
+`pitch-motion.html`, `pitch_motion.css`, and `src/pitch_motion*.mjs` own a nine-pair practice with two each of step, skip, leap, and repeat plus one extra category that rotates across new sets. Count consecutive staff line/space positions: absolute distance 0 = repeat, 1 = step, 2 = skip, and 3 or more = leap. Non-repeat categories include both ascending and descending pairs; all pairs are distinct and stay within the nine internal staff positions. Show four worked examples, direct replaceable answer buttons, shared local profiles, speech cancellation, graduated feedback, and the five-character celebration. Use the shared graduated assistance contract below, circling the two noteheads on the third error. Use correct English Step/Skip labels rather than the swapped labels in the source. Preserve original P-031 masters. Published with explicit user authorization on 2026-11-17; subsequent pushes require authorization.
+
+## Graduated answer assistance, 2026-11-17
+
+The user requested this contract for every scored activity, superseding earlier
+aggregate-only and never-reveal rules. `src/retry_hints.mjs` owns session-only
+per-question counters, noninteractive red ellipse overlays, and correct-answer text
+next to the existing feedback. The third
+incorrect answered submission circles the error location; the sixth incorrect
+submission displays the correct answer. Errors four and five retain localization
+without revealing the answer. Blank checks do not increment or reset counters.
+A correct check resets that question; a new question/set/restart resets its counters.
+Answer edits clear displayed cues while retaining counts until checked again.
+Rhythm lab has no scored answers and remains unchanged. Bingo counts per call;
+Note Neighborhood counts per character placement or neighbor question, preserving
+its existing two-second retry lock. Keyboard coloring counts selected white-key
+errors individually, while circle ranges and counts are separate tasks per keyboard.
+Correct answers remain hints only: never replace student selections, mark them
+correct automatically, advance rounds, or alter first-attempt scoring.
+
+Run `BASE_URL=<preview-origin-or-release-directory> node tests/retry_hints_browser.mjs`
+for blank/third/sixth/reset coverage across all scored entries and both neighborhood
+levels. Original artwork, source worksheets, layouts, audio, and question generation
+are outside this change. Local changes do not authorize push or deployment.

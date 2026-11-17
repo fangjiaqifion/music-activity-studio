@@ -1,3 +1,5 @@
+import { createRetryHints } from "./retry_hints.mjs";
+const retryHints = createRetryHints();
 import { clefGlyphs } from "./cow_regions.mjs";
 import { braceGlyph } from "./note_house_glyphs.mjs";
 import { createSpeech } from "./balloon_speech.mjs";
@@ -206,6 +208,7 @@ function celebrateAnswer() {
   confettiTimer = setTimeout(stopConfetti, 1900);
 }
 function start(nextLevel = level) {
+  retryHints.reset();
   cancelSpeech();
   piano.stop();
   stopConfetti();
@@ -237,8 +240,12 @@ function place(index) {
   if (mismatchIndex !== null) return;
   if (pitches[index][0] !== selected) {
     showMismatch(index);
+    retryHints.check('place'+selected, true, $(`[data-house="${index}"]`),
+      `${selected} 住在从下往上第 ${pitches.findIndex(p=>p[0]===selected)+1} 座小屋`);
     return;
   }
+  retryHints.check("place"+selected, false);
+  retryHints.clear();
   residents[index] = selected;
   selected = null;
   feedback("找到家啦！");
@@ -250,6 +257,7 @@ function choose(letter) {
   if (mismatchIndex !== null) return;
   if (level === 1) {
     void piano.play(letter);
+    retryHints.clear();
     selected = letter;
     renderTray();
     feedback(`选好了 ${letter}，点它的小屋吧。`);
@@ -260,6 +268,8 @@ function choose(letter) {
   void piano.play(letter);
   selected = letter;
   if (letter === questions[round].answer) {
+    retryHints.check(round, false);
+    retryHints.clear();
     solved = true;
     cancelSpeech();
     feedback("答对啦，找到邻居了！");
@@ -271,6 +281,7 @@ function choose(letter) {
     cancelSpeech();
     renderTray();
     showMismatch(questions[round].home, "找错了，再找找");
+    retryHints.check(round, true, $(`[data-letter="${letter}"]`), questions[round].answer);
     $(`[data-letter="${letter}"]`).focus({ preventScroll: true });
   }
 }
@@ -328,6 +339,7 @@ document.addEventListener("pointerup", (e) => {
     ?.closest("[data-house]");
   clearDrag();
   if (moved) {
+    retryHints.clear();
     selected = letter;
     renderTray();
     if (target) place(Number(target.dataset.house));
@@ -378,6 +390,7 @@ $("#next").onclick = () => {
     return;
   }
   cancelSpeech();
+  retryHints.reset();
   round++;
   solved = false;
   selected = null;

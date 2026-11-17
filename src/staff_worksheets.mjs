@@ -1,3 +1,5 @@
+import { createRetryHints } from "./retry_hints.mjs";
+const retryHints = createRetryHints();
 import { createSpeech } from "./balloon_speech.mjs";
 import { readProfiles, saveProfiles, dateLabel } from "./balloon_profiles.mjs";
 import { makeStaffPage, makeRelativePage, scoreStaffPage } from "./staff_worksheets_core.mjs";
@@ -110,6 +112,7 @@ function relativeGuide() {
 
 }
 function render() {
+  retryHints.clear();
   board.innerHTML =
     (kind === "sunshine" ? sunshineGuide() : relative ? relativeGuide() : "") +
     items
@@ -141,6 +144,7 @@ function render() {
   ).length;
 }
 function next() {
+  retryHints.reset();
   stop();
   items = relative ? makeRelativePage(kind, undefined, relativeRound++) : makeStaffPage(kind);
   if (relative) document.querySelector('#total').textContent = items.length;
@@ -184,6 +188,8 @@ document.querySelectorAll("[data-tool]").forEach(
 );
 document.querySelector("#check").onclick = () => {
   stop();
+  items.forEach((q,i) => retryHints.check(i, answers[i] == null ? null : answers[i] !== q.expected,
+    [...board.querySelectorAll('.staff-card')[i].querySelectorAll('svg ellipse')], q.type === 'place' ? positionLabel(q.position) : ({up:'升高 ↑',same:'相同 →',down:'降低 ↓'})[q.expected] || q.expected));
   const { blank, errors } = scoreStaffPage(items, answers);
   feedback.textContent = blank
     ? `还有 ${blank} 处没有填写。${errors ? `另有 ${errors} 个需要再想一想。` : ""}`

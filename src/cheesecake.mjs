@@ -1,3 +1,5 @@
+import { createRetryHints } from "./retry_hints.mjs";
+const retryHints = createRetryHints();
 import {createSpeech} from "./balloon_speech.mjs";
 import { makePage, answer } from "./cheesecake_core.mjs";
 import { readProfiles, saveProfiles, dateLabel } from "./balloon_profiles.mjs";
@@ -47,6 +49,7 @@ function celebrate() {
   celebration.classList.add("playing");
 }
 function render() {
+  retryHints.clear();
   board.innerHTML = items.map((item, i) => {
     const y = 80 - item.position * 6.5;
     return `<div class="cake"><span class="cake-number">${i+1}</span><svg viewBox="0 0 360 260" aria-hidden="true"><image href="assets/cheesecake.png" x="10" y="8" width="340" height="234"/><g stroke="#343a36" stroke-width="1.4">${[0,13,26,39,52].map(d=>'<path d="M151 '+(28+d)+'h96"/>').join('')}</g><ellipse cx="199" cy="${y}" rx="9.2" ry="4.9" fill="none" stroke="#242a25" stroke-width="2.3"/></svg><button class="letter line-choice" data-index="${i}" data-answer="L" aria-pressed="${colors[i]==='L'}" aria-label="第 ${i+1} 块蛋糕，选择 L">L</button><button class="letter space-choice" data-index="${i}" data-answer="S" aria-pressed="${colors[i]==='S'}" aria-label="第 ${i+1} 块蛋糕，选择 S">S</button></div>`;
@@ -54,6 +57,7 @@ function render() {
   document.querySelector("#count").textContent = colors.filter(Boolean).length;
 }
 function next() {
+  retryHints.reset();
   speech.stop();
   stopCelebration();
   items = makePage(Math.random, signature);
@@ -77,6 +81,7 @@ board.addEventListener("click", event => {
 });
 document.querySelector("#check").addEventListener("click", () => {
   speech.stop();
+  items.forEach((q,i) => retryHints.check(i, colors[i] ? colors[i] !== answer(q.position) : null, board.children[i].querySelector('svg > ellipse'), {red:'红色（间音）',blue:'蓝色（线音）',L:'L（线音）',S:'S（间音）'}[answer(q.position)]));
   const blank = colors.filter(c=>!c).length;
   const errors = colors.filter((c,i)=>c && c !== answer(items[i].position)).length;
   if (blank) {
