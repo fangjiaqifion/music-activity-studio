@@ -80,7 +80,7 @@ O-003 balloons, O-004 clef cow, and O-005 cheesecake into illustrated cards. O-0
 asks children to identify each hand and fill all ten piano finger numbers. O-004
 colors nineteen treble/bass clef regions black/brown on the body, legs, and both
 horns. The face stays clear except for its eyes, nostrils, and smile; ears remain black.
-All ten illustrated activities, including O-013 keyboard practice, are included in the published release. The cow also
+All eleven illustrated activities, including O-013 keyboard practice and P-031 pitch motion, are included in the published release. The cow also
 offers enlarged scene tiles for easier viewing and answering on small screens.
 
 The selector also includes **O-007 Draw the Notes** (`ladybirds.html`)
@@ -99,6 +99,6 @@ Each activity uses nine questions selected from 36 distinct clef-anchor/target p
 
 The `keyboard.html` activity has two exercises: color the black keys on three separate keyboards, with one example each of two-black-key (C–E), three-black-key (F–B), and complete C–B groups, then circle and count complete C–B groups on two different 4–6-octave spans with partial edge groups. Tap the first and last white keys to circle a group; tap its ring to remove it. The lower keyboards initially fit the available width, scaling key width and height together to preserve proportions. A red-circle cue precedes marking; number choices appear after students select “圈好了，开始数.” Enlargement enables larger keys with horizontal scrolling. Answers remain in memory; shared local display profiles, speech, aggregate feedback, and celebration apply. This activity is included in the published release.
 
-## P-031 pitch motion, local preview
+## P-031 pitch motion
 
-The eleventh worksheet card opens `pitch-motion.html`. Four examples introduce step (级进), skip (跳进), leap (远跳), and repeat (重复). Nine generated pairs include at least two of each category, with ascending and descending motion. Children tap a bilingual choice, change it directly, and check the whole set. After three incorrect submissions on the same question, a red dashed ellipse marks its note pair for another look. Editing the answer clears the cue, and a new set resets attempt counts. Shared local profiles, Chinese instruction speech, and the five-note celebration apply. The activity reflows to one, two, or three question columns. It is available locally and has not been published.
+The eleventh worksheet card opens `pitch-motion.html`. Four examples introduce step (级进), skip (跳进), leap (远跳), and repeat (重复). Nine generated pairs include at least two of each category, with ascending and descending motion. Children tap a bilingual choice, change it directly, and check the whole set. After three incorrect submissions on the same question, a red dashed ellipse marks its note pair for another look. Editing the answer clears the cue, and a new set resets attempt counts. Shared local profiles, Chinese instruction speech, and the five-note celebration apply. The activity reflows to one, two, or three question columns. It is included in the published release: [play P-031](https://fangjiaqifion.github.io/music-activity-studio/releases/09853155b344/pitch-motion.html).
