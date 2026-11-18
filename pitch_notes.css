@@ -9,7 +9,7 @@
 .note-staff {display:block;width:100%;height:auto;color:#303937}
 .group-options {display:grid;grid-template-columns:minmax(204px,270px) auto minmax(204px,270px);align-items:center;justify-content:center;gap:12px}
 .key-group {min-width:0;width:100%;max-width:270px;padding:12px;border:2px solid transparent;border-radius:24px}
-.key-group[data-selected=true] {border-color:#b54a42}
+.key-group[data-selected=true] .piano::after {content:"";position:absolute;inset:-10px;border:3px solid #d32030;border-radius:50%;pointer-events:none;z-index:2}
 .circle-group {display:block;margin:0 auto 14px;min-height:44px}
 .key-or {font-size:16px;color:#738276}
 body[data-activity="key-notes"] .note-card {container-type:inline-size}
