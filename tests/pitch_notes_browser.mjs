@@ -95,10 +95,7 @@ try{
   assert.ok(layout.fish.every(f=>f.w>=44&&f.h>=44),'fish touch targets remain usable');
   const cropped=await page.locator('.fish-staves .clef').evaluateAll(es=>es.filter(e=>{const b=e.getBBox(),v=e.closest('svg').viewBox.baseVal;return b.x<v.x||b.y<v.y||b.x+b.width>v.x+v.width||b.y+b.height>v.y+v.height;}).length);
   assert.equal(cropped,0,'all clefs fit inside SVG bounds, including the treble tail');
-  assert.equal(await page.locator('.fish-perimeter').count(),4,'source left/top-right/mid-right/bottom-right seaweed regions');
-  assert.equal(await page.locator('.fish-perimeter').evaluateAll(es=>es.every(e=>getComputedStyle(e).pointerEvents==='none')),true);
-  const encroaching=await page.evaluate(()=>{const frame=document.querySelector('.fish-staves').getBoundingClientRect();return [...document.querySelectorAll('.fish-perimeter:not(.fish-reef-left)')].some(e=>e.getBoundingClientRect().left<frame.right-1);});
-  assert.equal(encroaching,false,'right-side artwork stays outside the notation frame');
+  assert.equal(await page.locator(".fish-perimeter").count(),0);
  }
  await page.screenshot({path:`.runtime/pitch_notes/${kind}-${width}x${height}.png`,fullPage:true});
  assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);

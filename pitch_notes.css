@@ -34,7 +34,7 @@ button[aria-pressed=true] {background:#d9eee3;border-color:#446f59;color:#203e30
 @media print{.note-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.note-card{break-inside:avoid}.note-guide{break-inside:avoid}}
 
 body[data-activity="fish-notes"] .paper>.cloud {display:none}
-.fish-match-layout {display:grid;grid-template-columns:minmax(0,15fr) minmax(0,7fr);padding-right:12%;align-items:stretch;position:relative;isolation:isolate;margin-top:16px}
+.fish-match-layout {display:grid;grid-template-columns:minmax(0,3fr) minmax(0,2fr);align-items:stretch;position:relative;isolation:isolate;margin-top:16px}
 .fish-tray {min-width:0;position:relative}
 .fish-bank {position:relative;width:100%;height:100%;min-height:936px}
 .fish-token {position:absolute;left:var(--fish-x);top:var(--fish-y);transform:translate(-50%,-50%);width:clamp(64px,24%,140px);min-width:44px;min-height:44px;padding:0;border:2px solid transparent;border-radius:45%;background:transparent;z-index:2}
@@ -67,13 +67,3 @@ body[data-activity="fish-notes"] .practice-label {margin:16px 0 0;line-height:1.
 
 .fish-right img {transform:scaleX(-1)}
 .fish-right .fish-letter {left:46%}
-
-/* Reserve the source worksheet's outer right margin for cropped seaweed. */
-.fish-perimeter {position:absolute;right:0;width:12%;overflow:hidden;pointer-events:none;z-index:0;display:grid;place-items:center}
-.fish-perimeter img {display:block;width:200%;height:200%;max-width:none;object-fit:contain;transform:rotate(-90deg)}
-.fish-reef-top {top:0;height:12%}
-.fish-reef-middle {top:32%;height:22%}
-.fish-reef-bottom {top:78%;height:22%}
-.fish-reef-left {right:auto;left:0;top:26%;width:7%;height:8%}
-.fish-reef-left img {transform:rotate(90deg)}
-@media(max-width:600px){.fish-match-layout{padding-right:6%;grid-template-columns:minmax(0,30fr) minmax(0,17fr)}.fish-perimeter{width:6%}.fish-reef-left{width:7%}}
