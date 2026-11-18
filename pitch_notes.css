@@ -29,11 +29,34 @@ button[aria-pressed=true] {background:#d9eee3;border-color:#446f59;color:#203e30
 .white-key[aria-pressed=true] {background:#f5d181}
 .black-keys {position:absolute;inset:0;pointer-events:none}
 .black-keys span {position:absolute;top:0;width:calc(56% / var(--keys));height:64%;background:#2a3530;border-radius:0 0 5px 5px;border:1px solid #111}
-.fish-options {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
-.fish-choice {position:relative;padding:4px 2px 8px;border-radius:16px;min-width:0;background:#f1f8f7}
-.fish-choice img {display:block;width:100%;height:auto;aspect-ratio:1.65;object-fit:contain}
-.fish-choice span {display:block;font-size:23px;font-weight:bold}
-.fish-choice small {display:block;font-size:18px;font-weight:normal}
 @media(max-width:1000px){.note-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:600px){.note-grid{grid-template-columns:1fr}.note-card .note-staff{max-width:320px;margin:auto}.note-guide{padding:14px}}
 @media print{.note-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.note-card{break-inside:avoid}.note-guide{break-inside:avoid}}
+.fish-match-layout {display:grid;grid-template-columns:280px minmax(0,1fr);gap:20px;align-items:start}
+.fish-tray {min-width:0;position:sticky;top:8px;z-index:4;background:#f2f8f4;border:1px solid #d4dfd5;border-radius:20px;padding:12px}
+.fish-tray h2 {font-size:19px;margin:0 0 8px;text-align:center}
+.fish-bank {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+.fish-token {padding:4px;min-width:0;border-radius:14px;background:white}
+.fish-token[aria-pressed=true] {outline:3px solid #407858;outline-offset:-3px}
+.fish-token small {display:block;font-size:13px;white-space:nowrap}
+.fish-portrait {display:block;position:relative;width:100%;max-width:110px;margin:auto;aspect-ratio:244/183}
+.fish-portrait img {display:block;width:100%;height:100%;object-fit:contain}
+.fish-letter {position:absolute;left:54%;top:48%;transform:translate(-50%,-50%);font-size:22px;line-height:1;color:#242a25;font-weight:bold}
+.fish-selection {font-size:16px;margin:10px 0 0;text-align:center;min-height:24px}
+.fish-staves {min-width:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.match-target {display:block;width:100%;padding:0;border:0;background:transparent;min-width:0}
+.match-target .note-staff {max-width:300px;margin:auto}
+.matched-fish {display:flex;align-items:center;justify-content:center;min-height:85px;color:#738276;font-size:16px;border-top:1px dashed #d7dcd3}
+.unmatch {display:block;margin:6px auto 0;min-height:44px;padding:6px 14px;font-size:16px}
+.unmatch:disabled {opacity:.4;cursor:default}
+@media(max-width:760px){
+ .fish-match-layout{grid-template-columns:1fr}
+ .fish-tray{top:0;padding:8px;border-radius:14px}
+ .fish-tray h2{display:none}
+ .fish-bank{display:flex;overflow-x:auto;gap:8px;padding:4px;scroll-padding:4px}
+ .fish-token{flex:0 0 88px}
+ .fish-selection{margin:4px 0 0;font-size:15px}
+ .fish-staves{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:520px){.fish-staves{grid-template-columns:1fr}}
+@media print{.fish-match-layout{grid-template-columns:240px 1fr}.fish-tray{position:static}.fish-staves{grid-template-columns:1fr}.unmatch{display:none}}

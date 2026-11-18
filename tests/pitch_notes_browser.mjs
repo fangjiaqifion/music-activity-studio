@@ -27,8 +27,10 @@ try{
   await first.locator(`[data-group="${q%7<3?'3':'2'}"]`).click();
  }
  if(kind==='fish-notes'){
- const incorrect=await first.locator('[data-pitch]').evaluateAll((es,p)=>es.find(e=>+e.dataset.pitch!==p).dataset.pitch,q);
- await first.locator(`[data-pitch="${incorrect}"]`).tap();
+ assert.equal(await page.locator('.fish-token').count(),9);
+ const incorrect=await page.locator('[data-fish]').evaluateAll((es,p)=>es.find(e=>+e.dataset.fish!==p).dataset.fish,q);
+ await page.locator('[data-fish="'+incorrect+'"]').tap();
+ await first.locator('[data-target]').tap();
  }
  for(let i=1;i<=6;i++){
  await page.locator('#check').click();assert.equal(await page.locator('.retry-hint').count(),i>=3?1:0);assert.equal(await page.locator('.retry-answer').count(),i>=6?1:0);
@@ -57,7 +59,20 @@ try{
   await card.locator(`[data-group="${n%7<3?'2':'3'}"]`).click();
   const key=card.locator(`[data-key="${'CDEFGAB'[n%7]}"]`);await key.focus();await page.keyboard.press('Enter');
   assert.equal(await key.evaluate(e=>e===document.activeElement),true);
- }else await card.locator(`[data-pitch="${n}"]`).tap();
+ }else {
+  await page.locator('[data-fish="'+n+'"]').click();
+  await card.locator('[data-target]').focus();await page.keyboard.press('Enter');
+  assert.equal(await card.locator('[data-target]').evaluate(e=>e===document.activeElement),true);
+ }
+ }
+ if(kind==='fish-notes'){
+ const n=await pitch(first);
+ await page.locator('[data-fish="'+n+'"]').click();await page.locator('[data-target="1"]').click();
+ assert.equal(await first.locator('.matched-fish .fish-portrait').count(),0,'moving a fish frees its old staff');
+ assert.equal(await page.locator('#count').innerText(),'8');
+ await page.locator('[data-unmatch="1"]').click();
+ assert.equal(await page.locator('#count').innerText(),'7');
+ for(const i of [0,1]){const c=page.locator('.note-card').nth(i),v=await pitch(c);await page.locator('[data-fish="'+v+'"]').click();await c.locator('[data-target]').click();}
  }
  assert.equal(await page.locator('#count').innerText(),'9');
  await page.locator('#check').click();assert.equal(await page.locator('#celebration').isVisible(),true);assert.equal(await page.locator('.retry-hint').count(),0);

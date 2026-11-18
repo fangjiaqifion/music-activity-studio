@@ -19,11 +19,20 @@ export function makePage(kind, serial = 0, random = Math.random) {
   if (kind === 'fish-notes') {
     // The source's ten staves contain nine distinct pitches; C4 occurs in both clefs.
     const notes = [[26,'bass'],[28,serial % 2 ? 'treble':'bass'],[33,'treble'],[27,'bass'],[39,'treble'],[17,'bass'],[35,'treble'],[21,'bass'],[29,'treble']];
-    return shuffle(notes, random).map(([pitch,clef]) => ({pitch,clef,choices:shuffle([pitch,pitch+(pitch>=28?-7:7),pitch+(pitch%7===6?-1:1)],random)}));
+    return shuffle(notes, random).map(([pitch,clef]) => ({pitch,clef}));
   }
   const order = shuffle([0,1,2,3,4,5,6], random);
   return shuffle([...order,...order.slice(0,2)].map((letter,i) => {
     const clef = (i + serial) % 2 ? 'bass' : 'treble';
     return {pitch:(clef==='bass'?21:28)+letter,clef};
   }),random);
+}
+
+export function makeFishBank(page, random=Math.random) {
+ const pitches=page.map(q=>q.pitch),bank=shuffle(pitches,random);
+ if(bank.every((pitch,i)=>pitch===pitches[i]))bank.push(bank.shift());
+ return bank;
+}
+export function assignFish(answers,index,pitch) {
+ return answers.map((a,i)=>i===index?{pitch}:a.pitch===pitch?{}:a);
 }

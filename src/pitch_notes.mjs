@@ -2,7 +2,7 @@ import { createRetryHints } from "./retry_hints.mjs";
 const retryHints = createRetryHints();
 import { createSpeech } from './balloon_speech.mjs';
 import { readProfiles, saveProfiles, dateLabel } from './balloon_profiles.mjs';
-import { makePage, keyGroup, pitchLabel, fishLabel, staffPosition } from './pitch_notes_core.mjs';
+import { makePage, keyGroup, pitchLabel, fishLabel, staffPosition, makeFishBank, assignFish } from './pitch_notes_core.mjs';
 const kind=document.body.dataset.activity;
 const board=document.querySelector('#activity-board'), feedback=document.querySelector('#feedback'), celebration=document.querySelector('#celebration');
 const speech=createSpeech(window.speechSynthesis,window.SpeechSynthesisUtterance,()=>document.querySelector('#speech-status').textContent='当前语音不可用，请看文字提示。');
@@ -64,7 +64,7 @@ showProfile();
 setInterval(showProfile, 60000);
 
 
-let page, answers=[], serial=0;
+let page, answers=[], serial=0, fishBank=[], selectedFish=null;
 const isKeys=kind==='key-notes';
 function staff(q) {
  const p=staffPosition(q), y=106-p*10;
@@ -79,15 +79,46 @@ function keyboard(group,i,selected,enabled) {
 }
 function card(q,i) {
  const a=answers[i];
- return `<article class="note-card" aria-label="第 ${i+1} 题"><h2>第 ${i+1} 题</h2>${staff(q)}${isKeys?`<div class="group-options keyboard-area" role="group" aria-label="先圈选键组，再定位白键">${['2','3'].map(g=>`<section class="key-group" data-selected="${a.group===g}" aria-label="${g} 个黑键的键组"><button class="circle-group" data-index="${i}" data-group="${g}" aria-pressed="${a.group===g}">${a.group===g?'◉ 已圈选':'○ 圈选这组'}</button>${keyboard(g,i,a.group===g?a.key:null,a.group===g)}</section>`).join('<span class="key-or">或<br>OR</span>')}</div>`:`<div class="fish-options" role="group" aria-label="选择音名和八度">${q.choices.map(n=>`<button class="fish-choice" data-index="${i}" data-pitch="${n}" aria-label="${pitchLabel(n)}，${fishLabel(n)}" aria-pressed="${a.pitch===n}"><img src="assets/pitch_fish.png" alt=""><span>${pitchLabel(n)}<small>${fishLabel(n)}</small></span></button>`).join('')}</div>`}</article>`;
+ return `<article class="note-card" aria-label="第 ${i+1} 题"><h2>第 ${i+1} 题</h2>${staff(q)}<div class="group-options keyboard-area" role="group" aria-label="先圈选键组，再定位白键">${['2','3'].map(g=>`<section class="key-group" data-selected="${a.group===g}" aria-label="${g} 个黑键的键组"><button class="circle-group" data-index="${i}" data-group="${g}" aria-pressed="${a.group===g}">${a.group===g?'◉ 已圈选':'○ 圈选这组'}</button>${keyboard(g,i,a.group===g?a.key:null,a.group===g)}</section>`).join('<span class="key-or">或<br>OR</span>')}</div></article>`;
+}
+
+function fishPicture(pitch){
+ return '<span class="fish-portrait"><img src="assets/pitch_fish.png" alt=""><span class="fish-letter">'+fishLabel(pitch)+'</span></span>';
+}
+function renderFish(focusSelector){
+ const scroll=board.querySelector('.fish-bank')?.scrollLeft||0;
+ board.innerHTML='<p class="practice-label">① 选一条小鱼 → ② 点对应的五线谱 · 9 组配对</p><div class="fish-match-layout"><aside class="fish-tray" aria-label="音名小鱼"><h2>选一条小鱼</h2><div class="fish-bank">'+fishBank.map(p=>{
+  const at=answers.findIndex(a=>a.pitch===p);
+  return '<button class="fish-token" data-fish="'+p+'" aria-label="小鱼 '+fishLabel(p)+'，'+(at<0?'未配对':'已配到第 '+(at+1)+' 题')+'" aria-pressed="'+(selectedFish===p)+'">'+fishPicture(p)+'<small>'+(at<0?'未配对':'已配到 '+(at+1))+'</small></button>';
+ }).join('')+'</div><p class="fish-selection" role="status">'+(selectedFish===null?'先选小鱼，再点谱面。':'已选 '+fishLabel(selectedFish)+'，请点对应的谱面。')+'</p></aside><section class="fish-staves" aria-label="五线谱配对位置">'+page.map((q,i)=>'<article class="note-card fish-staff-card"><h2>第 '+(i+1)+' 题</h2><button class="match-target" data-target="'+i+'" aria-label="第 '+(i+1)+' 题，'+(q.clef==='treble'?'高音谱号':'低音谱号')+'，'+(answers[i].pitch===undefined?'等待配对':'已配 '+fishLabel(answers[i].pitch))+'">'+staff(q)+'<span class="matched-fish">'+(answers[i].pitch===undefined?'点这里配对小鱼':fishPicture(answers[i].pitch))+'</span></button><button class="unmatch" data-unmatch="'+i+'" '+(answers[i].pitch===undefined?'disabled':'')+'>清除配对</button></article>').join('')+'</section></div>';
+ board.querySelector('.fish-bank').scrollLeft=scroll;
+ if(focusSelector)board.querySelector(focusSelector)?.focus({preventScroll:true});
+}
+function handleFishClick(e){
+ const b=e.target.closest('button');if(!b)return;
+ stop();retryHints.clear();
+ const keyboardFocus=b.matches(':focus-visible');
+ let focus;
+ if(b.dataset.fish!==undefined){selectedFish=Number(b.dataset.fish);focus='[data-fish="'+selectedFish+'"]';}
+ else if(b.dataset.target!==undefined){
+  const i=Number(b.dataset.target);focus='[data-target="'+i+'"]';
+  if(selectedFish===null){feedback.textContent='请先选一条小鱼，再点五线谱。';return;}
+  answers=assignFish(answers,i,selectedFish);selectedFish=null;
+ }else if(b.dataset.unmatch!==undefined){const i=Number(b.dataset.unmatch);answers[i]={};focus='[data-target="'+i+'"]';}
+ else return;
+ renderFish(keyboardFocus?focus:null);
+ document.querySelector('#count').textContent=answers.filter(complete).length;
+ feedback.textContent='配好后点打勾检查，也可以重新配对。';
 }
 function render(){
  retryHints.clear();
- const guide=isKeys?'<aside class="note-guide"><strong>① 读谱认音 → ② 圈选键组 → ③ 点出白键</strong><p>先自己判断音名，再看黑键的位置，找到对应的白键。</p></aside>':'<aside class="note-guide"><strong>同一个字母，不一定是同一个音高</strong><p>C4 = 中央 C（c¹） · C5 = 高一个八度的 C（c²）<br>先看谱号，再找位置，最后比较音名与八度。</p></aside>';
+ if(!isKeys){renderFish();return;}
+ const guide='<aside class="note-guide"><strong>① 读谱认音 → ② 圈选键组 → ③ 点出白键</strong><p>先自己判断音名，再看黑键的位置，找到对应的白键。</p></aside>';
  board.innerHTML=guide+`<p class="practice-label">9 题小练习 · 点另一项就能改选</p><section class="note-grid">${page.map(card).join('')}</section>`;
 }
 function complete(a){return isKeys?Boolean(a.group&&a.key):a.pitch!==undefined;}
 board.addEventListener('click',e=>{
+ if(!isKeys){handleFishClick(e);return;}
  const b=e.target.closest('button[data-index]');if(!b)return;
  const i=Number(b.dataset.index),a=answers[i];stop();retryHints.clear();
  if(b.dataset.group){if(a.group!==b.dataset.group)a.key=null;a.group=b.dataset.group;}
@@ -101,7 +132,7 @@ board.addEventListener('click',e=>{
  document.querySelector('#count').textContent=answers.filter(complete).length;
  feedback.textContent='选好了就点打勾吧。';
 });
-function next(){retryHints.reset();stop();page=makePage(kind,serial++);answers=page.map(()=>({}));document.querySelector('#count').textContent='0';feedback.textContent='慢慢看，找一找音符的位置。';render();}
+function next(){retryHints.reset();stop();page=makePage(kind,serial++);fishBank=isKeys?[]:makeFishBank(page);selectedFish=null;answers=page.map(()=>({}));document.querySelector('#count').textContent='0';feedback.textContent='慢慢看，找一找音符的位置。';render();}
 document.querySelector('#check').onclick=()=>{
  stop();let blank=0,errors=0;
  page.forEach((q,i)=>{
