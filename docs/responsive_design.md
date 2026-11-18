@@ -53,4 +53,4 @@ suite covers the illustrated selector, all thirteen completed electronic workshe
 Keep both matrices maintained as content grows. Printing may be checked separately
 only when printing is within scope.
 
-P-002/P-003 use one/two/three columns according to width. Piano white keys remain individual controls, while black keys are noninteractive visual landmarks. Fish choices retain native illustration proportions and explicit octave labels. New-activity acceptance includes complete keyboard/touch answers and generated staff/ledger containment.
+P-002 uses one or two question columns; P-003 uses one/two/three. P-002 always displays both unlabeled keyboard groups, side by side when the card can retain 44px white-key widths, or stacked otherwise. Match white-key width across groups; do not compress either group to fit. Piano white keys remain individual controls, while black keys are noninteractive visual landmarks. Fish choices retain native illustration proportions and explicit octave labels. New-activity acceptance includes complete keyboard/touch answers and generated staff/ledger containment.

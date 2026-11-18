@@ -73,19 +73,18 @@ function staff(q) {
  if(p>8)for(let n=10;n<=p;n+=2)ledgers.push(n);
  return `<svg class="note-staff" viewBox="0 -28 240 185" role="img" aria-label="${q.clef==='treble'?'高音谱号':'低音谱号'}，请辨认音符"><g stroke="currentColor" stroke-width="1.5">${[0,2,4,6,8].map(n=>`<path d="M20 ${106-n*10}H220"/>`).join('')}${ledgers.map(n=>`<path d="M135 ${106-n*10}H173"/>`).join('')}</g><text class="clef" x="22" y="106" font-size="100">${q.clef==='treble'?'\uE050':'\uE062'}</text><ellipse class="target-note" cx="154" cy="${y}" rx="12" ry="8" fill="none" stroke="currentColor" stroke-width="3"/></svg>`;
 }
-function keyboard(group,i,selected) {
+function keyboard(group,i,selected,enabled) {
  const names=group==='2'?'CDE':'FGAB';
- return `<div class="piano" style="--keys:${names.length}" role="group" aria-label="第 ${i+1} 题白键">${[...names].map((name,k)=>`<button class="white-key" data-index="${i}" data-key="${name}" aria-label="从左数第 ${k+1} 个白键" aria-pressed="${selected===name}">${selected===name?name:''}</button>`).join('')}<div class="black-keys" aria-hidden="true">${[...names].slice(1).map((_,k)=>`<span style="left:calc(${(k+1)/names.length*100}% - 7%)"></span>`).join('')}</div></div>`;
+ return `<div class="piano" data-black-keys="${group}" style="--keys:${names.length}" role="group" aria-label="第 ${i+1} 题白键">${[...names].map((name,k)=>`<button class="white-key" data-index="${i}" data-key="${name}" aria-label="从左数第 ${k+1} 个白键" aria-pressed="${selected===name}" ${enabled?'':'disabled'}>${selected===name?'<span class="key-mark" aria-hidden="true">●</span>':''}</button>`).join('')}<div class="black-keys" aria-hidden="true">${[...names].slice(1).map((_,k)=>`<span style="left:calc(${(k+1)/names.length*100}% - 28% / var(--keys))"></span>`).join('')}</div></div>`;
 }
 function card(q,i) {
  const a=answers[i];
- return `<article class="note-card" aria-label="第 ${i+1} 题"><h2>第 ${i+1} 题</h2>${staff(q)}${isKeys?`<div class="group-options" role="group" aria-label="选择键组">${['2','3'].map(g=>`<button data-index="${i}" data-group="${g}" aria-pressed="${a.group===g}"><span class="key-symbol" aria-hidden="true">${'▰ '.repeat(Number(g))}</span>${g==='2'?'两':'三'}个黑键</button>`).join('')}</div><div class="keyboard-area">${a.group?keyboard(a.group,i,a.key):'<p>先选键组，再找白键 ↑</p>'}</div>`:`<div class="fish-options" role="group" aria-label="选择音名和八度">${q.choices.map(n=>`<button class="fish-choice" data-index="${i}" data-pitch="${n}" aria-label="${pitchLabel(n)}，${fishLabel(n)}" aria-pressed="${a.pitch===n}"><img src="assets/pitch_fish.png" alt=""><span>${pitchLabel(n)}<small>${fishLabel(n)}</small></span></button>`).join('')}</div>`}</article>`;
+ return `<article class="note-card" aria-label="第 ${i+1} 题"><h2>第 ${i+1} 题</h2>${staff(q)}${isKeys?`<div class="group-options keyboard-area" role="group" aria-label="先圈选键组，再定位白键">${['2','3'].map(g=>`<section class="key-group" data-selected="${a.group===g}" aria-label="${g} 个黑键的键组"><button class="circle-group" data-index="${i}" data-group="${g}" aria-pressed="${a.group===g}">${a.group===g?'◉ 已圈选':'○ 圈选这组'}</button>${keyboard(g,i,a.group===g?a.key:null,a.group===g)}</section>`).join('<span class="key-or">或<br>OR</span>')}</div>`:`<div class="fish-options" role="group" aria-label="选择音名和八度">${q.choices.map(n=>`<button class="fish-choice" data-index="${i}" data-pitch="${n}" aria-label="${pitchLabel(n)}，${fishLabel(n)}" aria-pressed="${a.pitch===n}"><img src="assets/pitch_fish.png" alt=""><span>${pitchLabel(n)}<small>${fishLabel(n)}</small></span></button>`).join('')}</div>`}</article>`;
 }
 function render(){
  retryHints.clear();
- board.innerHTML=`<aside class="note-guide">${isKeys?'<strong>黑键帮你找位置</strong><p>两黑键左边的白键是 C，三黑键左边的白键是 F。</p><div class="guide-keyboards"><div><b>C · D · E</b>'+keyboard('2',-1,'C')+'</div><div><b>F · G · A · B</b>'+keyboard('3',-1,'F')+'</div></div>':'<strong>同一个字母，不一定是同一个音高</strong><p>C4 = 中央 C（c¹） · C5 = 高一个八度的 C（c²）<br>先看谱号，再找位置，最后比较音名与八度。</p>'}</aside><p class="practice-label">9 题小练习 · 点另一项就能改选</p><section class="note-grid">${page.map(card).join('')}</section>`;
- // Worked keyboard anchors are illustrations, not answer controls.
- board.querySelectorAll('.note-guide button').forEach(b=>{b.disabled=true;b.removeAttribute('data-index');});
+ const guide=isKeys?'<aside class="note-guide"><strong>① 读谱认音 → ② 圈选键组 → ③ 点出白键</strong><p>先自己判断音名，再看黑键的位置，找到对应的白键。</p></aside>':'<aside class="note-guide"><strong>同一个字母，不一定是同一个音高</strong><p>C4 = 中央 C（c¹） · C5 = 高一个八度的 C（c²）<br>先看谱号，再找位置，最后比较音名与八度。</p></aside>';
+ board.innerHTML=guide+`<p class="practice-label">9 题小练习 · 点另一项就能改选</p><section class="note-grid">${page.map(card).join('')}</section>`;
 }
 function complete(a){return isKeys?Boolean(a.group&&a.key):a.pitch!==undefined;}
 board.addEventListener('click',e=>{
@@ -111,8 +110,8 @@ document.querySelector('#check').onclick=()=>{
   if(isKeys){
    const groupWrong=a.group?a.group!==keyGroup(q.pitch):null;
    const keyWrong=a.key?a.group!==keyGroup(q.pitch)||a.key!==pitchLabel(q.pitch)[0]:null;
-   retryHints.check(`${i+1}题键组`,groupWrong,card.querySelector('.group-options'),`${keyGroup(q.pitch)} 个黑键的键组`);
-   retryHints.check(`${i+1}题琴键`,keyWrong,card.querySelector('.keyboard-area'),`${pitchLabel(q.pitch)[0]}，${keyGroup(q.pitch)} 黑键组从左数第 ${q.pitch%7-(keyGroup(q.pitch)==='2'?0:3)+1} 个白键`);
+   retryHints.check(`${i+1}题键组`,groupWrong,[...card.querySelectorAll('.circle-group')],`${keyGroup(q.pitch)} 个黑键的键组`);
+   retryHints.check(`${i+1}题琴键`,keyWrong,card.querySelector('.key-group[data-selected="true"] .piano'),`${pitchLabel(q.pitch)[0]}，${keyGroup(q.pitch)} 黑键组从左数第 ${q.pitch%7-(keyGroup(q.pitch)==='2'?0:3)+1} 个白键`);
    if(groupWrong||keyWrong)errors++;
   }else{
    const wrong=a.pitch===undefined?null:a.pitch!==q.pitch;
