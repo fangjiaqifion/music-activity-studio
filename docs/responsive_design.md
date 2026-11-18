@@ -8,6 +8,10 @@ All completed and future interactive activities are responsive web games. Origin
 worksheets supply learning goals, illustration assets, and interaction ideas. Their
 paper composition is not a screen template. Never constrain the screen experience
 to A4 dimensions, a fixed aspect ratio, a print page count, or a scaled page image.
+User-approved exception for composition, 2026-11-18: P-003 preserves the original
+left-scattered-fish/right-single-staff-column arrangement at every viewport. It uses
+natural staff-row height, usable fish targets, and vertical scrolling, not a locked
+A4 image or print pagination.
 Existing print exports are optional secondary utilities and cannot establish screen
 acceptance. Preserve original DOCX/PDF/AI masters.
 
@@ -53,4 +57,4 @@ suite covers the illustrated selector, all thirteen completed electronic workshe
 Keep both matrices maintained as content grows. Printing may be checked separately
 only when printing is within scope.
 
-P-002 uses one or two question columns; P-003 uses a sticky fish sidebar with two staff columns on larger screens and a compact horizontal fish tray above one/two staff columns on phones. P-002 always displays both unlabeled keyboard groups, side by side when the card can retain 44px white-key widths, or stacked otherwise. Match white-key width across groups; do not compress either group to fit. Piano white keys remain individual controls, while black keys are noninteractive visual landmarks. Fish retain native illustration proportions with note names and octave superscripts on their bodies. Only the mobile fish tray intentionally scrolls horizontally; all targets and completion controls remain within the viewport. New-activity acceptance includes complete keyboard/touch answers and generated staff/ledger containment.
+P-002 uses one or two question columns; P-003 preserves scattered fish at source-relative positions on the left and one framed staff column on the right across all device classes. P-002 always displays both unlabeled keyboard groups, side by side when the card can retain 44px white-key widths, or stacked otherwise. Match white-key width across groups; do not compress either group to fit. Piano white keys remain individual controls, while black keys are noninteractive visual landmarks. Fish retain native illustration proportions with note names and octave superscripts on their bodies. The complete scene scrolls vertically when needed; there is no horizontal tray. Student-pair connections track actual fish/target bounds after resize. All fish, targets and completion controls remain within the viewport. New-activity acceptance includes complete keyboard/touch answers and generated staff/ledger containment.

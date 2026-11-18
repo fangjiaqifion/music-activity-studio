@@ -68,13 +68,14 @@ try{
  if(kind==='fish-notes'){
  const n=await pitch(first);
  await page.locator('[data-fish="'+n+'"]').click();await page.locator('[data-target="1"]').click();
- assert.equal(await first.locator('.matched-fish .fish-portrait').count(),0,'moving a fish frees its old staff');
+ assert.match(await first.locator('[data-target]').getAttribute('aria-label'),/等待配对/,'moving a fish frees its old staff');
  assert.equal(await page.locator('#count').innerText(),'8');
  await page.locator('[data-unmatch="1"]').click();
  assert.equal(await page.locator('#count').innerText(),'7');
  for(const i of [0,1]){const c=page.locator('.note-card').nth(i),v=await pitch(c);await page.locator('[data-fish="'+v+'"]').click();await c.locator('[data-target]').click();}
  }
  assert.equal(await page.locator('#count').innerText(),'9');
+ if(kind==='fish-notes')await page.waitForFunction(()=>document.querySelectorAll('[data-connection]').length===9);
  await page.locator('#check').click();assert.equal(await page.locator('#celebration').isVisible(),true);assert.equal(await page.locator('.retry-hint').count(),0);
  await page.locator('#next').click();assert.equal(await page.locator('#celebration').isVisible(),false);assert.equal(await page.locator('#count').innerText(),'0');
  for(const [width,height] of [[390,844],[844,390],[768,1024],[1180,820],[1440,900]]){
@@ -86,6 +87,12 @@ try{
   const widths=await first.locator('.piano').evaluateAll(es=>es.map(e=>e.querySelector('.white-key').getBoundingClientRect().width));
   assert.ok(Math.abs(widths[0]-widths[1])<1,'both groups use the same white-key scale');
   await first.screenshot({path:`.runtime/pitch_notes/key-notes-card-${width}x${height}.png`});
+ }
+ if(kind==='fish-notes'){
+  const layout=await page.evaluate(()=>({xs:[...document.querySelectorAll('.fish-staff-card')].map(e=>Math.round(e.getBoundingClientRect().left)),fish:[...document.querySelectorAll('.fish-token')].map(e=>{const r=e.getBoundingClientRect();return {x:Math.round(r.left),w:r.width,h:r.height};})}));
+  assert.equal(new Set(layout.xs).size,1,'source staves remain in one right-hand column');
+  assert.ok(new Set(layout.fish.map(f=>f.x)).size>=3,'fish retain staggered positions');
+  assert.ok(layout.fish.every(f=>f.w>=44&&f.h>=44),'fish touch targets remain usable');
  }
  await page.screenshot({path:`.runtime/pitch_notes/${kind}-${width}x${height}.png`,fullPage:true});
  assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);

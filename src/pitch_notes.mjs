@@ -28,6 +28,7 @@ function showProfile() {
   select.value = profiles.active;
   document.querySelector("#student-label").textContent =
     `${profiles.active || "未选择学生"} ${dateLabel()}`;
+  const sourceName=document.querySelector("[data-source-name]");if(sourceName)sourceName.textContent=profiles.active||"____________";
 }
 function persistProfile() {
   const saved = saveProfiles(profileStorage, profiles);
@@ -83,17 +84,35 @@ function card(q,i) {
 }
 
 function fishPicture(pitch){
- return '<span class="fish-portrait"><img src="assets/pitch_fish.png" alt=""><span class="fish-letter">'+fishLabel(pitch)+'</span></span>';
+ return '<span class="fish-portrait '+(fishBank.indexOf(pitch)%2?'fish-right':'')+'"><img src="assets/'+(fishBank.indexOf(pitch)%2?'pitch_fish_right.png':'pitch_fish.png')+'" alt=""><span class="fish-letter">'+fishLabel(pitch)+'</span></span>';
 }
+const fishPositions=[[43,7],[78,15],[18,24],[80,32],[52,47],[81,56],[18,60],[77,68],[18,75]];
+function drawFishLines(){
+ const stage=board.querySelector('.fish-match-layout'),svg=board.querySelector('.fish-connections');
+ if(!stage||!svg)return;
+ const r=stage.getBoundingClientRect();svg.setAttribute('viewBox','0 0 '+r.width+' '+r.height);
+ svg.innerHTML=answers.map((answer,i)=>{
+  if(answer.pitch===undefined)return '';
+  const fish=stage.querySelector('[data-fish="'+answer.pitch+'"] .fish-portrait').getBoundingClientRect(),target=stage.querySelector('[data-target="'+i+'"]').getBoundingClientRect();
+  const x1=fish.right-r.left,y1=(fish.top+fish.bottom)/2-r.top,x2=target.left-r.left,y2=(target.top+target.bottom)/2-r.top;
+  return '<path data-connection="'+i+'" d="M'+x1+' '+y1+' L'+x2+' '+y2+'"/>';
+ }).join('');
+}
+const fishResizeObserver=new ResizeObserver(drawFishLines);
+window.addEventListener('resize',drawFishLines);
+document.fonts?.ready.then(drawFishLines);
 function renderFish(focusSelector){
- const scroll=board.querySelector('.fish-bank')?.scrollLeft||0;
- board.innerHTML='<p class="practice-label">① 选一条小鱼 → ② 点对应的五线谱 · 9 组配对</p><div class="fish-match-layout"><aside class="fish-tray" aria-label="音名小鱼"><h2>选一条小鱼</h2><div class="fish-bank">'+fishBank.map(p=>{
-  const at=answers.findIndex(a=>a.pitch===p);
-  return '<button class="fish-token" data-fish="'+p+'" aria-label="小鱼 '+fishLabel(p)+'，'+(at<0?'未配对':'已配到第 '+(at+1)+' 题')+'" aria-pressed="'+(selectedFish===p)+'">'+fishPicture(p)+'<small>'+(at<0?'未配对':'已配到 '+(at+1))+'</small></button>';
- }).join('')+'</div><p class="fish-selection" role="status">'+(selectedFish===null?'先选小鱼，再点谱面。':'已选 '+fishLabel(selectedFish)+'，请点对应的谱面。')+'</p></aside><section class="fish-staves" aria-label="五线谱配对位置">'+page.map((q,i)=>'<article class="note-card fish-staff-card"><h2>第 '+(i+1)+' 题</h2><button class="match-target" data-target="'+i+'" aria-label="第 '+(i+1)+' 题，'+(q.clef==='treble'?'高音谱号':'低音谱号')+'，'+(answers[i].pitch===undefined?'等待配对':'已配 '+fishLabel(answers[i].pitch))+'">'+staff(q)+'<span class="matched-fish">'+(answers[i].pitch===undefined?'点这里配对小鱼':fishPicture(answers[i].pitch))+'</span></button><button class="unmatch" data-unmatch="'+i+'" '+(answers[i].pitch===undefined?'disabled':'')+'>清除配对</button></article>').join('')+'</section></div>';
- board.querySelector('.fish-bank').scrollLeft=scroll;
+ fishResizeObserver.disconnect();
+ board.innerHTML='<div class="fish-match-layout"><svg class="fish-connections" aria-hidden="true"></svg><aside class="fish-tray" aria-label="音名小鱼"><div class="fish-bank">'+fishBank.map((p,i)=>{
+  const at=answers.findIndex(a=>a.pitch===p),[x,y]=fishPositions[i];
+  return '<button class="fish-token" style="--fish-x:'+x+'%;--fish-y:'+y+'%" data-fish="'+p+'" aria-label="小鱼 '+fishLabel(p)+'，'+(at<0?'未配对':'已配到第 '+(at+1)+' 题')+'" aria-pressed="'+(selectedFish===p)+'">'+fishPicture(p)+'<small>'+(at<0?'':'→ '+(at+1))+'</small></button>';
+ }).join('')+'<div class="fish-source-name">姓名 Name:<br><span data-source-name></span><br><small>已配对 '+answers.filter(complete).length+' / 9</small></div></div><img class="fish-seaweed" src="assets/fish_seaweed.png" alt=""><img class="fish-seaweed fish-seaweed-two" src="assets/fish_seaweed.png" alt=""><img class="fish-seaweed fish-seaweed-three" src="assets/fish_seaweed.png" alt=""></aside><section class="fish-staves" aria-label="五线谱配对位置">'+page.map((q,i)=>'<article class="note-card fish-staff-card"><h2>'+(i+1)+'</h2><button class="match-target" data-target="'+i+'" aria-label="第 '+(i+1)+' 题，'+(q.clef==='treble'?'高音谱号':'低音谱号')+'，'+(answers[i].pitch===undefined?'等待配对':'已配 '+fishLabel(answers[i].pitch))+'">'+staff(q).replace('viewBox="0 -28 240 185"','viewBox="0 -12 240 145"')+'</button><button class="unmatch" data-unmatch="'+i+'" aria-label="清除第 '+(i+1)+' 题配对" '+(answers[i].pitch===undefined?'disabled':'')+'>×</button></article>').join('')+'</section></div><p class="practice-label">请根据鱼身上的音名连接相应的五线谱位置<br><span lang="en">Please match the fish and the note.</span></p><p class="fish-selection" role="status">'+(selectedFish===null?'先选小鱼，再点谱面。':'已选 '+fishLabel(selectedFish)+'，请点对应的谱面。')+'</p>';
+ board.querySelector('[data-source-name]').textContent=profiles.active||'____________';
  if(focusSelector)board.querySelector(focusSelector)?.focus({preventScroll:true});
+ fishResizeObserver.observe(board.querySelector('.fish-match-layout'));
+ requestAnimationFrame(drawFishLines);
 }
+
 function handleFishClick(e){
  const b=e.target.closest('button');if(!b)return;
  stop();retryHints.clear();

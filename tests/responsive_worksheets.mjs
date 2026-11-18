@@ -61,7 +61,7 @@ try {
       const bad = await page.locator("button,input,select").evaluateAll((els) =>
         els
           .filter((e) => {
-            if(e.closest(".keyboard-scroll, .fish-bank")) return false;
+            if(e.closest(".keyboard-scroll")) return false;
             const r = e.getBoundingClientRect();
             return (
               e.getClientRects().length &&

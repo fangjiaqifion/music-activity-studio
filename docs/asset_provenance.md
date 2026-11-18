@@ -148,3 +148,7 @@ Read the original `P-031级进跳进B.docx` text and visually inspected `P-031�
 ## P-002/P-003 digital adaptations, 2026-11-18
 
 P-002 derives its group-and-key task from `worksheets/p_pitch/P-002键盘B.pdf`; piano keys are code-native proportional HTML/CSS. P-003 derives its staff pitches from `worksheets/p_pitch/P-003鱼B.pdf`. `assets/pitch_fish.png` is an unchanged extraction of `word/media/image7.png` from `worksheets/p_pitch/P-003鱼B.docx`. Digital labels use verified staff pitches and explicit scientific octaves to resolve inconsistent source fish labels; nine distinct pitches replace ten source staves containing duplicate C4. BravuraText is the existing bundled licensed notation font. No AI, PNG source, DOCX, PDF, or PIC master was modified.
+
+## P-003 source composition restoration, 2026-11-18
+
+`assets/fish_seaweed.png` is an unchanged extraction of `word/media/image9.png`, and `assets/pitch_fish_right.png` is an unchanged extraction of `word/media/image22.png`, from `worksheets/p_pitch/P-003鱼B.docx`. The seaweed includes the original hand-drawn bubble details. Repeated seaweed placements and CSS-only rotation/mirroring restore the original underwater composition without resaving any source asset. The existing left-facing fish remains unchanged. Vector connecting lines represent student choices only; source masters remain untouched.
