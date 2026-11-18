@@ -2,9 +2,7 @@
 export function makePage(random = Math.random, previous = "") {
   let positions;
   do {
-    positions = Array.from({ length: 12 }, (_, i) =>
-      i < 6 ? Math.floor(random() * 5) * 2 : Math.floor(random() * 4) * 2 + 1,
-    );
+    positions = Array.from({ length: 9 }, (_, i) => i);
     for (let i = positions.length - 1; i > 0; i--) {
       const j = Math.floor(random() * (i + 1));
       [positions[i], positions[j]] = [positions[j], positions[i]];

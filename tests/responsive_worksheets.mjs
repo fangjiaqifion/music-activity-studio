@@ -20,6 +20,8 @@ const sizes = [
   [1440, 900],
 ];
 const pages = [
+  "key-notes",
+  "fish-notes",
   "pitch-motion",
   "note-houses",
   "activities",

@@ -5,8 +5,9 @@ test("balloon pages cover all staff positions and balance line/space questions",
  const seen = new Set();
  for(let n=0;n<1000;n++){
   const page=makePage();
-  assert.equal(page.length,12);
-  assert.equal(page.filter(x=>answer(x.position)==="red").length,6);
+  assert.equal(page.length,9);
+  assert.equal(page.filter(x=>answer(x.position)==="red").length,4);
+  assert.equal(new Set(page.map(x=>x.position)).size,9);
   page.forEach(x=>{assert.ok(x.position>=0&&x.position<=8);seen.add(x.position)});
  }
  assert.equal(seen.size,9);

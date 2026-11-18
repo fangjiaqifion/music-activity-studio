@@ -1,6 +1,6 @@
 # Asset Provenance
 
-Last updated: 2026-11-12
+Last updated: 2026-11-18
 
 Illustrations are unmodified copies from the user's existing worksheet collection.
 This local reuse is not a full rights audit for public redistribution. Verify provenance
@@ -144,3 +144,7 @@ Note Neighborhood brace follow-up (2026-11-16): `src/note_house_glyphs.mjs` is t
 ## P-031 pitch motion, 2026-11-17
 
 Read the original `P-031级进跳进B.docx` text and visually inspected `P-031级进跳进PIC.jpg`. The source supplies the four-category relative-motion learning goal. Corrected the source's swapped Step/Skip English mapping in the digital UI. Staff lines and open notehead ellipses are original code-native geometry, without clefs or external graphics. `assets/pitch_motion_preview.svg` is an original staff/pair/arrow thumbnail. Reused the existing licensed Patrick Hand font and shared five-character celebration. All original DOCX/PDF/PIC/AI files remain unchanged.
+
+## P-002/P-003 digital adaptations, 2026-11-18
+
+P-002 derives its group-and-key task from `worksheets/p_pitch/P-002键盘B.pdf`; piano keys are code-native proportional HTML/CSS. P-003 derives its staff pitches from `worksheets/p_pitch/P-003鱼B.pdf`. `assets/pitch_fish.png` is an unchanged extraction of `word/media/image7.png` from `worksheets/p_pitch/P-003鱼B.docx`. Digital labels use verified staff pitches and explicit scientific octaves to resolve inconsistent source fish labels; nine distinct pitches replace ten source staves containing duplicate C4. BravuraText is the existing bundled licensed notation font. No AI, PNG source, DOCX, PDF, or PIC master was modified.

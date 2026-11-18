@@ -1,6 +1,6 @@
 # Development
 
-Last updated: 2026-11-17
+Last updated: 2026-11-18
 
 ## Operation and verification
 
@@ -115,7 +115,7 @@ every 0.44 seconds. Keep animation delay in frame calculations for staggered cha
 ## Worksheet hub and hands/cow trials
 
 Open `/activities.html` on the source server; the original index links to it, and
-all eleven worksheets link back. `/hands.html` identifies both hands and fills ten
+all thirteen worksheets link back. `/hands.html` identifies both hands and fills ten
 piano finger numbers. `/cows.html` permutes ten treble and nine bass clefs among
 nineteen enclosed regions. Both use the shared profile/speech adapters and preserve
 graduated answer assistance, erasing, correction, and the five-character celebration.
@@ -138,7 +138,7 @@ The source file and missing original O-004 worksheet are not runtime dependencie
 
 ## O-007/O-008 staff worksheets
 
-Open `/ladybirds.html` or `/sunshine.html` from the eleven-worksheet selector.
+Open `/ladybirds.html` or `/sunshine.html` from the thirteen-worksheet selector.
 Run `node tests/staff_worksheets_browser.mjs` against port 8795, or set `BASE_URL`.
 The suite checks blank submissions, complete answers, erasing, regeneration, local
 profiles, five celebration characters, failed resources, mobile overflow, and print
@@ -164,7 +164,7 @@ Open `/keyboard.html` from the selector. Run `BASE_URL=http://127.0.0.1:8797 nod
 
 ## P-031 pitch motion
 
-Open `/pitch-motion.html` from the eleven-card selector. Run `BASE_URL=<runtime-directory-url> node tests/pitch_motion_browser.mjs` for full blank/error/correction/completion/reset, speech calls, keyboard/touch, and six-size checks. `npm test` checks all 81 staff pairs plus 1,000 balanced generated pages. Generation uses two unique pairs of each type plus a rotating ninth type, includes both directions for non-repeats, and does not require a clef because only relative staff distance is assessed. Answers and per-question incorrect-submission counters are session-only. Follow the [shared assistance contract](../AGENTS.md#graduated-answer-assistance-2026-11-17) for third-error localization, sixth-error answers, blank checks, edits, and resets. Original DOCX/PDF/PIC sources remain unchanged.
+Open `/pitch-motion.html` from the thirteen-card selector. Run `BASE_URL=<runtime-directory-url> node tests/pitch_motion_browser.mjs` for full blank/error/correction/completion/reset, speech calls, keyboard/touch, and six-size checks. `npm test` checks all 81 staff pairs plus 1,000 balanced generated pages. Generation uses two unique pairs of each type plus a rotating ninth type, includes both directions for non-repeats, and does not require a clef because only relative staff distance is assessed. Answers and per-question incorrect-submission counters are session-only. Follow the [shared assistance contract](../AGENTS.md#graduated-answer-assistance-2026-11-17) for third-error localization, sixth-error answers, blank checks, edits, and resets. Original DOCX/PDF/PIC sources remain unchanged.
 
 ## Answer-assistance verification
 
@@ -174,3 +174,9 @@ for every scored worksheet, the five scored menu games, and both neighborhood le
 The suite verifies no early answer disclosure, third-error ellipses, sixth-error
 answers, new-set cleanup, blank checks, and representative responsive hint captures.
 Counters are not learner records and are never persisted.
+
+## P-002/P-003 local pitch adaptations
+
+Open `/key-notes.html` and `/fish-notes.html`. Run `BASE_URL=<runtime-directory-url> node tests/pitch_notes_browser.mjs` for independent staff-coordinate answer derivation, nine-question completion, wrong-answer thresholds, correction, keyboard/touch input, reset and five viewport captures. The full responsive suite covers both pages and all existing activities (90 cases). CI includes the new flow. Pure generation checks cover 500 sets per activity. P-002 uses C3–B3 in bass and C4–B4 in treble, with all seven letters per set. Scientific octave labels in P-003 take precedence over inconsistent source fish text; its source has ten staves and nine distinct pitches, with C4 represented twice. The digital version alternates the C4 clef and shuffles exact-pitch choices with octave distractors. Both activities share the existing local profile/speech and celebration contracts, with session-only answers. No source master is edited.
+
+O-003 now generates a permutation of all nine internal staff positions per page (five line notes, four space notes); progress and blank counts use nine. `BASE_URL=<runtime-directory-url> node tests/balloons_browser.mjs` checks the visible denominator and full correction/completion/reset flow.

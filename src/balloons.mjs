@@ -76,7 +76,7 @@ function next() {
   stopCelebration();
   items = makePage(Math.random, signature);
   signature = items.map(x=>x.position).join(",");
-  colors = Array(12).fill(null);
+  colors = Array(items.length).fill(null);
   feedback.textContent = "慢慢观察：音符在线上，还是在两条线之间？";
   render();
 }

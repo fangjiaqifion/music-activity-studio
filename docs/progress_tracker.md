@@ -1,6 +1,6 @@
 # Progress Tracker
 
-Last updated: 2026-11-17
+Last updated: 2026-11-18
 
 ## Six-in-one local demo
 
@@ -746,3 +746,11 @@ and this tracker. Responsive procedure and provenance reviewed unchanged because
 layout requirements, assets and licenses are unchanged. Parent/games ownership guides
 and public overviews remain accurate; the parent records only coordination/gitlink.
 Physical-device/Safari and human speech/audio acceptance remain unverified.
+
+## Nine-balloon practice and P-002/P-003 local adaptations, 2026-11-18
+
+Reduced O-003 from twelve to nine balloons, including the visible progress denominator and blank/completion handling. Every set permutes all nine internal staff positions (five lines, four spaces), preserving all four illustration shapes. Added P-002 group-and-white-key selection and P-003 exact-pitch fish matching, each with nine questions. The selector now has thirteen worksheet cards. P-002 covers all seven letters and both standard clefs, clears keys when changing groups, and keeps group/key error counters independent. P-003 uses scientific and corresponding Helmholtz-style labels; its nine distinct pitches follow the source staves, with bass/treble C4 alternating across sets. Source fish-label inconsistencies are corrected only in the digital adaptation. Reused an unchanged embedded source fish image, bundled Bravura, local profiles, instruction speech, correction controls, graduated hints, celebration, and lifecycle cleanup. Original masters remain unchanged.
+
+Verification: all 35 Node tests pass, including 500 generated sets per new activity and 1,000 nine-balloon sets. Actual Chrome completes both new activities with staff-coordinate answer derivation, separate P-002 group/key third/sixth-error checks, octave distractors, keyboard/touch correction, completion and reset. Source and packaged build `01eafdd61525` (117 files) pass new activity and balloon flows. The packaged thirteen-card hub and complete hands/cow flows pass without failed resources or page errors. All 90 worksheet/hub viewport cases pass on source and packaged builds. Existing six-game 49-screen/session suite and touch/audio/storage regressions pass. Phone, tablet/landscape and desktop captures and detailed notation/key/fish grids were inspected. Physical-device/Safari, human speech and optional print acceptance remain unverified.
+
+Documentation updated: AGENTS, README (also reconciled stale worksheet counts), development, responsive design, provenance, and this tracker. Future Pages CI includes the new full browser flow. Parent/games/worksheet ownership guidance and public overviews reviewed unchanged because source ownership, preservation and project scope remain accurate; parent coordination/gitlink records this unit. Local review only, no push or deployment. Preview: http://127.0.0.1:8832/releases/01eafdd61525/activities.html.
