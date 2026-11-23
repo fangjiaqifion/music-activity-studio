@@ -60,7 +60,7 @@ status is historical. There is no ChatGPT hosting or login in the selected deplo
    `npm run test:regressions`. Inspect affected screenshots and printing.
 4. Commit explicit paths, then push to this game's origin/main only when authorized.
    `.github/workflows/pages.yml` uses pinned official Actions, Node 24, Node tests,
-   the build, both legacy Chrome suites, the seventeen-card hub/hands/cow flow, the complete P-031 pitch-motion, keyboard, staff worksheet, and Note Neighborhood interaction/audio suites, and all worksheet responsive cases against the artifact before deploying Pages.
+   the build, both legacy Chrome suites, the eighteen-card hub/hands/cow flow, the complete P-031 pitch-motion, keyboard, staff worksheet, and Note Neighborhood interaction/audio suites, and all worksheet responsive cases against the artifact before deploying Pages.
    Documentation-only pushes do not redeploy. Runtime pushes do.
 5. Watch the exact Actions run to a terminal success state. Then run
    `node scripts/verify_deployed.mjs https://fangjiaqifion.github.io/music-activity-studio/`.
@@ -187,8 +187,12 @@ Open `/fish-steps.html`. Run `BASE_URL=<runtime-directory-url> node tests/fish_s
 
 ## Selector cover maintenance
 
-The seventeen-card hub uses real unanswered exercise captures, bundled as `assets/preview_*.jpg`. Run `BASE_URL=<source-preview-origin> node scripts/activity_previews.mjs` with a local source server to regenerate them. The script uses an isolated browser context, waits for fonts/images, and captures content rather than profile fields. Restart the preview server after adding assets. Inspect every cover and run the hub browser flow and full responsive matrix against the packaged build. Covers are illustrative snapshots, not the next generated question set.
+The eighteen-card hub uses real unanswered exercise captures, bundled as `assets/preview_*.jpg`. Run `BASE_URL=<source-preview-origin> node scripts/activity_previews.mjs` with a local source server to regenerate them. The script uses an isolated browser context, waits for fonts/images, and captures content rather than profile fields. Restart the preview server after adding assets. Inspect every cover and run the hub browser flow and full responsive matrix against the packaged build. Covers are illustrative snapshots, not the next generated question set.
 
 ## P-005/P-006 verification
 
 Open `/fish-keys.html` and `/key-names.html`. Run `BASE_URL=<runtime-directory-url> node tests/keyboard_names_browser.mjs` for independent answer derivation from rendered red-marker coordinates, reusable fish choices/erase, touch, keyboard focus, P-005 whole-page first/second/third-error hints (including newly incorrect answers on the second check) and P-006 third/sixth-error hints, complete answers, celebration and reset. Node tests cover 500 generated sets per type and immutable answer replacement. P-005 additionally checks seven viewport sizes (including 320px width), 44px interaction targets and simultaneous visibility of every option, target and completion button without vertical page scrolling, and SVG text bounds within the fish belly. Both pages are included in the 108-case responsive matrix and runtime allowlist.
+
+## P-007 verification
+
+Run `BASE_URL=<runtime-directory-url> node tests/sea_neighbors_browser.mjs` for source prompt and blank position checks, shared hint thresholds, completion/reset, speech dispatch, keyboard focus, emulated touch, and six viewport captures. Regenerate its menu image with `BASE_URL=<source-origin> node scripts/activity_previews.mjs sea-neighbors`. The packaged responsive matrix includes 114 cases.

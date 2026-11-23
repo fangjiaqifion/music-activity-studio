@@ -24,6 +24,7 @@ const pages = [
   "key-notes",
   "fish-notes",
   "fish-steps",
+  "sea-neighbors",
   "pitch-motion",
   "note-houses",
   "activities",

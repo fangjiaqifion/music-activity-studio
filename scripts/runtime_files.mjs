@@ -9,6 +9,8 @@ export async function runtimeFiles(root) {
     "key-notes.html",
     "fish-notes.html",
     "fish-steps.html",
+    "sea-neighbors.html",
+    "sea_neighbors.css",
     "fish_steps.css",
     "pitch_notes.css",
     "pitch-motion.html",

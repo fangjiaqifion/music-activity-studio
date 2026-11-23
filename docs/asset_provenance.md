@@ -160,3 +160,7 @@ The original `worksheets/p_pitch/P-004鱼PIC.jpg` supplies twelve natural-note p
 ## P-005/P-006 keyboard note names, 2026-11-23
 
 Visually reviewed `worksheets/p_pitch/P-005键盘PIC.jpg` and `P-006键盘PIC.jpg`. The source tasks provide note-name matching and marked-key naming. P-005 now uses `assets/keyboard_fish.png`, an unchanged extraction of `word/media/image1.png` from `worksheets/p_pitch/P-005键盘B.docx`, preserving its original round fish with native proportions; keyboards and red markers are original proportional SVG geometry. Existing licensed fonts, Lucide eraser and five-character celebration are reused. All original DOCX/PDF/PIC/AI masters remain unchanged. Selector covers are isolated unanswered screenshots. No external runtime resources are added.
+
+## P-007 Under the Sea
+
+`assets/neighbors_seahorse.png`, `assets/neighbors_round.png`, and `assets/neighbors_angled.png` are byte-identical extracts of `word/media/image1.png`, `image3.png`, and `image5.png` from the parent workspace's `worksheets/p_pitch/P-007海底世界B.docx`. The bilingual PDF supplied prompt order and blank positions. The selector image is a capture of the unanswered digital activity. Source masters are preserved.

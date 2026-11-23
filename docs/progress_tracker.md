@@ -884,3 +884,12 @@ Run [45148949168](https://github.com/fangjiaqifion/music-activity-studio/actions
 [Release run 45149437754](https://github.com/fangjiaqifion/music-activity-studio/actions/runs/45149437754) passed Node tests, the packaged Chrome suite and GitHub Pages deployment from `6fb7b14`. The public release `d8db5436ce60` matched all 146 local runtime file hashes. Chrome also passed the seventeen-card activity hub and complete P-005/P-006 flows directly against the public release, including seven P-005 viewport checks and the simultaneous second-check outlines. Physical devices, Safari and human-audible speech were outside this verification.
 
 Updated AGENTS and README to reflect publication. Development and responsive guidance were reviewed and remain current because the release procedure and acceptance criteria stayed the same.
+
+## P-007 Under the Sea, 2026-11-23
+
+Implemented ten source sequences with twelve blanks across seahorse, round fish,
+and pointed-fin fish rows. The original art was verified byte-for-byte against the
+bilingual DOCX. The local build `451f5c5a7f56` adds the eighteenth selector card.
+The game guide, overview, development, responsive design and artwork provenance
+were updated. Parent/games and worksheet ownership guides and public overviews
+were reviewed and continue to describe the scope and ownership.
