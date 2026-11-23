@@ -893,3 +893,12 @@ bilingual DOCX. The local build `451f5c5a7f56` adds the eighteenth selector card
 The game guide, overview, development, responsive design and artwork provenance
 were updated. Parent/games and worksheet ownership guides and public overviews
 were reviewed and continue to describe the scope and ownership.
+
+## Parallel-project documentation review, 2026-11-23
+
+Updated README to describe the published graduated hints and the P-005 exception.
+The public baseline remains release `d8db5436ce60` with sixteen worksheet adaptations
+and Note Neighborhood in the selector. P-007 is present in the local worktree and has
+a separate release path through this game's normal verification workflow. AGENTS and
+the operating guides were reviewed for ownership and release procedure. The workspace
+tracker now compares the status of both games. This review did not run another release.

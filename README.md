@@ -101,19 +101,18 @@ The `keyboard.html` activity has two exercises: color the black keys on three se
 
 ## P-031 pitch motion
 
-The eleventh worksheet card opens `pitch-motion.html`. Four examples introduce step (级进), skip (跳进), leap (远跳), and repeat (重复). Nine generated pairs include at least two of each category, with ascending and descending motion. Children tap a bilingual choice, change it directly, and check the whole set. After three incorrect submissions on the same question, a red ellipse marks its note pair for another look; the local update below also reveals the answer on the sixth error. Editing the answer clears the cue, and a new set resets attempt counts. Shared local profiles, Chinese instruction speech, and the five-note celebration apply. The activity reflows to one, two, or three question columns. It is included in the published release: [play P-031](https://fangjiaqifion.github.io/music-activity-studio/releases/09853155b344/pitch-motion.html).
+The eleventh worksheet card opens `pitch-motion.html`. Four examples introduce step (级进), skip (跳进), leap (远跳), and repeat (重复). Nine generated pairs include at least two of each category, with ascending and descending motion. Children tap a bilingual choice, change it directly, and check the whole set. After three incorrect submissions on the same question, a red ellipse marks its note pair for another look; the correct answer appears on the sixth error. Editing the answer clears the cue, and a new set resets attempt counts. Shared local profiles, Chinese instruction speech, and the five-note celebration apply. The activity reflows to one, two, or three question columns. It is included in the published release: [play P-031](https://fangjiaqifion.github.io/music-activity-studio/releases/09853155b344/pitch-motion.html).
 
-## Graduated answer hints (local update)
+## Graduated answer hints
 
-Across scored activities, a third wrong answer circles the error location in red.
+In most scored activities, a third wrong answer circles the error location in red.
 A sixth wrong answer displays the correct answer. Empty submissions do not count;
 new questions clear the counters. Students still select and correct their own answers.
-The unscored rhythm lab retains its existing creative mode. This hint update has
-been verified locally and is not yet published.
+P-005 has its own three-stage feedback described below. The unscored rhythm lab retains its creative mode.
 
-## New local pitch activities
+## Staff-reading and pitch activities
 
-P-002 (`key-notes.html`) offers nine staff-reading tasks: identify the note independently, circle one of two visible unlabeled keyboard groups, and locate its white key. There is no note-to-key lookup diagram or automatic name on a selected key. P-003 (`fish-notes.html`) offers nine one-to-one fish/staff matches. Children select a fish labeled with source-style letter case and octave superscripts, then tap the matching staff. The source composition is retained: scattered fish on the left and a framed vertical staff column on the right, with original underwater artwork. Student-selected pairs are shown as connecting lines; fish can be moved and matches cleared before checking. Both support direct correction, local profiles, instruction speech, graduated hints, and the shared celebration. The selector includes all seventeen worksheets. P-002, P-003 and the nine-balloon update were published on November 23, 2026. P-004 was published on November 23, 2026.
+P-002 (`key-notes.html`) offers nine staff-reading tasks: identify the note independently, circle one of two visible unlabeled keyboard groups, and locate its white key. There is no note-to-key lookup diagram or automatic name on a selected key. P-003 (`fish-notes.html`) offers nine one-to-one fish/staff matches. Children select a fish labeled with source-style letter case and octave superscripts, then tap the matching staff. The source composition is retained: scattered fish on the left and a framed vertical staff column on the right, with original underwater artwork. Student-selected pairs are shown as connecting lines; fish can be moved and matches cleared before checking. Both support direct correction, local profiles, instruction speech, graduated hints, and the shared celebration. P-002, P-003 and the nine-balloon update were published on November 23, 2026. P-004 was published on November 23, 2026.
 
 ## P-004 whole tones and semitones
 
