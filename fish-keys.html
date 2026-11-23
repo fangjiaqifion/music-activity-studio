@@ -41,22 +41,22 @@
         <p class="subtitle">Match the fish and the marked key</p>
       </div>
       <section class="instructions">
-        <p>先选一条音名小鱼，再点相应的键盘。每条小鱼只能配对一次；点擦除可清除配对。</p>
+        <p>先点左边的小鱼，再点右边的键盘。同一个音名可以重复使用。</p>
         <p lang="en">
-          Choose a note-name fish, then match it to the marked key.
+          Choose a fish, then the matching marked key. A note name may be used again.
         </p>
         <button id="speak">▶ 听题干</button>
         <p id="speech-status" role="status"></p>
       </section>
       <section class="paper">
         <div class="cloud cloud-one" id="student-label"></div>
-        <div class="cloud cloud-two">已填 <strong id="count">0</strong> / 7</div>
+        <div class="cloud cloud-two">已填 <strong id="count">0</strong> / 9</div>
         <div id="activity-board"></div>
       </section>
       <footer>
         <p id="feedback" role="status" aria-live="polite"></p>
-        <button id="check" class="primary">✓ 完成 · Done</button
-        ><button id="next">换一组 · New set ↻</button>
+        <button id="check" class="primary">✓ 检查</button
+        ><button id="next">↻ 换一组</button>
       </footer>
       <section id="celebration" hidden aria-label="全部答对庆祝">
         <button id="close-celebration" aria-label="关闭庆祝">×</button>

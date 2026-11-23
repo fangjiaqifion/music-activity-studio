@@ -131,7 +131,7 @@ Level 1 supports pointer dragging, tap-then-place, and keyboard controls. Incorr
 
 ## Graduated answer assistance, 2026-11-17
 
-The user requested this contract for every scored activity, superseding earlier
+Except for the later P-005-specific override below, the user requested this contract for every scored activity, superseding earlier
 aggregate-only and never-reveal rules. `src/retry_hints.mjs` owns session-only
 per-question counters, noninteractive red ellipse overlays, and correct-answer text
 next to the existing feedback. The third
@@ -166,4 +166,6 @@ The selector has seventeen cards: sixteen worksheets and Note Neighborhood. Ever
 
 ## P-005/P-006 keyboard note names, 2026-11-23
 
-`fish-keys.html`, `key-names.html`, `keyboard_names.css`, and `src/keyboard_names*.mjs` own these adaptations. P-005 pairs seven A–G fish with independently shuffled marked C–E/F–B keyboard groups. Matching is one-to-one, reversible and erasable; replacing a fish releases its previous match. P-006 has fifteen full C–B keyboards with red position markers, covering every natural note at least twice. Students choose A–G directly and may replace answers. No correctness is disclosed before checking. Both retain local profiles, user-triggered speech, session-only answers, keyboard/touch controls, third/sixth-error assistance and the shared celebration. Reflow cards across device sizes; keep original worksheet masters unchanged. Local preview only; this task does not authorize publication.
+`fish-keys.html`, `key-names.html`, `keyboard_names.css`, and `src/keyboard_names*.mjs` own these adaptations. P-005 has nine marked C–E/F–B keyboard questions covering all A–G notes plus two different repeated notes. Keep all seven reusable note-name fish options on the left and all nine targets on the right, visible together without page scrolling on phone, tablet and desktop in either orientation. Use the unchanged original round fish extracted from `P-005键盘B.docx` as `assets/keyboard_fish.png`. Current selection is yellow; options used in answers are green. Never add visible used/selected text badges. Answers show the selected fish, rather than a text-only match. Allow repeated use, direct replacement and erasing.
+
+P-005 is a user-requested exception to the shared third/sixth-error contract: the first answered error only reports the number needing thought, the second adds a red dashed ellipse around the incorrect matched fish, and the third additionally shows the correct letter next to it. Counters are per question; blanks do not consume/reset attempts, correct checks and new sets reset, and edits clear cues while retaining counts. Use `createRetryState` without changing global hint thresholds. P-006 retains fifteen full C–B keyboards, A–G direct answers and shared third/sixth-error hints. Both retain local profiles, user-triggered speech, session-only answers, keyboard/touch controls and celebration. Original worksheet masters remain unchanged. Local preview only; no publication authorization is inferred.

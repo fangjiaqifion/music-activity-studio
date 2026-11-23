@@ -1,4 +1,4 @@
-import {createRetryHints} from './retry_hints.mjs';
+import {createRetryHints,createRetryState} from './retry_hints.mjs';
 import {createSpeech} from './balloon_speech.mjs';
 import {readProfiles,saveProfiles,dateLabel} from './balloon_profiles.mjs';
 import {makePage,assignMatch,letters} from './keyboard_names_core.mjs';
@@ -64,20 +64,24 @@ setInterval(showProfile, 60000);
 
 const matching=document.body.dataset.activity==='fish-keys';
 let questions=[],answers=[],selected=null;
+const fishRetries=createRetryState();
+let fishCues=[];
+function fishArt(note){return '<span class="matched-fish"><img src="assets/keyboard_fish.png" alt=""><strong>'+(note||'')+'</strong></span>';}
 function keyboard(q){
  const names=q.group==='short'?['C','D','E']:q.group==='long'?['F','G','A','B']:['C','D','E','F','G','A','B'];
  const blacks=names.map((n,i)=>['C','D','F','G','A'].includes(n)?'<rect x="'+((i+1)*40+4-11)+'" y="8" width="22" height="68" rx="2" fill="#242525"/>':'').join('');
  return '<svg class="marked-keyboard" viewBox="0 0 '+(names.length*40+8)+' 132" role="img" aria-label="红点标记的琴键"><rect x="4" y="8" width="'+names.length*40+'" height="120" rx="3" fill="white" stroke="#242525" stroke-width="2"/>'+names.slice(1).map((n,i)=>'<path d="M'+((i+1)*40+4)+' 8v120" stroke="#242525"/>').join('')+blacks+'<circle cx="'+(names.indexOf(q.note)*40+24)+'" cy="106" r="7" fill="#d32030"/></svg>';
 }
 function render(focus){
- board.innerHTML=(matching?'<div class="fish-bank" role="group" aria-label="选择音名小鱼">'+letters.map(n=>'<button class="name-fish" data-fish="'+n+'" aria-pressed="'+(selected===n)+'" aria-label="选择小鱼 '+n+'"><img src="assets/pitch_fish.png" alt=""><strong>'+n+'</strong><small>'+ (answers.includes(n)?'已配对':'')+'</small></button>').join('')+'<button data-erase aria-pressed="'+(selected==='erase')+'"><img src="assets/eraser.svg" width="24" alt=""> 擦除</button></div>':'')+'<div class="key-question-grid">'+questions.map((q,i)=>'<section class="key-question" data-question="'+i+'"><h2>第 '+(i+1)+' 题</h2>'+keyboard(q)+(matching?'<button class="match-target" data-target="'+i+'">'+(answers[i]?'小鱼 '+answers[i]+' ↔ 红点琴键':'点这里配对')+'</button>':'<div class="letter-choices" role="group" aria-label="第 '+(i+1)+' 题音名">'+letters.map(n=>'<button data-answer="'+n+'" data-index="'+i+'" aria-pressed="'+(answers[i]===n)+'">'+n+'</button>').join('')+'</div>')+'</section>').join('')+'</div>';
+ board.innerHTML=(matching?'<div class="fish-bank" role="group" aria-label="选择音名小鱼">'+letters.map(n=>'<button class="name-fish" data-fish="'+n+'" data-used="'+answers.includes(n)+'" aria-pressed="'+(selected===n)+'" aria-label="选择小鱼 '+n+'">'+fishArt(n)+'</button>').join('')+'<button data-erase aria-label="擦除" aria-pressed="'+(selected==='erase')+'"><img src="assets/eraser.svg" width="24" alt=""></button></div>':'')+'<div class="key-question-grid">'+questions.map((q,i)=>'<section class="key-question" data-question="'+i+'">'+(matching?'<button class="match-target" data-target="'+i+'" aria-label="第 '+(i+1)+' 题，'+(answers[i]?'已选 '+answers[i]:'未作答')+'"><span class="question-number">'+(i+1)+'</span>'+keyboard(q)+fishArt(answers[i])+(fishCues[i]>=3?'<span class="retry-answer" aria-label="正确答案 '+q.note+'">'+q.note+'</span>':'')+'</button>':'<h2>第 '+(i+1)+' 题</h2>'+keyboard(q)+'<div class="letter-choices" role="group" aria-label="第 '+(i+1)+' 题音名">'+letters.map(n=>'<button data-answer="'+n+'" data-index="'+i+'" aria-pressed="'+(answers[i]===n)+'">'+n+'</button>').join('')+'</div>')+'</section>').join('')+'</div>';
+ if(matching)fishCues.forEach((count,i)=>{if(count>=2)board.querySelector('[data-target="'+i+'"] .matched-fish').classList.add('fish-error');});
  document.querySelector('#count').textContent=answers.filter(Boolean).length;
  if(focus)board.querySelector(focus)?.focus({preventScroll:true});
 }
 board.onclick=e=>{
  const b=e.target.closest('button');if(!b)return;
  const focused=b.matches(':focus-visible');let focus;
- stop();retryHints.clear();
+ stop();retryHints.clear();fishCues=[];
  if(b.dataset.fish){selected=b.dataset.fish;focus='[data-fish="'+selected+'"]';}
  else if(b.hasAttribute('data-erase')){selected='erase';focus='[data-erase]';}
  else if(b.dataset.target!==undefined){if(!selected){feedback.textContent='先选一条音名小鱼。';return;}const i=Number(b.dataset.target);answers=assignMatch(answers,i,selected==='erase'?null:selected);focus='[data-target="'+i+'"]';}
@@ -86,11 +90,12 @@ board.onclick=e=>{
 };
 document.querySelector('#check').onclick=()=>{
  stop();let blank=0,wrong=0;
- questions.forEach((q,i)=>{if(!answers[i])blank++;else if(answers[i]!==q.note)wrong++;retryHints.check(i,answers[i]?answers[i]!==q.note:null,board.querySelector('[data-question="'+i+'"] .marked-keyboard'),q.note);});
+ questions.forEach((q,i)=>{if(!answers[i])blank++;else if(answers[i]!==q.note)wrong++;const error=answers[i]?answers[i]!==q.note:null;if(matching)fishCues[i]=fishRetries.check(i,error);else retryHints.check(i,error,board.querySelector('[data-question="'+i+'"] .marked-keyboard'),q.note);});
+ if(matching)render();
  feedback.textContent=blank?'还有 '+blank+' 题没有完成。'+(wrong?'另有 '+wrong+' 题需要再想一想。':''):wrong?'有 '+wrong+' 题需要再想一想。':'全部答对啦！你真棒！';
  if(!blank&&!wrong)celebration.hidden=false;
 };
-function next(){stop();retryHints.reset();questions=makePage(matching);answers=questions.map(()=>null);selected=null;render();feedback.textContent=matching?'先选音名小鱼，再配对红点琴键。':'看红点标记的白键，选择音名。';}
+function next(){stop();retryHints.reset();fishRetries.reset();fishCues=[];questions=makePage(matching);answers=questions.map(()=>null);selected=null;render();feedback.textContent=matching?'先选音名小鱼，再配对红点琴键。':'看红点标记的白键，选择音名。';}
 document.querySelector('#next').onclick=next;
 document.querySelector('#print').onclick=()=>{stop();window.print();};
 document.querySelector('#close-celebration').onclick=stopCelebration;

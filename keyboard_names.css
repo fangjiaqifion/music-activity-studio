@@ -1,1 +1,46 @@
 .paper{padding:28px;min-height:0}.key-question-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}.key-question{min-width:0;border:2px solid #c5d5c7;border-radius:20px;background:#fffefa;padding:18px;text-align:center}.key-question h2{font-size:17px;color:#5a665e;margin:0 0 14px}.marked-keyboard{display:block;width:100%;max-width:300px;height:150px;margin:0 auto 18px}.match-target{width:100%;min-height:48px}.letter-choices{display:flex;flex-wrap:wrap;justify-content:center;gap:6px}.letter-choices button{min-width:44px;min-height:44px;padding:6px;font-size:24px}.letter-choices button[aria-pressed=true],.name-fish[aria-pressed=true]{outline:3px solid #aa462f;background:#fae6d4}.fish-bank{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin:0 0 26px}.name-fish{position:relative;width:100px;min-height:110px;padding:6px;border-radius:18px}.name-fish img{display:block;width:100%;height:68px;object-fit:contain}.name-fish strong{position:absolute;left:44%;top:28px;font-size:28px}.name-fish small{display:block;height:20px;font-size:13px}.fish-bank>button[data-erase]{align-self:center;min-height:48px}.fish-bank>button[data-erase] img{vertical-align:middle}.cloud{position:static;display:inline-block;max-width:100%;margin:0 10px 20px 0}button:focus-visible{outline:3px solid #215eaa;outline-offset:3px}@media(max-width:1000px){.key-question-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:600px){.paper{padding:16px}.key-question-grid{grid-template-columns:1fr}.name-fish{width:80px}.name-fish strong{left:42%;top:30px;font-size:24px}.name-fish img{height:64px}.marked-keyboard{height:145px}}@media print{.fish-bank{break-inside:avoid}.key-question{break-inside:avoid}.key-question-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+
+/* P-005 keeps the complete fish bank and all nine targets visible together. */
+body[data-activity="fish-keys"]{height:100dvh;display:flex;flex-direction:column;overflow:hidden}
+body[data-activity="fish-keys"] header{width:100%;padding:8px 18px;min-height:44px}
+body[data-activity="fish-keys"] main{width:min(1100px,100%);min-height:0;flex:1;display:flex;flex-direction:column;margin:0 auto;padding:0 12px}
+body[data-activity="fish-keys"] .profiles{margin:0 0 2px;font-size:12px;position:relative;z-index:3}
+body[data-activity="fish-keys"] .profiles[open]{position:absolute;top:44px;left:12px;right:12px;background:#fffefa;border:1px solid #ccc;border-radius:12px;padding:12px}
+body[data-activity="fish-keys"] .heading{padding:0}
+body[data-activity="fish-keys"] h1{font-size:25px;margin:0;letter-spacing:2px}
+body[data-activity="fish-keys"] .eyebrow,body[data-activity="fish-keys"] .subtitle,body[data-activity="fish-keys"] .instructions p:lang(en){display:none}
+body[data-activity="fish-keys"] .instructions{margin:3px 0 6px;display:flex;align-items:center;justify-content:center;gap:8px}
+body[data-activity="fish-keys"] .instructions p{font-size:14px;margin:0}
+body[data-activity="fish-keys"] .instructions #speak{margin:0;min-width:44px;min-height:44px;padding:4px 8px;white-space:nowrap}
+body[data-activity="fish-keys"] #speech-status:empty{display:none}
+body[data-activity="fish-keys"] .paper{flex:1;min-height:0;padding:8px 12px;display:flex;flex-wrap:wrap;border-radius:18px;align-content:stretch}
+body[data-activity="fish-keys"] .cloud{font-size:12px;min-width:0;padding:2px 8px;margin:0 8px 5px 0;max-width:70%;border:0;line-height:18px;height:22px}
+body[data-activity="fish-keys"] #activity-board{width:100%;min-height:0;flex:1;display:grid;grid-template-columns:clamp(65px,16vw,125px) minmax(0,1fr);gap:12px;height:calc(100% - 27px)}
+body[data-activity="fish-keys"] .fish-bank{display:grid;grid-template-columns:1fr;grid-template-rows:repeat(8,minmax(44px,1fr));gap:3px;margin:0;min-height:0}
+body[data-activity="fish-keys"] .name-fish{width:100%;height:100%;min-height:44px;padding:2px;border:1px solid transparent;border-radius:12px;background:#fffefa}
+body[data-activity="fish-keys"] .name-fish[data-used=true]{background:#c6e9ba;border-color:#88b477}
+body[data-activity="fish-keys"] .name-fish[aria-pressed=true]{background:#ffdf6b;outline:2px solid #b89229;outline-offset:-2px}
+body[data-activity="fish-keys"] .matched-fish{display:block;position:relative;width:100%;height:100%;min-height:24px;border:2px solid transparent;border-radius:50%}
+body[data-activity="fish-keys"] .matched-fish img{display:block;width:100%;height:100%;object-fit:contain}
+body[data-activity="fish-keys"] .matched-fish strong{position:absolute;left:50%;top:66%;transform:translate(-50%,-50%);font-size:clamp(17px,2.5vh,27px);line-height:1}
+body[data-activity="fish-keys"] .fish-bank>button[data-erase]{min-height:44px;height:100%;padding:2px;align-self:stretch}
+body[data-activity="fish-keys"] .key-question-grid{grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:repeat(3,minmax(0,1fr));gap:8px;min-height:0}
+body[data-activity="fish-keys"] .key-question{padding:0;min-height:0;border-radius:12px;position:relative}
+body[data-activity="fish-keys"] .match-target{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;width:100%;height:100%;min-height:44px;padding:5px;border:0;background:transparent;gap:3px}
+body[data-activity="fish-keys"] .question-number{position:absolute;left:5px;top:2px;font-size:11px;color:#66735f}
+body[data-activity="fish-keys"] .marked-keyboard{width:100%;height:0;min-height:0;flex:1;margin:8px 0 0;max-width:180px}
+body[data-activity="fish-keys"] .match-target .matched-fish{height:35%;width:70%;max-width:95px;flex-shrink:0;background:#f3f2e8}
+body[data-activity="fish-keys"] .match-target .matched-fish img{visibility:hidden}
+body[data-activity="fish-keys"] .match-target[aria-label*="已选"] .matched-fish img{visibility:visible}
+body[data-activity="fish-keys"] .matched-fish.fish-error{border:2px dashed #d32030}
+body[data-activity="fish-keys"] .retry-answer{position:absolute;right:3px;bottom:2px;background:#fff2b8;border:2px solid #d32030;border-radius:8px;min-width:24px;line-height:1.1;font-size:24px;color:#a41023}
+body[data-activity="fish-keys"] footer{padding:5px 0 8px;gap:4px 10px;flex-shrink:0}
+body[data-activity="fish-keys"] #feedback{margin:0;font-size:14px;min-height:20px;line-height:20px}
+body[data-activity="fish-keys"] footer button{min-height:44px;padding:4px 16px;font-size:16px}
+@media(max-height:600px){body[data-activity="fish-keys"] .profiles{display:none}body[data-activity="fish-keys"] .fish-bank{grid-template-columns:repeat(2,minmax(44px,1fr));grid-template-rows:repeat(4,minmax(44px,1fr))}body[data-activity="fish-keys"] #activity-board{grid-template-columns:clamp(100px,19vw,180px) minmax(0,1fr)}body[data-activity="fish-keys"] .heading h1{font-size:21px}body[data-activity="fish-keys"] .instructions{margin:0 0 3px}body[data-activity="fish-keys"] .match-target .matched-fish{height:42%;min-height:20px}body[data-activity="fish-keys"] .matched-fish strong{font-size:17px}}
+@media(max-width:450px){body[data-activity="fish-keys"] main{padding:0 6px}body[data-activity="fish-keys"] .paper{padding:6px}body[data-activity="fish-keys"] #activity-board{gap:6px}body[data-activity="fish-keys"] .key-question-grid{gap:5px}body[data-activity="fish-keys"] .instructions p{font-size:12px}body[data-activity="fish-keys"] .match-target{padding:4px 2px}}
+body[data-activity="fish-keys"] .paper{display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-rows:27px minmax(0,1fr);align-content:stretch}
+body[data-activity="fish-keys"] #activity-board{grid-column:1/-1;width:100%;height:100%}
+body[data-activity="fish-keys"] .cloud{max-width:100%;width:max-content}
+@media(max-height:600px){body[data-activity="fish-keys"] footer{flex-wrap:nowrap;padding:3px 0;min-height:50px}body[data-activity="fish-keys"] #feedback{flex-basis:auto;flex:1;text-align:left;font-size:12px;line-height:16px}body[data-activity="fish-keys"] footer button{padding:4px 12px;white-space:nowrap}body[data-activity="fish-keys"] .cloud{font-size:11px}}
+@media(max-height:600px) and (min-width:600px){body[data-activity="fish-keys"] .match-target{flex-direction:row;padding:4px 9px;gap:6px}body[data-activity="fish-keys"] .marked-keyboard{height:100%;width:65%;flex:none;margin:0}body[data-activity="fish-keys"] .match-target .matched-fish{height:100%;width:30%;min-height:24px}body[data-activity="fish-keys"] .question-number{left:3px;top:0}}

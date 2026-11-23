@@ -64,3 +64,7 @@ The user canceled P-003’s added edge seaweed and its reserved gutter on 2026-1
 ## P-004 ordered fish layout
 
 P-004 uses twelve source note pairs in a fixed responsive grid, with three columns on larger screens, two on phones, and one on very narrow screens. Never randomize fish positions or distort decorations. Keep a single proportionally scaled bottom seaweed cluster separate from answer targets. Whole tones are blue; B–C and E–F semitones are red. Brush selection, fish painting, erasing, direct correction, local profiles, speech, third/sixth-error assistance and celebration share existing contracts. Answers are session-only; New page clears colors without rearranging fish. Original source masters remain unchanged. The full matrix now covers eighteen pages at six sizes (108 cases).
+
+## P-005 same-screen fish bank, 2026-11-23
+
+Keep the original round fish options permanently on the left and all nine marked keyboards on the right. Fit the entire exercise, feedback and check/new-set controls within the viewport without page scrolling. Reflow the left bank into two columns on short screens; arrange each target keyboard and matched fish side by side in short landscape viewports. Never distort artwork or shrink interaction regions below 44px. Use yellow current selection, green used options, and a red dashed matched-fish border after the second error. Verify 320×568 plus the six standard sizes and inspect landscape keyboard legibility. P-006 retains its existing scrolling card layout.
