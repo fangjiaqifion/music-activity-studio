@@ -2,7 +2,7 @@
 
 Last updated: 2026-11-23
 
-A music activity studio inspired by FANG, Jiaqi's illustrated worksheets. The published version includes six games, sixteen interactive worksheet adaptations, and Note Neighborhood.
+A music activity studio inspired by FANG, Jiaqi's illustrated worksheets. The published version includes six games, seventeen interactive worksheet adaptations, and Note Neighborhood.
 The Chinese interface is intended for young piano beginners, with adult support where
 needed. Usability and educational effects have not been established.
 
@@ -122,4 +122,4 @@ P-002 (`key-notes.html`) offers nine staff-reading tasks: identify the note inde
 
 P-005 (`fish-keys.html`) uses the original round fish and nine marked-key questions. Reusable A–G fish choices stay on the left, with all nine questions visible on the right. Yellow shows the current choice and green shows used choices. Answers can be replaced or erased; the second failed page check circles all currently incorrect fish and the third shows their answers. P-006 (`key-names.html`) asks children to name fifteen marked white keys using A–G choices. Both support direct correction, Chinese instruction speech, local display profiles, graduated hints and celebration. Published on November 23, 2026. [Play P-005](https://fangjiaqifion.github.io/music-activity-studio/releases/d8db5436ce60/fish-keys.html) or [play P-006](https://fangjiaqifion.github.io/music-activity-studio/releases/d8db5436ce60/key-names.html).
 
-P-007, Under the Sea, groups ten neighboring-note exercises into seahorse, round fish, and pointed-fin fish sections. Children fill twelve missing letters by following the repeating A–G musical alphabet from left to right. The activity uses original worksheet illustrations and supports direct correction, instruction speech, local profiles, graduated hints, and celebration.
+P-007, Under the Sea, groups ten neighboring-note exercises into seahorse, round fish, and pointed-fin fish sections. Children fill twelve missing letters by following the repeating A–G musical alphabet from left to right. The activity uses original worksheet illustrations and supports direct correction, instruction speech, local profiles, graduated hints, and celebration. [Play P-007](https://fangjiaqifion.github.io/music-activity-studio/releases/451f5c5a7f56/sea-neighbors.html).

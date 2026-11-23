@@ -903,3 +903,17 @@ and Note Neighborhood in the selector. P-007 is on origin/main in `8e9337c`. Its
 was in progress at review. AGENTS and
 the operating guides were reviewed for ownership and release procedure. The workspace
 tracker now compares the status of both games. This review did not run another release.
+
+### Publication verification
+
+[Pages run 45151547057](https://github.com/fangjiaqifion/music-activity-studio/actions/runs/45151547057)
+deployed commit `8e9337c` as build `451f5c5a7f56`. Verification covered 38 Node
+tests, zero npm audit findings, the legacy browser and regression suites, all CI
+activity suites and 114 packaged responsive cases. The P-007 device-class
+screenshots and a one-page A4 Chrome PDF were reviewed. All 154 deployed file
+hashes match the local package. The public Chrome tests passed for the
+[eighteen-card selector](https://fangjiaqifion.github.io/music-activity-studio/releases/451f5c5a7f56/activities.html)
+and the [complete P-007 activity](https://fangjiaqifion.github.io/music-activity-studio/releases/451f5c5a7f56/sea-neighbors.html).
+The README reflects publication. The game scope, asset provenance, interaction
+contract and operating procedures remain current. Physical devices, Safari and
+human-audible speech were outside the verification.
