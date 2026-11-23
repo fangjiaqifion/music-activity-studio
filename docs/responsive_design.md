@@ -68,3 +68,5 @@ P-004 uses twelve source note pairs in a fixed responsive grid, with three colum
 ## P-005 same-screen fish bank, 2026-11-23
 
 Keep the original round fish options permanently on the left and all nine marked keyboards on the right. Fit the entire exercise, feedback and check/new-set controls within the viewport without page scrolling. Reflow the left bank into two columns on short screens; arrange each target keyboard and matched fish side by side in short landscape viewports. Never distort artwork or shrink interaction regions below 44px. Use yellow current selection, green used options, and a red dashed matched-fish border after the second error. Verify 320×568 plus the six standard sizes and inspect landscape keyboard legibility. P-006 retains its existing scrolling card layout.
+
+P-005 lettering uses original-image SVG coordinates and measured belly bounds (x 24–117, y 85–131 in the 141×142 source viewBox). Preserve proportional image/text scaling at every viewport. The second failed check applies red dashed borders to all currently incorrect answered fish, regardless of when each answer was entered; third-check answers use the same whole-page stage.

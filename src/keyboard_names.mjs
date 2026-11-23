@@ -1,4 +1,4 @@
-import {createRetryHints,createRetryState} from './retry_hints.mjs';
+import {createRetryHints} from './retry_hints.mjs';
 import {createSpeech} from './balloon_speech.mjs';
 import {readProfiles,saveProfiles,dateLabel} from './balloon_profiles.mjs';
 import {makePage,assignMatch,letters} from './keyboard_names_core.mjs';
@@ -64,9 +64,9 @@ setInterval(showProfile, 60000);
 
 const matching=document.body.dataset.activity==='fish-keys';
 let questions=[],answers=[],selected=null;
-const fishRetries=createRetryState();
+let fishFailedChecks=0;
 let fishCues=[];
-function fishArt(note){return '<span class="matched-fish"><img src="assets/keyboard_fish.png" alt=""><strong>'+(note||'')+'</strong></span>';}
+function fishArt(note){return '<span class="matched-fish"><svg class="fish-illustration" viewBox="0 0 141 142" aria-hidden="true"><image href="assets/keyboard_fish.png" width="141" height="142"/><text x="70.5" y="112" text-anchor="middle" dominant-baseline="middle" font-size="30">'+(note||'')+'</text></svg></span>';}
 function keyboard(q){
  const names=q.group==='short'?['C','D','E']:q.group==='long'?['F','G','A','B']:['C','D','E','F','G','A','B'];
  const blacks=names.map((n,i)=>['C','D','F','G','A'].includes(n)?'<rect x="'+((i+1)*40+4-11)+'" y="8" width="22" height="68" rx="2" fill="#242525"/>':'').join('');
@@ -90,12 +90,18 @@ board.onclick=e=>{
 };
 document.querySelector('#check').onclick=()=>{
  stop();let blank=0,wrong=0;
- questions.forEach((q,i)=>{if(!answers[i])blank++;else if(answers[i]!==q.note)wrong++;const error=answers[i]?answers[i]!==q.note:null;if(matching)fishCues[i]=fishRetries.check(i,error);else retryHints.check(i,error,board.querySelector('[data-question="'+i+'"] .marked-keyboard'),q.note);});
- if(matching)render();
+ questions.forEach((q,i)=>{if(!answers[i])blank++;else if(answers[i]!==q.note)wrong++;const error=answers[i]?answers[i]!==q.note:null;if(!matching)retryHints.check(i,error,board.querySelector('[data-question="'+i+'"] .marked-keyboard'),q.note);});
+ if(matching){
+  // Assistance follows failed checks for the whole page, including newly edited errors.
+  if(wrong)fishFailedChecks++;
+  fishCues=questions.map((q,i)=>answers[i]&&answers[i]!==q.note?fishFailedChecks:0);
+  if(!blank&&!wrong)fishFailedChecks=0;
+  render();
+ }
  feedback.textContent=blank?'还有 '+blank+' 题没有完成。'+(wrong?'另有 '+wrong+' 题需要再想一想。':''):wrong?'有 '+wrong+' 题需要再想一想。':'全部答对啦！你真棒！';
  if(!blank&&!wrong)celebration.hidden=false;
 };
-function next(){stop();retryHints.reset();fishRetries.reset();fishCues=[];questions=makePage(matching);answers=questions.map(()=>null);selected=null;render();feedback.textContent=matching?'先选音名小鱼，再配对红点琴键。':'看红点标记的白键，选择音名。';}
+function next(){stop();retryHints.reset();fishFailedChecks=0;fishCues=[];questions=makePage(matching);answers=questions.map(()=>null);selected=null;render();feedback.textContent=matching?'先选音名小鱼，再配对红点琴键。':'看红点标记的白键，选择音名。';}
 document.querySelector('#next').onclick=next;
 document.querySelector('#print').onclick=()=>{stop();window.print();};
 document.querySelector('#close-celebration').onclick=stopCelebration;

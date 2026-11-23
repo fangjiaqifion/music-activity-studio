@@ -13,9 +13,10 @@ try{
  const wrong=notes[0]==='A'?'B':'A';await answer(0,wrong);
  if(matching){
  await page.locator('#check').click();assert.equal(await page.locator('.fish-error').count(),0);assert.equal(await page.locator('.retry-answer').count(),0);
- await page.locator('#check').click();assert.equal(await page.locator('.fish-error').count(),1);assert.equal(await page.locator('.retry-answer').count(),0);await page.screenshot({path:'.runtime/p005-second-error.png'});
- await page.locator('#check').click();assert.equal(await page.locator('.retry-answer').innerText(),notes[0]);
- assert.equal(await page.locator('.fish-error').evaluate(e=>getComputedStyle(e).borderTopStyle),'dashed');
+ await answer(1,notes[1]==='A'?'B':'A');
+ await page.locator('#check').click();assert.equal(await page.locator('.fish-error').count(),2);assert.equal(await page.locator('.retry-answer').count(),0);await page.screenshot({path:'.runtime/p005-second-error.png'});
+ await page.locator('#check').click();assert.deepEqual(await page.locator('.retry-answer').allTextContents(),notes.slice(0,2));
+ assert.equal(await page.locator('.fish-error').first().evaluate(e=>getComputedStyle(e).borderTopStyle),'dashed');
  }else{
  for(let i=0;i<3;i++)await page.locator('#check').click();assert.equal(await page.locator('.retry-hint').count(),1);assert.equal(await page.locator('.retry-answer').count(),0);
  for(let i=0;i<3;i++)await page.locator('#check').click();assert.match(await page.locator('.retry-answer').innerText(),new RegExp(notes[0]));
@@ -29,6 +30,8 @@ try{
  await page.setViewportSize({width,height});await page.evaluate(()=>{window.scrollTo(0,0);return new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));});
  assert.equal(await page.evaluate(()=>document.documentElement.scrollHeight>innerHeight+1),false,'No vertical page scrolling '+width);
  const bounds=await page.locator('[data-fish],[data-target],#check,#next').evaluateAll(es=>es.every(e=>{const r=e.getBoundingClientRect();return r.top>=0&&r.bottom<=innerHeight+1&&r.left>=0&&r.right<=innerWidth+1&&r.width>=44&&r.height>=44;}));assert.equal(bounds,true,'All choices and targets visible, 44px '+width);
+ await page.evaluate(()=>document.fonts.ready);
+ const contained=await page.locator('.fish-illustration text').evaluateAll(es=>es.every(e=>{if(!e.textContent)return true;const r=e.getBBox();return r.x>=24&&r.x+r.width<=117&&r.y>=85&&r.y+r.height<=131;}));assert.equal(contained,true,'Fish lettering stays inside belly '+width);
  await page.screenshot({path:'.runtime/p005-'+width+'.png'});
  }
  await page.setViewportSize({width:390,height:844});
