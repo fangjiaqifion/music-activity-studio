@@ -156,3 +156,7 @@ P-002 derives its group-and-key task from `worksheets/p_pitch/P-002键盘B.pdf`;
 ## P-004 digital adaptation, 2026-11-23
 
 The original `worksheets/p_pitch/P-004鱼PIC.jpg` supplies twelve natural-note pairs and the whole-tone-blue/semitone-red task. Reuse the existing unchanged `pitch_fish.png`, `fish_seaweed.png` and licensed eraser asset rather than cropping the worksheet composition or modifying source DOCX/PDF/AI files. Fish labels and body-color overlays are code-native elements; the ordered responsive grid and single bottom seaweed are the digital composition.
+
+## P-005/P-006 keyboard note names, 2026-11-23
+
+Visually reviewed `worksheets/p_pitch/P-005键盘PIC.jpg` and `P-006键盘PIC.jpg`. The source tasks provide note-name matching and marked-key naming. P-005 reuses the unchanged existing `assets/pitch_fish.png` extraction documented above; keyboards and red markers are original proportional SVG geometry. Existing licensed fonts, Lucide eraser and five-character celebration are reused. All original DOCX/PDF/PIC/AI masters remain unchanged. Selector covers are isolated unanswered screenshots. No external runtime resources are added.

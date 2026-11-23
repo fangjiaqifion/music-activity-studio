@@ -2,7 +2,7 @@
 
 Last updated: 2026-11-23
 
-A music activity studio with six games, fourteen interactive worksheet adaptations, and Note Neighborhood, inspired by FANG, Jiaqi's illustrated worksheets.
+A music activity studio with six games, sixteen interactive worksheet adaptations, and Note Neighborhood, inspired by FANG, Jiaqi's illustrated worksheets.
 The Chinese interface is intended for young piano beginners, with adult support where
 needed. Usability and educational effects have not been established.
 
@@ -26,7 +26,7 @@ These are newly generated exercises, not replacements for original worksheet mas
 
 ## Play and run locally
 
-`note-houses.html` offers two levels: place seven whole-note characters in G3–F4 houses, then identify neighbors one to three staff steps above or below a resident. Dragging, tap-then-place, and keyboard answers are supported. Selecting a character plays its piano pitch in G3–F4; neighbor prompts play the resident note, and occupied houses can be tapped to hear it again. The complete grand staff remains visible, with houses precisely centered on lines/spaces. Neighbor prompts are automatically read aloud, with a replay button; correct answers trigger a brief celebration. A grand-staff brace connects the two staves. It appears alongside the fourteen worksheets as a matching preview card. [Play Note Neighborhood](https://fangjiaqifion.github.io/music-activity-studio/releases/b6df23116434/note-houses.html). The reviewed game is now published; release evidence is recorded in the tracker.
+`note-houses.html` offers two levels: place seven whole-note characters in G3–F4 houses, then identify neighbors one to three staff steps above or below a resident. Dragging, tap-then-place, and keyboard answers are supported. Selecting a character plays its piano pitch in G3–F4; neighbor prompts play the resident note, and occupied houses can be tapped to hear it again. The complete grand staff remains visible, with houses precisely centered on lines/spaces. Neighbor prompts are automatically read aloud, with a replay button; correct answers trigger a brief celebration. A grand-staff brace connects the two staves. It appears alongside the sixteen worksheets as a matching preview card. [Play Note Neighborhood](https://fangjiaqifion.github.io/music-activity-studio/releases/b6df23116434/note-houses.html). The reviewed game is now published; release evidence is recorded in the tracker.
 
 The GitHub Pages version is hosted at
 [Music Activity Studio](https://fangjiaqifion.github.io/music-activity-studio/),
@@ -113,8 +113,12 @@ been verified locally and is not yet published.
 
 ## New local pitch activities
 
-P-002 (`key-notes.html`) offers nine staff-reading tasks: identify the note independently, circle one of two visible unlabeled keyboard groups, and locate its white key. There is no note-to-key lookup diagram or automatic name on a selected key. P-003 (`fish-notes.html`) offers nine one-to-one fish/staff matches. Children select a fish labeled with source-style letter case and octave superscripts, then tap the matching staff. The source composition is retained: scattered fish on the left and a framed vertical staff column on the right, with original underwater artwork. Student-selected pairs are shown as connecting lines; fish can be moved and matches cleared before checking. Both support direct correction, local profiles, instruction speech, graduated hints, and the shared celebration. The selector includes all fourteen worksheets. P-002, P-003 and the nine-balloon update were published on November 23, 2026. P-004 is available locally for review.
+P-002 (`key-notes.html`) offers nine staff-reading tasks: identify the note independently, circle one of two visible unlabeled keyboard groups, and locate its white key. There is no note-to-key lookup diagram or automatic name on a selected key. P-003 (`fish-notes.html`) offers nine one-to-one fish/staff matches. Children select a fish labeled with source-style letter case and octave superscripts, then tap the matching staff. The source composition is retained: scattered fish on the left and a framed vertical staff column on the right, with original underwater artwork. Student-selected pairs are shown as connecting lines; fish can be moved and matches cleared before checking. Both support direct correction, local profiles, instruction speech, graduated hints, and the shared celebration. The selector includes all sixteen worksheets. P-002, P-003 and the nine-balloon update were published on November 23, 2026. P-004 was published on November 23, 2026.
 
 ## P-004 whole tones and semitones
 
-`fish-steps.html` adds twelve fish to paint: whole tones blue and semitones red. Choose a brush, then a fish; change brushes to correct colors or use the eraser. Fish follow a regular responsive grid, with proportionally scaled seaweed at the bottom. Includes local profiles, instruction speech, graduated hints and celebration. Available locally for review; not yet published.
+`fish-steps.html` adds twelve fish to paint: whole tones blue and semitones red. Choose a brush, then a fish; change brushes to correct colors or use the eraser. Fish follow a regular responsive grid, with proportionally scaled seaweed at the bottom. Includes local profiles, instruction speech, graduated hints and celebration. Published on November 23, 2026.
+
+## Keyboard note-name practice
+
+P-005 (`fish-keys.html`) matches seven A–G fish to marked keys in two- and three-black-key groups. Matches can be moved, replaced, or erased. P-006 (`key-names.html`) asks children to name fifteen marked white keys using A–G choices. Both support direct correction, Chinese instruction speech, local display profiles, graduated hints and celebration. Available locally for review.

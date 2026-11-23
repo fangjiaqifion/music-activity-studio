@@ -53,7 +53,7 @@ emulation is evidence of browser layout, not physical iPad or Safari acceptance.
    Do not substitute successful A4 output for this gate.
 
 The legacy six-game suite visits every game at its viewport matrix; the worksheet
-suite covers the illustrated selector, all fourteen completed electronic worksheets, and the Note Neighborhood prototype (96 viewport cases). The new prototype additionally checks 320px width, real touch selection, and complete staff/house containment. It recomputes scene geometry to keep both staves and all houses visible without scrolling. Very short landscape displays necessarily reduce visible house size; interaction hit regions stay at least 44px. Physical-device legibility remains a user acceptance check.
+suite covers the illustrated selector, all sixteen completed electronic worksheets, and the Note Neighborhood prototype (108 viewport cases). The new prototype additionally checks 320px width, real touch selection, and complete staff/house containment. It recomputes scene geometry to keep both staves and all houses visible without scrolling. Very short landscape displays necessarily reduce visible house size; interaction hit regions stay at least 44px. Physical-device legibility remains a user acceptance check.
 Keep both matrices maintained as content grows. Printing may be checked separately
 only when printing is within scope.
 
@@ -63,4 +63,4 @@ The user canceled P-003’s added edge seaweed and its reserved gutter on 2026-1
 
 ## P-004 ordered fish layout
 
-P-004 uses twelve source note pairs in a fixed responsive grid, with three columns on larger screens, two on phones, and one on very narrow screens. Never randomize fish positions or distort decorations. Keep a single proportionally scaled bottom seaweed cluster separate from answer targets. Whole tones are blue; B–C and E–F semitones are red. Brush selection, fish painting, erasing, direct correction, local profiles, speech, third/sixth-error assistance and celebration share existing contracts. Answers are session-only; New page clears colors without rearranging fish. Original source masters remain unchanged. The full matrix now covers sixteen pages at six sizes (96 cases).
+P-004 uses twelve source note pairs in a fixed responsive grid, with three columns on larger screens, two on phones, and one on very narrow screens. Never randomize fish positions or distort decorations. Keep a single proportionally scaled bottom seaweed cluster separate from answer targets. Whole tones are blue; B–C and E–F semitones are red. Brush selection, fish painting, erasing, direct correction, local profiles, speech, third/sixth-error assistance and celebration share existing contracts. Answers are session-only; New page clears colors without rearranging fish. Original source masters remain unchanged. The full matrix now covers eighteen pages at six sizes (108 cases).

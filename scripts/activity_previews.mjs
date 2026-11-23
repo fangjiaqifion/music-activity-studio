@@ -4,6 +4,7 @@ import { chromium } from 'playwright-core';
 // Regenerate when the corresponding exercise layout changes.
 const base = process.env.BASE_URL || 'http://127.0.0.1:8855';
 const entries = {
+  'fish-keys': '#activity-board', 'key-names': '#activity-board',
   hands: '#activity-board', balloons: '#balloons', cows: '.cow-art',
   cheesecake: '#cakes', ladybirds: '#activity-board', sunshine: '#activity-board',
   treble: '#activity-board', bass: '#activity-board', alto: '#activity-board',
