@@ -898,7 +898,8 @@ were reviewed and continue to describe the scope and ownership.
 
 Updated README to describe the published graduated hints and the P-005 exception.
 The public baseline remains release `d8db5436ce60` with sixteen worksheet adaptations
-and Note Neighborhood in the selector. P-007 is present in the local worktree and has
-a separate release path through this game's normal verification workflow. AGENTS and
+and Note Neighborhood in the selector. P-007 is on origin/main in `8e9337c`. Its
+[Pages workflow](https://github.com/fangjiaqifion/music-activity-studio/actions/runs/45151547057)
+was in progress at review. AGENTS and
 the operating guides were reviewed for ownership and release procedure. The workspace
 tracker now compares the status of both games. This review did not run another release.
