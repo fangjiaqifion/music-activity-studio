@@ -1,7 +1,7 @@
 import {chromium} from 'playwright-core';
 import assert from 'node:assert/strict';
 import {mkdir} from 'node:fs/promises';
-const base=process.env.BASE_URL||'http://127.0.0.1:8847';
+const base=(process.env.BASE_URL||'http://127.0.0.1:8847').replace(/\/+$/,'');
 const browser=await chromium.launch({executablePath:process.env.CHROME_PATH||'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',headless:true});
 await mkdir('.runtime/fish_steps',{recursive:true});
 try{

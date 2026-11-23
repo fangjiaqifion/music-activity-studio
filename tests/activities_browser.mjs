@@ -1,7 +1,7 @@
 import {chromium} from 'playwright-core';
 import assert from 'node:assert/strict';
 const browser=await chromium.launch({executablePath:process.env.CHROME_PATH||'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',headless:true});
-const base=process.env.BASE_URL||'http://127.0.0.1:8794';
+const base=(process.env.BASE_URL||'http://127.0.0.1:8794').replace(/\/+$/,'');
 try{
 const page=await browser.newPage({viewport:{width:1100,height:1000}});let errors=[];page.on('pageerror',e=>errors.push(e.message));page.on('response',r=>{if(r.status()>=400)errors.push(r.url()+': '+r.status());});
 await page.goto(base+'/activities.html');assert.equal(await page.locator('.activity-card').count(),15);for(const a of await page.locator('.activity-card').all()){assert.equal(await a.locator('img').evaluate(i=>i.complete&&i.naturalWidth>0),true);}await page.screenshot({path:'.runtime/activities_desktop.png',fullPage:true});await page.setViewportSize({width:390,height:844});await page.screenshot({path:'.runtime/activities_mobile.png',fullPage:true});assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);
