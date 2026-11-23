@@ -1,8 +1,8 @@
 # Music Activity Studio
 
-Last updated: 2026-11-18
+Last updated: 2026-11-23
 
-A music activity studio with six games, thirteen interactive worksheet adaptations, and Note Neighborhood, inspired by FANG, Jiaqi's illustrated worksheets.
+A music activity studio with six games, fourteen interactive worksheet adaptations, and Note Neighborhood, inspired by FANG, Jiaqi's illustrated worksheets.
 The Chinese interface is intended for young piano beginners, with adult support where
 needed. Usability and educational effects have not been established.
 
@@ -113,4 +113,8 @@ been verified locally and is not yet published.
 
 ## New local pitch activities
 
-P-002 (`key-notes.html`) offers nine staff-reading tasks: identify the note independently, circle one of two visible unlabeled keyboard groups, and locate its white key. There is no note-to-key lookup diagram or automatic name on a selected key. P-003 (`fish-notes.html`) offers nine one-to-one fish/staff matches. Children select a fish labeled with source-style letter case and octave superscripts, then tap the matching staff. The source composition is retained: scattered fish on the left and a framed vertical staff column on the right, with original underwater artwork. Student-selected pairs are shown as connecting lines; fish can be moved and matches cleared before checking. Both support direct correction, local profiles, instruction speech, graduated hints, and the shared celebration. The selector includes all thirteen worksheets. These additions and the nine-balloon update are available locally for review; they are not yet published.
+P-002 (`key-notes.html`) offers nine staff-reading tasks: identify the note independently, circle one of two visible unlabeled keyboard groups, and locate its white key. There is no note-to-key lookup diagram or automatic name on a selected key. P-003 (`fish-notes.html`) offers nine one-to-one fish/staff matches. Children select a fish labeled with source-style letter case and octave superscripts, then tap the matching staff. The source composition is retained: scattered fish on the left and a framed vertical staff column on the right, with original underwater artwork. Student-selected pairs are shown as connecting lines; fish can be moved and matches cleared before checking. Both support direct correction, local profiles, instruction speech, graduated hints, and the shared celebration. The selector includes all fourteen worksheets. P-002, P-003 and the nine-balloon update were published on November 23, 2026. P-004 is available locally for review.
+
+## P-004 whole tones and semitones
+
+`fish-steps.html` adds twelve fish to paint: whole tones blue and semitones red. Choose a brush, then a fish; change brushes to correct colors or use the eraser. Fish follow a regular responsive grid, with proportionally scaled seaweed at the bottom. Includes local profiles, instruction speech, graduated hints and celebration. Available locally for review; not yet published.

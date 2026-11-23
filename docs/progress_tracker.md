@@ -1,6 +1,6 @@
 # Progress Tracker
 
-Last updated: 2026-11-18
+Last updated: 2026-11-23
 
 ## Six-in-one local demo
 
@@ -812,3 +812,11 @@ The user authorized pushing the completed local work. Pushed runtime commit `dcc
 Pre-push verification: 36 Node tests, zero npm audit vulnerabilities, production legacy browser/regression suites, P-002/P-003 flows and 90 responsive cases pass. Reviewed AGENTS, README, development, responsive guidance and provenance unchanged because their thirteen-card requirement and release procedure remain correct.
 
 Replacement [run 45139239882](https://github.com/fangjiaqifion/music-activity-studio/actions/runs/45139239882) successfully tested and deployed release commit `8667536`. Every configured Chrome suite passed, including all scored-activity hint thresholds, pitch activities, staff worksheets, keyboard, Note Neighborhood interaction/audio and the 90-case responsive matrix. Build remains `c0d45a17f464`; `verify_deployed.mjs` confirmed all 119 remote file hashes. The in-app browser loaded the public root, redirected to that exact release, displayed the thirteen-card hub, and opened P-003 with nine fish and nine staff targets. Public entry: https://fangjiaqifion.github.io/music-activity-studio/. P-003: https://fangjiaqifion.github.io/music-activity-studio/releases/c0d45a17f464/fish-notes.html. Physical-device/Safari, human-audible speech and actual print acceptance remain unverified. This evidence update is documentation-only and does not trigger a second runtime deployment.
+
+## P-004 ordered fish coloring, 2026-11-23
+
+Added the fourteenth worksheet, P-004 whole-tone/semitone coloring, using twelve original note pairs in a fixed responsive grid. Whole tones are blue and B–C/E–F semitones red. Painting, erasing, direct correction, local profiles, instruction speech, graduated assistance and celebration are available. Fish stay in reading order; a single bottom seaweed cluster keeps its native proportions. Reset clears colors without moving fish. Existing P-003 composition remains unchanged. Original masters are preserved.
+
+Verification: 36 Node tests pass; npm audit reports zero vulnerabilities. Packaged build `9f201c20a01a` passes all 96 worksheet/hub viewport cases. Final build `fde7303bd0c1` (123 files), differing only in the Reset label, passes the complete P-004 blank/third/sixth/erase/correction/completion/reset flow, keyboard, emulated touch and six-size captures. Phone/tablet portrait/landscape/desktop captures inspected. Source legacy six-game 49-screen/session suite, touch/audio/storage regressions, fourteen-card hub/hands/cow flow and full P-002/P-003 flows pass. Physical-device/Safari, human speech and actual print acceptance remain unverified. Preview: http://127.0.0.1:8853/releases/fde7303bd0c1/fish-steps.html. No push/deployment.
+
+Documentation updated: AGENTS, README, development, responsive procedure, asset provenance and this tracker. Parent/games/worksheet guides and public overviews reviewed unchanged because source ownership and project scope remain accurate. Parent coordination/gitlink records this local unit; unrelated research/runtime work is preserved.

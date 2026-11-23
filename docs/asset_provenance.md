@@ -152,3 +152,7 @@ P-002 derives its group-and-key task from `worksheets/p_pitch/P-002键盘B.pdf`;
 ## P-003 source composition restoration, 2026-11-18
 
 `assets/fish_seaweed.png` is an unchanged extraction of `word/media/image9.png`, and `assets/pitch_fish_right.png` is an unchanged extraction of `word/media/image22.png`, from `worksheets/p_pitch/P-003鱼B.docx`. The seaweed includes the original hand-drawn bubble details. Repeated seaweed placements and CSS-only rotation/mirroring restore the original underwater composition without resaving any source asset. The existing left-facing fish remains unchanged. Vector connecting lines represent student choices only; source masters remain untouched.
+
+## P-004 digital adaptation, 2026-11-23
+
+The original `worksheets/p_pitch/P-004鱼PIC.jpg` supplies twelve natural-note pairs and the whole-tone-blue/semitone-red task. Reuse the existing unchanged `pitch_fish.png`, `fish_seaweed.png` and licensed eraser asset rather than cropping the worksheet composition or modifying source DOCX/PDF/AI files. Fish labels and body-color overlays are code-native elements; the ordered responsive grid and single bottom seaweed are the digital composition.

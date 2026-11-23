@@ -5,6 +5,8 @@ export async function runtimeFiles(root) {
   for (const name of [
     "key-notes.html",
     "fish-notes.html",
+    "fish-steps.html",
+    "fish_steps.css",
     "pitch_notes.css",
     "pitch-motion.html",
     "pitch_motion.css",

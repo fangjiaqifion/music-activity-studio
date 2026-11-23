@@ -1,6 +1,6 @@
 # Responsive Web Game Design
 
-Last updated: 2026-11-18
+Last updated: 2026-11-23
 
 ## Product contract
 
@@ -53,10 +53,14 @@ emulation is evidence of browser layout, not physical iPad or Safari acceptance.
    Do not substitute successful A4 output for this gate.
 
 The legacy six-game suite visits every game at its viewport matrix; the worksheet
-suite covers the illustrated selector, all thirteen completed electronic worksheets, and the Note Neighborhood prototype (90 viewport cases). The new prototype additionally checks 320px width, real touch selection, and complete staff/house containment. It recomputes scene geometry to keep both staves and all houses visible without scrolling. Very short landscape displays necessarily reduce visible house size; interaction hit regions stay at least 44px. Physical-device legibility remains a user acceptance check.
+suite covers the illustrated selector, all fourteen completed electronic worksheets, and the Note Neighborhood prototype (96 viewport cases). The new prototype additionally checks 320px width, real touch selection, and complete staff/house containment. It recomputes scene geometry to keep both staves and all houses visible without scrolling. Very short landscape displays necessarily reduce visible house size; interaction hit regions stay at least 44px. Physical-device legibility remains a user acceptance check.
 Keep both matrices maintained as content grows. Printing may be checked separately
 only when printing is within scope.
 
 P-002 uses one or two question columns; P-003 preserves scattered fish at source-relative positions on the left and one framed staff column on the right across all device classes. P-002 always displays both unlabeled keyboard groups, side by side when the card can retain 44px white-key widths, or stacked otherwise. Match white-key width across groups; do not compress either group to fit. Piano white keys remain individual controls, while black keys are noninteractive visual landmarks. Fish retain native illustration proportions with note names and octave superscripts on their bodies. The complete scene scrolls vertically when needed; there is no horizontal tray. Student-pair connections track actual fish/target bounds after resize. All fish, targets and completion controls remain within the viewport. New-activity acceptance includes complete keyboard/touch answers and generated staff/ledger containment.
 
 The user canceled P-003’s added edge seaweed and its reserved gutter on 2026-11-18. Retain only the earlier bottom cluster. Verify full clef glyph bounds within each staff SVG, including the treble-clef tail.
+
+## P-004 ordered fish layout
+
+P-004 uses twelve source note pairs in a fixed responsive grid, with three columns on larger screens, two on phones, and one on very narrow screens. Never randomize fish positions or distort decorations. Keep a single proportionally scaled bottom seaweed cluster separate from answer targets. Whole tones are blue; B–C and E–F semitones are red. Brush selection, fish painting, erasing, direct correction, local profiles, speech, third/sixth-error assistance and celebration share existing contracts. Answers are session-only; New page clears colors without rearranging fish. Original source masters remain unchanged. The full matrix now covers sixteen pages at six sizes (96 cases).

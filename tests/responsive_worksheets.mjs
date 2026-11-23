@@ -22,6 +22,7 @@ const sizes = [
 const pages = [
   "key-notes",
   "fish-notes",
+  "fish-steps",
   "pitch-motion",
   "note-houses",
   "activities",

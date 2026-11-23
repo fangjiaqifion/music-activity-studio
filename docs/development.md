@@ -1,6 +1,6 @@
 # Development
 
-Last updated: 2026-11-18
+Last updated: 2026-11-23
 
 ## Operation and verification
 
@@ -115,7 +115,7 @@ every 0.44 seconds. Keep animation delay in frame calculations for staggered cha
 ## Worksheet hub and hands/cow trials
 
 Open `/activities.html` on the source server; the original index links to it, and
-all thirteen worksheets link back. `/hands.html` identifies both hands and fills ten
+all fourteen worksheets link back. `/hands.html` identifies both hands and fills ten
 piano finger numbers. `/cows.html` permutes ten treble and nine bass clefs among
 nineteen enclosed regions. Both use the shared profile/speech adapters and preserve
 graduated answer assistance, erasing, correction, and the five-character celebration.
@@ -138,7 +138,7 @@ The source file and missing original O-004 worksheet are not runtime dependencie
 
 ## O-007/O-008 staff worksheets
 
-Open `/ladybirds.html` or `/sunshine.html` from the thirteen-worksheet selector.
+Open `/ladybirds.html` or `/sunshine.html` from the fourteen-worksheet selector.
 Run `node tests/staff_worksheets_browser.mjs` against port 8795, or set `BASE_URL`.
 The suite checks blank submissions, complete answers, erasing, regeneration, local
 profiles, five celebration characters, failed resources, mobile overflow, and print
@@ -164,7 +164,7 @@ Open `/keyboard.html` from the selector. Run `BASE_URL=http://127.0.0.1:8797 nod
 
 ## P-031 pitch motion
 
-Open `/pitch-motion.html` from the thirteen-card selector. Run `BASE_URL=<runtime-directory-url> node tests/pitch_motion_browser.mjs` for full blank/error/correction/completion/reset, speech calls, keyboard/touch, and six-size checks. `npm test` checks all 81 staff pairs plus 1,000 balanced generated pages. Generation uses two unique pairs of each type plus a rotating ninth type, includes both directions for non-repeats, and does not require a clef because only relative staff distance is assessed. Answers and per-question incorrect-submission counters are session-only. Follow the [shared assistance contract](../AGENTS.md#graduated-answer-assistance-2026-11-17) for third-error localization, sixth-error answers, blank checks, edits, and resets. Original DOCX/PDF/PIC sources remain unchanged.
+Open `/pitch-motion.html` from the fourteen-card selector. Run `BASE_URL=<runtime-directory-url> node tests/pitch_motion_browser.mjs` for full blank/error/correction/completion/reset, speech calls, keyboard/touch, and six-size checks. `npm test` checks all 81 staff pairs plus 1,000 balanced generated pages. Generation uses two unique pairs of each type plus a rotating ninth type, includes both directions for non-repeats, and does not require a clef because only relative staff distance is assessed. Answers and per-question incorrect-submission counters are session-only. Follow the [shared assistance contract](../AGENTS.md#graduated-answer-assistance-2026-11-17) for third-error localization, sixth-error answers, blank checks, edits, and resets. Original DOCX/PDF/PIC sources remain unchanged.
 
 ## Answer-assistance verification
 
@@ -177,6 +177,10 @@ Counters are not learner records and are never persisted.
 
 ## P-002/P-003 local pitch adaptations
 
-Open `/key-notes.html` and `/fish-notes.html`. Run `BASE_URL=<runtime-directory-url> node tests/pitch_notes_browser.mjs` for independent staff-coordinate answer derivation, nine-question completion, wrong-answer thresholds, correction, keyboard/touch input, reset and five viewport captures. The full responsive suite covers both pages and all existing activities (90 cases). CI includes the new flow. Pure generation checks cover 500 sets per activity. The P-002 browser flow additionally asserts that both keyboards remain visible, initial and selected keys have no note-name labels, changing groups clears the marked position, and white-key scales match with at least 44px touch widths. No static note-to-key lookup guide or named anchors are permitted. P-002 uses C3–B3 in bass and C4–B4 in treble, with all seven letters per set. P-003 labels the nine shared fish with source-style letter case and octave superscripts, using verified staff pitches to resolve inconsistent source fish text; its source has ten staves and nine distinct pitches, with C4 represented twice. The digital version alternates the C4 clef and independently shuffles fish and staff targets. The bank must contain exactly the nine staff pitches and must not duplicate their display order. `assignFish` enforces one-to-one reassignment without mutating the prior answers. The browser suite tests keyboard/touch matching, moving, replacing, clearing, hints, and completion/reset. P-003 retains the source left-scattered-fish/right-single-column composition on phone, tablet and desktop by explicit user instruction. There is no mobile horizontal tray or per-question card grid. `fishPositions` owns source-relative fish anchors; `drawFishLines` recomputes student-pair paths from actual element bounds after redraw/resize. The scene height derives from nine staff rows, with minimum 44px fish controls. The pitch browser flow checks single-column staff geometry, staggered fish, touch target sizes and all nine connection paths. It also checks every clef bounding box against its SVG viewBox at all five sizes, and confirms that the canceled perimeter seaweed is absent. Use the full staff bounds; the former compact viewBox clipped the treble-clef tail. Both activities share the existing local profile/speech and celebration contracts, with session-only answers. No source master is edited.
+Open `/key-notes.html` and `/fish-notes.html`. Run `BASE_URL=<runtime-directory-url> node tests/pitch_notes_browser.mjs` for independent staff-coordinate answer derivation, nine-question completion, wrong-answer thresholds, correction, keyboard/touch input, reset and five viewport captures. The full responsive suite covers both pages and all existing activities (96 cases). CI includes the new flow. Pure generation checks cover 500 sets per activity. The P-002 browser flow additionally asserts that both keyboards remain visible, initial and selected keys have no note-name labels, changing groups clears the marked position, and white-key scales match with at least 44px touch widths. No static note-to-key lookup guide or named anchors are permitted. P-002 uses C3–B3 in bass and C4–B4 in treble, with all seven letters per set. P-003 labels the nine shared fish with source-style letter case and octave superscripts, using verified staff pitches to resolve inconsistent source fish text; its source has ten staves and nine distinct pitches, with C4 represented twice. The digital version alternates the C4 clef and independently shuffles fish and staff targets. The bank must contain exactly the nine staff pitches and must not duplicate their display order. `assignFish` enforces one-to-one reassignment without mutating the prior answers. The browser suite tests keyboard/touch matching, moving, replacing, clearing, hints, and completion/reset. P-003 retains the source left-scattered-fish/right-single-column composition on phone, tablet and desktop by explicit user instruction. There is no mobile horizontal tray or per-question card grid. `fishPositions` owns source-relative fish anchors; `drawFishLines` recomputes student-pair paths from actual element bounds after redraw/resize. The scene height derives from nine staff rows, with minimum 44px fish controls. The pitch browser flow checks single-column staff geometry, staggered fish, touch target sizes and all nine connection paths. It also checks every clef bounding box against its SVG viewBox at all five sizes, and confirms that the canceled perimeter seaweed is absent. Use the full staff bounds; the former compact viewBox clipped the treble-clef tail. Both activities share the existing local profile/speech and celebration contracts, with session-only answers. No source master is edited.
 
 O-003 now generates a permutation of all nine internal staff positions per page (five line notes, four space notes); progress and blank counts use nine. `BASE_URL=<runtime-directory-url> node tests/balloons_browser.mjs` checks the visible denominator and full correction/completion/reset flow.
+
+## P-004 fish coloring
+
+Open `/fish-steps.html`. Run `BASE_URL=<runtime-directory-url> node tests/fish_steps_browser.mjs` for blank checks, third/sixth-error thresholds, erasing, correction, completion/reset, keyboard and six viewport captures. P-004 uses twelve source note pairs in a fixed responsive grid, with three columns on larger screens, two on phones, and one on very narrow screens. Never randomize fish positions or distort decorations. Keep a single proportionally scaled bottom seaweed cluster separate from answer targets. Whole tones are blue; B–C and E–F semitones are red. Brush selection, fish painting, erasing, direct correction, local profiles, speech, third/sixth-error assistance and celebration share existing contracts. Answers are session-only; New page clears colors without rearranging fish. Original source masters remain unchanged.
