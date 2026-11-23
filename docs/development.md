@@ -184,3 +184,7 @@ O-003 now generates a permutation of all nine internal staff positions per page 
 ## P-004 fish coloring
 
 Open `/fish-steps.html`. Run `BASE_URL=<runtime-directory-url> node tests/fish_steps_browser.mjs` for blank checks, third/sixth-error thresholds, erasing, correction, completion/reset, keyboard and six viewport captures. P-004 uses twelve source note pairs in a fixed responsive grid, with three columns on larger screens, two on phones, and one on very narrow screens. Never randomize fish positions or distort decorations. Keep a single proportionally scaled bottom seaweed cluster separate from answer targets. Whole tones are blue; B–C and E–F semitones are red. Brush selection, fish painting, erasing, direct correction, local profiles, speech, third/sixth-error assistance and celebration share existing contracts. Answers are session-only; New page clears colors without rearranging fish. Original source masters remain unchanged.
+
+## Selector cover maintenance
+
+The fifteen-card hub uses real unanswered exercise captures, bundled as `assets/preview_*.jpg`. Run `BASE_URL=<source-preview-origin> node scripts/activity_previews.mjs` with a local source server to regenerate them. The script uses an isolated browser context, waits for fonts/images, and captures content rather than profile fields. Restart the preview server after adding assets. Inspect every cover and run the hub browser flow and full responsive matrix against the packaged build. Covers are illustrative snapshots, not the next generated question set.
