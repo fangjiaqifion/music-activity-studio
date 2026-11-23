@@ -27,9 +27,9 @@ try{
  if(matching){await page.locator('[data-fish="A"]').focus();await page.keyboard.press('Enter');await page.locator('[data-target="0"]').focus();await page.keyboard.press('Enter');}else{await page.locator('[data-index="0"][data-answer="A"]').focus();await page.keyboard.press('Enter');}assert.equal(await page.locator('#count').innerText(),'1');
  assert.equal(await page.evaluate(()=>document.activeElement.tagName),'BUTTON');
  if(matching)for(const [width,height] of [[320,568],[390,844],[844,390],[768,1024],[820,1180],[1180,820],[1440,900]]){
- await page.setViewportSize({width,height});await page.evaluate(()=>{window.scrollTo(0,0);return new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));});
+ await page.setViewportSize({width,height});await page.evaluate(()=>document.fonts.ready);await page.evaluate(()=>{window.scrollTo(0,0);return new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));});
  assert.equal(await page.evaluate(()=>document.documentElement.scrollHeight>innerHeight+1),false,'No vertical page scrolling '+width);
- const bounds=await page.locator('[data-fish],[data-target],#check,#next').evaluateAll(es=>es.every(e=>{const r=e.getBoundingClientRect();return r.top>=0&&r.bottom<=innerHeight+1&&r.left>=0&&r.right<=innerWidth+1&&r.width>=44&&r.height>=44;}));assert.equal(bounds,true,'All choices and targets visible, 44px '+width);
+ const clipped=await page.locator('[data-fish],[data-target],#check,#next').evaluateAll(es=>es.flatMap(e=>{const r=e.getBoundingClientRect();return r.top>=0&&r.bottom<=innerHeight+1&&r.left>=0&&r.right<=innerWidth+1&&r.width>=44&&r.height>=44?[]:[{element:e.outerHTML.slice(0,180),x:r.x,y:r.y,width:r.width,height:r.height,viewport:[innerWidth,innerHeight],scroll:[scrollX,scrollY]}];}));assert.deepEqual(clipped,[],'All choices and targets visible, 44px '+width);
  await page.evaluate(()=>document.fonts.ready);
  const contained=await page.locator('.fish-illustration text').evaluateAll(es=>es.every(e=>{if(!e.textContent)return true;const r=e.getBBox();return r.x>=24&&r.x+r.width<=117&&r.y>=85&&r.y+r.height<=131;}));assert.equal(contained,true,'Fish lettering stays inside belly '+width);
  await page.screenshot({path:'.runtime/p005-'+width+'.png'});
