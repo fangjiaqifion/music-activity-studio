@@ -16,7 +16,9 @@ try {
     if (r.status() >= 400) errors.push(r.url());
   });
   await page.goto(base + "/activities.html");
-  assert.equal(await page.locator(".activity-card").count(),15);
+  for (const entry of ["ladybirds", "sunshine", "treble", "bass", "alto"]) {
+    assert.equal(await page.locator(`.activity-card[href="${entry}.html"]`).count(), 1);
+  }
   for (const kind of ["ladybirds", "sunshine", "treble", "bass", "alto"]) {
     await page.setViewportSize({ width: 1100, height: 1000 });
     await page.goto(base + "/" + kind + ".html");
