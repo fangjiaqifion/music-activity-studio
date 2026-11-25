@@ -2,6 +2,24 @@
 
 Last updated: 2026-11-25
 
+## Open TODOs, November 25, 2026
+
+- [ ] **Unify the activity catalog and navigation.** Bring all content from the
+  six-game index (`index.html`) and the worksheet selector (`activities.html`)
+  into one catalog with a shared browsing and navigation flow. Use a single
+  catalog structure for all future additions. If the list becomes hard to browse,
+  organize it in two levels: first choose a training area or theme, then choose an
+  individual exercise. Add each new exercise to the existing catalog or its
+  relevant category. Preserve access to all existing activities and keep existing
+  links working during the transition.
+- [ ] **Give the Studio a clean, professional web app interface.** Use the current
+  [Note Trainer entry](https://fangjiaqifion.github.io/note-trainer-entry/) as a
+  visual reference. Apply its approach to typography, spacing, color, navigation,
+  and controls to Music Activity Studio's own catalog and activity pages. Keep
+  the Studio's identity and the artwork and layouts that serve each exercise.
+  Verify the unified browsing flow and shared interface on phone, tablet, and
+  desktop, including portrait and landscape where applicable.
+
 ## Documentation maintenance, 2026-11-25
 
 The standalone documentation gate now specifies the guide, operating docs, public overview, and tracker review. The nested workflow checks both ancestor guides for shared effects.
