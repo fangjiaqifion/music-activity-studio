@@ -84,6 +84,40 @@ try {
         true,
         `${name} missing art`,
       );
+      if (name === "index") {
+        const cards = page.locator(".studio-card");
+        assert.equal(await cards.count(), 24);
+        const sizes = await cards.evaluateAll((elements) =>
+          elements.map((card) => {
+            const { width, height } = card.getBoundingClientRect();
+            return { width, height };
+          }),
+        );
+        for (const size of sizes) {
+          assert.ok(Math.abs(size.width - sizes[0].width) < 1, "Equal card widths");
+          assert.equal(size.height, sizes[0].height, "Equal card heights");
+        }
+        const copy = await cards.evaluateAll((elements) =>
+          elements.map((card) => ({
+            title: card.querySelector("strong").textContent.trim(),
+            description: card.querySelector("small").textContent.trim(),
+          })),
+        );
+        assert.equal(new Set(copy.map(({ title }) => title)).size, 24);
+        assert.ok(copy.every(({ title, description }) =>
+          title && description && title !== description
+        ), "Every card has a distinct title and supporting description");
+
+        const loneWidth = await page.locator("#rhythm .studio-grid").evaluate((grid) => {
+          const otherCards = [...grid.children].slice(1);
+          const firstCard = grid.firstElementChild;
+          otherCards.forEach((card) => card.remove());
+          const { width } = firstCard.getBoundingClientRect();
+          grid.append(...otherCards);
+          return width;
+        });
+        assert.ok(Math.abs(loneWidth - sizes[0].width) < 1, "A lone card keeps its width");
+      }
       if (name === "cows") {
         const detail=page.locator('[data-detail-index="0"]');
         await detail.click();

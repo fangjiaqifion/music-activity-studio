@@ -42,9 +42,9 @@ function shell(content) {
   </header>${content}`;
 }
 
-function catalogCard({ id, href, name, topic, image }) {
+function catalogCard({ id, href, name, description, image }) {
   const content = `<img src="${image}" width="96" height="64" alt="">
-    <span><strong>${name}</strong><small>${topic}</small></span>`;
+    <span><strong>${name}</strong><small>${description}</small></span>`;
   return href
     ? `<a class="studio-card activity-card" href="${href}">${content}</a>`
     : `<button class="studio-card game-card" data-action="open" data-id="${id}">${content}</button>`;

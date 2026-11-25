@@ -2,6 +2,19 @@
 
 Last updated: 2026-11-25
 
+## Catalog cards and learner-facing copy, November 25, 2026
+
+Reviewed all 24 catalog entries against their exercise prompts and gameplay.
+Each card keeps a concise title and a description of what the learner sees or does.
+Groups share equal card dimensions at each viewport, with unused columns left open.
+The responsive suite measures all cards and simulates a single-entry group.
+
+The local packaged build `1d3669172ba4` passed 38 Node tests, 114 responsive
+worksheet and catalog cases across six Chrome viewports, and the catalog
+navigation and hands/cow flow. Reviewed desktop and phone catalog screenshots.
+Updated the Studio guide and tracker and reviewed the development guide, public
+README, games guide, and workspace guide.
+
 ## Unified catalog, app interface, and Home Screen icon, November 25, 2026
 
 The catalog at `index.html` includes the six games and eighteen worksheet exercises

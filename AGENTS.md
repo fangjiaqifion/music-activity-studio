@@ -81,7 +81,9 @@ clearance above the cake-slice outline, including the lowest notehead.
 ## Worksheet selection, O-002 and O-004
 
 `index.html` is the shared entry for the six games and all worksheet exercises.
-Add each new activity to its training-area group in `src/catalog.mjs`. Use
+Add each new activity to its training-area group in `src/catalog.mjs`. Give each
+card a short title and a supporting description that explains the learner's task.
+Keep the same responsive card widths across groups, including single-card groups. Use
 `studio.css` for shared app presentation and retain each exercise's teaching layout.
 Every exercise returns to the shared catalog. `activities.html` redirects there. `hands.html` and `cows.html`
 share `src/activities.mjs`, `src/activities_core.mjs`, and `activities.css`.
