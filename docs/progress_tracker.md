@@ -16,8 +16,14 @@ Studio has its own note-and-star icon and standalone manifest with a stable laun
 URL. Physical iOS Home Screen installation remains open.
 
 Updated AGENTS, the development guide, and the public README. The games and
-workspace guides were reviewed for shared effects. Release evidence is recorded
-after publication.
+workspace guides were reviewed for shared effects. GitHub About and README describe the unified catalog and link to the site.
+
+[Pages run 45613629830](https://github.com/fangjiaqifion/music-activity-studio/actions/runs/45613629830)
+published runtime commit `3aa915c` as build `520d19edffdc`. All 38 Node tests,
+the browser suites, and 114 worksheet and catalog layout cases passed. Chrome
+loaded the public catalog, opened a mini-game and a worksheet, and verified the
+former selector URL and the stable manifest launch target. All 163 deployed file
+hashes matched the local package.
 
 ## Documentation maintenance, 2026-11-25
 
