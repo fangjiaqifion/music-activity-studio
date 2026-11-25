@@ -15,6 +15,12 @@ navigation and hands/cow flow. Reviewed desktop and phone catalog screenshots.
 Updated the Studio guide and tracker and reviewed the development guide, public
 README, games guide, and workspace guide.
 
+[Pages run 45617588790](https://github.com/fangjiaqifion/music-activity-studio/actions/runs/45617588790)
+published commit `6196933` as build `1d3669172ba4` after the packaged Chrome
+suite passed. All 163 deployed file hashes matched. Live Chrome confirmed the
+public entry, 24 equal-size cards, category navigation, Rhythm Dice, and the
+staff-to-keyboard exercise.
+
 ## Unified catalog, app interface, and Home Screen icon, November 25, 2026
 
 The catalog at `index.html` includes the six games and eighteen worksheet exercises
