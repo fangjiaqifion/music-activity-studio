@@ -5,6 +5,7 @@ on:
     paths:
       - '*.html'
       - '*.css'
+      - '*.webmanifest'
       - 'src/**'
       - 'assets/**'
       - 'scripts/**'

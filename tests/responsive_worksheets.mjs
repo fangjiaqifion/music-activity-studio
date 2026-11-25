@@ -27,7 +27,7 @@ const pages = [
   "sea-neighbors",
   "pitch-motion",
   "note-houses",
-  "activities",
+  "index",
   "hands",
   "balloons",
   "cows",
@@ -97,7 +97,7 @@ try {
         await page.locator('#reset').click();
         await page.locator('#level1').click();
         assert.equal(await page.locator('#progress').innerText(), '0 / 7');
-      } else if (name !== "activities") {
+      } else if (name !== "index") {
         await page.locator("#check").click();
         assert.match(await page.locator("#feedback").innerText(), /还有/);
         await page.locator("#next").click();

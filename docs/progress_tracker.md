@@ -2,23 +2,22 @@
 
 Last updated: 2026-11-25
 
-## Open TODOs, November 25, 2026
+## Unified catalog, app interface, and Home Screen icon, November 25, 2026
 
-- [ ] **Unify the activity catalog and navigation.** Bring all content from the
-  six-game index (`index.html`) and the worksheet selector (`activities.html`)
-  into one catalog with a shared browsing and navigation flow. Use a single
-  catalog structure for all future additions. If the list becomes hard to browse,
-  organize it in two levels: first choose a training area or theme, then choose an
-  individual exercise. Add each new exercise to the existing catalog or its
-  relevant category. Preserve access to all existing activities and keep existing
-  links working during the transition.
-- [ ] **Give the Studio a clean, professional web app interface.** Use the current
-  [Note Trainer entry](https://fangjiaqifion.github.io/note-trainer-entry/) as a
-  visual reference. Apply its approach to typography, spacing, color, navigation,
-  and controls to Music Activity Studio's own catalog and activity pages. Keep
-  the Studio's identity and the artwork and layouts that serve each exercise.
-  Verify the unified browsing flow and shared interface on phone, tablet, and
-  desktop, including portrait and landscape where applicable.
+The catalog at `index.html` includes the six games and eighteen worksheet exercises
+in five training areas. Future exercises extend `src/catalog.mjs`. The former
+worksheet selector redirects to the shared catalog, and activity pages return
+directly to it.
+
+The catalog and activity navigation use a shared system font, warm canvas, white
+surfaces, green controls, and visible focus, drawing on the Note Trainer entry.
+Exercise artwork and teaching layouts remain part of the activity content. The
+Studio has its own note-and-star icon and standalone manifest with a stable launch
+URL. Physical iOS Home Screen installation remains open.
+
+Updated AGENTS, the development guide, and the public README. The games and
+workspace guides were reviewed for shared effects. Release evidence is recorded
+after publication.
 
 ## Documentation maintenance, 2026-11-25
 

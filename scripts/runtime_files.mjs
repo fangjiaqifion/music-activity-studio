@@ -33,7 +33,8 @@ export async function runtimeFiles(root) {
     "cows.html",
     "activities.html",
     "activities.css",
-    "activities_menu.css",
+    "studio.css",
+    "manifest.webmanifest",
   ]) {
     try {
       await realpath(path.join(root, name));

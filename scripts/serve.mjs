@@ -26,6 +26,8 @@ const types = {
   ".png": "image/png",
   ".svg": "image/svg+xml",
   ".ttf": "font/ttf",
+  ".jpg": "image/jpeg",
+  ".webmanifest": "application/manifest+json",
   ".json": "application/json",
   ".woff2": "font/woff2",
   ".txt": "text/plain; charset=utf-8",

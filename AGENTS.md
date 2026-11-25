@@ -80,8 +80,10 @@ clearance above the cake-slice outline, including the lowest notehead.
 
 ## Worksheet selection, O-002 and O-004
 
-`activities.html` is the sixteen-worksheet selection hub, linked from the existing
-six-game index. Every worksheet returns to this hub. `hands.html` and `cows.html`
+`index.html` is the shared entry for the six games and all worksheet exercises.
+Add each new activity to its training-area group in `src/catalog.mjs`. Use
+`studio.css` for shared app presentation and retain each exercise's teaching layout.
+Every exercise returns to the shared catalog. `activities.html` redirects there. `hands.html` and `cows.html`
 share `src/activities.mjs`, `src/activities_core.mjs`, and `activities.css`.
 O-002 preserves both hand identifications and all ten piano finger numbers, with
 artwork-relative finger anchors. O-004 is a user-authorized new digital adaptation
@@ -95,7 +97,7 @@ New outlines and masks use smooth cubic SVG paths; source AI/clean PNG stay unto
 center visible glyph ink inside each patch. Display full English names “Treble clef”
 and “Bass clef”.
 Apply the same local-profile, speech, graduated-feedback, eraser, and celebration
-contracts as O-003/O-005. Keep all sixteen worksheet entries in the runtime allowlist.
+contracts as O-003/O-005. Keep all worksheet entry pages in the runtime allowlist.
 
 ## O-007/O-008 local trials
 
@@ -104,7 +106,7 @@ own the staff placement, two-note comparison, and relative-note trials. O-007 ha
 requested placements covering all nine internal staff positions. O-008 uses twelve two-note comparisons, balanced across rising, falling, and repeated pitches. The user explicitly removed line/space numbering on 2026-11-15; do not restore it. Count lines/spaces from the bottom. Use open
 noteheads with transparent centers, accessible SVG targets, and native artwork ratios.
 Preserve shared local profiles, speech cancellation, graduated answer assistance, erasing,
-and the five-character celebration. O-009 uses nine daily single-note questions with movable G-clef anchors. Name every target relative to its displayed clef position; never treat source row letters as arbitrary reference pitches or repeat given notes in its cards. O-010/O-011 use the same nine-question daily practice with movable F/C anchors and single target notes. BravuraText uses a 100-unit font size and a shared bottom-line baseline at SVG y=106 for 20-unit staff spacing. Pointer placement must not restore SVG target focus; retain visible keyboard focus. The selector has sixteen worksheet entries.
+and the five-character celebration. O-009 uses nine daily single-note questions with movable G-clef anchors. Name every target relative to its displayed clef position; never treat source row letters as arbitrary reference pitches or repeat given notes in its cards. O-010/O-011 use the same nine-question daily practice with movable F/C anchors and single target notes. BravuraText uses a 100-unit font size and a shared bottom-line baseline at SVG y=106 for 20-unit staff spacing. Pointer placement must not restore SVG target focus; retain visible keyboard focus.
 
 ## Responsive web games, confirmed 2026-11-15
 
@@ -128,7 +130,7 @@ Each activity uses nine questions selected from 36 distinct clef-anchor/target p
 
 `note-houses.html`, `note-houses.css`, and `src/note_houses*.mjs` own a separate two-level game. Use the user-selected accessory-free seven-character artwork, individually clipped from the original sheet. Houses use the selected softly peaked thick roof and have no pitch labels. The complete grand staff, both clefs, and all seven houses must remain visible together without scene scrolling. Recompute notation geometry from the available scene dimensions; never stretch houses or clefs nonuniformly. House centers are G3–F4, half a staff spacing apart, with a short middle-C ledger. House ink height is 60% of staff spacing: space houses keep approximately 20% clearance on either side; line houses straddle the line. Preserve a separate minimum 44px interaction region without enlarging the visible artwork.
 
-Level 1 supports pointer dragging, tap-then-place, and keyboard controls. Incorrect placements show a large red cross and retry message above the attempted house for two seconds; preserve the selected note and block new placements during that interval. Reset/navigation clears the indicator and timer. Tray letter labels are enlarged for recognition. Level 2 marks the speaking resident with a persistent, high-contrast downward arrow above its house, updated on every question and resize. Incorrect Level 2 answers show a large red cross and “找错了，再找找” above the selected character for two seconds, using the same retry lock and cleanup as Level 1. It places one resident at home and asks about neighbors one to three diatonic staff steps above/below, within these seven pitches. Each six-question round includes all six direction/distance combinations. Progress is session-only; no learner records are collected. Every neighbor question automatically speaks its exact visible first-person prompt on entry, next, and restart, using a Chinese voice when available; the speech button replays it. Speech stops on correct answers, reset, navigation, and page hiding. A licensed Bravura E000 brace spans both staves. Correct answers trigger brief confetti, with a static alternative for reduced motion and cleanup on lifecycle changes. This prototype has its own completion dialog, rather than the worksheet celebration, and does not require a local student profile. It uses the same selector card format as the sixteen worksheets. `src/note_house_piano.mjs` owns local Salamander piano sample playback. Match characters to G3/A3/B3/C4/D4/E4/F4 (MIDI 55/57/59/60/62/64/65), never to a single shared octave. Play on selection/drag pickup, each Level 2 reference prompt, and resident-house replay. Stop notes on reset/navigation/hiding and reject stale asynchronous resume/decode results. Keep bundled sample attribution accessible. No publication is authorized by local preview work.
+Level 1 supports pointer dragging, tap-then-place, and keyboard controls. Incorrect placements show a large red cross and retry message above the attempted house for two seconds; preserve the selected note and block new placements during that interval. Reset/navigation clears the indicator and timer. Tray letter labels are enlarged for recognition. Level 2 marks the speaking resident with a persistent, high-contrast downward arrow above its house, updated on every question and resize. Incorrect Level 2 answers show a large red cross and “找错了，再找找” above the selected character for two seconds, using the same retry lock and cleanup as Level 1. It places one resident at home and asks about neighbors one to three diatonic staff steps above/below, within these seven pitches. Each six-question round includes all six direction/distance combinations. Progress is session-only; no learner records are collected. Every neighbor question automatically speaks its exact visible first-person prompt on entry, next, and restart, using a Chinese voice when available; the speech button replays it. Speech stops on correct answers, reset, navigation, and page hiding. A licensed Bravura E000 brace spans both staves. Correct answers trigger brief confetti, with a static alternative for reduced motion and cleanup on lifecycle changes. This prototype has its own completion dialog, rather than the worksheet celebration, and does not require a local student profile. It uses the shared catalog card format. `src/note_house_piano.mjs` owns local Salamander piano sample playback. Match characters to G3/A3/B3/C4/D4/E4/F4 (MIDI 55/57/59/60/62/64/65), never to a single shared octave. Play on selection/drag pickup, each Level 2 reference prompt, and resident-house replay. Stop notes on reset/navigation/hiding and reject stale asynchronous resume/decode results. Keep bundled sample attribution accessible. No publication is authorized by local preview work.
 
 ## P-031 pitch motion
 
@@ -167,7 +169,7 @@ are outside this change. Local changes do not authorize push or deployment.
 
 ## Selector previews, 2026-11-23
 
-The selector has seventeen cards: sixteen worksheets and Note Neighborhood. Every cover uses an actual exercise screenshot, never an isolated decorative asset. Keep each preview specific to its destination. Regenerate bundled `assets/preview_*.jpg` with `BASE_URL=<source-preview-origin> node scripts/activity_previews.mjs` after relevant visual changes; use an isolated browser context without learner data. Preserve the shared card, keyboard focus, and phone/tablet/desktop layout.
+Each illustrated worksheet card and the Note Neighborhood card use an actual exercise screenshot. The six generated mini-games use their identifying illustrations. Keep each preview specific to its destination. Regenerate bundled `assets/preview_*.jpg` with `BASE_URL=<source-preview-origin> node scripts/activity_previews.mjs` after relevant visual changes; use an isolated browser context without learner data. Preserve the shared card, keyboard focus, and phone/tablet/desktop layout.
 
 ## P-005/P-006 keyboard note names, 2026-11-23
 

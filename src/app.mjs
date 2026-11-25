@@ -1,3 +1,4 @@
+import { catalog } from "./catalog.mjs";
 import { createRetryHints } from "./retry_hints.mjs";
 const retryHints = createRetryHints();
 import {
@@ -33,16 +34,46 @@ const el = (selector) => document.querySelector(selector);
 const button = (text, action, cls = "", extra = "") =>
   `<button class="${cls}" data-action="${action}" ${extra}>${text}</button>`;
 function shell(content) {
-  app.innerHTML = `<header class="topbar"><button class="brand" data-action="home"><span class="brandmark">m<span>·</span></span><span>音乐游乐工坊<small>MUSIC ACTIVITY STUDIO</small></span></button><span class="prototype">试玩版 <span>01</span></span></header>${content}<footer><span>从纸上的小练习，到可以玩的音乐世界。</span><span>WORKSHEET COLLECTION / FANG, JIAQI</span></footer>`;
+  app.innerHTML = `<header class="topbar studio-topbar">
+    <button class="brand" data-action="home">
+      <img width="40" height="40" src="assets/studio-icon-180.png" alt="">
+      <span>音乐游乐工坊<small>Music Activity Studio</small></span>
+    </button>
+  </header>${content}`;
 }
+
+function catalogCard({ id, href, name, topic, image }) {
+  const content = `<img src="${image}" width="96" height="64" alt="">
+    <span><strong>${name}</strong><small>${topic}</small></span>`;
+  return href
+    ? `<a class="studio-card activity-card" href="${href}">${content}</a>`
+    : `<button class="studio-card game-card" data-action="open" data-id="${id}">${content}</button>`;
+}
+
 function home() {
   retryHints.reset();
   audio.stop();
   game = null;
-  shell(
-    `<main class="home"><section class="intro"><div><p class="eyebrow">PLAY. DISCOVER. MAKE MUSIC.</p><h1>今天，想去哪里<span>玩音乐？</span></h1><p class="lead">六个小世界，把熟悉的练习变成新的发现。<br>选一个喜欢的地方，开始今天的音乐冒险。</p></div><aside class="intro-note"><span class="hand-star">✳</span><span>每次打开<br><strong>都有新题目</strong></span><small>你的音乐小小实验室</small></aside></section><section class="toolbar" aria-label="游戏设置"><span>选择你的探索难度</span><div>${button("初次探索", "starter", level === "starter" ? "selected" : "")}${button("多一点挑战", "challenge", level === "challenge" ? "selected" : "")}</div><span class="session-note">${history.length ? `已完成 ${history.length} 次探索` : "不计时，慢慢想。"}</span></section><section class="game-grid" aria-label="六个子游戏">${GAMES.map((g, i) => `<button class="game-card" data-action="open" data-id="${g.id}" style="--accent:${g.color};--tint:${g.bg}"><div class="card-meta"><span>0${i + 1} / ${g.en}</span><span class="card-arrow">↗</span></div><div class="illustration ${g.id}"><div class="art-circle"></div><img src="assets/${g.image}.png" alt=""><span class="art-spark">${i % 2 ? "✦" : "✳"}</span></div><div class="card-copy"><span class="tag">${g.tag}</span><h2>${g.name}</h2><p>${g.desc}</p><span class="enter">进去玩一会儿 <span>→</span></span></div></button>`).join("")}</section><p class="home-tip">小提示：每个世界都可以重新出题。节奏工坊与 Bingo 也适合和老师一起玩。</p></main>`,
-  );
+  shell(`
+    <main class="studio-catalog">
+      <h1>音乐练习</h1>
+      <nav class="studio-topics" aria-label="按训练内容浏览">
+        ${catalog.map(({ id, label }) => `<a href="#${id}">${label}</a>`).join("")}
+      </nav>
+      <section class="studio-settings" aria-label="小游戏设置">
+        <span>小游戏难度</span>
+        ${button("初次探索", "starter", "", `aria-pressed="${level === "starter"}"`)}
+        ${button("多一点挑战", "challenge", "", `aria-pressed="${level === "challenge"}"`)}
+        ${history.length ? `<span>已完成 ${history.length} 次探索</span>` : ""}
+      </section>
+      ${catalog.map(({ id, label, entries }) => `
+        <section class="studio-group" id="${id}" aria-labelledby="${id}-title">
+          <h2 id="${id}-title">${label}</h2>
+          <div class="studio-grid">${entries.map(catalogCard).join("")}</div>
+        </section>`).join("")}
+    </main>`);
 }
+
 function start(id, newSeed = true) {
   audio.stop();
   game = GAMES.find((g) => g.id === id);
@@ -238,6 +269,7 @@ app.addEventListener("click", async (e) => {
     if (a === "starter" || a === "challenge") {
       level = a;
       home();
+      app.querySelector(`[data-action="${a}"]`).focus({ preventScroll: true });
       return;
     }
     if (a === "open") {

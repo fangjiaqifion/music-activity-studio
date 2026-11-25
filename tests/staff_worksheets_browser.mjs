@@ -15,7 +15,8 @@ try {
   page.on("response", (r) => {
     if (r.status() >= 400) errors.push(r.url());
   });
-  await page.goto(base + "/activities.html");
+  await page.goto(base + "/index.html");
+  await page.locator(".activity-card").first().waitFor();
   for (const entry of ["ladybirds", "sunshine", "treble", "bass", "alto"]) {
     assert.equal(await page.locator(`.activity-card[href="${entry}.html"]`).count(), 1);
   }
