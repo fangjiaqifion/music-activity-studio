@@ -1,6 +1,13 @@
 # Progress Tracker
 
-Last updated: 2026-11-23
+Last updated: 2026-11-25
+
+## Documentation maintenance, 2026-11-25
+
+The standalone documentation gate now specifies the guide, operating docs, public overview, and tracker review. The nested workflow checks both ancestor guides for shared effects.
+Updated AGENTS and this tracker. The public overview and operational docs were reviewed
+and still describe the current capabilities and procedures. Markdown links and Git
+whitespace checks cover this documentation-only change.
 
 ## Six-in-one local demo
 

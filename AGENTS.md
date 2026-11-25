@@ -1,6 +1,6 @@
 # Music Activity Studio: Internal Guide
 
-Last updated: 2026-11-23
+Last updated: 2026-11-25
 
 An independent repository. When nested, inherit parent and games guides. Write project
 documentation in English; product UI may remain Chinese. Repository and checkout names
@@ -23,7 +23,12 @@ licenses. Do not resave Illustrator originals or change Note Trainer.
 
 No accounts, cloud, analytics, paid generation, or service worker without a product
 decision. Run relevant Node and browser checks; inspect changed screens and printing.
-Update docs and tracker before delivery. Ignore `.runtime/` and `node_modules/`.
+Close each substantive task by reviewing this guide, operating docs, public overview,
+and tracker without waiting for a user request. Update durable rules here, record
+verification in the tracker, and record which documents were updated or reviewed and why.
+In a nested checkout, explicitly review the games and workspace guides for effects on
+shared guidance and apply their documentation completion gate. In a standalone checkout,
+record any needed parent follow-up in the tracker. Ignore `.runtime/` and `node_modules/`.
 Commit complete units locally with Chinese verb-first subjects under 50 characters.
 Push/deployment needs authorization. Commit this game before updating its parent gitlink.
 
