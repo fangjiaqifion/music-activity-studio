@@ -2,9 +2,9 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import { FINISH, POSITIONS, raceResult, rollMove } from "../src/staff_race_core.mjs";
 
-test("staff and ledger positions alternate from lower ledger line three", () => {
+test("staff and ledger positions alternate from the first space below the staff", () => {
   assert.deepEqual(POSITIONS, [
-    "下加三线", "下加三间", "下加二线", "下加二间", "下加一线", "下加一间",
+    "下加一间",
     "第一线", "第一间", "第二线", "第二间", "第三线", "第三间", "第四线",
     "第四间", "第五线", "上加一间",
   ]);
@@ -30,10 +30,10 @@ test("dice reach every legal destination without crossing the start or finish", 
 });
 
 test("first arrival wins immediately; round ten compares height and allows ties", () => {
-  assert.equal(raceResult([15, 12], 4), 0);
-  assert.equal(raceResult([12, 15], 9), 1);
-  assert.equal(raceResult([14, 12], 9), null);
-  assert.equal(raceResult([14, 12], 10), 0);
-  assert.equal(raceResult([12, 13], 10), 1);
-  assert.equal(raceResult([14, 14], 10), "tie");
+  assert.equal(raceResult([10, 7], 4), 0);
+  assert.equal(raceResult([7, 10], 9), 1);
+  assert.equal(raceResult([9, 7], 9), null);
+  assert.equal(raceResult([9, 7], 10), 0);
+  assert.equal(raceResult([7, 8], 10), 1);
+  assert.equal(raceResult([9, 9], 10), "tie");
 });

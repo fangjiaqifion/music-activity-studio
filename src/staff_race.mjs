@@ -10,6 +10,7 @@ const characters = [
 const roles = ["学生", "老师 / 家长"];
 const query = (selector) => document.querySelector(selector);
 const staff = query("#staff");
+const lowerLedger = query("#lower-ledger");
 const roll = query("#roll");
 const die = query("#die");
 const turn = query("#turn");
@@ -75,14 +76,14 @@ for (let position = FINISH; position >= START; position--) {
   const name = POSITIONS[position];
   const button = document.createElement("button");
   button.type = "button";
-  button.className = position % 2 ? "row space" : position < 6 ? "row ledger" : "row line";
+  button.className = position % 2 ? "row line" : "row space";
   if (position === FINISH) button.classList.add("endpoint", "finish");
   if (position === START) button.classList.add("endpoint", "start");
   button.dataset.position = position;
   const endpoint = position === FINISH ? "终点" : position === START ? "起点" : "";
-  button.innerHTML = `<span class="cell-name">${name}</span><span class="ledger-left"></span><span class="ledger-right"></span><span class="target"></span><span class="endpoint-label">${endpoint}</span>`;
+  button.innerHTML = `<span class="cell-name">${name}</span><span class="target"></span><span class="endpoint-label">${endpoint}</span>`;
   button.addEventListener("click", (event) => place(position, event.detail === 0));
-  staff.append(button);
+  staff.insertBefore(button, lowerLedger);
   rows[position] = button;
 }
 
@@ -139,7 +140,7 @@ start.addEventListener("click", () => {
   if (setup.hidden) return;
   starter = active;
   setup.hidden = true;
-  feedback.textContent = "两枚棋子在下加三线。掷骰子出发！";
+  feedback.textContent = "两枚棋子在下加一间。掷骰子出发！";
   render();
   roll.focus();
 });

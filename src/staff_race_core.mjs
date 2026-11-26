@@ -1,8 +1,8 @@
 export const START = 0;
-export const FINISH = 15;
+export const FINISH = 10;
 export const MAX_ROUNDS = 10;
 export const POSITIONS = [
-  "下加三线", "下加三间", "下加二线", "下加二间", "下加一线", "下加一间",
+  "下加一间",
   "第一线", "第一间", "第二线", "第二间", "第三线", "第三间", "第四线",
   "第四间", "第五线", "上加一间",
 ];

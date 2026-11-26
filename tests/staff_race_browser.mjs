@@ -23,9 +23,10 @@ try {
   };
   await row(0).waitFor();
   assert.equal(await page.locator(".row.line").count(), 5);
-  assert.equal(await page.locator(".row.ledger").count(), 3);
-  assert.equal(await page.locator("#staff button").count(), 16);
-  assert.match(await row(15).getAttribute("aria-label"), /上加一间，终点/);
+  assert.equal(await page.locator(".row.ledger-guide").count(), 2);
+  assert.equal(await page.locator("#staff button").count(), 11);
+  assert.match(await row(0).getAttribute("aria-label"), /下加一间，起点/);
+  assert.match(await row(10).getAttribute("aria-label"), /上加一间，终点/);
   assert.equal(await page.locator(".character").count(), 4);
   await page.getByRole("button", { name: "圆眼蛙" }).tap();
   await page.getByRole("button", { name: "老师 / 家长", exact: true }).tap();
@@ -40,12 +41,13 @@ try {
   for (let count = 0; count < 6; count++) await row(2).tap();
   assert.match(await feedback.innerText(), /相邻的一格/);
   assert.equal(await row(0).locator(".token").count(), 2);
-  assert.match(await page.locator(".retry-answer").innerText(), /下加三间/);
+  assert.match(await page.locator(".retry-answer").innerText(), /第一线/);
   await row(0).focus();
   await page.keyboard.press("ArrowUp");
   await page.keyboard.press("Enter");
   assert.equal(await row(1).locator(".token.frog").count(), 1);
   assert.equal(await page.locator(".retry-hint, .retry-answer").count(), 0);
+  await row(2).tap();
   const geometry = await page.locator(".token.frog").evaluate((token) => {
     const rect = (el) => el.getBoundingClientRect();
     const center = (r) => (r.top + r.bottom) / 2;
@@ -57,22 +59,21 @@ try {
   assert.equal(geometry[0], geometry[1]);
   assert.equal(geometry[0], (geometry[2] + geometry[3]) / 2);
   assert.ok(geometry[4] > geometry[2] + 1);
-  for (const position of [2, 3, 4]) await row(position).tap();
-  assert.ok(await row(4).locator(".token.frog").evaluate((token) => {
+  await row(3).tap();
+  assert.ok(await row(3).locator(".token.frog").evaluate((token) => {
     const head = token.querySelector(".face").getBoundingClientRect();
     const line = token.closest(".row").getBoundingClientRect();
     const center = (line.top + line.bottom) / 2;
     return (head.top + head.bottom) / 2 === center && head.top < center && head.bottom > center;
   }));
+  await row(4).tap();
   await play([0], [1]);
   await play([0.99, 0.99], [5, 6, 7, 8]);
   await play([0, 0], [0]);
-  await play([0.99, 0.99], [9, 10, 11, 12]);
-  await play([0], [1]);
-  await play([0.99, 0.99], [13, 14, 15]);
+  await play([0.99, 0.99], [9, 10]);
   assert.equal(await turn.innerText(), "圆眼蛙赢了！");
   assert.match(await feedback.innerText(), /先到达上加一间/);
-  assert.match(await page.locator("#round").innerText(), /4 \/ 10/);
+  assert.match(await page.locator("#round").innerText(), /3 \/ 10/);
 
   await page.locator("#reset").tap();
   await page.locator("#start").tap();

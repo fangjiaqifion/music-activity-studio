@@ -2,6 +2,16 @@
 
 Last updated: 2026-11-26
 
+## Staff Race shorter course, November 26, 2026
+
+Moved the start to the first space below the staff. The board has 11 playable
+positions and one visual ledger line at each end, with the start centered
+between line 1 and the first lower ledger line. The finish and ten-round rule
+carry forward. Updated the Studio guide, public overview, and catalog preview.
+Reviewed the development, games, and workspace guides.
+Build `47634471e847` passed 41 unit tests, the complete race and catalog checks,
+and 120 Chrome responsive cases. The updated board preview was visually checked.
+
 ## Staff Race course and characters, November 26, 2026
 
 Revised the match course from the third lower ledger line to the first space

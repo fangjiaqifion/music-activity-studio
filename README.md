@@ -22,7 +22,7 @@ Depending on the activity, learners can use spoken instructions, retry with hint
 replay generated questions, or print a practice sheet.
 Staff Race lets a learner and a teacher or parent take turns moving note pieces
 through adjacent lines and spaces on one shared staff. Players choose a character
-and race from the third lower ledger line to the first space above the staff.
+and race from the first space below the staff to the first space above it.
 
 ## Open from the iPhone or iPad Home Screen
 

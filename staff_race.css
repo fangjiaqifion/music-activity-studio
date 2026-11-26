@@ -278,9 +278,8 @@ details li + li { margin-top: 6px; }
 .frog { --team: #226c53; --tint: #e6f4e9; }
 .robot { --team: #205e97; --tint: #e6f1fb; }
 
-.ledger-left, .ledger-right { display: none; }
 
-.ledger::before, .upper-ledger::before, .ledger .ledger-left, .ledger .ledger-right, .upper-ledger .ledger-left, .upper-ledger .ledger-right {
+.ledger-guide::before, .ledger-guide .ledger-left, .ledger-guide .ledger-right {
   content: "";
   display: block;
   width: min(48px, 90%);
@@ -288,10 +287,10 @@ details li + li { margin-top: 6px; }
   border-top: 2px solid #425148;
   pointer-events: none;
 }
-.ledger::before, .upper-ledger::before { grid-column: 3; }
-.ledger .ledger-left, .upper-ledger .ledger-left { grid-column: 2; }
-.ledger .ledger-right, .upper-ledger .ledger-right { grid-column: 4; }
-.upper-ledger .cell-name { color: #52645a; }
+.ledger-guide::before { grid-column: 3; }
+.ledger-guide .ledger-left { grid-column: 2; }
+.ledger-guide .ledger-right { grid-column: 4; }
+.ledger-guide .cell-name { color: #52645a; }
 .endpoint { background: #f0f3e7; }
 .finish { background: #fff1ce; }
 .endpoint-label {
