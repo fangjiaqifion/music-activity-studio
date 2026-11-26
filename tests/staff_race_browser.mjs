@@ -20,6 +20,7 @@ try {
     await page.evaluate((values) => { Math.random = () => values.shift() ?? 0; }, samples);
     await roll.tap();
     const activeNote = page.locator(".token.active");
+    assert.equal(await page.locator(".guides-on .target").count(), 11);
     const target = row(path[0]).locator(".target");
     assert.equal(await target.evaluate((node) => getComputedStyle(node).gridColumnStart),
       await activeNote.evaluate((node) => getComputedStyle(node).gridColumnStart));
@@ -45,10 +46,10 @@ try {
   const guide = page.getByRole("switch", { name: "走棋引导" });
   assert.equal(await guide.isChecked(), true);
   assert.equal(await row(1).locator(".target").evaluate((target) => getComputedStyle(target).opacity), "1");
-  assert.equal(await page.locator(".guided").count(), 1);
+  assert.equal(await page.locator(".guides-on .target").count(), 11);
   assert.equal(await row(1).locator(".target").evaluate((target) => getComputedStyle(target).gridColumnStart), "2");
   await guide.uncheck();
-  assert.equal(await page.locator(".guided").count(), 0);
+  assert.equal(await page.locator(".guides-on .target").count(), 0);
   await guide.check();
   for (let count = 0; count < 6; count++) await row(2).tap();
   assert.match(await feedback.innerText(), /相邻的一格/);
@@ -58,7 +59,7 @@ try {
   await page.keyboard.press("ArrowUp");
   await page.keyboard.press("Enter");
   assert.equal(await row(1).locator(".token.frog").count(), 1);
-  assert.equal(await row(2).evaluate((el) => el.classList.contains("guided")), true);
+  assert.equal(await page.locator(".guides-on .target").count(), 11);
   assert.equal(await page.locator(".retry-hint, .retry-answer").count(), 0);
   await row(2).tap();
   const geometry = await page.locator(".token.frog").evaluate((token) => {
@@ -88,8 +89,8 @@ try {
   assert.match(await feedback.innerText(), /先到达上加一间/);
   assert.match(await page.locator("#round").innerText(), /3 \/ 10/);
 
-  await page.locator("#reset").tap();
-  await page.locator("#start").tap();
+  await page.getByRole("button", { name: "下一关" }).tap();
+  assert.equal(await page.locator("#level").innerText(), "第 2 关");
   assert.equal(await turn.innerText(), "轮到方脸机器人");
   for (let round = 1; round <= 10; round++) {
     assert.equal(await page.locator("#round").innerText(), `第 ${round} / 10 轮`);
@@ -103,6 +104,18 @@ try {
   assert.equal(await row(1).locator(".token.frog").count(), 1);
   assert.equal(await row(0).locator(".token.robot").count(), 1);
 
+  await page.getByRole("button", { name: "下一关" }).tap();
+  assert.equal(await page.locator("#level").innerText(), "第 3 关");
+  assert.equal(await guide.isVisible(), false);
+  await page.evaluate(() => { Math.random = () => 0.3; });
+  await roll.tap();
+  assert.equal(await page.locator("#distance").innerText(), "2 步");
+  assert.equal(await page.locator(".guides-on .target").count(), 0);
+  for (let count = 0; count < 6; count++) await row(2).tap();
+  assert.equal(await page.locator(".retry-hint, .retry-answer").count(), 0);
+  await row(1).tap();
+  await row(2).tap();
+  assert.equal(await row(2).locator(".token.frog").count(), 1);
   await page.locator("#reset").tap();
   for (const [width, height] of [[320, 568], [390, 844], [844, 390], [820, 1180], [1180, 820], [1440, 900]]) {
     await page.setViewportSize({ width, height });

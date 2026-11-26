@@ -2,7 +2,19 @@
 
 Last updated: 2026-11-26
 
-## Staff Race move guide, November 26, 2026
+## Staff Race guidance levels, November 26, 2026
+
+A completed match opens the next level. Levels 1 and 2 show circles on all
+11 positions in the active lane while a move is in progress, even for a shorter
+roll. The existing switch can hide the circles. Level 3 and later use basic
+retry feedback without circles, location cues, or answer reveals. Restart
+returns to the picker at the current level. Reviewed the Studio and ancestor
+guides, public overview, and development guide.
+Build `8b48f11e3329` passed 41 unit tests, the Chrome race suite, and 120
+responsive checks. Verified full-lane circles on a two-step roll and the
+independent move and retry behavior on level 3.
+
+## Staff Race initial move guide, November 26, 2026
 
 The pale guide circle marks only the next required row in the active piece's
 lane. The switch below the board controls the circle and can be changed while

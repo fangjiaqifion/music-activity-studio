@@ -42,7 +42,7 @@ button:focus-visible, summary:focus-visible, a:focus-visible {
   outline-offset: 2px;
 }
 
-#reset, #roll {
+#reset, #roll, #next-level {
   min-height: 44px;
   padding: 6px 14px;
   border: 1px solid #b8c8bb;
@@ -98,6 +98,8 @@ button:focus-visible, summary:focus-visible, a:focus-visible {
   background: #355e49;
   color: #fff;
 }
+
+#next-level { margin-top: 8px; background: #355e49; color: #fff; }
 
 #roll[aria-disabled="true"] {
   background: #e6ece6;
@@ -175,7 +177,7 @@ button:focus-visible, summary:focus-visible, a:focus-visible {
 
 #staff[data-player="0"] .target { grid-column: 2; }
 #staff[data-player="1"] .target { grid-column: 4; }
-.guided .target { opacity: 1; }
+.guides-on .target { opacity: 1; }
 @media (hover: hover) {
   .moving .row:hover { background: #e9eee4; }
 }
@@ -284,7 +286,8 @@ details li + li { margin-top: 6px; }
   cursor: pointer;
 }
 .guide-switch input { width: 18px; height: 18px; margin: 0; accent-color: #355e49; }
-#round { color: #52645a; white-space: nowrap; font-weight: 700; }
+.guide-switch[hidden] { display: none; }
+#level, #round { color: #52645a; white-space: nowrap; font-weight: 700; }
 .rabbit { --team: #885477; --tint: #faeaf4; }
 .cat { --team: #9a4819; --tint: #ffeedb; }
 .frog { --team: #226c53; --tint: #e6f4e9; }

@@ -192,10 +192,11 @@ above it. Show five extended staff lines with equal spacing and clear outer
 margins. Keep the dice below the wide board. Center each notehead vertically on
 its row and keep character decoration within the neighboring line bounds. Every adjacent line or space is one step. Roll a legal
 direction and one to four steps, requiring one deliberate placement per step.
-The optional move guide marks the next row in the active piece's lane and can
-be switched off without affecting move validation.
-Keep both pieces visible on shared rows. Use shared third/sixth-error cues and
-leave the piece in place on an error. First arrival wins immediately. Compare
+The optional move guide shows circles on all 11 rows in the active player's lane
+during a move in levels 1 and 2. Keep both pieces visible on shared rows. Use the
+shared third/sixth-error cues in levels 1 and 2 and leave the piece in place on
+an error. The next-level action starts a fresh match. From level 3 onward, hide
+the guide and give basic retry feedback without identifying the correct row. First arrival wins immediately. Compare
 final height after ten rounds if neither arrives, allowing ties. A round gives
 each player one turn. Restart returns to character selection, retains selections,
 and alternates the opening player. Match state lasts for the session. Keep the

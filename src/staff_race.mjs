@@ -17,6 +17,8 @@ const feedback = query("#feedback");
 const direction = query("#direction");
 const distance = query("#distance");
 const roundLabel = query("#round");
+const levelLabel = query("#level");
+const nextLevel = query("#next-level");
 const guide = query("#guide");
 const cards = roles.map((_, player) => query(`#score-${player}`));
 const setup = query("#setup");
@@ -37,6 +39,7 @@ let selecting = 0;
 let positions;
 let active;
 let starter = 1;
+let level = 1;
 let completedRounds;
 let move;
 let result;
@@ -107,7 +110,11 @@ function render() {
   const finished = result !== null;
   staff.classList.toggle("moving", Boolean(move));
   staff.dataset.player = active;
-  const guidedPosition = move && guide.checked ? positions[active] + move.direction : null;
+  const practice = level < 3;
+  guide.closest("label").hidden = !practice;
+  staff.classList.toggle("guides-on", Boolean(move) && practice && guide.checked);
+  levelLabel.textContent = `第 ${level} 关`;
+  nextLevel.hidden = !finished;
   die.hidden = !move;
   roll.setAttribute("aria-disabled", String(!setup.hidden || finished || Boolean(move)));
   turn.textContent = finished
@@ -133,19 +140,26 @@ function render() {
     const occupants = positions.flatMap((value, index) => value === position ? [playerName(index)] : []);
     const endpoint = row.querySelector(".endpoint-label").textContent;
     row.setAttribute("aria-label", [POSITIONS[position], endpoint, ...occupants].filter(Boolean).join("，"));
-    row.classList.toggle("guided", position === guidedPosition);
     row.setAttribute("aria-disabled", String(!move));
     row.tabIndex = move ? 0 : -1;
   }
 }
 
-start.addEventListener("click", () => {
+function startMatch() {
   if (setup.hidden) return;
   starter = active;
   setup.hidden = true;
   feedback.textContent = "两枚棋子在下加一间。掷骰子出发！";
   render();
   roll.focus();
+}
+
+start.addEventListener("click", startMatch);
+nextLevel.addEventListener("click", () => {
+  if (result === null) return;
+  level++;
+  prepare();
+  startMatch();
 });
 
 roll.addEventListener("click", (event) => {
@@ -177,7 +191,9 @@ function place(position, keyboard) {
   const expected = previous + move.direction;
   if (position !== expected) {
     feedback.textContent = `从${POSITIONS[previous]}继续${move.direction > 0 ? "向上" : "向下"}，一次只走相邻的一格。`;
-    hints.check("下一步", true, rows[position].querySelector(".target"), POSITIONS[expected]);
+    if (level < 3) {
+      hints.check("下一步", true, rows[position].querySelector(".target"), POSITIONS[expected]);
+    }
     return;
   }
   hints.reset();
@@ -200,7 +216,7 @@ function place(position, keyboard) {
   } else {
     feedback.textContent = `走到${POSITIONS[position]}了！${turn.textContent}掷骰子。`;
   }
-  if (keyboard) (result === null ? roll : reset).focus();
+  if (keyboard) (result === null ? roll : nextLevel).focus();
 }
 
 guide.addEventListener("change", render);
