@@ -56,10 +56,12 @@ try {
         options.every(option => {
           const dot = option.querySelector('button').getBoundingClientRect();
           const group = option.querySelector('.leaf-contour').getBoundingClientRect();
-          return dot.right <= group.left + 0.5 && [...option.querySelectorAll('img')].every(image => {
-            const ink = image.getBoundingClientRect();
-            return ink.top >= group.top && ink.bottom <= group.bottom;
-          });
+          const leaves = [...option.querySelectorAll('img')].map(image => image.getBoundingClientRect());
+          const top = Math.min(...leaves.map(leaf => leaf.top));
+          const bottom = Math.max(...leaves.map(leaf => leaf.bottom));
+          return dot.right <= group.left + 0.5
+            && top >= group.top && bottom <= group.bottom
+            && Math.abs((top + bottom) / 2 - (group.top + group.bottom) / 2) < 1;
         })), true);
       const step = await page.locator('.leaf-option').nth(2).locator('img').evaluateAll(images =>
         images.slice(1).map((image, i) => images[i].getBoundingClientRect().bottom - image.getBoundingClientRect().bottom));

@@ -226,7 +226,7 @@ Run `BASE_URL=<runtime-directory-url> node tests/sea_neighbors_browser.mjs` for 
 Run `BASE_URL=<runtime-directory-url> node tests/pitch_direction_browser.mjs`
 for all three catalog links, fixed-do labels and direction answers,
 320px touch targets, both dot-selection orders,
-leaf height difference, keyboard matching, blank and wrong
+leaf height differences and vertical centering, keyboard matching, blank and wrong
 submissions, third- and sixth-error hints, leaf reassignment and erasing,
 all correct answers, celebration, and reset. All three catalog entries also run
 in the full responsive matrix. Use `pitch-direction`, `pitch-stairs`, and `pitch-stairs-solfege`

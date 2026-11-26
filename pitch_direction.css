@@ -38,16 +38,17 @@
 }
 .leaf-dot::before {
   content: "";
-  width: 12px;
-  height: 12px;
-  border: 2px solid #355e49;
+  box-sizing: border-box;
+  width: 8px;
+  height: 8px;
+  border: 1.5px solid #355e49;
   border-radius: 50%;
   background: white;
 }
 .leaf-dot.used::before { background: #355e49; }
 .leaf-dot[aria-pressed="true"]::before {
   background: #ffc75c;
-  box-shadow: 0 0 0 3px #805b15;
+  box-shadow: 0 0 0 2px #805b15;
 }
 #activity-board .leaf-clear {
   min-width: 44px;
@@ -68,7 +69,7 @@
 }
 .leaf-contour {
   display: flex;
-  align-items: end;
+  align-items: center;
   justify-content: center;
   height: 76px;
   width: min(100%, 140px);
@@ -78,7 +79,7 @@
 .leaf-contour img {
   width: min(30%, 34px);
   height: auto;
-  margin-bottom: calc(var(--height) * 19px);
+  transform: translateY(calc(var(--height-offset) * 19px));
 }
 .stair-grid {
   display: grid;
@@ -123,7 +124,10 @@
   border: 1px solid #e4e8de;
   border-radius: .6rem;
 }
-.leaf-question .direction-notes { padding: .2rem .35rem; }
+.leaf-question .direction-notes {
+  padding: .2rem .35rem;
+  word-spacing: .22em;
+}
 .leaf-option .leaf-contour {
   box-sizing: border-box;
   height: 82px;

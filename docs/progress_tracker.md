@@ -47,6 +47,19 @@ Updated the Studio guide, overview, and development guide. Reviewed the
 responsive, provenance, games, and workspace guides for dependent changes.
 The parent tracker reflects the local catalog. Publication is pending.
 
+### P-010 dot size and leaf alignment, November 26, 2026
+
+Connection dots now have 8px visible circles with 44px hit areas. P-010 adds
+spacing between the letter names. It centers each leaf contour vertically
+around the midpoint of its highest and lowest tiers, preserving the 19px
+step. The flat group sits in the middle of its outline.
+Updated the preview, activity guide, and development verification notes.
+Reviewed the Studio overview, responsive guidance, and parent and games
+guides. The package `2e4ba287593b` passed the three activity flows,
+including measured centering of every leaf group at 320px, and all 144
+responsive checks. The mobile
+capture shows the flat group centered. Publication is pending.
+
 ## Under the Sea fixed-do edition, November 26, 2026
 
 “唱名版海底世界” is a separate catalog entry that reuses the P-007

@@ -121,9 +121,10 @@ function picture(name) {
 function leaves({ heights, art }) {
   const group = make('span', 'leaf-contour');
   group.setAttribute('aria-hidden', 'true');
+  const middleHeight = (Math.min(...heights) + Math.max(...heights)) / 2;
   heights.forEach(height => {
     const image = picture(art);
-    image.style.setProperty('--height', height);
+    image.style.setProperty('--height-offset', middleHeight - height);
     group.append(image);
   });
   return group;
