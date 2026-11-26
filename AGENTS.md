@@ -209,3 +209,16 @@ final height after ten rounds if neither arrives, allowing ties. A round gives
 each player one turn. Restart returns to character selection, retains selections,
 and alternates the opening player. Match state lasts for the session. Keep the
 page and its board preview in the catalog and runtime package.
+
+## P-010 and P-011 note-name direction
+
+`pitch-direction.html` opens P-010. `?exercise=stairs` opens P-011 from its
+own catalog card. Read the letter cycle in both directions, including G to A
+when ascending and A to G when descending. P-010 keeps all seven source
+prompts and contour patterns. Tap a leaf group, then its matching prompt to
+draw a line. Accept either descending group for FED or BAG, with each group
+available for one match. Reassigning a group clears its old connection.
+P-011 keeps the twelve source prompts, including both instances of FED.
+Select or replace the direction directly using the original stair artwork.
+Both have session-only answers, shared profiles and speech, graduated
+assistance, and completion celebrations. Keep the original masters intact.

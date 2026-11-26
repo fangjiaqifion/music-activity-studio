@@ -25,6 +25,8 @@ const pages = [
   "fish-notes",
   "fish-steps",
   "sea-neighbors",
+  "pitch-direction",
+  "pitch-stairs",
   "sea-solfege",
   "pitch-motion",
   "note-houses",
@@ -54,7 +56,7 @@ try {
     const errors = [];
     page.on("pageerror", (e) => errors.push(e.message));
     for (const name of pages) {
-      const path = name === "sea-solfege" ? "sea-neighbors.html?notation=solfege" : `${name}.html`;
+      const path = name === "pitch-stairs" ? "pitch-direction.html?exercise=stairs" : name === "sea-solfege" ? "sea-neighbors.html?notation=solfege" : `${name}.html`;
       await page.goto(`${base}/${path}`);
       await page.evaluate(() => document.fonts.ready);
       assert.equal(
@@ -89,7 +91,7 @@ try {
       );
       if (name === "index") {
         const cards = page.locator(".studio-card");
-        assert.equal(await cards.count(), 26);
+        assert.equal(await cards.count(), 28);
         const sizes = await cards.evaluateAll((elements) =>
           elements.map((card) => {
             const { width, height } = card.getBoundingClientRect();
@@ -106,7 +108,7 @@ try {
             description: card.querySelector("small").textContent.trim(),
           })),
         );
-        assert.equal(new Set(copy.map(({ title }) => title)).size, 26);
+        assert.equal(new Set(copy.map(({ title }) => title)).size, 28);
         assert.ok(copy.every(({ title, description }) =>
           title && description && title !== description
         ), "Every card has a distinct title and supporting description");

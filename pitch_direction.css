@@ -1,0 +1,91 @@
+.direction-example {
+  font-weight: 650;
+  margin: 0 0 1rem;
+}
+.direction-progress {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: .5rem;
+  margin-bottom: .75rem;
+}
+.direction-notes {
+  display: inline-block;
+  white-space: nowrap;
+  font-size: clamp(1.08rem, 3.5vw, 1.5rem);
+}
+.leaf-board {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, .65fr);
+  gap: .5rem clamp(18px, 10vw, 140px);
+  align-items: stretch;
+}
+.direction-controls { display: flex; gap: .25rem; align-items: center; }
+.leaf-question .direction-controls { flex-wrap: wrap; height: 100%; }
+.leaf-match { margin-inline-start: auto; }
+.leaf-clear { min-width: 44px; }
+#activity-board button { min-height: 44px; padding: .25rem .4rem; margin: 0; }
+#activity-board .leaf-match { margin-inline-start: auto; }
+.leaf-lines {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+  stroke: #477c56;
+  stroke-width: 2;
+}
+.leaf-contour {
+  display: flex;
+  align-items: end;
+  justify-content: center;
+  height: 56px;
+}
+.leaf-contour img {
+  width: min(30%, 34px);
+  height: auto;
+  margin-bottom: calc(var(--height) * 9px);
+}
+.stair-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 235px), 1fr));
+  gap: .75rem;
+}
+.stair-question, .leaf-question {
+  border: 1px solid #cad7c7;
+  border-radius: .75rem;
+  padding: .4rem;
+}
+.stair-question {
+  display: grid;
+  gap: .4rem;
+  justify-items: center;
+}
+.stair-choice {
+  min-width: 75px;
+  display: grid;
+  justify-items: center;
+  gap: .15rem;
+}
+.stair-choice img { width: 48px; height: auto; }
+#activity-board button[aria-pressed="true"] {
+  border-color: #805b15;
+  background: #ffe79a;
+  box-shadow: inset 0 0 0 1px #805b15;
+}
+#activity-board .leaf-choice.used:not([aria-pressed="true"]) { background: #d8ead7; }
+@media (max-width: 420px) {
+  .leaf-question .direction-notes { flex-basis: 100%; text-align: center; }
+  #activity-board .leaf-match { flex: 1; }
+}
+.direction-example {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .5rem;
+}
+.direction-example > img { width: 55px; height: auto; }
+.direction-example .leaf-contour { width: 80px; height: 37px; }

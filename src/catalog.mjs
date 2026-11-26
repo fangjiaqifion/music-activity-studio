@@ -48,6 +48,8 @@ export const catalog = [
     entries: [
       worksheet("sea-neighbors", "相邻音名", "从左到右读三格，点选空白处缺少的字母。"),
       worksheet("sea-solfege", "唱名版海底世界", "从左到右读三格，点选空白处缺少的唱名。", "sea-neighbors.html?notation=solfege"),
+      worksheet("pitch-direction", "音名找树叶", "从左到右读音名，把它们连到走势相同的树叶组。"),
+      worksheet("pitch-stairs", "上行还是下行", "读三个音名，选上行或下行的台阶。", "pitch-direction.html?exercise=stairs"),
       game("detective", "音名侦探", "顺着或倒着读五格，找出问号藏住的字母。"),
       game("ocean", "音名配唱名", "看到小鲸鱼带来的字母，选出对应的固定唱名。"),
       game("bingo", "音乐 Bingo", "听口令找字母和八度，标记到连成一线。"),

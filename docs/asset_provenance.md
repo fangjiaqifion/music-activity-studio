@@ -1,6 +1,6 @@
 # Asset Provenance
 
-Last updated: 2026-11-18
+Last updated: 2026-11-26
 
 Illustrations are unmodified copies from the user's existing worksheet collection.
 This local reuse is not a full rights audit for public redistribution. Verify provenance
@@ -164,3 +164,13 @@ Visually reviewed `worksheets/p_pitch/P-005键盘PIC.jpg` and `P-006键盘PIC.jp
 ## P-007 Under the Sea
 
 `assets/neighbors_seahorse.png`, `assets/neighbors_round.png`, and `assets/neighbors_angled.png` are byte-identical extracts of `word/media/image1.png`, `image3.png`, and `image5.png` from the parent workspace's `worksheets/p_pitch/P-007海底世界B.docx`. The bilingual PDF supplied prompt order and blank positions. The selector image is a capture of the unanswered digital activity. Source masters are preserved.
+
+## P-010 and P-011 direction artwork, 2026-11-26
+
+`assets/direction_maple.png` and `assets/direction_round.png` are unchanged
+copies of `word/media/image4.png` and `word/media/image6.png` from
+`worksheets/p_pitch/P-010上行或下行树叶B.docx`. The activity positions these
+leaves at three successive heights to reproduce the source contours.
+`assets/direction_up.png` and `assets/direction_down.png` are unchanged
+copies of `word/media/image1.png` and `word/media/image2.png` from
+`worksheets/p_pitch/P-011 台阶B.docx`.

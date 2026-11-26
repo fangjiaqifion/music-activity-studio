@@ -2,6 +2,25 @@
 
 Last updated: 2026-11-26
 
+## P-010 leaf patterns and P-011 stairs, November 26, 2026
+
+Beginning learners read letter names from left to right. In P-010, C–D–C
+matches a rise followed by a fall. A fall followed by a rise would be
+incorrect. The seven source prompts use a one-to-one matching board with
+reversible lines. Both descending groups accept either FED or BAG.
+In P-011, C–D–E and G–A–B ascend. A descending choice is incorrect for
+either. Twelve source prompts retain direct, replaceable choices.
+The exercises use fixed source sets, worked examples, original leaf and
+stair artwork, and the existing profile, speech and hint behavior.
+
+Local build `803c234ba760` includes 28 catalog cards. Both exercises
+passed the packaged interaction suite at 320px. All 41 Node tests and
+138 worksheet and hub viewport checks passed. The 28-card catalog and six mini-game browser and regression suites also passed. Chrome emulates device sizes and touch.
+Physical-device and human-audible speech checks remain open.
+The Studio guide, overview, development guide, and asset provenance record
+the change. The responsive, worksheet, games and workspace guides were
+reviewed, and their existing procedures still apply. Publication is pending.
+
 ## Under the Sea fixed-do edition, November 26, 2026
 
 “唱名版海底世界” is a separate catalog entry that reuses the P-007

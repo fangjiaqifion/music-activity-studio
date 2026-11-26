@@ -55,6 +55,7 @@ jobs:
           BASE_URL="http://127.0.0.1:8787/${release_dir}" node tests/pitch_notes_browser.mjs
           BASE_URL="http://127.0.0.1:8787/${release_dir}" node tests/fish_steps_browser.mjs
           BASE_URL="http://127.0.0.1:8787/${release_dir}" node tests/sea_neighbors_browser.mjs
+          BASE_URL="http://127.0.0.1:8787/${release_dir}" node tests/pitch_direction_browser.mjs
           BASE_URL="http://127.0.0.1:8787/${release_dir}" node tests/keyboard_names_browser.mjs
           BASE_URL="http://127.0.0.1:8787/${release_dir}" node tests/keyboard_browser.mjs
           BASE_URL="http://127.0.0.1:8787/${release_dir}" node tests/staff_worksheets_browser.mjs

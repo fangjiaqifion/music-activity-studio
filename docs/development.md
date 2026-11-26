@@ -220,3 +220,12 @@ Open `/fish-keys.html` and `/key-names.html`. Run `BASE_URL=<runtime-directory-u
 ## P-007 verification
 
 Run `BASE_URL=<runtime-directory-url> node tests/sea_neighbors_browser.mjs` for the nine prompts, eleven blank positions, visible dropdowns, question spacing, shared hint thresholds, completion/reset, speech dispatch, keyboard focus, emulated touch, and six viewport captures. Repeat the command with `--solfege` to open “唱名版海底世界” from the catalog and check the lowercase choices and all eleven expected answers. The variants share `sea-neighbors.html`, with `?notation=solfege` selecting fixed-do syllables. Regenerate the two menu images with `BASE_URL=<source-origin> node scripts/activity_previews.mjs sea-neighbors` and the same command with `sea-solfege`. Both entries are in the responsive matrix.
+
+## P-010 and P-011 verification
+
+Run `BASE_URL=<runtime-directory-url> node tests/pitch_direction_browser.mjs`
+for both catalog links, 320px touch targets, keyboard matching, blank and wrong
+submissions, third- and sixth-error hints, leaf reassignment and erasing,
+all correct answers, celebration, and reset. Both catalog entries also run
+in the full responsive matrix. Use `pitch-direction` and `pitch-stairs`
+with the catalog-preview script to refresh their individual covers.
