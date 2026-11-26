@@ -2,6 +2,25 @@
 
 Last updated: 2026-11-26
 
+## Under the Sea fixed-do edition, November 26, 2026
+
+“唱名版海底世界” is a separate catalog entry that reuses the P-007
+creature artwork, nine ascending triples, and eleven answer positions.
+Beginners complete each triple independently by choosing a missing fixed-do
+syllable from do, re, mi, fa, sol, la, si. For example, la–[blank]–do
+accepts si, while re counts as an error. The syllables also appear in
+answer hints. The original letter-name entry stays available.
+
+Packaged build `ea5755401155` passed both P-007 browser flows, including
+all eleven answers, retry hints, spoken-instruction dispatch, reset, and
+keyboard and touch checks. The 26-card catalog suite, 126 worksheet and
+hub layout checks, six-game browser and regression suites, and 41 unit
+tests passed. Inspected Chrome captures for phone, tablet portrait and
+landscape, desktop, and completed phone answers. Physical-device testing,
+audible speech verification, and publication remain pending. Updated the
+Studio guide, public overview, and development and responsive design guides.
+Reviewed the workspace and games guides for shared effects.
+
 ## Catalog name and three activity refinements, November 26, 2026
 
 The Chinese catalog and install name is “音乐游戏工坊”. Clef Cow uses

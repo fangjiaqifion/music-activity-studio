@@ -185,6 +185,12 @@ P-005 is a user-requested exception to the shared third/sixth-error contract. Co
 
 `sea-neighbors.html` groups nine three-letter prompts evenly across seahorses, round fish, and pointed-fin fish. Preserve the eleven blank positions and the repeating A–G order, including G–A–B and F–G–A. Use uppercase consistently because this exercise assesses letter order. Keep each triple intact in its own bordered panel, with visible spacing between panels and species. High-contrast uppercase labels sit on each creature’s belly and display the selected letter. Empty selects show an outlined white field and a dropdown arrow on the belly. The arrow stays visible after selection. Native select controls support correction and clearing; shared third/sixth-error hints apply per blank. Keep artwork proportions, 44px answer targets, local display profiles, user-triggered speech, session-only answers, and celebration.
 
+The catalog also opens “唱名版海底世界” at `sea-neighbors.html?notation=solfege`.
+Both versions share the P-007 prompts, artwork, interaction, and checking flow.
+Use the shared fixed-do mapping in C–B order and show lowercase
+do, re, mi, fa, sol, la, si throughout the solfège version, including hints
+and accessible question labels. Keep separate catalog previews for the two entries.
+
 ## Staff Race
 
 `staff-race.html`, `staff_race.css`, and `src/staff_race*.mjs` own this same-device

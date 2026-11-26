@@ -2,6 +2,25 @@ import {createRetryHints} from './retry_hints.mjs';
 import {createSpeech} from './balloon_speech.mjs';
 import {readProfiles,saveProfiles,dateLabel} from './balloon_profiles.mjs';
 import {species, letters, sequence} from './sea_neighbors_core.mjs';
+import {LETTERS, SOLFEGE} from './core.mjs';
+
+const useSolfege = new URLSearchParams(location.search).get('notation') === 'solfege';
+const noteType = useSolfege ? '唱名' : '音名';
+const solfege = SOLFEGE.map(name => name.toLowerCase());
+const choices = useSolfege ? solfege : [...letters];
+
+if (useSolfege) {
+  document.body.dataset.notation = 'solfege';
+  const title = '唱名版海底世界';
+  const subtitle = 'Under the sea: Neighboring solfège syllables';
+  document.title = `${title} · ${subtitle}`;
+  document.querySelector('h1').textContent = title;
+  document.querySelector('.subtitle').textContent = subtitle;
+  document.querySelector('.instructions p').textContent =
+    '从左到右读每组唱名。点空白处，选出缺少的唱名。';
+  document.querySelector('.instructions p[lang="en"]').textContent =
+    'Read each group from left to right. Choose the missing solfège syllables.';
+}
 const retryHints=createRetryHints(),board=document.querySelector('#activity-board'),feedback=document.querySelector('#feedback'),celebration=document.querySelector('#celebration');
 const speech=createSpeech(window.speechSynthesis,window.SpeechSynthesisUtterance,()=>document.querySelector('#speech-status').textContent='当前语音不可用，请看文字提示。');
 function stopCelebration(){celebration.hidden=true;}
@@ -76,6 +95,7 @@ for (const {id, name, exercises} of species) {
     group.setAttribute('role', 'group');
     group.setAttribute('aria-label', `第 ${groups.children.length + 1} 组`);
     sequence(exercise.start).forEach((letter, position) => {
+      const answer = useSolfege ? solfege[LETTERS.indexOf(letter)] : letter;
       const creature = document.createElement('div');
       creature.className = 'creature';
       const image = new Image();
@@ -90,14 +110,14 @@ for (const {id, name, exercises} of species) {
       if (exercise.blanks.includes(position)) {
         const field = document.createElement('select');
         field.className = 'creature-letter';
-        field.setAttribute('aria-label', `${name}第 ${groups.children.length + 1} 组，第 ${position + 1} 个音名`);
-        field.append(new Option('—', ''), ...[...letters].map(note => new Option(note, note)));
-        fields.push({field, letter, label});
+        field.setAttribute('aria-label', `${name}第 ${groups.children.length + 1} 组，第 ${position + 1} 个${noteType}`);
+        field.append(new Option('—', ''), ...choices.map(note => new Option(note, note)));
+        fields.push({field, answer, label});
         belly.append(field);
         label.setAttribute('aria-hidden', 'true');
       } else {
         label.classList.add('creature-letter');
-        label.textContent = letter;
+        label.textContent = answer;
       }
       group.append(creature);
     });
@@ -127,15 +147,15 @@ document.querySelector('#check').onclick = () => {
   stop();
   let blank = 0;
   let errors = 0;
-  fields.forEach(({field, letter}, index) => {
-    const wrong = field.value ? field.value !== letter : null;
+  fields.forEach(({field, answer}, index) => {
+    const wrong = field.value ? field.value !== answer : null;
     if (wrong === null) blank++;
     if (wrong) errors++;
-    retryHints.check(index, wrong, field, letter);
+    retryHints.check(index, wrong, field, answer);
   });
   const messages = [];
-  if (blank) messages.push(`还有 ${blank} 个音名没有填。`);
-  if (errors) messages.push(`有 ${errors} 个音名需要再想一想。`);
+  if (blank) messages.push(`还有 ${blank} 个${noteType}没有填。`);
+  if (errors) messages.push(`有 ${errors} 个${noteType}需要再想一想。`);
   if (!messages.length) {
     messages.push('全部答对啦！你真棒！');
     celebration.hidden = false;

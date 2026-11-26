@@ -6,6 +6,7 @@ const base = process.env.BASE_URL || 'http://127.0.0.1:8855';
 const entries = {
   'fish-keys': '#activity-board', 'key-names': '#activity-board',
   "sea-neighbors": "#activity-board",
+  "sea-solfege": "#activity-board",
   hands: '#activity-board', balloons: '#balloons', cows: '.cow-art',
   cheesecake: '#cakes', ladybirds: '#activity-board', sunshine: '#activity-board',
   treble: '#activity-board', bass: '#activity-board', alto: '#activity-board',
@@ -20,7 +21,8 @@ try {
   await context.addInitScript(() => { Math.random = () => 0.42; });
   const page = await context.newPage();
   for (const [name, selector] of Object.entries(entries).filter(([name]) => !process.argv[2] || name === process.argv[2])) {
-    await page.goto(`${base}/${name}.html`);
+    const path = name === "sea-solfege" ? "sea-neighbors.html?notation=solfege" : `${name}.html`;
+    await page.goto(`${base}/${path}`);
     await page.evaluate(() => document.fonts.ready);
     const area = page.locator(selector).first();
     await area.waitFor({state: 'visible'});

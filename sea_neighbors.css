@@ -129,3 +129,11 @@ body[data-activity="sea-neighbors"] .paper {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
+
+[data-notation="solfege"] .creature-belly:has(select) .belly-label,
+[data-notation="solfege"] .creature-belly select {
+  width: 52px;
+}
+[data-notation="solfege"] .belly-label {
+  font-size: 1rem;
+}

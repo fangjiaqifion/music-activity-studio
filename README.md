@@ -12,11 +12,11 @@ at home, in individual lessons, and in the classroom.
 | --- | --- |
 | Staff and notation | Identify lines, spaces, and clefs, compare pitches, and find neighboring notes on the grand staff |
 | Piano keyboard and fingering | Identify finger numbers, recognize keyboard patterns, and match notes to keys |
-| Note names and listening | Complete note-name sequences, match fixed-do syllables, and play listening Bingo |
+| Note names and listening | Complete sequences of letter names or fixed-do syllables, match letters to syllables, and play listening Bingo |
 | Intervals and chords | Distinguish whole and half steps and build note combinations on the keyboard |
 | Rhythm and composition | Combine note values to fill a measure and create playable rhythm patterns |
 
-The catalog brings 25 activities together. Choose a training area and open an
+The catalog brings 26 activities together. Choose a training area and open an
 exercise. Illustrated exercises reuse artwork from original teaching worksheets.
 Depending on the activity, learners can use spoken instructions, retry with hints,
 replay generated questions, or print a practice sheet.
