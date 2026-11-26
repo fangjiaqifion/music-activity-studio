@@ -2,7 +2,33 @@
 
 Last updated: 2026-11-26
 
-## Staff Race local activity, November 26, 2026
+## Staff Race course and characters, November 26, 2026
+
+Revised the match course from the third lower ledger line to the first space
+above the staff, between line 5 and the first upper ledger line. The first
+arrival wins. If ten full rounds end with both pieces below the goal, compare
+their positions and allow a tie. The display shows current positions and the
+round. Both players choose from four distinct note characters (rabbit, cat,
+frog, robot). Restart returns to selection and retains the chosen pair.
+
+The board uses 16 playable positions and a visual upper ledger line. Equal row
+spacing fixes each notehead center on a line or halfway between lines. Lower
+ledger guide segments align with each player lane and the central touch track.
+The role picker uses the same silhouettes as the pieces on the board.
+The original app goal, adjacency response, and retry contract still apply.
+
+Packaged build `56bc49df55ee` passed 41 Node tests, the new Chrome race suite,
+the catalog regression, and 120 responsive cases. Browser checks exercised
+distinct role selection, touch and keyboard controls, line and space alignment,
+an early arrival, and a ten-round match decided by height.
+
+Updated the Studio guide, development guide, README, board preview, and this
+tracker. Reviewed the games and workspace guides and public overview for
+shared effects. Physical-device testing and deployment remain open.
+
+## Staff Race initial local activity, November 26, 2026
+
+The course and finish rule below describe the initial build.
 
 A learner and a teacher or parent share one screen and take turns moving two note
 pieces. The learning target is to identify successive line and space positions in

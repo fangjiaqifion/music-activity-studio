@@ -133,6 +133,7 @@ try {
         await page.locator('#level1').click();
         assert.equal(await page.locator('#progress').innerText(), '0 / 7');
       } else if (name === "staff-race") {
+        await page.locator("#start").click();
         await page.locator("#roll").click();
         assert.match(await page.locator("#feedback").innerText(), /请点下一格/);
         await page.locator("#reset").click();

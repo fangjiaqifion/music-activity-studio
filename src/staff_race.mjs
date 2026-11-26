@@ -1,51 +1,104 @@
 import { createRetryHints } from "./retry_hints.mjs";
-import { FINISH, TOP, raceResult, rollMove, staffPositionName } from "./staff_race_core.mjs";
+import { FINISH, MAX_ROUNDS, POSITIONS, START, raceResult, rollMove } from "./staff_race_core.mjs";
 
-const names = ["绿音符", "紫音符"];
-const staff = document.querySelector("#staff");
-const roll = document.querySelector("#roll");
-const die = document.querySelector("#die");
-const turn = document.querySelector("#turn");
-const feedback = document.querySelector("#feedback");
-const direction = document.querySelector("#direction");
-const distance = document.querySelector("#distance");
-const scores = names.map((_, player) => document.querySelector(`#score-${player}`));
+const characters = [
+  { id: "rabbit", name: "耳朵兔", icon: "🐰" },
+  { id: "cat", name: "三角猫", icon: "🐱" },
+  { id: "frog", name: "圆眼蛙", icon: "🐸" },
+  { id: "robot", name: "方脸机器人", icon: "🤖" },
+];
+const roles = ["学生", "老师 / 家长"];
+const query = (selector) => document.querySelector(selector);
+const staff = query("#staff");
+const roll = query("#roll");
+const die = query("#die");
+const turn = query("#turn");
+const feedback = query("#feedback");
+const direction = query("#direction");
+const distance = query("#distance");
+const roundLabel = query("#round");
+const cards = roles.map((_, player) => query(`#score-${player}`));
+const setup = query("#setup");
+const picker = query("#characters");
+const start = query("#start");
+const reset = query("#reset");
 const hints = createRetryHints();
 const rows = [];
-const tokens = names.map((name, player) => {
+const tokens = roles.map((_, player) => {
   const token = document.createElement("span");
-  token.className = `token ${player === 0 ? "mint" : "plum"}`;
-  token.innerHTML = '<span class="stem"></span><span class="face"></span>';
+  token.className = `token lane-${player}`;
+  token.innerHTML = '<span class="crest"></span><span class="face"></span>';
   token.setAttribute("aria-hidden", "true");
   return token;
 });
-
-let players;
+const selected = [0, 1];
+let selecting = 0;
+let positions;
 let active;
 let starter = 1;
+let completedRounds;
 let move;
 let result;
 
-for (let position = TOP; position >= 0; position--) {
-  const name = staffPositionName(position);
+const options = characters.map((character, index) => {
   const button = document.createElement("button");
   button.type = "button";
-  button.className = position % 2 === 0 ? "row line" : "row space";
+  button.className = `character ${character.id}`;
+  button.innerHTML = `<span class="portrait" aria-hidden="true"><span class="crest"></span><span class="face"></span></span>${character.name}`;
+  button.addEventListener("click", () => {
+    if (selected[1 - selecting] === index) selected[1 - selecting] = selected[selecting];
+    selected[selecting] = index;
+    renderPicker();
+    render();
+  });
+  picker.append(button);
+  return button;
+});
+
+function renderPicker() {
+  query("#choose-player").textContent = `为${roles[selecting]}选棋子`;
+  query("#choices").textContent = `学生：${characters[selected[0]].name}　·　老师 / 家长：${characters[selected[1]].name}`;
+  options.forEach((option, index) => option.setAttribute("aria-pressed", String(index === selected[selecting])));
+  for (const button of setup.querySelectorAll("[data-player]")) {
+    button.setAttribute("aria-pressed", String(Number(button.dataset.player) === selecting));
+  }
+}
+
+for (const button of setup.querySelectorAll("[data-player]")) {
+  button.addEventListener("click", () => {
+    selecting = Number(button.dataset.player);
+    renderPicker();
+  });
+}
+
+for (let position = FINISH; position >= START; position--) {
+  const name = POSITIONS[position];
+  const button = document.createElement("button");
+  button.type = "button";
+  button.className = position % 2 ? "row space" : position < 6 ? "row ledger" : "row line";
+  if (position === FINISH) button.classList.add("endpoint", "finish");
+  if (position === START) button.classList.add("endpoint", "start");
   button.dataset.position = position;
-  button.innerHTML = `<span class="cell-name">${name}</span><span class="target"></span>`;
+  const endpoint = position === FINISH ? "终点" : position === START ? "起点" : "";
+  button.innerHTML = `<span class="cell-name">${name}</span><span class="ledger-left"></span><span class="ledger-right"></span><span class="target"></span><span class="endpoint-label">${endpoint}</span>`;
   button.addEventListener("click", (event) => place(position, event.detail === 0));
   staff.append(button);
   rows[position] = button;
 }
 
-function openRound() {
-  starter = 1 - starter;
-  active = starter;
-  players = names.map(() => ({ position: TOP / 2, score: 0 }));
+const playerName = (player) => characters[selected[player]].name;
+
+function prepare() {
+  active = 1 - starter;
+  positions = [START, START];
+  completedRounds = 0;
   move = null;
   result = null;
+  setup.hidden = false;
+  selecting = 0;
   hints.reset();
-  feedback.textContent = "两枚音符都在第三线。掷骰子开始！";
+  renderPicker();
+  feedback.textContent = "选好角色后，按开始比赛。";
   render();
 }
 
@@ -53,39 +106,59 @@ function render() {
   const finished = result !== null;
   staff.classList.toggle("moving", Boolean(move));
   die.hidden = !move;
-  roll.setAttribute("aria-disabled", String(finished || Boolean(move)));
+  roll.setAttribute("aria-disabled", String(!setup.hidden || finished || Boolean(move)));
   turn.textContent = finished
-    ? (result === "tie" ? "平局！" : `${names[result]}赢了！`)
-    : `轮到${names[active]}`;
+    ? (result === "tie" ? "平局！" : `${playerName(result)}赢了！`)
+    : setup.hidden ? `轮到${playerName(active)}` : "准备出发";
+  const round = Math.min(MAX_ROUNDS, completedRounds + 1);
+  roundLabel.textContent = `第 ${round} / ${MAX_ROUNDS} 轮`;
   if (move) {
     direction.textContent = move.direction > 0 ? "↑ 向上" : "↓ 向下";
     distance.textContent = `${move.distance} 步`;
   }
-  for (const [index, player] of players.entries()) {
-    const current = !finished && index === active;
-    scores[index].classList.toggle("active", current);
-    tokens[index].classList.toggle("active", current);
-    scores[index].querySelector("strong").textContent = `${player.score} 步`;
-    scores[index].querySelector("progress").value = Math.min(FINISH, player.score);
-    const row = rows[player.position];
+  for (const [index, position] of positions.entries()) {
+    const character = characters[selected[index]];
+    const current = setup.hidden && !finished && index === active;
+    cards[index].className = `score ${character.id}${current ? " active" : ""}`;
+    cards[index].querySelector("span").textContent = `${character.icon} ${character.name}`;
+    cards[index].querySelector("strong").textContent = POSITIONS[position];
+    tokens[index].className = `token lane-${index} ${character.id}${current ? " active" : ""}`;
+    const row = rows[position];
     if (tokens[index].parentElement !== row) row.append(tokens[index]);
   }
   for (const [position, row] of rows.entries()) {
-    const occupants = names.filter((_, index) => players[index].position === position);
-    const label = [staffPositionName(position), ...occupants].join("，");
-    row.setAttribute("aria-label", label);
+    const occupants = positions.flatMap((value, index) => value === position ? [playerName(index)] : []);
+    const endpoint = row.querySelector(".endpoint-label").textContent;
+    row.setAttribute("aria-label", [POSITIONS[position], endpoint, ...occupants].filter(Boolean).join("，"));
     row.setAttribute("aria-disabled", String(!move));
     row.tabIndex = move ? 0 : -1;
   }
 }
 
+start.addEventListener("click", () => {
+  if (setup.hidden) return;
+  starter = active;
+  setup.hidden = true;
+  feedback.textContent = "两枚棋子在下加三线。掷骰子出发！";
+  render();
+  roll.focus();
+});
+
 roll.addEventListener("click", (event) => {
-  if (move || result !== null) return;
-  const { position } = players[active];
+  if (!setup.hidden || move || result !== null) return;
+  const position = positions[active];
   move = rollMove(position);
   render();
-  feedback.textContent = `从${staffPositionName(position)}${direction.textContent.slice(2)}走 ${move.distance} 步。请点下一格。`;
+  feedback.textContent = `从${POSITIONS[position]}${direction.textContent.slice(2)}走 ${move.distance} 步。请点下一格。`;
   if (event.detail === 0) rows[position].focus();
+  else {
+    const bounds = rows[position].getBoundingClientRect();
+    const controls = roll.closest(".controls").getBoundingClientRect();
+    const behindControls = innerWidth < 700 && bounds.top < controls.bottom;
+    if (behindControls || bounds.top < 0 || bounds.bottom > innerHeight) {
+      rows[position].scrollIntoView({ block: "center" });
+    }
+  }
 });
 
 staff.addEventListener("keydown", (event) => {
@@ -93,40 +166,40 @@ staff.addEventListener("keydown", (event) => {
   const position = Number(event.target.dataset.position);
   if (!Number.isInteger(position)) return;
   event.preventDefault();
-  const next = position + (event.key === "ArrowUp" ? 1 : -1);
-  rows[next]?.focus();
+  rows[position + (event.key === "ArrowUp" ? 1 : -1)]?.focus();
 });
 
 function place(position, keyboard) {
   if (!move) return;
-  const player = players[active];
-  const expected = player.position + move.direction;
+  const previous = positions[active];
+  const expected = previous + move.direction;
   if (position !== expected) {
-    feedback.textContent = `从${staffPositionName(player.position)}继续${move.direction > 0 ? "向上" : "向下"}，一次只走相邻的一格。`;
-    hints.check("下一步", true, rows[position].querySelector(".target"), staffPositionName(expected));
+    feedback.textContent = `从${POSITIONS[previous]}继续${move.direction > 0 ? "向上" : "向下"}，一次只走相邻的一格。`;
+    hints.check("下一步", true, rows[position].querySelector(".target"), POSITIONS[expected]);
     return;
   }
   hints.reset();
-  player.position = position;
+  positions[active] = position;
   move.remaining--;
   if (move.remaining > 0) {
-    feedback.textContent = `到了${staffPositionName(position)}，还要走 ${move.remaining} 步。`;
+    feedback.textContent = `到了${POSITIONS[position]}，还要走 ${move.remaining} 步。`;
     render();
     return;
   }
-  player.score += move.distance;
   move = null;
-  const last = active !== starter;
-  result = last ? raceResult(players.map(({ score }) => score)) : null;
+  if (active !== starter) completedRounds++;
+  result = raceResult(positions, completedRounds);
   active = 1 - active;
   render();
-  if (result !== null) {
-    feedback.textContent = `${turn.textContent} 绿音符走了 ${players[0].score} 步，紫音符走了 ${players[1].score} 步。`;
+  if (position === FINISH) {
+    feedback.textContent = `${playerName(result)}先到达上加一间！`;
+  } else if (result !== null) {
+    feedback.textContent = `十轮结束。学生在${POSITIONS[positions[0]]}，老师 / 家长在${POSITIONS[positions[1]]}。`;
   } else {
-    feedback.textContent = `走到${staffPositionName(position)}了！${turn.textContent}掷骰子。`;
+    feedback.textContent = `走到${POSITIONS[position]}了！${turn.textContent}掷骰子。`;
   }
-  if (keyboard) document.querySelector(result === null ? "#roll" : "#reset").focus();
+  if (keyboard) (result === null ? roll : reset).focus();
 }
 
-document.querySelector("#reset").addEventListener("click", openRound);
-openRound();
+reset.addEventListener("click", prepare);
+prepare();

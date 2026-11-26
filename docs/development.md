@@ -15,8 +15,8 @@ Screenshots and a print-layout PDF are generated into ignored `.runtime/`.
 
 Open `/staff-race.html` on the preview server. Run
 `BASE_URL=http://127.0.0.1:<port> node tests/staff_race_browser.mjs` for the
-catalog-to-match flow, touch and keyboard input, retry cues, equal-turn finish,
-restart, and active-board layout checks. The test also runs against the Pages build.
+catalog-to-match flow, character selection, touch and keyboard input, retry cues,
+notehead placement, immediate finish, ten-round height comparison, and restart. The test also runs against the Pages build.
 
 ## Architecture and Note Trainer lessons
 

@@ -29,7 +29,7 @@ try {
     const box = await area.boundingBox();
     // Retain the full width, with enough rows to show the task at card size.
     await page.screenshot({path: `assets/preview_${name}.jpg`, type: 'jpeg', quality: 88,
-      clip: {x: box.x, y: box.y, width: box.width, height: Math.min(box.height, 580)}});
+      clip: {x: box.x, y: box.y, width: box.width, height: name === "staff-race" ? box.height : Math.min(box.height, 580)}});
     console.log(`Captured ${name}`);
   }
 } finally { await browser.close(); }

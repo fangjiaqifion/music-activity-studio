@@ -186,11 +186,16 @@ P-005 is a user-requested exception to the shared third/sixth-error contract. Co
 ## Staff Race
 
 `staff-race.html`, `staff_race.css`, and `src/staff_race*.mjs` own this same-device
-game. Both pieces start on line 3 of an unpitched five-line staff. Every adjacent
-line or space is one step. Roll direction and a distance of one to four legal
-steps, then require one deliberate placement per step. Keep both pieces visible
-even when they share a row. Use the shared third/sixth-error assistance for the
-pending step, and leave the player in place on an error. Compare scores at the end
-of a round once either player has traveled at least 16 steps. Alternate the starting
-player on restart. The match is session-only. Keep the page and its real board
-preview in the catalog and runtime package.
+game. Players select distinct characters with different colors and silhouettes.
+Both pieces start on the third lower ledger line. The finish is the first space
+above the staff, halfway between line 5 and the first upper ledger line. The upper
+ledger line is a visual guide. Keep the complete row grid equally spaced, center
+each notehead vertically on its row, and keep character decoration within the
+neighboring line bounds. Every adjacent line or space is one step. Roll a legal
+direction and one to four steps, requiring one deliberate placement per step.
+Keep both pieces visible on shared rows. Use shared third/sixth-error cues and
+leave the piece in place on an error. First arrival wins immediately. Compare
+final height after ten rounds if neither arrives, allowing ties. A round gives
+each player one turn. Restart returns to character selection, retains selections,
+and alternates the opening player. Match state lasts for the session. Keep the
+page and its board preview in the catalog and runtime package.

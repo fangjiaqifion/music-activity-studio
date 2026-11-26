@@ -21,7 +21,8 @@ exercise. Illustrated exercises reuse artwork from original teaching worksheets.
 Depending on the activity, learners can use spoken instructions, retry with hints,
 replay generated questions, or print a practice sheet.
 Staff Race lets a learner and a teacher or parent take turns moving note pieces
-through adjacent lines and spaces on one shared staff.
+through adjacent lines and spaces on one shared staff. Players choose a character
+and race from the third lower ledger line to the first space above the staff.
 
 ## Open from the iPhone or iPad Home Screen
 
