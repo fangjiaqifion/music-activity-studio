@@ -149,21 +149,10 @@ questions.forEach((notes, index) => {
       buttons.push({ button, value });
     });
   } else {
-    const match = make('button', 'leaf-match');
+    const match = make('button', 'leaf-match leaf-dot');
     const clear = make('button', 'leaf-clear', '×');
     clear.setAttribute('aria-label', `清除第 ${index + 1} 题的连线`);
-    match.onclick = () => {
-      if (selected === null) {
-        feedback.textContent = '先点右边的一组树叶。';
-        return;
-      }
-      answers = answers.map((choice, rowIndex) => {
-        if (rowIndex === index) return selected;
-        return choice === selected ? null : choice;
-      });
-      selected = null;
-      edited();
-    };
+    match.onclick = () => pickEndpoint('notes', index);
     clear.onclick = () => {
       answers[index] = null;
       edited();
@@ -177,20 +166,35 @@ questions.forEach((notes, index) => {
   rows.push({ row, caption, buttons });
   if (!stairs) {
     const choice = leafChoices[index];
-    const button = make('button', 'leaf-choice');
+    const group = make('div', 'leaf-option');
+    const button = make('button', 'leaf-choice leaf-dot');
     const label = contourLabel(choice);
-    button.append(leaves(choice));
     button.setAttribute('aria-label', `树叶组 ${index + 1}：${label}`);
-    button.onclick = () => {
-      selected = selected === index ? null : index;
-      render();
-    };
+    button.onclick = () => pickEndpoint('leaves', index);
+    group.append(button, leaves(choice));
     options.push(button);
-    board.append(row, button);
+    board.append(row, group);
   } else {
     board.append(row);
   }
 });
+
+function pickEndpoint(side, index) {
+  if (selected && selected.side !== side) {
+    const row = side === 'notes' ? index : selected.index;
+    const leaf = side === 'leaves' ? index : selected.index;
+    answers = answers.map((choice, rowIndex) => {
+      if (rowIndex === row) return leaf;
+      return choice === leaf ? null : choice;
+    });
+    selected = null;
+    edited();
+    return;
+  }
+
+  selected = selected?.side === side && selected.index === index ? null : { side, index };
+  render();
+}
 
 function contourLabel({ heights }) {
   return describe(heights.slice(1).map((value, index) => value - heights[index]));
@@ -213,9 +217,9 @@ function drawLines() {
     const start = rows[index].buttons[0].button.getBoundingClientRect();
     const end = options[choice].getBoundingClientRect();
     const line = document.createElementNS(svgNamespace, 'line');
-    line.setAttribute('x1', rows[index].row.getBoundingClientRect().right - bounds.left);
+    line.setAttribute('x1', (start.left + start.right) / 2 - bounds.left);
     line.setAttribute('y1', (start.top + start.bottom) / 2 - bounds.top);
-    line.setAttribute('x2', end.left - bounds.left);
+    line.setAttribute('x2', (end.left + end.right) / 2 - bounds.left);
     line.setAttribute('y2', (end.top + end.bottom) / 2 - bounds.top);
     lines.append(line);
   });
@@ -228,13 +232,14 @@ function render() {
       buttons.forEach(({ button, value }) => button.setAttribute('aria-pressed', answer === value));
     } else {
       const [{ button, clear }] = buttons;
-      button.textContent = answer === null ? '连这里' : '已连';
-      button.setAttribute('aria-label', `第 ${index + 1} 题 ${questions[index]}：${answer === null ? '连这里' : '已连树叶组 ' + (answer + 1)}`);
+      button.setAttribute('aria-pressed', selected?.side === 'notes' && selected.index === index);
+      button.classList.toggle('used', answer !== null);
+      button.setAttribute('aria-label', `第 ${index + 1} 题 ${questions[index]}：${answer === null ? '音名圆点' : '已连树叶组 ' + (answer + 1)}`);
       clear.style.visibility = answer === null ? 'hidden' : 'visible';
     }
   });
   options.forEach((button, index) => {
-    button.setAttribute('aria-pressed', selected === index);
+    button.setAttribute('aria-pressed', selected?.side === 'leaves' && selected.index === index);
     button.classList.toggle('used', answers.includes(index));
   });
   if (!stairs) drawLines();

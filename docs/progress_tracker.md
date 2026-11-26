@@ -21,6 +21,18 @@ The Studio guide, overview, development guide, and asset provenance record
 the change. The responsive, worksheet, games and workspace guides were
 reviewed, and their existing procedures still apply. Publication is pending.
 
+### Layout revision, November 26, 2026
+
+P-010 removes the group borders and anchors each line at the centers of the
+two small dots. Either endpoint can be selected first. Leaf tiers are separated
+by 19 CSS pixels. P-011 enlarges the letters and reduces stair option width
+and artwork size. Both use at least 44 CSS pixel hit targets.
+Updated both previews, the activity guide, and the development checks.
+Reviewed the Studio overview and responsive and parent guides. Their current
+scope and procedures still apply. Package `87c34cfec1d1` passed the two
+activity flows, catalog suite, 41 unit tests, and 138 responsive checks.
+Reviewed the phone captures and both catalog previews. Local only.
+
 ## Under the Sea fixed-do edition, November 26, 2026
 
 “唱名版海底世界” is a separate catalog entry that reuses the P-007

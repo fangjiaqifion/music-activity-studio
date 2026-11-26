@@ -25,6 +25,10 @@ try {
     async function answer(index, choice) {
       if (stairs) {
         await stair.nth(index).getByRole('button', { name: new RegExp(choice + '$') }).tap();
+      } else if (index % 2 === 0) {
+        await match.nth(index).press('Enter');
+        assert.equal(await match.nth(index).getAttribute('aria-pressed'), 'true');
+        await leaf.nth(choice).tap();
       } else {
         await leaf.nth(choice).tap();
         await match.nth(index).press('Enter');
@@ -39,6 +43,9 @@ try {
       assert.equal(await page.locator('.retry-answer').count(), Number(attempt === 6));
     }
     if (!stairs) {
+      const step = await page.locator('.leaf-option').nth(2).locator('img').evaluateAll(images =>
+        images.slice(1).map((image, i) => images[i].getBoundingClientRect().bottom - image.getBoundingClientRect().bottom));
+      assert.deepEqual(step, [19, 19]);
       await answer(1, 0);
       assert.equal(await page.locator('.leaf-lines line').count(), 1);
       await page.locator('.leaf-clear').nth(1).tap();
