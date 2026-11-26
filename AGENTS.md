@@ -183,7 +183,7 @@ P-005 is a user-requested exception to the shared third/sixth-error contract. Co
 
 ## P-007 neighboring note names, 2026-11-23
 
-`sea-neighbors.html` groups the original ten three-letter prompts by seahorse, round fish, and pointed-fin fish. Preserve the twelve blank positions and the repeating A–G order, including G–A–B and F–G–A. Use uppercase consistently because this exercise assesses letter order. Keep each triple intact when groups wrap. High-contrast uppercase labels sit on each creature’s belly and display the selected letter. Native select controls support correction and clearing; shared third/sixth-error hints apply per blank. Keep artwork proportions, 44px answer targets, local display profiles, user-triggered speech, session-only answers, and celebration.
+`sea-neighbors.html` groups nine three-letter prompts evenly across seahorses, round fish, and pointed-fin fish. Preserve the eleven blank positions and the repeating A–G order, including G–A–B and F–G–A. Use uppercase consistently because this exercise assesses letter order. Keep each triple intact in its own bordered panel, with visible spacing between panels and species. High-contrast uppercase labels sit on each creature’s belly and display the selected letter. Empty selects show an outlined white field and a dropdown arrow on the belly. The arrow stays visible after selection. Native select controls support correction and clearing; shared third/sixth-error hints apply per blank. Keep artwork proportions, 44px answer targets, local display profiles, user-triggered speech, session-only answers, and celebration.
 
 ## Staff Race
 

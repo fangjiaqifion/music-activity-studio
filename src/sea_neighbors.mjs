@@ -107,9 +107,11 @@ for (const {id, name, exercises} of species) {
   board.append(row);
 }
 
+document.querySelector('#blank-total').textContent = fields.length;
+
 function updateCount() {
   for (const {field, label} of fields) {
-    label.textContent = field.value || '—';
+    label.textContent = field.value;
     label.classList.toggle('answered', Boolean(field.value));
   }
   document.querySelector('#count').textContent = fields.filter(({field}) => field.value).length;

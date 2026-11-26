@@ -10,7 +10,6 @@ export const species = [
   {id: 'seahorse', name: '海马', exercises: [
     {start: 'A', blanks: [0, 2]},
     {start: 'F', blanks: [1]},
-    {start: 'F', blanks: [2]},
     {start: 'A', blanks: [1]},
   ]},
   {id: 'round', name: '圆身鱼', exercises: [

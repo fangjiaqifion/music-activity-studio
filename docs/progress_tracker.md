@@ -1115,3 +1115,20 @@ and the [complete P-007 activity](https://fangjiaqifion.github.io/music-activity
 The README reflects publication. The game scope, asset provenance, interaction
 contract and operating procedures remain current. Physical devices, Safari and
 human-audible speech were outside the verification.
+
+## P-007 question spacing and answer fields, 2026-11-26
+
+The activity now has nine prompts and eleven answer fields. The shortened
+seahorse section keeps the F–G–A prompt with its middle blank and drops the
+second F–G–A prompt. Each creature section has three separately bordered
+question panels. Each blank starts as a white outlined field with a dropdown
+arrow on the creature's belly, and selected letters remain visible in place.
+The progress denominator is derived from the rendered fields.
+
+Local package `ad66c7abcc56` passed the P-007 browser suite at six viewport
+sizes, including keyboard focus, blank checking, wrong answers, completion,
+and reset. The 41 Node tests and 120 packaged responsive checks passed.
+Chrome generated a one-page PDF. The catalog cover was refreshed. Physical
+devices and native iOS dropdown interaction remain unverified. The Studio
+guide and verification and responsive procedures were updated. The Studio
+overview and workspace and games guides were reviewed and required no changes.

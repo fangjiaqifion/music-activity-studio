@@ -26,13 +26,14 @@ try {
   assert.deepEqual(await page.locator('.creature-group').evaluateAll(groups =>
     groups.map(group => [...group.querySelectorAll('.creature-letter')].map(cell =>
       cell.tagName === 'SELECT' ? '_' : cell.textContent).join(''))),
-    ['_B_', 'F_A', 'FG_', 'A_C', 'G_B', 'C_E', '_E_', 'A_C', 'B_D', 'E_G']);
+    ['_B_', 'F_A', 'A_C', 'G_B', 'C_E', '_E_', 'A_C', 'B_D', 'E_G']);
   const fields = page.locator('.creature select');
-  assert.equal(await fields.count(), 12);
+  assert.equal(await fields.count(), 11);
+  assert.equal(await page.locator('#blank-total').innerText(), '11');
   await page.locator('#speak').tap();
   assert.match(await page.evaluate(() => window.spoken[0]), /从左到右/);
   for (let n = 0; n < 3; n++) await page.locator('#check').tap();
-  assert.match(await page.locator('#feedback').innerText(), /还有 12/);
+  assert.match(await page.locator('#feedback').innerText(), /还有 11/);
   assert.equal(await page.locator('.retry-hint').count(), 0);
   const first = fields.first();
   const desktop = await browser.newPage();
@@ -50,7 +51,7 @@ try {
     assert.equal(await page.locator('.retry-answer').count(), Number(n >= 6));
   }
   assert.match(await page.locator('.retry-answer').innerText(), /A$/);
-  const answers = ['A', 'C', 'G', 'A', 'B', 'A', 'D', 'D', 'F', 'B', 'C', 'F'];
+  const answers = ['A', 'C', 'G', 'B', 'A', 'D', 'D', 'F', 'B', 'C', 'F'];
   for (const [index, answer] of answers.entries()) await fields.nth(index).selectOption(answer);
   assert.deepEqual(await page.locator('.belly-label.answered').allTextContents(), answers);
   await page.screenshot({path: '.runtime/sea_neighbors_answered.png', fullPage: true});
@@ -68,11 +69,17 @@ try {
       const {width, height, left, right} = field.getBoundingClientRect();
       return width >= 44 && height >= 44 && left >= 0 && right <= innerWidth;
     })), true);
+    assert.equal(await page.locator('.creature-groups').evaluateAll(groups =>
+      groups.every(group => parseFloat(getComputedStyle(group).gap) >= 13)), true);
+    assert.equal(await page.locator('.belly-label:has(+ select)').evaluateAll(labels =>
+      labels.length === 11 && labels.every(label => label.textContent === '' &&
+        getComputedStyle(label).borderTopWidth === '2px' &&
+        getComputedStyle(label, '::after').borderTopWidth === '4px')), true);
     await page.screenshot({path: `.runtime/sea_neighbors_${width}.png`, fullPage: true});
   }
   await page.pdf({path: ".runtime/sea_neighbors_print.pdf", preferCSSPageSize: true});
   assert.deepEqual(errors, []);
-  console.log('P-007 passed: ten source triples, twelve blanks, keyboard focus, touchscreen checks, speech, hints, reset and six viewports.');
+  console.log('P-007 passed: nine triples, eleven blanks, keyboard focus, touchscreen checks, speech, hints, reset and six viewports.');
 } finally {
   await browser.close();
 }

@@ -4,7 +4,7 @@ body[data-activity="sea-neighbors"] .paper {
 }
 #activity-board {
   display: grid;
-  gap: .8rem;
+  gap: clamp(1.25rem, 3vw, 2rem);
   padding-block: 1rem;
 }
 .creature-row {
@@ -14,20 +14,21 @@ body[data-activity="sea-neighbors"] .paper {
   padding: .55rem;
 }
 .creature-row h2 {
-  margin: 0 0 .4rem;
+  margin: 0 0 .65rem;
   color: #204d5d;
   font-size: 1.05rem;
 }
 .creature-groups {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 190px), 1fr));
-  gap: .5rem;
+  gap: clamp(.85rem, 2vw, 1.5rem);
 }
 .creature-group {
   display: grid;
   grid-template-columns: repeat(3, minmax(44px, 1fr));
   align-items: center;
   padding: .35rem;
+  border: 1px solid #c2dfe6;
   border-radius: .75rem;
   background: #eff9fb;
 }
@@ -65,7 +66,25 @@ body[data-activity="sea-neighbors"] .paper {
   white-space: nowrap;
 }
 .creature-belly:has(select) .belly-label {
-  box-shadow: 0 0 0 1px #33768b;
+  position: relative;
+  box-sizing: border-box;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  min-height: 32px;
+  padding: 0 15px 0 3px;
+  border: 2px solid #286276;
+  border-radius: .4rem;
+  pointer-events: none;
+}
+.creature-belly:has(select) .belly-label::after {
+  content: "";
+  position: absolute;
+  right: 5px;
+  top: 50%;
+  transform: translateY(-25%);
+  border: 4px solid transparent;
+  border-top-color: #163b4a;
 }
 .belly-label.answered {
   background: #cceef7;
@@ -106,9 +125,6 @@ body[data-activity="sea-neighbors"] .paper {
   white-space: nowrap;
 }
 @media (min-width: 710px), print {
-  [data-species="seahorse"] .creature-groups {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-  }
   .creature-groups {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }

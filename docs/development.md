@@ -219,4 +219,4 @@ Open `/fish-keys.html` and `/key-names.html`. Run `BASE_URL=<runtime-directory-u
 
 ## P-007 verification
 
-Run `BASE_URL=<runtime-directory-url> node tests/sea_neighbors_browser.mjs` for source prompt and blank position checks, shared hint thresholds, completion/reset, speech dispatch, keyboard focus, emulated touch, and six viewport captures. Regenerate its menu image with `BASE_URL=<source-origin> node scripts/activity_previews.mjs sea-neighbors`. The packaged responsive matrix includes 114 cases.
+Run `BASE_URL=<runtime-directory-url> node tests/sea_neighbors_browser.mjs` for the nine prompts, eleven blank positions, visible dropdowns, question spacing, shared hint thresholds, completion/reset, speech dispatch, keyboard focus, emulated touch, and six viewport captures. Regenerate its menu image with `BASE_URL=<source-origin> node scripts/activity_previews.mjs sea-neighbors`. The packaged responsive matrix includes 114 cases.

@@ -73,4 +73,4 @@ P-005 lettering uses original-image SVG coordinates and measured belly bounds (x
 
 ### P-007 creature rows
 
-Group the ten prompts into three creature sections. At tablet and desktop sizes keep each species on one line. On narrower screens reflow complete triples within their species section. Preserve the artwork's native proportions and 44px controls without horizontal scrolling.
+Group the nine prompts evenly into three creature sections. Give each intact triple its own bordered panel with visible gaps between neighboring panels and species. Keep the white dropdown field and arrow visible on each answerable creature. At tablet and desktop sizes keep each species on one line. On narrower screens reflow complete triples within their species section. Preserve the artwork's native proportions and 44px controls without horizontal scrolling.
