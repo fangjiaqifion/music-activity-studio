@@ -19,8 +19,27 @@
       <section id="setup" aria-labelledby="choose-player">
         <h2 id="choose-player">为学生选棋子</h2>
         <div class="role-switch" role="group" aria-label="选棋子的玩家">
-          <button type="button" data-player="0"><span class="role-icon" aria-hidden="true">🧒</span>学生</button>
-          <button type="button" data-player="1"><span class="role-icon" aria-hidden="true">🧑‍🏫</span>老师 / 家长</button>
+          <button type="button" data-player="0"><svg class="role-icon" viewBox="0 0 36 36" aria-hidden="true" focusable="false">
+              <path fill="#72a4a4" d="M8 34c.6-5.8 4.5-8.6 10-8.6s9.4 2.8 10 8.6Z"/>
+              <path fill="#efba75" d="M15 24h6v4a3 3 0 0 1-6 0Z"/>
+              <path fill="#221e1b" d="M7 16C5 8 10 3 17 3c7-1 13 4 12 12l-3 5H9Z"/>
+              <circle cx="8.3" cy="17.9" r="2.5" fill="#efba75"/>
+              <circle cx="27.7" cy="17.9" r="2.5" fill="#efba75"/>
+              <path fill="#f7cc89" d="M9 14c4 .1 8-1.8 10.4-4.2.8 2.5 3.4 4.2 7.6 4.6v4.2C27 24 23 27 18 27s-9-3-9-8.4Z"/>
+              <path d="M14 17v.5m8-.5v.5m-6 3.5q2 2.5 4 0" fill="none" stroke="#382c29" stroke-linecap="round" stroke-width="1.6"/>
+              <path d="M11 20h1m12 0h1" stroke="#d88972" stroke-linecap="round" stroke-width="1.4"/>
+            </svg>学生</button>
+          <button type="button" data-player="1"><svg class="role-icon" viewBox="0 0 36 36" aria-hidden="true" focusable="false">
+              <path fill="#8b6889" d="M4 34c.5-5 5.7-8 11-8.6h6c5.3.6 10.5 3.6 11 8.6Z"/>
+              <path fill="#eab36f" d="M15 24h6v4l-3 3-3-3Z"/>
+              <path fill="#221e1b" d="M8 18C6.5 12 6.8 4 13 2.9c1.8-2 6.4-2.3 8.1-.5 4.9 0 8.7 4 7 15.6l-3 3H11Z"/>
+              <circle cx="8.6" cy="17.5" r="2.2" fill="#eab36f"/>
+              <circle cx="27.4" cy="17.5" r="2.2" fill="#eab36f"/>
+              <path fill="#efbf7a" d="M9.6 13c4-1 6.6-3.2 8.2-5.3 1.8 2.5 4.7 4 8.6 4.7v5.9c0 5.3-4 9.5-8.4 9.5s-8.4-4.2-8.4-9.5Z"/>
+              <path d="M11.3 14.1h5.2v3.6h-5.2zm8.2 0h5.2v3.6h-5.2zm-3 1.4h3m-3.8 6.5q2.3 2 4.6 0" fill="none" stroke="#382c29" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.15"/>
+              <circle cx="14" cy="15.9" r=".65" fill="#382c29"/>
+              <circle cx="22" cy="15.9" r=".65" fill="#382c29"/>
+            </svg>老师 / 家长</button>
         </div>
         <div id="characters" aria-label="四个音符角色"></div>
         <p id="choices" role="status"></p>

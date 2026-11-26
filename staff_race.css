@@ -244,8 +244,7 @@ details li + li { margin-top: 6px; }
 .role-switch { display: flex; gap: 8px; margin: 8px 0; }
 .role-switch button, #start { padding-inline: 12px; }
 .role-switch button { display: inline-flex; align-items: center; gap: 6px; }
-.role-icon { font-size: 21px; line-height: 1; }
-[data-player="1"] .role-icon { font-size: 25px; }
+.role-icon { flex: none; width: 30px; height: 30px; }
 #setup #start { background: #355e49; color: #fff; font-weight: 700; }
 #characters { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
 #characters .character {

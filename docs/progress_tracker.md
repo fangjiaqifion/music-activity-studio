@@ -2,6 +2,14 @@
 
 Last updated: 2026-11-26
 
+## Staff Race drawn portraits, November 26, 2026
+
+Replaced the role picker emoji with original drawn portraits of a child and
+an adult with warm golden skin and black hair. Face shape, glasses, and clothing
+distinguish the two. Build `47c8d0fe9264` passed the Chrome race suite across
+six viewports. Visually checked the phone picker. Reviewed the Studio, games,
+and workspace guides, the development guide, and public overview.
+
 ## Staff Race role icons, November 26, 2026
 
 Added a child icon to the student button and an adult educator icon to the
