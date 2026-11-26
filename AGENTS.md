@@ -192,6 +192,8 @@ above it. Show five extended staff lines with equal spacing and clear outer
 margins. Keep the dice below the wide board. Center each notehead vertically on
 its row and keep character decoration within the neighboring line bounds. Every adjacent line or space is one step. Roll a legal
 direction and one to four steps, requiring one deliberate placement per step.
+The optional move guide marks the next row in the active piece's lane and can
+be switched off without affecting move validation.
 Keep both pieces visible on shared rows. Use shared third/sixth-error cues and
 leave the piece in place on an error. First arrival wins immediately. Compare
 final height after ten rounds if neither arrives, allowing ties. A round gives

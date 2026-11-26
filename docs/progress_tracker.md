@@ -2,6 +2,15 @@
 
 Last updated: 2026-11-26
 
+## Staff Race move guide, November 26, 2026
+
+The pale guide circle marks only the next required row in the active piece's
+lane. The switch below the board controls the circle and can be changed while
+a move is in progress. The larger start button is labeled “开始游戏”. Reviewed
+the public overview, development guide, games guide, and workspace guide.
+Build `f0371b12f408` passed the Chrome race suite and 120 responsive cases.
+The race suite checked both lanes, one-step advancement, and the off switch.
+
 ## Staff Race drawn portraits, November 26, 2026
 
 Replaced the role picker emoji with original drawn portraits of a child and

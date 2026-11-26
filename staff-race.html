@@ -43,7 +43,7 @@
         </div>
         <div id="characters" aria-label="四个音符角色"></div>
         <p id="choices" role="status"></p>
-        <button id="start" type="button">开始比赛</button>
+        <button id="start" type="button">开始游戏 <span aria-hidden="true">→</span></button>
       </section>
       <div class="race">
         <section class="scores" aria-label="棋子位置">
@@ -54,7 +54,7 @@
           <div id="staff" role="group" aria-label="从下加一间到上加一间的棋盘"></div>
         </section>
         <section class="controls" aria-label="回合与骰子">
-          <div class="turn-row"><h2 id="turn"></h2><span id="round"></span></div>
+          <div class="turn-row"><h2 id="turn"></h2><div class="turn-tools"><span id="round"></span><label class="guide-switch"><input id="guide" type="checkbox" role="switch" checked />走棋引导</label></div></div>
           <div class="roll-panel">
             <button id="roll" type="button" aria-describedby="turn"><span aria-hidden="true">🎲</span> 掷骰子</button>
             <div class="die" id="die" hidden>

@@ -166,14 +166,16 @@ button:focus-visible, summary:focus-visible, a:focus-visible {
   z-index: 1;
   width: 30px;
   height: 30px;
-  border: 1px dashed #768479;
+  border: 2px dashed #b3c2a0;
   border-radius: 50%;
-  background: #fefbf2;
+  background: #edf2df99;
   opacity: 0;
   pointer-events: none;
 }
 
-.moving .target { opacity: 1; background: #fefbf2e8; }
+#staff[data-player="0"] .target { grid-column: 2; }
+#staff[data-player="1"] .target { grid-column: 4; }
+.guided .target { opacity: 1; }
 @media (hover: hover) {
   .moving .row:hover { background: #e9eee4; }
 }
@@ -242,10 +244,23 @@ details li + li { margin-top: 6px; }
   background: var(--tint, #e6f4e9);
 }
 .role-switch { display: flex; gap: 8px; margin: 8px 0; }
-.role-switch button, #start { padding-inline: 12px; }
+.role-switch button { padding-inline: 12px; }
 .role-switch button { display: inline-flex; align-items: center; gap: 6px; }
 .role-icon { flex: none; width: 30px; height: 30px; }
-#setup #start { background: #355e49; color: #fff; font-weight: 700; }
+#setup #start {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  min-width: 170px;
+  min-height: 54px;
+  padding: 8px 22px;
+  border: 0;
+  background: #285941;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 800;
+}
 #characters { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
 #characters .character {
   display: grid;
@@ -257,7 +272,18 @@ details li + li { margin-top: 6px; }
   font-weight: 700;
 }
 #choices { margin: 8px 0; }
-.turn-row { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 3px 8px; }
+.turn-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 3px 8px; }
+.turn-tools { display: flex; align-items: center; flex-wrap: wrap; gap: 6px 12px; }
+.guide-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  min-height: 44px;
+  color: #394f42;
+  font-weight: 600;
+  cursor: pointer;
+}
+.guide-switch input { width: 18px; height: 18px; margin: 0; accent-color: #355e49; }
 #round { color: #52645a; white-space: nowrap; font-weight: 700; }
 .rabbit { --team: #885477; --tint: #faeaf4; }
 .cat { --team: #9a4819; --tint: #ffeedb; }

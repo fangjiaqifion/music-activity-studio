@@ -17,6 +17,7 @@ const feedback = query("#feedback");
 const direction = query("#direction");
 const distance = query("#distance");
 const roundLabel = query("#round");
+const guide = query("#guide");
 const cards = roles.map((_, player) => query(`#score-${player}`));
 const setup = query("#setup");
 const picker = query("#characters");
@@ -98,13 +99,15 @@ function prepare() {
   selecting = 0;
   hints.reset();
   renderPicker();
-  feedback.textContent = "选好角色后，按开始比赛。";
+  feedback.textContent = "选好角色后，按开始游戏。";
   render();
 }
 
 function render() {
   const finished = result !== null;
   staff.classList.toggle("moving", Boolean(move));
+  staff.dataset.player = active;
+  const guidedPosition = move && guide.checked ? positions[active] + move.direction : null;
   die.hidden = !move;
   roll.setAttribute("aria-disabled", String(!setup.hidden || finished || Boolean(move)));
   turn.textContent = finished
@@ -130,6 +133,7 @@ function render() {
     const occupants = positions.flatMap((value, index) => value === position ? [playerName(index)] : []);
     const endpoint = row.querySelector(".endpoint-label").textContent;
     row.setAttribute("aria-label", [POSITIONS[position], endpoint, ...occupants].filter(Boolean).join("，"));
+    row.classList.toggle("guided", position === guidedPosition);
     row.setAttribute("aria-disabled", String(!move));
     row.tabIndex = move ? 0 : -1;
   }
@@ -199,5 +203,6 @@ function place(position, keyboard) {
   if (keyboard) (result === null ? roll : reset).focus();
 }
 
+guide.addEventListener("change", render);
 reset.addEventListener("click", prepare);
 prepare();
