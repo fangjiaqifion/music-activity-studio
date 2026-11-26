@@ -102,7 +102,7 @@ setInterval(showProfile, 60000);
 const example = document.querySelector('#direction-example');
 example.textContent = stairs
   ? '例：' + formatNotes('CDE').join(' → ') + ' 选上行台阶。'
-  : '例：C → D → C，先上一步，再下一步。';
+  : '例：C–D–C 对应音高 do–re–do。';
 
 const make = (tag, className, value = '') => {
   const element = document.createElement(tag);

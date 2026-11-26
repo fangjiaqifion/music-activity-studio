@@ -23,6 +23,10 @@ try {
     const match = page.locator('.leaf-match');
     const leaf = page.locator('.leaf-choice');
     const stair = page.locator('.stair-question');
+    if (!stairs) {
+      assert.match(await page.locator('#direction-example').textContent(), /C–D–C 对应音高 do–re–do/);
+      assert.equal(await page.locator('#direction-example .leaf-contour img').count(), 3);
+    }
     if (variant === 'solfege') {
       assert.match(await page.locator('#direction-example').textContent(), /do → re → mi/);
       assert.deepEqual(await stair.locator('.direction-notes').allTextContents(), [

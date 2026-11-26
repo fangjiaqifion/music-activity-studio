@@ -215,7 +215,8 @@ page and its board preview in the catalog and runtime package.
 `pitch-direction.html` opens P-010. `?exercise=stairs` opens P-011 from its
 own catalog card. Read the letter cycle in both directions, including G to A
 when ascending and A to G when descending. P-010 keeps all seven source
-prompts and contour patterns. Tap the dots beside the note names and leaf group in either order to
+prompts and contour patterns. Its worked example shows C–D–C as do–re–do
+before the corresponding leaf drawing. Tap the dots beside the note names and leaf group in either order to
 draw a line. Use a faint outline around each letter group and leaf group, with
 both endpoint dots outside the outlines. Keep the dots visually smaller than
 the letters and preserve 44px hit targets. Vertically center the leaf group

@@ -219,12 +219,13 @@ Open `/fish-keys.html` and `/key-names.html`. Run `BASE_URL=<runtime-directory-u
 
 ## P-007 verification
 
-Run `BASE_URL=<runtime-directory-url> node tests/sea_neighbors_browser.mjs` for the nine prompts, eleven blank positions, visible dropdowns, question spacing, shared hint thresholds, completion/reset, speech dispatch, keyboard focus, emulated touch, and six viewport captures. Repeat the command with `--solfege` to open “唱名版海底世界” from the catalog and check the lowercase choices and all eleven expected answers. The variants share `sea-neighbors.html`, with `?notation=solfege` selecting fixed-do syllables. Regenerate the two menu images with `BASE_URL=<source-origin> node scripts/activity_previews.mjs sea-neighbors` and the same command with `sea-solfege`. Both entries are in the responsive matrix.
+Run `BASE_URL=<runtime-directory-url> node tests/sea_neighbors_browser.mjs` for the nine prompts, eleven blank positions, visible dropdowns, question spacing, shared hint thresholds, completion/reset, speech dispatch, keyboard focus, emulated touch, and six viewport captures. Repeat the command with `--solfege` to open “唱名版海底世界” from the catalog and check the lowercase choices and all eleven expected answers. The variants share `sea-neighbors.html`, with `?notation=solfege` selecting fixed-do syllables. Regenerate the two menu images with `BASE_URL=<source-origin> node scripts/activity_previews.mjs sea-neighbors` and the same command with `sea-solfege`. Both entries are in the responsive matrix and the Pages browser workflow.
 
 ## P-010 and P-011 verification
 
 Run `BASE_URL=<runtime-directory-url> node tests/pitch_direction_browser.mjs`
-for all three catalog links, fixed-do labels and direction answers,
+for all three catalog links, the P-010 worked-example wording and artwork,
+fixed-do labels and direction answers,
 320px touch targets, both dot-selection orders,
 leaf height differences and vertical centering, keyboard matching, blank and wrong
 submissions, third- and sixth-error hints, leaf reassignment and erasing,
