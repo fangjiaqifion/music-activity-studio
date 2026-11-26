@@ -10,7 +10,6 @@ const characters = [
 const roles = ["学生", "老师 / 家长"];
 const query = (selector) => document.querySelector(selector);
 const staff = query("#staff");
-const lowerLedger = query("#lower-ledger");
 const roll = query("#roll");
 const die = query("#die");
 const turn = query("#turn");
@@ -83,7 +82,7 @@ for (let position = FINISH; position >= START; position--) {
   const endpoint = position === FINISH ? "终点" : position === START ? "起点" : "";
   button.innerHTML = `<span class="cell-name">${name}</span><span class="target"></span><span class="endpoint-label">${endpoint}</span>`;
   button.addEventListener("click", (event) => place(position, event.detail === 0));
-  staff.insertBefore(button, lowerLedger);
+  staff.append(button);
   rows[position] = button;
 }
 
@@ -154,9 +153,7 @@ roll.addEventListener("click", (event) => {
   if (event.detail === 0) rows[position].focus();
   else {
     const bounds = rows[position].getBoundingClientRect();
-    const controls = roll.closest(".controls").getBoundingClientRect();
-    const behindControls = innerWidth < 700 && bounds.top < controls.bottom;
-    if (behindControls || bounds.top < 0 || bounds.bottom > innerHeight) {
+    if (bounds.top < 0 || bounds.bottom > innerHeight) {
       rows[position].scrollIntoView({ block: "center" });
     }
   }

@@ -2,6 +2,17 @@
 
 Last updated: 2026-11-26
 
+## Staff Race wider board, November 26, 2026
+
+Show the five staff lines across a single-column board with closer vertical
+spacing and clear margins above and below. The starting and finishing spaces
+remain half a staff spacing outside lines 1 and 5. The round controls and dice
+sit below the board. Full-width rows provide distinct touch targets at 34–38 px
+in height. Updated the Studio guide and catalog preview. Reviewed the public
+overview, development guide, games guide, and workspace guide.
+Build `230024383b3f` passed 41 unit tests, the Chrome race and catalog suites,
+and 120 responsive checks. Inspected active play on phone and desktop.
+
 ## Staff Race shorter course, November 26, 2026
 
 Moved the start to the first space below the staff. The board has 11 playable

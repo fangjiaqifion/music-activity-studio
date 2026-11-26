@@ -187,11 +187,10 @@ P-005 is a user-requested exception to the shared third/sixth-error contract. Co
 
 `staff-race.html`, `staff_race.css`, and `src/staff_race*.mjs` own this same-device
 game. Players select distinct characters with different colors and silhouettes.
-Both pieces start in the first space below the staff. The finish is the first space
-above the staff, halfway between line 5 and the first upper ledger line. The upper
-and lower ledger lines are visual guides. Keep the row grid equally spaced, center
-each notehead vertically on its row, and keep character decoration within the
-neighboring line bounds. Every adjacent line or space is one step. Roll a legal
+Both pieces start in the first space below the staff and finish in the first space
+above it. Show five extended staff lines with equal spacing and clear outer
+margins. Keep the dice below the wide board. Center each notehead vertically on
+its row and keep character decoration within the neighboring line bounds. Every adjacent line or space is one step. Roll a legal
 direction and one to four steps, requiring one deliberate placement per step.
 Keep both pieces visible on shared rows. Use shared third/sixth-error cues and
 leave the piece in place on an error. First arrival wins immediately. Compare

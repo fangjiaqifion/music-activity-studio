@@ -27,11 +27,14 @@
         <button id="start" type="button">开始比赛</button>
       </section>
       <div class="race">
-        <section class="controls" aria-label="回合与棋子位置">
-          <div class="scores">
-            <div class="score" id="score-0"><span></span><strong></strong></div>
-            <div class="score" id="score-1"><span></span><strong></strong></div>
-          </div>
+        <section class="scores" aria-label="棋子位置">
+          <div class="score" id="score-0"><span></span><strong></strong></div>
+          <div class="score" id="score-1"><span></span><strong></strong></div>
+        </section>
+        <section class="board" aria-label="五线谱棋盘">
+          <div id="staff" role="group" aria-label="从下加一间到上加一间的棋盘"></div>
+        </section>
+        <section class="controls" aria-label="回合与骰子">
           <div class="turn-row"><h2 id="turn"></h2><span id="round"></span></div>
           <div class="roll-panel">
             <button id="roll" type="button" aria-describedby="turn"><span aria-hidden="true">🎲</span> 掷骰子</button>
@@ -40,11 +43,6 @@
             </div>
           </div>
           <p id="feedback" role="status" aria-atomic="true"></p>
-        </section>
-        <section class="board" aria-label="五线谱棋盘">
-          <div class="board-heading"><span>↑ 向上</span><span>线和间各占一格</span></div>
-          <div id="staff" role="group" aria-label="从下加一间到上加一间的棋盘"><div class="row ledger-guide" aria-hidden="true"><span class="cell-name">上加一线</span><span class="ledger-left"></span><span class="ledger-right"></span></div><div id="lower-ledger" class="row ledger-guide" aria-hidden="true"><span class="cell-name">下加一线</span><span class="ledger-left"></span><span class="ledger-right"></span></div></div>
-          <div class="board-heading"><span>↓ 向下</span><span>从最下面开始数线和间</span></div>
         </section>
       </div>
       <details>

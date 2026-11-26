@@ -23,7 +23,7 @@ try {
   };
   await row(0).waitFor();
   assert.equal(await page.locator(".row.line").count(), 5);
-  assert.equal(await page.locator(".row.ledger-guide").count(), 2);
+  assert.equal(await page.locator("#staff").getByText(/^[上下]加一线$/).count(), 0);
   assert.equal(await page.locator("#staff button").count(), 11);
   assert.match(await row(0).getAttribute("aria-label"), /下加一间，起点/);
   assert.match(await row(10).getAttribute("aria-label"), /上加一间，终点/);
@@ -97,8 +97,12 @@ try {
       const { width, height, top } = button.getBoundingClientRect();
       return { width, height, top };
     }));
-    assert.ok(boxes.every((box, i) => box.width >= 44 && box.height >= 44 && (!i || box.top >= boxes[i - 1].top + 44)));
+    assert.ok(boxes.every((box, i) => box.width >= 44 && box.height >= 34 && box.height < 44 && (!i || box.top >= boxes[i - 1].top + boxes[i - 1].height - 0.01)));
     assert.equal(await page.evaluate(() => document.documentElement.scrollWidth), width);
+    const board = await page.locator(".board").boundingBox();
+    const dice = await roll.boundingBox();
+    assert.ok(dice.y >= board.y + board.height);
+    assert.ok(board.width >= width * 0.8);
     await page.evaluate(() => window.scrollTo(0, 0));
     await page.screenshot({ path: `.runtime/staff-race/${width}x${height}.png` });
   }
