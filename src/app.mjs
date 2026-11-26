@@ -37,7 +37,7 @@ function shell(content) {
   app.innerHTML = `<header class="topbar studio-topbar">
     <button class="brand" data-action="home">
       <img width="40" height="40" src="assets/studio-icon-180.png" alt="">
-      <span>音乐游乐工坊<small>Music Activity Studio</small></span>
+      <span>音乐游戏工坊<small>Music Activity Studio</small></span>
     </button>
   </header>${content}`;
 }
@@ -105,7 +105,7 @@ function render() {
   const focusValue = focused?.dataset.value;
   const q = questions[index];
   shell(
-    `<main class="play" style="--accent:${game.color};--tint:${game.bg}"><nav class="play-nav">${button("← 返回游乐工坊", "home", "back")}<span>${game.en} / ${level === "starter" ? "初次探索" : "多一点挑战"}</span>${button("↻ 重新出题", "restart", "text-button")}</nav><section class="play-title"><div><p class="eyebrow">${game.tag}</p><h1>${game.name}</h1></div><div class="round">${game.id === "dice" ? "创作模式" : game.id === "bingo" ? "课堂模式" : `第 ${index + 1} / 6 题`}<small>题组 ${seed}</small></div></section><div class="workspace"><aside class="mascot"><img src="assets/${game.image}.png" alt=""><p>${mascotText(q)}</p><span>灵感来自你的原创练习纸<br>${q.source.join(" / ")}</span></aside><section class="activity">${activity(q)}<p class="feedback ${solved ? "success" : ""}" role="status" aria-live="polite">${feedback || "慢慢来，想好了再试。"}</p>${!["dice", "bingo"].includes(game.id) ? `<div class="actions">${solved ? button(index === 5 ? "看看探索成果 →" : "下一题 →", "next", "primary") : button("检查一下 ✓", "check", "primary")}${button("清空选择", "clear", "secondary")}</div>` : ""}</section></div><div class="play-bottom"><span>规则生成 · 可重复探索</span>${button("打印这组练习", "print", "text-button")}<span>不采集姓名 · 记录仅在本机</span></div></main>`,
+    `<main class="play" style="--accent:${game.color};--tint:${game.bg}"><nav class="play-nav">${button("← 返回音乐游戏工坊", "home", "back")}<span>${game.en} / ${level === "starter" ? "初次探索" : "多一点挑战"}</span>${button("↻ 重新出题", "restart", "text-button")}</nav><section class="play-title"><div><p class="eyebrow">${game.tag}</p><h1>${game.name}</h1></div><div class="round">${game.id === "dice" ? "创作模式" : game.id === "bingo" ? "课堂模式" : `第 ${index + 1} / 6 题`}<small>题组 ${seed}</small></div></section><div class="workspace"><aside class="mascot"><img src="assets/${game.image}.png" alt=""><p>${mascotText(q)}</p><span>灵感来自你的原创练习纸<br>${q.source.join(" / ")}</span></aside><section class="activity">${activity(q)}<p class="feedback ${solved ? "success" : ""}" role="status" aria-live="polite">${feedback || "慢慢来，想好了再试。"}</p>${!["dice", "bingo"].includes(game.id) ? `<div class="actions">${solved ? button(index === 5 ? "看看探索成果 →" : "下一题 →", "next", "primary") : button("检查一下 ✓", "check", "primary")}${button("清空选择", "clear", "secondary")}</div>` : ""}</section></div><div class="play-bottom"><span>规则生成 · 可重复探索</span>${button("打印这组练习", "print", "text-button")}<span>不采集姓名 · 记录仅在本机</span></div></main>`,
   );
   if (focusAction) {
     const selector =
@@ -170,7 +170,7 @@ function result() {
   const first = records.filter((r) => r?.firstCorrect).length;
   const stored = save();
   shell(
-    `<main class="result"><p class="eyebrow">LITTLE STEPS, LOVELY DISCOVERIES</p><span class="result-star">✳</span><h1>又发现了一点音乐！</h1><p>${game.name} · 完成 6 个小任务</p><div class="result-score"><strong>${first}<small> / 6</small></strong><span>首次尝试就答对</span></div><p>${stored ? "这次探索已保存在本机。" : "本机存储不可用，这次成果未保存。"}</p><div class="actions">${button("再探索一次", "restart", "primary")}${button("回到游乐工坊", "home", "secondary")}</div>${button("重玩同一组题", "replay", "text-button")}</main>`,
+    `<main class="result"><p class="eyebrow">LITTLE STEPS, LOVELY DISCOVERIES</p><span class="result-star">✳</span><h1>又发现了一点音乐！</h1><p>${game.name} · 完成 6 个小任务</p><div class="result-score"><strong>${first}<small> / 6</small></strong><span>首次尝试就答对</span></div><p>${stored ? "这次探索已保存在本机。" : "本机存储不可用，这次成果未保存。"}</p><div class="actions">${button("再探索一次", "restart", "primary")}${button("回到音乐游戏工坊", "home", "secondary")}</div>${button("重玩同一组题", "replay", "text-button")}</main>`,
   );
 }
 function check() {

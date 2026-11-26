@@ -36,7 +36,7 @@ document.querySelector("#speak").onclick = () =>
   speech.speak(
     kind === "hands"
       ? "先选择左手或右手。再选择一个指号，点击对应手指上的圆圈填写。钢琴指号从大拇指一指到小指五指。完成后请点打勾按钮。"
-      : "请用黑色涂高音谱号的斑纹，用棕色涂低音谱号的斑纹。先选择颜色，再点击斑纹中的谱号。完成后请点打勾按钮。",
+      : "请用黑色涂高音谱号的斑纹，用棕色涂低音谱号的斑纹。先选择颜色，再点一下牛身上的斑纹。完成后请点打勾按钮。",
   );
 let profileStorage;
 try {
@@ -96,6 +96,7 @@ const points = [
   [49, 16],
   [26, 23],
 ];
+const cowPaint = { black: "#24201e", brown: "#986744" };
 function render() {
   retryHints.clear();
   if (kind === "hands") {
@@ -154,11 +155,7 @@ function render() {
             glyph = clefGlyphs[clef];
           return (
             '<div class="spot-fill" style="background:' +
-            (answers[i] === "black"
-              ? "#24201e"
-              : answers[i] === "brown"
-                ? "#986744"
-                : "transparent") +
+            (cowPaint[answers[i]] ?? "transparent") +
             ";mask-image:url(assets/" +
             region.mask +
             ')"></div><button class="cow-clef ' +
@@ -186,59 +183,11 @@ function render() {
           );
         })
         .join("") +
-      "</div>" +
-      '<section class="cow-details" aria-label="放大斑纹"><h2>放大看，点一下填色 · Larger spots</h2><div class="cow-detail-grid">' +
-      items
-        .map((clef, i) => {
-          const r = cowRegions[i],
-            g = clefGlyphs[clef],
-            w = Math.max(120, r.width * 2.5),
-            h = Math.max(100, r.height * 2.5);
-          const color =
-            answers[i] === "black"
-              ? "#24201e"
-              : answers[i] === "brown"
-                ? "#986744"
-                : "transparent";
-          return (
-            '<button class="cow-detail" data-detail-index="' +
-            i +
-            '" aria-label="第 ' +
-            (i + 1) +
-            ' 块斑纹，放大作答" aria-pressed="' +
-            !!answers[i] +
-            '"><span>' +
-            (i + 1) +
-            '</span><svg viewBox="' +
-            [r.x - w / 2, r.y - h / 2, w, h].join(" ") +
-            '" aria-hidden="true"><image href="assets/cow_activity.svg" width="1060" height="620"/><rect x="0" y="0" width="1060" height="620" fill="' +
-            color +
-            '" mask="url(#detail-mask-' +
-            i +
-            ')"/><defs><mask id="detail-mask-' +
-            i +
-            '"><image href="assets/' +
-            r.mask +
-            '" width="1060" height="620"/></mask></defs><svg x="' +
-            (r.x - r.width / 2) +
-            '" y="' +
-            (r.y - r.height / 2) +
-            '" width="' +
-            r.width +
-            '" height="' +
-            r.height +
-            '" viewBox="' +
-            g.viewBox +
-            '"><path transform="scale(1,-1)" fill="' +
-            (answers[i] ? "white" : "#24201e") +
-            '" d="' +
-            g.path +
-            '"/></svg></svg></button>'
-          );
-        })
-        .join("") +
-      "</div></section>";
+      "</div>";
   }
+  updateCount();
+}
+function updateCount() {
   document.querySelector("#count").textContent = answers.filter(Boolean).length;
 }
 function next() {
@@ -267,22 +216,53 @@ document.querySelectorAll("[data-tool]").forEach(
         );
     }),
 );
+const zoom = document.querySelector("#cow-zoom");
+zoom?.addEventListener("click", () => {
+  const enlarged = board.classList.toggle("cow-enlarged");
+  zoom.setAttribute("aria-pressed", String(enlarged));
+  zoom.textContent = enlarged ? "看整只小牛" : "放大小牛";
+});
+
+function nearbyCowSpot(event) {
+  const art = event.target.closest(".cow-art");
+  if (!art) return;
+  const box = art.getBoundingClientRect();
+  let nearest;
+  let limit = 1;
+  cowRegions.forEach((region, index) => {
+    const dx = event.clientX - box.left - region.x / 1060 * box.width;
+    const dy = event.clientY - box.top - region.y / 620 * box.height;
+    const distance = Math.hypot(
+      dx / Math.max(22, region.width / 1060 * box.width / 2 + 10),
+      dy / Math.max(22, region.height / 620 * box.height / 2 + 10),
+    );
+    if (distance < limit) {
+      limit = distance;
+      nearest = index;
+    }
+  });
+  return art.querySelector(`[data-index="${nearest}"]`);
+}
+
 board.onclick = (event) => {
-  const b = event.target.closest("[data-index],[data-detail-index]");
+  const b = event.target.closest("[data-index]") ?? nearbyCowSpot(event);
   if (!b) return;
-  const detail = b.hasAttribute("data-detail-index");
-  const i = Number(detail ? b.dataset.detailIndex : b.dataset.index);
+  const i = Number(b.dataset.index);
   if (kind === "hands" && i % 6 === 0 && selected !== "erase")
     answers[i] = b.dataset.value;
   else answers[i] = selected === "erase" ? null : selected;
   stopCelebration();
   feedback.textContent = "选好了就点打勾吧。";
+  if (kind === "cows") {
+    retryHints.clear();
+    b.previousElementSibling.style.background = cowPaint[answers[i]] ?? "transparent";
+    b.classList.toggle("painted", Boolean(answers[i]));
+    b.setAttribute("aria-pressed", String(Boolean(answers[i])));
+    updateCount();
+    return;
+  }
   render();
-  board
-    .querySelector(
-      "[" + (detail ? "data-detail-index" : "data-index") + '="' + i + '"]',
-    )
-    ?.focus({ preventScroll: true });
+  board.querySelector(`[data-index="${i}"]`)?.focus({ preventScroll: true });
 };
 document.querySelector("#check").onclick = () => {
   stop();

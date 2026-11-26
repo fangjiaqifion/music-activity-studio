@@ -1,6 +1,6 @@
 # Music Activity Studio
 
-Music Activity Studio (音乐游乐工坊) is a browser-based collection of interactive
+Music Activity Studio (音乐游戏工坊) is a browser-based collection of interactive
 music exercises for beginning piano learners. It is designed for short sessions
 at home, in individual lessons, and in the classroom.
 

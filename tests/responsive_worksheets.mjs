@@ -120,9 +120,15 @@ try {
         assert.ok(Math.abs(loneWidth - sizes[0].width) < 1, "A lone card keeps its width");
       }
       if (name === "cows") {
-        const detail=page.locator('[data-detail-index="0"]');
-        await detail.click();
+        assert.equal(await page.locator(".cow-details").count(), 0);
+        const cow = page.locator(".cow-art");
+        const overview = await cow.boundingBox();
+        await page.locator("#cow-zoom").click();
+        assert.ok((await cow.boundingBox()).width > overview.width);
+        await page.locator('.cow-clef[data-index="0"]').click();
         assert.equal(await page.locator('.cow-clef[data-index="0"]').getAttribute("aria-pressed"),"true");
+        assert.equal(await page.locator("#count").innerText(),"1");
+        await page.locator("#cow-zoom").click();
         assert.equal(await page.locator("#count").innerText(),"1");
         await page.locator("#next").click();
       }

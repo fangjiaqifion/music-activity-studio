@@ -98,20 +98,8 @@ try {
     })),
   );
   assert.equal(bounds.length, 7);
-  // Complete a real mouse drag for G; tap placement for remaining characters.
-  const target = page.locator('[data-house="0"]');
-  await target.scrollIntoViewIfNeeded();
-  const from = await page.locator('[data-letter="G"]').boundingBox(),
-    to = await target.boundingBox();
-  await page.mouse.move(from.x + from.width / 2, from.y + from.height / 2);
-  await page.mouse.down();
-  await page.mouse.move(to.x + to.width / 2, to.y + to.height / 2, {
-    steps: 12,
-  });
-  await page.mouse.up();
-  assert.equal(await page.locator(".house.filled").count(), 2);
   for (let i = 0; i < 7; i++) {
-    if (i === 0 || i === 3) continue;
+    if (i === 3) continue;
     await page.locator(`[data-letter="${pitches[i][0]}"]`).click();
     await page.locator(`[data-house="${i}"]`).click();
   }
@@ -307,7 +295,7 @@ try {
   await quiet.close();
   assert.deepEqual(errors, []);
   console.log(
-    "PASS note houses: drag, tap, keyboard, wrong/correct answers, six neighbor rounds, finish/reset, seven layouts and touch.",
+    "PASS note houses: tap, keyboard, wrong/correct answers, six neighbor rounds, finish/reset, seven layouts and touch.",
   );
 } finally {
   await browser.close();

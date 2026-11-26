@@ -81,19 +81,23 @@ for (const {id, name, exercises} of species) {
       const image = new Image();
       image.src = `assets/neighbors_${id}.png`;
       image.alt = '';
-      creature.append(image);
+      const belly = document.createElement('div');
+      belly.className = 'creature-belly';
+      const label = document.createElement('strong');
+      label.className = 'belly-label';
+      creature.append(image, belly);
+      belly.append(label);
       if (exercise.blanks.includes(position)) {
         const field = document.createElement('select');
         field.className = 'creature-letter';
         field.setAttribute('aria-label', `${name}第 ${groups.children.length + 1} 组，第 ${position + 1} 个音名`);
         field.append(new Option('—', ''), ...[...letters].map(note => new Option(note, note)));
-        fields.push({field, letter});
-        creature.append(field);
+        fields.push({field, letter, label});
+        belly.append(field);
+        label.setAttribute('aria-hidden', 'true');
       } else {
-        const given = document.createElement('strong');
-        given.className = 'creature-letter';
-        given.textContent = letter;
-        creature.append(given);
+        label.classList.add('creature-letter');
+        label.textContent = letter;
       }
       group.append(creature);
     });
@@ -104,6 +108,10 @@ for (const {id, name, exercises} of species) {
 }
 
 function updateCount() {
+  for (const {field, label} of fields) {
+    label.textContent = field.value || '—';
+    label.classList.toggle('answered', Boolean(field.value));
+  }
   document.querySelector('#count').textContent = fields.filter(({field}) => field.value).length;
 }
 

@@ -43,6 +43,7 @@ try {
   assert.equal(await desktopField.evaluate(field => document.activeElement === field), true);
   await desktop.close();
   await first.selectOption('G');
+  assert.equal(await page.locator('.belly-label.answered').first().innerText(), 'G');
   for (let n = 1; n <= 6; n++) {
     await page.locator('#check').tap();
     assert.equal(await page.locator('.retry-hint').count(), Number(n >= 3));
@@ -51,6 +52,8 @@ try {
   assert.match(await page.locator('.retry-answer').innerText(), /A$/);
   const answers = ['A', 'C', 'G', 'A', 'B', 'A', 'D', 'D', 'F', 'B', 'C', 'F'];
   for (const [index, answer] of answers.entries()) await fields.nth(index).selectOption(answer);
+  assert.deepEqual(await page.locator('.belly-label.answered').allTextContents(), answers);
+  await page.screenshot({path: '.runtime/sea_neighbors_answered.png', fullPage: true});
   assert.equal(await page.locator('.retry-hint').count(), 0);
   await page.locator('#check').tap();
   assert.match(await page.locator('#feedback').innerText(), /全部答对/);
@@ -58,6 +61,7 @@ try {
   await page.keyboard.press('Escape');
   await page.locator('#next').tap();
   assert.equal(await page.locator('#count').innerText(), '0');
+  assert.equal(await page.locator('.belly-label.answered').count(), 0);
   for (const [width, height] of [[320, 568], [390, 844], [844, 390], [768, 1024], [1180, 820], [1440, 900]]) {
     await page.setViewportSize({width, height});
     assert.equal(await fields.evaluateAll(controls => controls.every(field => {

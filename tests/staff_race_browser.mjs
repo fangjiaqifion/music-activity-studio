@@ -136,7 +136,7 @@ try {
     await page.evaluate(() => window.scrollTo(0, 0));
     await page.screenshot({ path: `.runtime/staff-race/${width}x${height}.png` });
   }
-  await page.getByRole("link", { name: /音乐游乐工坊/ }).click();
+  await page.getByRole("link", { name: /音乐游戏工坊/ }).click();
   await page.getByRole("link", { name: /五线谱竞走/ }).waitFor();
   assert.deepEqual(errors, []);
   console.log("PASS: four characters, keyboard and touch, notation geometry, immediate win, ten-round height win, reset and six layouts");

@@ -32,34 +32,54 @@ body[data-activity="sea-neighbors"] .paper {
   background: #eff9fb;
 }
 .creature {
-  display: grid;
-  justify-items: center;
-  align-content: end;
-  gap: .25rem;
+  position: relative;
+  width: min(100%, 100px);
+  justify-self: center;
 }
 .creature img {
-  width: auto;
+  display: block;
+  width: 100%;
   height: auto;
-  max-width: 95%;
-  max-height: 88px;
-  object-fit: contain;
 }
-.creature-letter {
+[data-species="angled"] .creature { --belly-x: 51%; --belly-y: 49%; }
+[data-species="round"] .creature { --belly-x: 54%; --belly-y: 45%; }
+[data-species="seahorse"] .creature {
+  --belly-x: 43%;
+  --belly-y: 56%;
+  max-width: 68px;
+}
+.creature-belly {
+  position: absolute;
+  left: var(--belly-x);
+  top: var(--belly-y);
+  transform: translate(-50%, -50%);
   display: grid;
   place-items: center;
+}
+.belly-label {
+  padding: .05em .24em;
+  border-radius: .24em;
+  background: #fff;
+  color: #163b4a;
+  font: 800 1.15rem/1.1 system-ui, sans-serif;
+  white-space: nowrap;
+}
+.creature-belly:has(select) .belly-label {
+  box-shadow: 0 0 0 1px #33768b;
+}
+.belly-label.answered {
+  background: #cceef7;
+}
+.creature-belly select {
+  position: absolute;
+  inset: 50% auto auto 50%;
+  transform: translate(-50%, -50%);
   width: 44px;
   min-height: 44px;
-  font: 700 1.15rem system-ui, sans-serif;
-  color: #163b4a;
+  opacity: 0;
+  cursor: pointer;
 }
-select.creature-letter {
-  border: 2px solid #33768b;
-  border-radius: .6rem;
-  background: #fff;
-  text-align: center;
-  appearance: auto;
-}
-select.creature-letter:focus-visible {
+.creature-belly:focus-within .belly-label {
   outline: 3px solid #a45c14;
   outline-offset: 2px;
 }

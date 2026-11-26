@@ -2,6 +2,23 @@
 
 Last updated: 2026-11-26
 
+## Catalog name and three activity refinements, November 26, 2026
+
+The Chinese catalog and install name is “音乐游戏工坊”. Clef Cow uses
+whole-cow enlargement and wider touch tolerance directly on the spots.
+Note Neighborhood Level 1 uses tap-then-place. The neighboring-note exercise
+shows both given and selected uppercase letters on the creatures’ bellies.
+Regenerated the cow and neighboring-note catalog previews.
+
+Local build `a315a28ecf88` passed the packaged catalog-to-game smoke test
+for all three activities. The source passed 41 unit tests, 120 responsive
+checks, the three activity suites, shared retry and regression checks,
+Note Neighborhood audio checks, and the Staff Race return-link regression.
+Inspected the mobile cow and completed neighboring-note screenshots.
+Touch was emulated in Chrome. Physical-device testing and publication remain
+pending. Reviewed the Studio and ancestor guides, development guide, and
+public overview.
+
 ## Staff Race public release, November 26, 2026
 
 [Pages run 45750915826](https://github.com/fangjiaqifion/music-activity-studio/actions/runs/45750915826)

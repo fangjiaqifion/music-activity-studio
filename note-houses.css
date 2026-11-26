@@ -201,7 +201,7 @@ h2 {
   height: 132px;
   border-color: #ddd6c8;
   background: #fffdf7;
-  touch-action: none;
+  touch-action: manipulation;
 }
 .character svg {
   height: 103px;
@@ -222,21 +222,6 @@ h2 {
 .character:disabled {
   opacity: 0.3;
   cursor: default;
-}
-.character.dragging {
-  opacity: 0.5;
-}
-.drag-ghost {
-  position: fixed;
-  width: 95px;
-  height: 140px;
-  z-index: 20;
-  pointer-events: none;
-  transform: translate(-50%, -75%);
-}
-.drag-ghost svg {
-  width: 100%;
-  height: 100%;
 }
 #next {
   background: #343b2b;
@@ -265,9 +250,6 @@ dialog button {
 }
 #finish-copy {
   line-height: 1.8;
-}
-body.drag-active {
-  user-select: none;
 }
 @media (max-width: 700px) {
   header {
@@ -743,3 +725,5 @@ h1 {
     height: 35px;
   }
 }
+
+.house { touch-action: manipulation; }

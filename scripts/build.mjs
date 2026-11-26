@@ -40,7 +40,7 @@ export async function build(
     "assets/studio-icon-512.png",
   ]);
   const installLinks = input.some(([name]) => name === "manifest.webmanifest")
-    ? '<link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" sizes="180x180" href="assets/studio-icon-180.png"><meta name="apple-mobile-web-app-title" content="音乐工坊">'
+    ? '<link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" sizes="180x180" href="assets/studio-icon-180.png"><meta name="apple-mobile-web-app-title" content="音乐游戏工坊">'
     : "";
   for (const [file, bytes] of input) {
     if (stableFiles.has(file)) await emit(file, bytes);
@@ -56,7 +56,7 @@ export async function build(
     await emit(`${directory}/${file}`, content);
   }
   const redirect = Buffer.from(
-    `<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="robots" content="noindex,nofollow,noarchive"><title>音乐游乐工坊</title>${installLinks}</head><body><script>location.replace(new URL('${directory}/index.html',location.href))</script><a href="${directory}/index.html">打开音乐游乐工坊</a></body></html>`,
+    `<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="robots" content="noindex,nofollow,noarchive"><title>音乐游戏工坊</title>${installLinks}</head><body><script>location.replace(new URL('${directory}/index.html',location.href))</script><a href="${directory}/index.html">打开音乐游戏工坊</a></body></html>`,
   );
   await emit("index.html", redirect);
   const legacyCatalog = input.find(([name]) => name === "activities.html");

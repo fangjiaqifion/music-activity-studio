@@ -28,8 +28,7 @@ let level = 1,
   residents = Array(7).fill(null),
   questions = makeQuestions(),
   round = 0,
-  solved = false,
-  drag = null;
+  solved = false;
 function portrait(letter, extra = "") {
   const [x, y, w, h] = crops[letter];
   return `<svg ${extra} viewBox="0 0 ${w} ${h}" aria-hidden="true"><svg width="${w}" height="${h}" viewBox="${x} ${y} ${w} ${h}" overflow="hidden"><image href="${art}" width="1568" height="1003"/></svg></svg>`;
@@ -106,7 +105,7 @@ function render() {
   $("#prompt").textContent = prompt();
   $("#instruction").textContent =
     level === 1
-      ? "拖音符到小屋，或先点音符，再点它的家。"
+      ? "先点一个音符，再点它的小屋。"
       : "从住着音符的小屋出发，每经过一个线或间算一层。点选你的答案。";
   $("#progress").textContent =
     level === 1
@@ -213,7 +212,6 @@ function start(nextLevel = level) {
   piano.stop();
   stopConfetti();
   clearMismatch();
-  clearDrag();
   $("#celebration").close();
   level = nextLevel;
   selected = null;
@@ -286,69 +284,8 @@ function choose(letter) {
   }
 }
 $("#characters").addEventListener("click", (e) => {
-  if (e.detail !== 0) return;
   const b = e.target.closest("[data-letter]");
   if (b && !b.disabled) choose(b.dataset.letter);
-});
-// Pointer capture supports touch drags and tap-to-select without native HTML drag behavior.
-$("#characters").addEventListener("pointerdown", (e) => {
-  const b = e.target.closest("[data-letter]");
-  if (drag || mismatchIndex !== null || !b || b.disabled || e.button !== 0)
-    return;
-  drag = {
-    id: e.pointerId,
-    letter: b.dataset.letter,
-    x: e.clientX,
-    y: e.clientY,
-    moved: false,
-    button: b,
-  };
-  b.setPointerCapture(e.pointerId);
-});
-document.addEventListener("pointermove", (e) => {
-  if (!drag || drag.id !== e.pointerId) return;
-  if (level === 2) return;
-  if (Math.hypot(e.clientX - drag.x, e.clientY - drag.y) > 8 && !drag.moved) {
-    drag.moved = true;
-    void piano.play(drag.letter);
-    const ghost = document.createElement("div");
-    ghost.className = "drag-ghost";
-    ghost.innerHTML = portrait(drag.letter);
-    document.body.append(ghost);
-    drag.ghost = ghost;
-    drag.button.classList.add("dragging");
-    document.body.classList.add("drag-active");
-  }
-  if (drag.ghost) {
-    drag.ghost.style.left = e.clientX + "px";
-    drag.ghost.style.top = e.clientY + "px";
-  }
-});
-function clearDrag() {
-  if (!drag) return;
-  drag.ghost?.remove();
-  drag.button.classList.remove("dragging");
-  document.body.classList.remove("drag-active");
-  drag = null;
-}
-document.addEventListener("pointerup", (e) => {
-  if (!drag || drag.id !== e.pointerId) return;
-  const { moved, letter } = drag;
-  const target = document
-    .elementFromPoint(e.clientX, e.clientY)
-    ?.closest("[data-house]");
-  clearDrag();
-  if (moved) {
-    retryHints.clear();
-    selected = letter;
-    renderTray();
-    if (target) place(Number(target.dataset.house));
-    else feedback("点选一座小屋，或再拖一次。");
-  } else choose(letter);
-});
-document.addEventListener("pointercancel", clearDrag);
-$("#characters").addEventListener("lostpointercapture", (e) => {
-  if (drag?.id === e.pointerId) clearDrag();
 });
 function activateHouse(index) {
   if (mismatchIndex !== null) return;
@@ -407,7 +344,6 @@ window.addEventListener("pagehide", () => {
   piano.stop();
   stopConfetti();
   clearMismatch();
-  clearDrag();
 });
 document.addEventListener("visibilitychange", () => {
   if (document.hidden) {
@@ -415,7 +351,6 @@ document.addEventListener("visibilitychange", () => {
     piano.stop();
     stopConfetti();
     clearMismatch();
-    clearDrag();
   }
 });
 start(1);
