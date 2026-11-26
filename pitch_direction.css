@@ -117,3 +117,15 @@
 }
 .direction-example > img { width: 55px; height: auto; }
 .direction-example .leaf-contour { width: 80px; height: 45px; }
+
+.leaf-question .direction-notes,
+.leaf-option .leaf-contour {
+  border: 1px solid #e4e8de;
+  border-radius: .6rem;
+}
+.leaf-question .direction-notes { padding: .2rem .35rem; }
+.leaf-option .leaf-contour {
+  box-sizing: border-box;
+  height: 82px;
+  padding: 2px 3px;
+}

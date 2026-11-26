@@ -216,12 +216,16 @@ page and its board preview in the catalog and runtime package.
 own catalog card. Read the letter cycle in both directions, including G to A
 when ascending and A to G when descending. P-010 keeps all seven source
 prompts and contour patterns. Tap the dots beside the note names and leaf group in either order to
-draw a line. Keep the groups unframed and maintain visible height differences
+draw a line. Use a faint outline around each letter group and leaf group, with
+both endpoint dots outside the outlines. Maintain visible height differences
 between adjacent levels. Accept either descending group for FED or BAG, with each group
 available for one match. Reassigning a group clears its old connection.
 P-011 keeps the twelve source prompts, including both instances of FED.
 Select or replace the direction directly using the original stair artwork.
 Keep the note letters visually larger than the stair controls and keep
-answer targets at least 44 CSS pixels.
+answer targets at least 44 CSS pixels. The separate solfège card adds
+`&notation=solfege` and uses lowercase fixed-do syllables in its questions,
+example, and accessible labels. The two editions use the same twelve
+sequences and direction answers.
 Both have session-only answers, shared profiles and speech, graduated
 assistance, and completion celebrations. Keep the original masters intact.

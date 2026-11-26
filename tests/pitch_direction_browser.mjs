@@ -13,15 +13,24 @@ try {
   });
   const errors = [];
   page.on('pageerror', error => errors.push(error.message));
-  for (const stairs of [false, true]) {
+  for (const variant of ['leaves', 'letters', 'solfege']) {
+    const stairs = variant !== 'leaves';
     await page.goto(`${base}/index.html`);
-    await page.getByRole('link', { name: stairs ? /上行还是下行/ : /音名找树叶/ }).click();
+    await page.getByRole('link', { name: variant === 'solfege' ? /^唱名版上行还是下行/ : stairs ? /^上行还是下行/ : /音名找树叶/ }).click();
     await page.evaluate(() => document.fonts.ready);
     assert.match(await page.locator('header span').textContent(), stairs ? /P-011/ : /P-010/);
     const check = page.locator('#check');
     const match = page.locator('.leaf-match');
     const leaf = page.locator('.leaf-choice');
     const stair = page.locator('.stair-question');
+    if (variant === 'solfege') {
+      assert.match(await page.locator('#direction-example').textContent(), /do → re → mi/);
+      assert.deepEqual(await stair.locator('.direction-notes').allTextContents(), [
+        're mi fa', 'sol fa mi', 'si la sol', 'la si do', 'fa mi re', 'sol la si',
+        'mi fa sol', 'la sol fa', 'mi re do', 'do si la', 're do si', 'fa mi re',
+      ]);
+      assert.equal(await stair.nth(5).getByRole('button', { name: /sol la si：上行/ }).count(), 1);
+    }
     async function answer(index, choice) {
       if (stairs) {
         await stair.nth(index).getByRole('button', { name: new RegExp(choice + '$') }).tap();
@@ -43,6 +52,15 @@ try {
       assert.equal(await page.locator('.retry-answer').count(), Number(attempt === 6));
     }
     if (!stairs) {
+      assert.equal(await page.locator('.leaf-option').evaluateAll(options =>
+        options.every(option => {
+          const dot = option.querySelector('button').getBoundingClientRect();
+          const group = option.querySelector('.leaf-contour').getBoundingClientRect();
+          return dot.right <= group.left + 0.5 && [...option.querySelectorAll('img')].every(image => {
+            const ink = image.getBoundingClientRect();
+            return ink.top >= group.top && ink.bottom <= group.bottom;
+          });
+        })), true);
       const step = await page.locator('.leaf-option').nth(2).locator('img').evaluateAll(images =>
         images.slice(1).map((image, i) => images[i].getBoundingClientRect().bottom - image.getBoundingClientRect().bottom));
       assert.deepEqual(step, [19, 19]);
@@ -70,7 +88,7 @@ try {
     assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true);
   }
   assert.deepEqual(errors, []);
-  console.log('PASS: P-010 and P-011 catalog links, answers, touch, keyboard, hints, correction, reset, and 320px layout');
+  console.log('PASS: P-010 and both P-011 editions, catalog links, answers, touch, keyboard, hints, correction, reset, and 320px layout');
 } finally {
   await browser.close();
 }

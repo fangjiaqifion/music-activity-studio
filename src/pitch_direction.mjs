@@ -3,17 +3,27 @@ import { createSpeech } from './balloon_speech.mjs';
 import { readProfiles, saveProfiles, dateLabel } from './balloon_profiles.mjs';
 import { contour, leafChoices, leafMatches, leafQuestions, stairQuestions } from './pitch_direction_core.mjs';
 
-const stairs = new URLSearchParams(location.search).get('exercise') === 'stairs';
+import { LETTERS, SOLFEGE } from './core.mjs';
+
+const params = new URLSearchParams(location.search);
+const stairs = params.get('exercise') === 'stairs';
+const useSolfege = stairs && params.get('notation') === 'solfege';
+const formatNotes = notes => [...notes].map(letter =>
+  useSolfege ? SOLFEGE[LETTERS.indexOf(letter)].toLowerCase() : letter);
 const questions = stairs ? stairQuestions : leafQuestions;
 const directionLabels = { up: '上行', down: '下行' };
 
 if (stairs) {
-  document.title = '上行还是下行 · Up or down the stairs';
+  const title = useSolfege ? '唱名版上行还是下行' : '上行还是下行';
+  const subtitle = useSolfege ? 'Up or down the stairs with solfège' : 'Up or down the stairs';
+  document.title = title + ' · ' + subtitle;
   document.querySelector('header span').textContent = 'P-011 · 电子练习';
-  document.querySelector('h1').textContent = '上行还是下行';
-  document.querySelector('.subtitle').textContent = 'Up or down the stairs';
-  document.querySelector('.instructions p').textContent = '从左到右读三个音名，选上行或下行的台阶。';
-  document.querySelector('.instructions p[lang=en]').textContent = 'Read the three note names from left to right. Pick the stairs that go up or down.';
+  document.querySelector('h1').textContent = title;
+  document.querySelector('.subtitle').textContent = subtitle;
+  document.querySelector('.instructions p').textContent = useSolfege ? '从左到右读三个唱名，选上行或下行的台阶。' : '从左到右读三个音名，选上行或下行的台阶。';
+  document.querySelector('.instructions p[lang=en]').textContent = useSolfege
+    ? 'Read the three solfège syllables from left to right. Pick the stairs that go up or down.'
+    : 'Read the three note names from left to right. Pick the stairs that go up or down.';
 }
 
 const retryHints = createRetryHints();
@@ -91,7 +101,7 @@ setInterval(showProfile, 60000);
 
 const example = document.querySelector('#direction-example');
 example.textContent = stairs
-  ? '例：C → D → E 选上行台阶。'
+  ? '例：' + formatNotes('CDE').join(' → ') + ' 选上行台阶。'
   : '例：C → D → C，先上一步，再下一步。';
 
 const make = (tag, className, value = '') => {
@@ -132,7 +142,7 @@ board.classList.add(stairs ? 'stair-grid' : 'leaf-board');
 
 questions.forEach((notes, index) => {
   const row = make('div', stairs ? 'stair-question' : 'leaf-question');
-  const caption = make('strong', 'direction-notes', [...notes].join(' '));
+  const caption = make('strong', 'direction-notes', formatNotes(notes).join(' '));
   const controls = make('div', 'direction-controls');
   const buttons = [];
 
@@ -140,7 +150,7 @@ questions.forEach((notes, index) => {
     Object.entries(directionLabels).forEach(([value, name]) => {
       const button = make('button', 'stair-choice', name);
       button.prepend(picture(value));
-      button.setAttribute('aria-label', `第 ${index + 1} 题 ${notes}：${name}`);
+      button.setAttribute('aria-label', `第 ${index + 1} 题 ${formatNotes(notes).join(useSolfege ? ' ' : '')}：${name}`);
       button.onclick = () => {
         answers[index] = value;
         edited();

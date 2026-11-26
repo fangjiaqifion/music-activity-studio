@@ -33,6 +33,20 @@ scope and procedures still apply. Package `87c34cfec1d1` passed the two
 activity flows, catalog suite, 41 unit tests, and 138 responsive checks.
 Reviewed the phone captures and both catalog previews. Local only.
 
+### Faint contours and the solfège stair edition, November 26, 2026
+
+P-010 outlines each letter trio and leaf trio with a faint border while
+leaving the two connection dots outside. P-011 also opens as a separate
+fixed-do catalog entry with the same twelve sequences, direction answers,
+and option layout. The prompts, example, and accessible names use lowercase
+do, re, mi, fa, sol, la, si. For example, la–si–do goes up.
+
+Local package `10939269da00` passed all three activity flows, the 29-card
+catalog check, 41 unit tests, and 144 responsive cases. Covers were reviewed.
+Updated the Studio guide, overview, and development guide. Reviewed the
+responsive, provenance, games, and workspace guides for dependent changes.
+The parent tracker reflects the local catalog. Publication is pending.
+
 ## Under the Sea fixed-do edition, November 26, 2026
 
 “唱名版海底世界” is a separate catalog entry that reuses the P-007

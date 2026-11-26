@@ -7,7 +7,7 @@ const page=await browser.newPage({viewport:{width:1100,height:1000}});let errors
 await page.goto(base+'/activities.html');
 await page.waitForURL('**/index.html');
 await page.locator('.studio-card').first().waitFor();
-assert.equal(await page.locator('.studio-card').count(),28);
+assert.equal(await page.locator('.studio-card').count(),29);
 assert.equal(await page.locator('.studio-topics a').count(),5);
 for (const link of await page.locator('.studio-topics a').all()) {
   await link.click();
@@ -26,7 +26,7 @@ const iconResponse = await page.request.get(touchIcon);
 assert.ok(iconResponse.ok());
 const icon = await iconResponse.body();
 assert.deepEqual([icon.readUInt32BE(16), icon.readUInt32BE(20)], [180, 180]);
-assert.equal(await page.locator('.activity-card').count(),22);for(const a of await page.locator('.activity-card').all()){assert.equal(await a.locator('img').evaluate(i=>i.complete&&i.naturalWidth>0),true);}await page.screenshot({path:'.runtime/activities_desktop.png',fullPage:true});await page.setViewportSize({width:390,height:844});await page.screenshot({path:'.runtime/activities_mobile.png',fullPage:true});assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);
+assert.equal(await page.locator('.activity-card').count(),23);for(const a of await page.locator('.activity-card').all()){assert.equal(await a.locator('img').evaluate(i=>i.complete&&i.naturalWidth>0),true);}await page.screenshot({path:'.runtime/activities_desktop.png',fullPage:true});await page.setViewportSize({width:390,height:844});await page.screenshot({path:'.runtime/activities_mobile.png',fullPage:true});assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);
 for(const kind of ['hands','cows']){
 await page.setViewportSize({width:1100,height:1000});await page.goto(base+'/'+kind+'.html');await page.evaluate(()=>document.fonts.ready);await page.locator('#check').click();assert.match(await page.locator('#feedback').innerText(),new RegExp(kind==='hands'?'12':'19'));
 if(kind==='cows'){
@@ -50,5 +50,5 @@ assert.equal(await touch.evaluate(([x, y]) => document.elementFromPoint(x, y).ma
 await touch.touchscreen.tap(x, y);
 assert.equal(await spot.getAttribute('aria-pressed'), 'true');
 assert.equal(await touch.locator('#count').innerText(), '1');
-assert.deepEqual(errors,[]);console.log('PASS: unified 28-activity catalog, compatibility route, install metadata, desktop/mobile, both games blank/error/correction/erase/reset, profiles, celebration, no failed resources or page errors.');
+assert.deepEqual(errors,[]);console.log('PASS: unified 29-activity catalog, compatibility route, install metadata, desktop/mobile, both games blank/error/correction/erase/reset, profiles, celebration, no failed resources or page errors.');
 }finally{await browser.close();}
