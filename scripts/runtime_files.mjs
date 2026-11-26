@@ -17,6 +17,8 @@ export async function runtimeFiles(root) {
     "pitch_motion.css",
     "note-houses.html",
     "note-houses.css",
+    "staff-race.html",
+    "staff_race.css",
     "keyboard.html",
     "keyboard.css",
     "balloons.html",

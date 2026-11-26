@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="robots" content="noindex,nofollow,noarchive" />
+    <title>五线谱竞走 · 音乐游乐工坊</title>
+    <link rel="stylesheet" href="studio.css" />
+    <link rel="stylesheet" href="staff_race.css" />
+  </head>
+  <body>
+    <header>
+      <a href="index.html">← 音乐游乐工坊</a>
+      <button id="reset" type="button">重新开局</button>
+    </header>
+    <main>
+      <h1>五线谱竞走</h1>
+      <p class="intro">两人轮流掷骰子，沿着线和间逐格走。</p>
+      <div class="race">
+        <section class="controls" aria-label="回合与比分">
+          <div class="scores">
+            <div class="score mint" id="score-0"><span>绿音符 · 学生</span><strong></strong><progress max="16" value="0" aria-label="绿音符累计步数"></progress></div>
+            <div class="score plum" id="score-1"><span>紫音符 · 大人</span><strong></strong><progress max="16" value="0" aria-label="紫音符累计步数"></progress></div>
+          </div>
+          <h2 id="turn"></h2>
+          <div class="roll-panel">
+            <button id="roll" type="button" aria-describedby="turn"><span aria-hidden="true">🎲</span> 掷骰子</button>
+            <div class="die" id="die" hidden>
+              <span id="direction"></span><strong id="distance"></strong>
+            </div>
+          </div>
+          <p id="feedback" role="status" aria-atomic="true"></p>
+        </section>
+        <section class="board" aria-label="五线谱棋盘">
+          <div class="board-heading"><span>↑ 向上</span><span>线和间各占一格</span></div>
+          <div id="staff" role="group" aria-label="从上到下排列的五条线和四个间"></div>
+          <div class="board-heading"><span>↓ 向下</span><span>从最下面开始数线和间</span></div>
+        </section>
+      </div>
+      <details>
+        <summary>怎么玩？</summary>
+        <ol>
+          <li>两枚音符从第三线出发。老师或家长当紫音符。</li>
+          <li>骰子会告诉你向上还是向下，以及要走几步。每次点相邻的一格。比如从第二线向上走两步，先点第二间，再点第三线。</li>
+          <li>骰子只会掷出棋盘上走得完的方向和步数。走完再换人。</li>
+          <li>有一人累计走到 16 步或更多时，两人走完这一轮再比步数。走得多的人赢，一样多就打平。</li>
+        </ol>
+      </details>
+    </main>
+    <script type="module" src="src/staff_race.mjs"></script>
+  </body>
+</html>

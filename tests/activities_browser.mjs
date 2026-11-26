@@ -7,7 +7,7 @@ const page=await browser.newPage({viewport:{width:1100,height:1000}});let errors
 await page.goto(base+'/activities.html');
 await page.waitForURL('**/index.html');
 await page.locator('.studio-card').first().waitFor();
-assert.equal(await page.locator('.studio-card').count(),24);
+assert.equal(await page.locator('.studio-card').count(),25);
 assert.equal(await page.locator('.studio-topics a').count(),5);
 for (const link of await page.locator('.studio-topics a').all()) {
   await link.click();
@@ -24,7 +24,7 @@ const iconResponse = await page.request.get(touchIcon);
 assert.ok(iconResponse.ok());
 const icon = await iconResponse.body();
 assert.deepEqual([icon.readUInt32BE(16), icon.readUInt32BE(20)], [180, 180]);
-assert.equal(await page.locator('.activity-card').count(),18);for(const a of await page.locator('.activity-card').all()){assert.equal(await a.locator('img').evaluate(i=>i.complete&&i.naturalWidth>0),true);}await page.screenshot({path:'.runtime/activities_desktop.png',fullPage:true});await page.setViewportSize({width:390,height:844});await page.screenshot({path:'.runtime/activities_mobile.png',fullPage:true});assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);
+assert.equal(await page.locator('.activity-card').count(),19);for(const a of await page.locator('.activity-card').all()){assert.equal(await a.locator('img').evaluate(i=>i.complete&&i.naturalWidth>0),true);}await page.screenshot({path:'.runtime/activities_desktop.png',fullPage:true});await page.setViewportSize({width:390,height:844});await page.screenshot({path:'.runtime/activities_mobile.png',fullPage:true});assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);
 for(const kind of ['hands','cows']){
 await page.setViewportSize({width:1100,height:1000});await page.goto(base+'/'+kind+'.html');await page.evaluate(()=>document.fonts.ready);await page.locator('#check').click();assert.match(await page.locator('#feedback').innerText(),new RegExp(kind==='hands'?'12':'19'));
 if(kind==='cows'){
@@ -37,5 +37,5 @@ await page.locator('.profiles summary').click();await page.locator('#student-nam
 async function solve(wrong=false){if(kind==='hands'){for(let h=0;h<2;h++){const card=page.locator('.hand-card').nth(h);const hand=(await card.locator('img').getAttribute('src')).includes('left')?'left':'right';await card.locator('[data-value="'+hand+'"]').click();for(let f=1;f<=5;f++){await page.locator('[data-tool="'+(wrong&&h===0&&f===1?'5':f)+'"]').click();await page.locator('[data-index="'+(h*6+f)+'"]').click();}}}else{for(let i=0;i<19;i++){const b=page.locator('.cow-clef').nth(i);let c=(await b.getAttribute('class')).includes('bass')?'brown':'black';if(wrong&&i===0)c=c==='black'?'brown':'black';await page.locator('[data-tool="'+c+'"]').click();await b.click();}}}
 await solve(true);await page.locator('#check').click();assert.equal(await page.locator('#feedback').innerText(),'有 1 个需要再想一想。');await solve();await page.locator('#check').click();assert.equal(await page.locator('#celebration').isVisible(),true);assert.equal(await page.locator('.note-person').count(),5);await page.locator('#close-celebration').click();await page.screenshot({path:'.runtime/'+kind+'_desktop.png',fullPage:true});await page.locator('[data-tool="erase"]').click();await page.locator('[data-index="1"]').first().click();assert.equal(await page.locator('#count').innerText(),kind==='hands'?'11':'18');await page.locator('#next').click();assert.equal(await page.locator('#count').innerText(),'0');await page.setViewportSize({width:390,height:844});await page.screenshot({path:'.runtime/'+kind+'_mobile.png',fullPage:true});assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);await page.setViewportSize({width:1100,height:1000});await page.pdf({path:'.runtime/'+kind+'_print.pdf',preferCSSPageSize:true});
 }
-assert.deepEqual(errors,[]);console.log('PASS: unified 24-activity catalog, compatibility route, install metadata, desktop/mobile, both games blank/error/correction/erase/reset, profiles, celebration, no failed resources or page errors.');
+assert.deepEqual(errors,[]);console.log('PASS: unified 25-activity catalog, compatibility route, install metadata, desktop/mobile, both games blank/error/correction/erase/reset, profiles, celebration, no failed resources or page errors.');
 }finally{await browser.close();}

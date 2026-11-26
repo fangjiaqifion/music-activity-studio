@@ -1,6 +1,6 @@
 # Music Activity Studio: Internal Guide
 
-Last updated: 2026-11-25
+Last updated: 2026-11-26
 
 An independent repository. When nested, inherit parent and games guides. Write project
 documentation in English; product UI may remain Chinese. Repository and checkout names
@@ -182,3 +182,15 @@ P-005 is a user-requested exception to the shared third/sixth-error contract. Co
 ## P-007 neighboring note names, 2026-11-23
 
 `sea-neighbors.html` groups the original ten three-letter prompts by seahorse, round fish, and pointed-fin fish. Preserve the twelve blank positions and the repeating A–G order, including G–A–B and F–G–A. Use uppercase consistently because this exercise assesses letter order. Keep each triple intact when groups wrap. Individual select controls support correction and clearing; shared third/sixth-error hints apply per blank. Keep artwork proportions, 44px answer targets, local display profiles, user-triggered speech, session-only answers, and celebration.
+
+## Staff Race
+
+`staff-race.html`, `staff_race.css`, and `src/staff_race*.mjs` own this same-device
+game. Both pieces start on line 3 of an unpitched five-line staff. Every adjacent
+line or space is one step. Roll direction and a distance of one to four legal
+steps, then require one deliberate placement per step. Keep both pieces visible
+even when they share a row. Use the shared third/sixth-error assistance for the
+pending step, and leave the player in place on an error. Compare scores at the end
+of a round once either player has traveled at least 16 steps. Alternate the starting
+player on restart. The match is session-only. Keep the page and its real board
+preview in the catalog and runtime package.

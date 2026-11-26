@@ -1,6 +1,6 @@
 # Development
 
-Last updated: 2026-11-25
+Last updated: 2026-11-26
 
 ## Operation and verification
 
@@ -10,6 +10,13 @@ For development, run `npm install`, `npm test`, and, with the server running on 
 `npm run test:browser`. The latter uses system Google Chrome at its macOS default;
 set `CHROME_PATH` for another executable. Browser launch and loopback need permissions.
 Screenshots and a print-layout PDF are generated into ignored `.runtime/`.
+
+## Staff Race local preview
+
+Open `/staff-race.html` on the preview server. Run
+`BASE_URL=http://127.0.0.1:<port> node tests/staff_race_browser.mjs` for the
+catalog-to-match flow, touch and keyboard input, retry cues, equal-turn finish,
+restart, and active-board layout checks. The test also runs against the Pages build.
 
 ## Architecture and Note Trainer lessons
 
@@ -60,7 +67,7 @@ status is historical. There is no ChatGPT hosting or login in the selected deplo
    `npm run test:regressions`. Inspect affected screenshots and printing.
 4. Commit explicit paths, then push to this game's origin/main only when authorized.
    `.github/workflows/pages.yml` uses pinned official Actions, Node 24, Node tests,
-   the build, both legacy Chrome suites, the unified catalog and hands/cow flow, the complete P-031 pitch-motion, keyboard, staff worksheet, and Note Neighborhood interaction/audio suites, and all worksheet responsive cases against the artifact before deploying Pages.
+   the build, both legacy Chrome suites, the unified catalog and hands/cow flow, the complete P-031 pitch-motion, keyboard, staff worksheet, and Note Neighborhood interaction/audio suites, the Staff Race interaction suite, and all worksheet responsive cases against the artifact before deploying Pages.
    Documentation-only pushes do not redeploy. Runtime pushes do.
 5. Watch the exact Actions run to a terminal success state. Then run
    `node scripts/verify_deployed.mjs https://fangjiaqifion.github.io/music-activity-studio/`.
@@ -204,7 +211,7 @@ Open `/fish-steps.html`. Run `BASE_URL=<runtime-directory-url> node tests/fish_s
 
 ## Selector cover maintenance
 
-The catalog uses real unanswered exercise captures for worksheet and Note Neighborhood cards, bundled as `assets/preview_*.jpg`. Run `BASE_URL=<source-preview-origin> node scripts/activity_previews.mjs` with a local source server to regenerate them. The script uses an isolated browser context, waits for fonts/images, and captures content rather than profile fields. Restart the preview server after adding assets. Inspect every cover and run the hub browser flow and full responsive matrix against the packaged build. Covers are illustrative snapshots, not the next generated question set.
+The catalog uses real unanswered exercise captures for worksheet, Note Neighborhood, and Staff Race cards, bundled as `assets/preview_*.jpg`. Run `BASE_URL=<source-preview-origin> node scripts/activity_previews.mjs` with a local source server to regenerate them. The script uses an isolated browser context, waits for fonts/images, and captures content rather than profile fields. Restart the preview server after adding assets. Inspect every cover and run the hub browser flow and full responsive matrix against the packaged build. Covers are illustrative snapshots, not the next generated question set.
 
 ## P-005/P-006 verification
 

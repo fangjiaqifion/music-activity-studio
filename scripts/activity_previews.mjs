@@ -12,6 +12,7 @@ const entries = {
   keyboard: '.exercise', 'pitch-motion': '#activity-board',
   'key-notes': '.note-grid', 'fish-notes': '.fish-match-layout',
   'fish-steps': '#activity-board', 'note-houses': '.town',
+  'staff-race': '.board',
 };
 const browser = await chromium.launch({executablePath: process.env.CHROME_PATH || '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', headless: true});
 try {

@@ -27,6 +27,7 @@ const pages = [
   "sea-neighbors",
   "pitch-motion",
   "note-houses",
+  "staff-race",
   "index",
   "hands",
   "balloons",
@@ -86,7 +87,7 @@ try {
       );
       if (name === "index") {
         const cards = page.locator(".studio-card");
-        assert.equal(await cards.count(), 24);
+        assert.equal(await cards.count(), 25);
         const sizes = await cards.evaluateAll((elements) =>
           elements.map((card) => {
             const { width, height } = card.getBoundingClientRect();
@@ -103,7 +104,7 @@ try {
             description: card.querySelector("small").textContent.trim(),
           })),
         );
-        assert.equal(new Set(copy.map(({ title }) => title)).size, 24);
+        assert.equal(new Set(copy.map(({ title }) => title)).size, 25);
         assert.ok(copy.every(({ title, description }) =>
           title && description && title !== description
         ), "Every card has a distinct title and supporting description");
@@ -131,6 +132,11 @@ try {
         await page.locator('#reset').click();
         await page.locator('#level1').click();
         assert.equal(await page.locator('#progress').innerText(), '0 / 7');
+      } else if (name === "staff-race") {
+        await page.locator("#roll").click();
+        assert.match(await page.locator("#feedback").innerText(), /请点下一格/);
+        await page.locator("#reset").click();
+        assert.equal(await page.locator(".token").count(), 2);
       } else if (name !== "index") {
         await page.locator("#check").click();
         assert.match(await page.locator("#feedback").innerText(), /还有/);

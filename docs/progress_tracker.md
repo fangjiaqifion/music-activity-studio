@@ -1,6 +1,33 @@
 # Progress Tracker
 
-Last updated: 2026-11-25
+Last updated: 2026-11-26
+
+## Staff Race local activity, November 26, 2026
+
+A learner and a teacher or parent share one screen and take turns moving two note
+pieces. The learning target is to identify successive line and space positions in
+either direction. The board labels all nine positions, and the die supplies a legal
+direction and one to four steps. The learner taps each adjacent position in order.
+For example, moving up twice from line 2 passes through space 2 and reaches line 3.
+Tapping line 3 first leaves the piece on line 2 and prompts another try. Repeated
+errors use the shared third/sixth-attempt cues. Independent completion means moving
+through the rolled sequence without using these cues. Match totals count completed
+steps and do not measure independent learning.
+
+The match closes after both players complete the round in which either travels
+at least 16 steps. Highest total wins, and equal totals produce a tie. A new match
+alternates the starting player. The catalog now has 25 activities, including a
+real Staff Race board capture under Staff and notation.
+
+Packaged build `d22485132290` passed 41 Node tests, the complete match and
+keyboard/emulated-touch flow, the 25-card catalog regression, and 120 responsive
+cases across six Chrome viewports. Inspected active-board captures for phone,
+tablet, desktop, and short landscape. Physical-device testing and deployment
+remain open.
+
+Updated the Studio guide, public README, development guide, and this tracker.
+Reviewed the games and workspace guides and public overview. The activity fits
+the existing Studio ownership, runtime, and release procedures.
 
 ## Catalog cards and learner-facing copy, November 25, 2026
 

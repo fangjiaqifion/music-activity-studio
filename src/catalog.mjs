@@ -28,6 +28,7 @@ export const catalog = [
       worksheet("fish-notes", "音名配谱", "把带有音名和八度的小鱼连到对应的谱面。"),
       worksheet("pitch-motion", "音符怎么走", "看两个音隔多远，判断是级进、跳进、远跳还是重复。"),
       worksheet("note-houses", "音符小镇", "把音符送回大谱表上的家，再找楼上楼下的邻居。"),
+      worksheet("staff-race", "五线谱竞走", "两人轮流掷骰子，让音符沿着线和间逐格竞走。"),
     ],
   },
   {
