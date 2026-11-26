@@ -2,6 +2,13 @@
 
 Last updated: 2026-11-26
 
+## Staff Race turn portraits, November 26, 2026
+
+The dice panel pairs the turn label with the active character’s drawn portrait.
+Build `dc9c797195e8` passed the Chrome race suite, including character changes
+on turn handoff and six viewport checks. Inspected the phone dice panel and
+reviewed the Studio and ancestor guides, public overview, and development guide.
+
 ## Staff Race guidance levels, November 26, 2026
 
 A completed match opens the next level. Levels 1 and 2 show circles on all

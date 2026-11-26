@@ -15,6 +15,7 @@ try {
   const roll = page.locator("#roll");
   const row = (position) => page.locator(`[data-position="${position}"]`);
   const turn = page.locator("#turn");
+  const turnPortrait = page.locator("#turn-portrait");
   const feedback = page.locator("#feedback");
   const play = async (samples, path) => {
     await page.evaluate((values) => { Math.random = () => values.shift() ?? 0; }, samples);
@@ -38,6 +39,8 @@ try {
   await page.getByRole("button", { name: "方脸机器人" }).tap();
   assert.equal(await row(0).locator(".token.frog, .token.robot").count(), 2);
   await page.getByRole("button", { name: "开始游戏", exact: true }).tap();
+  assert.equal(await turnPortrait.locator(".face").isVisible(), true);
+  assert.match(await turnPortrait.getAttribute("class"), /frog/);
 
   await page.evaluate(() => { Math.random = () => 0.99; });
   await roll.focus();
@@ -81,6 +84,7 @@ try {
     return (head.top + head.bottom) / 2 === center && head.top < center && head.bottom > center;
   }));
   await row(4).tap();
+  assert.match(await turnPortrait.getAttribute("class"), /robot/);
   await play([0], [1]);
   await play([0.99, 0.99], [5, 6, 7, 8]);
   await play([0, 0], [0]);

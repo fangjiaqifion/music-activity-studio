@@ -275,6 +275,9 @@ details li + li { margin-top: 6px; }
 }
 #choices { margin: 8px 0; }
 .turn-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 3px 8px; }
+#turn { display: flex; align-items: center; gap: 8px; }
+#turn-portrait { width: 42px; height: 36px; border-radius: 10px; background: var(--tint); }
+#turn-portrait[hidden] { display: none; }
 .turn-tools { display: flex; align-items: center; flex-wrap: wrap; gap: 6px 12px; }
 .guide-switch {
   display: inline-flex;

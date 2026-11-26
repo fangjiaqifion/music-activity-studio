@@ -12,7 +12,8 @@ const query = (selector) => document.querySelector(selector);
 const staff = query("#staff");
 const roll = query("#roll");
 const die = query("#die");
-const turn = query("#turn");
+const turn = query("#turn-text");
+const turnPortrait = query("#turn-portrait");
 const feedback = query("#feedback");
 const direction = query("#direction");
 const distance = query("#distance");
@@ -117,6 +118,11 @@ function render() {
   nextLevel.hidden = !finished;
   die.hidden = !move;
   roll.setAttribute("aria-disabled", String(!setup.hidden || finished || Boolean(move)));
+  const turnPlayer = finished ? result : active;
+  turnPortrait.hidden = !setup.hidden || turnPlayer === "tie";
+  if (!turnPortrait.hidden) {
+    turnPortrait.className = `portrait ${characters[selected[turnPlayer]].id}`;
+  }
   turn.textContent = finished
     ? (result === "tie" ? "平局！" : `${playerName(result)}赢了！`)
     : setup.hidden ? `轮到${playerName(active)}` : "准备出发";
