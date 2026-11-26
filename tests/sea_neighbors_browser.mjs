@@ -26,7 +26,7 @@ try {
   await page.goto(base + (solfege ? '/index.html' : route));
   if (solfege) {
     await page.getByRole('link', {name: /唱名版海底世界/}).click();
-    assert.equal(await page.locator('h1').innerText(), '唱名版海底世界');
+    await page.getByRole('heading', {name: '唱名版海底世界', exact: true}).waitFor();
     assert.equal(new URL(page.url()).search, '?notation=solfege');
   }
   const rows = page.locator('.creature-row');

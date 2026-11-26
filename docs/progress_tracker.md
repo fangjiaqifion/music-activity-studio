@@ -2,6 +2,30 @@
 
 Last updated: 2026-11-26
 
+## Note-name activities and fixed-do Under the Sea release, November 26, 2026
+
+P-010 now shows C–D–C as do–re–do before the three-leaf contour. The
+29-entry catalog includes P-010, both P-011 editions, and the separate
+fixed-do Under the Sea entry. The release also includes the earlier Studio
+name, Clef Cow, Note Neighborhood, and P-007 layout updates.
+
+Reviewed the pending runtime diff, scoring, interaction, build allowlist,
+and release workflow. Local build `5ba97fd4d456` passed 41 unit tests,
+the full Pages browser suite, 144 responsive cases, and the dependency
+audit with zero reported vulnerabilities. The
+[Pages run](https://github.com/fangjiaqifion/music-activity-studio/actions/runs/45788143717)
+deployed runtime commit `a6660e7`. All 180 served file hashes matched.
+Live Chrome passed the catalog, the P-010 and both P-011 flows, and the
+fixed-do Under the Sea flow. The live checks prompted two test repairs:
+resolve the manifest launch URL against the project site root and wait
+for the translated heading before asserting the activity state. The
+published runtime bytes were unaffected. Physical-device operation and
+human-audible speech remain unverified.
+
+Updated the Studio guide, development guide, and this tracker. Reviewed
+the overview, asset provenance, responsive guidance, and the games and
+workspace guides. The parent tracker records the deployed build.
+
 ## P-010 leaf patterns and P-011 stairs, November 26, 2026
 
 Beginning learners read letter names from left to right. In P-010, C–D–C

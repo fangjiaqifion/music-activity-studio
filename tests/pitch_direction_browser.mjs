@@ -17,6 +17,7 @@ try {
     const stairs = variant !== 'leaves';
     await page.goto(`${base}/index.html`);
     await page.getByRole('link', { name: variant === 'solfege' ? /^唱名版上行还是下行/ : stairs ? /^上行还是下行/ : /音名找树叶/ }).click();
+    await page.locator('#activity-board button').first().waitFor();
     await page.evaluate(() => document.fonts.ready);
     assert.match(await page.locator('header span').textContent(), stairs ? /P-011/ : /P-010/);
     const check = page.locator('#check');
