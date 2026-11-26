@@ -2,6 +2,13 @@
 
 Last updated: 2026-11-26
 
+## Staff Race role icons, November 26, 2026
+
+Added a child icon to the student button and an adult educator icon to the
+teacher or parent button in the character picker. Build `6755e7d3d9dc` passed
+the Chrome race suite at six viewports. Reviewed the Studio, games, and workspace
+guides, the development guide, and public overview.
+
 ## Staff Race wider board, November 26, 2026
 
 Show the five staff lines across a single-column board with closer vertical
