@@ -2,6 +2,21 @@
 
 Last updated: 2026-11-26
 
+## Staff Race public release, November 26, 2026
+
+[Pages run 45750915826](https://github.com/fangjiaqifion/music-activity-studio/actions/runs/45750915826)
+published source commit `c10f24c` as build `dc9c797195e8`. Reviewed the staff
+geometry, legal dice moves, turn handoff, win and tie rules, guide toggle,
+and level transitions. Local verification passed 41 unit tests, the 25-card
+catalog and game regression suites, and 120 responsive cases. The dependency
+audit reported zero vulnerabilities. The Pages browser suites also passed.
+
+All 168 deployed file hashes match the local package. Chrome opened the exact
+release from the public homepage, navigated to Staff Race, and passed the full
+race flow through level 3 against the live build. Physical-device testing remains
+open. Reviewed the Studio and ancestor guides, development guide, and public
+overview.
+
 ## Staff Race turn portraits, November 26, 2026
 
 The dice panel pairs the turn label with the active character’s drawn portrait.
